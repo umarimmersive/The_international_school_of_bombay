@@ -17,14 +17,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
+
       // themeMode: ThemeMode.light,
       title: 'Flutter Demo',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
-      theme: Themes.light,
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        tabBarTheme: TabBarTheme(indicatorColor: Colors.red)
+      ),
       darkTheme: Themes.dark,
       themeMode: ThemeMode.system,
+
     );
   }
 }

@@ -41,6 +41,9 @@ dependencies:
   fluttertoast: ^8.2.1
   hexcolor: ^3.0.1
   flushbar: ^1.10.4
+  circular_reveal_animation: ^2.0.1
+  animated_bottom_navigation_bar: ^1.2.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

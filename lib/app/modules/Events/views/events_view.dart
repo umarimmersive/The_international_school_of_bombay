@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
@@ -17,60 +18,81 @@ class EventsView extends GetView<EventsController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Appbaar(
+          
                 screen_name: 'Event & extra'.toUpperCase(),
-                Back_ontap: (){
-                  Get.back();
+                Search_ontap: (){
+
+
+// --- Button Widget --- //
+
                 },
+                Back_ontap: (){
+                  Get.back(
+                    
+                  );
+                  
+                },
+                
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                height: MediaQuery.of(context).size.height/16,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  //physics: NeverScrollableScrollPhysics(),
-                  itemCount: controller.data.length,
-                  itemBuilder: (context, i) {
-                    return GestureDetector(
-                      onTap: (){
+              InkWell(
+                onTap: (){
+                  showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
 
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 00.0,vertical: 00),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                        return Container(width: 300,);
+                      });
+                },
+                child: Container(
+                  height: MediaQuery.of(context).size.height/16,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    //physics: NeverScrollableScrollPhysics(),
+                    itemCount: controller.data.length,
+                    itemBuilder: (context, i) {
+                      return GestureDetector(
+                        onTap: (){
 
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: TextFieldShowCOLOR(
-                                color: ColorValues.MIDIUM_LITE_TEXT,
-                                fontsize: 16.0,
-                                text: '${controller.data[i]['date']}',
-                                height: 1.0,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Roboto',
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 00.0,vertical: 00),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: TextFieldShowCOLOR(
+                                  color: ColorValues.MIDIUM_LITE_TEXT,
+                                  fontsize: 16.0,
+                                  text: '${controller.data[i]['date']}',
+                                  height: 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Roboto',
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0,top: 04),
-                              child: TextFieldShowCOLOR(
-                                color: ColorValues.MIDIUM_LITE_TEXT,
-                                fontsize: 16.0,
-                                text: '${controller.data[i]['title']}',
-                                height: 1.0,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Roboto',
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10.0,top: 04),
+                                child: TextFieldShowCOLOR(
+                                  color: ColorValues.MIDIUM_LITE_TEXT,
+                                  fontsize: 16.0,
+                                  text: '${controller.data[i]['title']}',
+                                  height: 1.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Roboto',
+                                ),
                               ),
-                            ),
 
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(padding: EdgeInsets.all(10),

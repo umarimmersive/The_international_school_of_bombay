@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DESHBORD,
-      page: () => const DeshbordView(),
+      page: () =>   DeshbordView(),
       binding: DeshbordBinding(),
     ),
     GetPage(
