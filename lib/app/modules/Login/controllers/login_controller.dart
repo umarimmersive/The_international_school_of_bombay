@@ -1,18 +1,13 @@
 import 'package:get/get.dart';
 
-import '../../../routes/app_pages.dart';
-
-class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
+class LoginController extends GetxController {
+  //TODO: Implement LoginController
   final Image="assets/images/logo.png".obs;
-
+  var isLoading = false.obs;
+  var obscureNewPass = true.obs;
+  final count = 0.obs;
   @override
   void onInit() {
-    Future.delayed(const Duration(seconds: 4)).then((value) {
-      Get.toNamed(Routes.LOGIN);
-    });
     super.onInit();
   }
 
