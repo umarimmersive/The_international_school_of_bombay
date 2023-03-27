@@ -4,6 +4,8 @@ class EventsController extends GetxController {
   //TODO: Implement EventsController
 
   final count = 0.obs;
+  final screen_name = 'Event & extra'.obs;
+  final is_bool= <bool>[true,false,false,false].obs;
 
   final data=[
     {
@@ -19,7 +21,7 @@ class EventsController extends GetxController {
       "title":"Sport Event",
       "date":"2019"
     }
-  ];
+  ].obs;
   @override
   void onInit() {
     super.onInit();

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class DeshbordController extends GetxController {
-  //TODO: Implement DeshbordController
+class AcademicContentController extends GetxController {
+  //TODO: Implement AcademicContentController
 
   final count = 0.obs;
   @override

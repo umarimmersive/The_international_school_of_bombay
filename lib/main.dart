@@ -17,10 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
-
       // themeMode: ThemeMode.light,
-      title: 'Flutter Demo',
+      title: 'The International School Of Bombay',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,

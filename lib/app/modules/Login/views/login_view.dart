@@ -6,6 +6,7 @@ import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/buttons.dart';
 import '../../../utils/global_widgets/textfield_ui.dart';
+import '../../HomeScreen/views/home_screen_view.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -137,8 +138,8 @@ class LoginView extends GetView<LoginController> {
                   width: double.infinity,
                   fontSize: 14,
                   ontap: (){
-
-                    Get.toNamed(Routes.EVENTS);
+                   // Get.to(DeshboardScreenView());
+                    Get.toNamed(Routes.DESHBOARD_SCREEN);
                   },
                 )
 
