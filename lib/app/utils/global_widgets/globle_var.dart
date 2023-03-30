@@ -16,4 +16,4 @@ final Select_language=''.obs;
 late SharedPreferences sharedPreference;
 //UserModal? userData;
 
-
+final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();

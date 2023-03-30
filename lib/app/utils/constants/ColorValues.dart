@@ -76,7 +76,7 @@ class ColorValues {
   static const int BORDER_COLOR = 0xffDEDEDE;
   static const int BG_CIRCLE_COLOR = 0xffA0A0A0;
   static const int WHITE = 0xffffffff;
-  static const int RED = 0xffFD0000;
+  static const int RED = 0xffE50004;
   static const int SELECTION_GRAY = 0xffF0F0F0;
   static const int SEARCH_CATEGORY_BOX_BG = 0xffC1E3FC;
   static const int SEARCH_CATEGORY_BOX_BG_SELCTED = 0xff4684EB;

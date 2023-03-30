@@ -9,11 +9,13 @@ import 'Text_widget.dart';
 
 class Appbaar extends StatelessWidget {
   final screen_name;
+  final hide_manu;
+  final hide_backButton;
   Function()? Notification_ontap;
   Function()? Search_ontap;
   Function()? Back_ontap;
 
-   Appbaar({Key? key,this.screen_name,this.Notification_ontap,this.Search_ontap,this.Back_ontap}) : super(key: key);
+   Appbaar({Key? key,this.screen_name,this.Notification_ontap,this.Search_ontap,this.Back_ontap,this.hide_manu,this.hide_backButton}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +63,7 @@ class Appbaar extends StatelessWidget {
                 ),
               ),
             ),
+            hide_manu==true?
             Expanded(
               flex: 1,
               child: GestureDetector(
@@ -72,7 +75,11 @@ class Appbaar extends StatelessWidget {
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
               ),
-            ),
+            ):
+            Expanded(
+              flex: 1,
+                child: Container()),
+            hide_manu==true?
             Expanded(
               flex: 1,
               child: GestureDetector(
@@ -84,7 +91,10 @@ class Appbaar extends StatelessWidget {
                   semanticLabel: 'Text to announce in accessibility modes',
                 ),
               ),
-            ),
+            ):
+            Expanded(
+                flex: 1,
+                child: Container()),
       ]),
     );
   }

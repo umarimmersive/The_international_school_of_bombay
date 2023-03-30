@@ -23,6 +23,7 @@ class bottomNavigationBar extends GetView<DashboardController> {
       elevation: 5,
       margin: EdgeInsets.zero,
       child: StylishBottomBar(
+
         hasNotch: true,
         currentIndex: controller.tabIndex.value,
         onTap: controller.tabIndex,
@@ -85,7 +86,8 @@ class bottomNavigationBar extends GetView<DashboardController> {
               title: Text(
                 "About",
                 style: TextStyle(fontSize: 11),
-              )),
+              )
+          ),
           BottomBarItem(
               icon: Image.asset(
                 "assets/menu.png",

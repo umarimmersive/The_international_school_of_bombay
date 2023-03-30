@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart' hide Badge;
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'app/routes/app_pages.dart';
 import 'app/utils/global_widgets/ThemeClass.dart';
 
 void main() {
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
+
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
 }

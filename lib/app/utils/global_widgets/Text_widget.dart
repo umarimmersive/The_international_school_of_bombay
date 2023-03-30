@@ -25,7 +25,8 @@ class Text_widget extends StatelessWidget {
           fontFamily: fontFamily,
           fontSize: fontSize,
           fontWeight: fontWeight,
-           color: Theme.of(context).iconTheme.color
+           //color: Theme.of(context).iconTheme.color
+           color: color
       ),
     );
   }

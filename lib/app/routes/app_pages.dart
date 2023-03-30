@@ -6,6 +6,8 @@ import '../modules/Academic_content/bindings/academic_content_binding.dart';
 import '../modules/Academic_content/views/academic_content_view.dart';
 import '../modules/Assignment/bindings/assignment_binding.dart';
 import '../modules/Assignment/views/assignment_view.dart';
+import '../modules/ContectUs/bindings/contect_us_binding.dart';
+import '../modules/ContectUs/views/contect_us_view.dart';
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
 import '../modules/Dashboard/views/dashboard_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
@@ -27,12 +29,32 @@ import '../modules/NoticeBoardDetails/bindings/notice_board_details_binding.dart
 import '../modules/NoticeBoardDetails/bindings/notice_board_details_binding.dart';
 import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
+import '../modules/Notification/bindings/notification_binding.dart';
+import '../modules/Notification/views/notification_view.dart';
+import '../modules/OurCampus/bindings/our_campus_binding.dart';
+import '../modules/OurCampus/views/our_campus_view.dart';
+import '../modules/OurPhilosypher/bindings/our_philosypher_binding.dart';
+import '../modules/OurPhilosypher/views/our_philosypher_view.dart';
 import '../modules/PdfView/bindings/pdf_view_binding.dart';
 import '../modules/PdfView/views/pdf_view_view.dart';
+import '../modules/PhotoGallary/bindings/photo_gallary_binding.dart';
+import '../modules/PhotoGallary/views/photo_gallary_view.dart';
+import '../modules/PhotoView/bindings/photo_view_binding.dart';
+import '../modules/PhotoView/views/photo_view_view.dart';
+import '../modules/PrivacyPolicy/bindings/privacy_policy_binding.dart';
+import '../modules/PrivacyPolicy/views/privacy_policy_view.dart';
+import '../modules/RateUs/bindings/rate_us_binding.dart';
+import '../modules/RateUs/views/rate_us_view.dart';
 import '../modules/Splash/bindings/splash_binding.dart';
 import '../modules/Splash/views/splash_view.dart';
+import '../modules/TermandCondition/bindings/termand_condition_binding.dart';
+import '../modules/TermandCondition/views/termand_condition_view.dart';
 import '../modules/Upcoming_Event/bindings/upcoming_event_binding.dart';
 import '../modules/Upcoming_Event/views/upcoming_event_view.dart';
+import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
+import '../modules/VideoGallary/views/video_gallary_view.dart';
+import '../modules/aboutus/bindings/aboutus_binding.dart';
+import '../modules/aboutus/views/aboutus_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
 import '../modules/syllabus/views/syllabus_view.dart';
 
@@ -137,6 +159,61 @@ class AppPages {
       name: _Paths.MOUNTHWISE_SYLLABUS,
       page: () => const MounthwiseSyllabusView(),
       binding: MounthwiseSyllabusBinding(),
+    ),
+    GetPage(
+      name: _Paths.NOTIFICATION,
+      page: () => const NotificationView(),
+      binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO_GALLARY,
+      page: () => const VideoGallaryView(),
+      binding: VideoGallaryBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHOTO_GALLARY,
+      page: () => const PhotoGallaryView(),
+      binding: PhotoGallaryBinding(),
+    ),
+    GetPage(
+      name: _Paths.OUR_CAMPUS,
+      page: () => const OurCampusView(),
+      binding: OurCampusBinding(),
+    ),
+    GetPage(
+      name: _Paths.OUR_PHILOSYPHER,
+      page: () => const OurPhilosypherView(),
+      binding: OurPhilosypherBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUTUS,
+      page: () => const AboutusView(),
+      binding: AboutusBinding(),
+    ),
+    GetPage(
+      name: _Paths.RATE_US,
+      page: () => const RateUsView(),
+      binding: RateUsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVACY_POLICY,
+      page: () => const PrivacyPolicyView(),
+      binding: PrivacyPolicyBinding(),
+    ),
+    GetPage(
+      name: _Paths.TERMAND_CONDITION,
+      page: () => const TermandConditionView(),
+      binding: TermandConditionBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHOTO_VIEW,
+      page: () => const PhotoViewView(),
+      binding: PhotoViewBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTECT_US,
+      page: () => const ContectUsView(),
+      binding: ContectUsBinding(),
     ),
   ];
 }

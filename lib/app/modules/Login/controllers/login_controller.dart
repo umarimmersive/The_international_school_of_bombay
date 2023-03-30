@@ -4,7 +4,7 @@ class LoginController extends GetxController {
   //TODO: Implement LoginController
   final Image="assets/images/logo.png".obs;
   var isLoading = false.obs;
-  var obscureNewPass = true.obs;
+  final obscureNewPass = true.obs;
   final count = 0.obs;
   @override
   void onInit() {

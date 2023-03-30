@@ -10,9 +10,10 @@ class TextFieldDesigned extends StatelessWidget {
   final Color? hintStyle;
   final String hintText;
   final String initialValue;
-  final int maxLength, minLines;
-  final int maxLines;
+  final int? maxLength, minLines;
+  final int? maxLines;
   final bool readOnly;
+  final bool obscureText;
   final TextInputType keyboardType;
   final AutovalidateMode? autovalidateMode;
   final FormFieldValidator<String>? validator;
@@ -23,6 +24,7 @@ class TextFieldDesigned extends StatelessWidget {
   late final String? counterText;
   TextFieldDesigned({
     this.onTap,
+    this.obscureText=false,
     this.readOnly = false,
     this.controller,
     this.hintStyle,
@@ -33,8 +35,8 @@ class TextFieldDesigned extends StatelessWidget {
     this.fontWeight = FontWeight.w300,
     this.autovalidateMode,
     this.hintText = "",
-    this.maxLines = 1,
-    this.minLines = 1,
+    this.maxLines,
+    this.minLines,
     this.maxLength = 300,
     this.validator,
     this.keyboardType = TextInputType.number,
@@ -99,6 +101,7 @@ class TextFieldDesigned extends StatelessWidget {
       ),
     );*/
       TextFormField(
+        obscureText: obscureText,
         textCapitalization: TextCapitalization.sentences,
         readOnly: readOnly,
         autovalidateMode: autovalidateMode,
@@ -106,8 +109,8 @@ class TextFieldDesigned extends StatelessWidget {
         onTap: onTap,
         controller: controller,
         maxLength: maxLength,
-        maxLines: maxLines,
-        minLines: minLines,
+        /*maxLines: maxLines,
+        minLines: minLines,*/
         keyboardType: keyboardType,
         textAlign: textAlign,
         buildCounter: counter,
