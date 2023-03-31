@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text.dart';
@@ -14,6 +15,7 @@ class PhotoGallaryView extends GetView<PhotoGallaryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appbar('Wallpapers'),
       /*  appBar: AppBar(
           title: const GlobalLocalText(
             text: 'wallpapers',
@@ -23,18 +25,6 @@ class PhotoGallaryView extends GetView<PhotoGallaryController> {
         body: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Appbaar(
-                  screen_name: 'Gallary'.toUpperCase(),
-                  Back_ontap: (){
-                    Get.back();
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Expanded(
                 child: MasonryGridView.builder(
                     clipBehavior: Clip.hardEdge,

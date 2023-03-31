@@ -66,7 +66,7 @@ class bottomNavigationBar extends GetView<DashboardController> {
              // unSelectedColor: color.value,
               backgroundColor: Colors.tealAccent,
               title: Text(
-                "Happiness",
+                "Happenings",
                 style: TextStyle(fontSize: 11),
               )),
           BottomBarItem(

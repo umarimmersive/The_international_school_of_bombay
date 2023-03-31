@@ -15,10 +15,40 @@ class HomeScreenController extends GetxController {
 
 
   final image_data=[
-    'assets/images/S2.jpg',
-    'assets/images/S3.jpg',
-    'assets/images/S4.jpg',
-    'assets/images/S5.jpg'
+    'assets/Slider/1.png',
+    'assets/Slider/2.png',
+    'assets/Slider/3.png',
+    'assets/Slider/4.png',
+  ];
+
+  final slider_data=[
+    {
+      "images":'assets/Slider/1.png',
+      "title":"It’s time to HOWL with the Bhediya stars Not an ordinary day at The International School of Bombay! It’s time to HOWL with the Bhediya stars and create memories we can never forget."
+     "Today was an exciting day for the entire faculty group and students at The International School of Bombay. We spent a memorable day with exceptional Kriti Sanon and beloved Varun Dhawan, who graciously gave us the pleasure of welcoming them for the movie promotion of  Bhediya. We danced, we sang, we laughed, and enjoyed ourselves with utter excitement."
+      " We can’t even explain the enthusiasm and zeal that surrounded our entire school during the whole encounter with Kriti Sanon and Varun Dhawan.  Both of them were extremely sweet, and humble, and shared some beautiful moments with our students and teachers. It was indeed an honour to meet such graceful and talented people."
+     " The movie releases on 25th November, and we must say all our students and faculty members are eagerly waiting to head to the theatre and enjoy this phenomenal movie filled with twists, turns, and laughter."
+    },
+   {
+   "images":'assets/Slider/555.png',
+   "title": "This is what happens when art, creativity, and enthusiasm combine!"
+   "It takes only one step in the direction of art to bring out the hidden artist in you. And this is exactly what we did with this Art Mela."
+  " The Art Mela organized at ISB was a phenomenal success. Our hearts were full of joy😃 after looking at the beautiful art pieces created by our students. A huge thanks to every child who came forth and participated in the Art Mela and brought life to their art. Seeing our students paint, sketch, and spark their creative selves with such passion was a remarkable experience."
+   "Here’s to each and every one of you! May you always enlighten the creativity within you and ignite the passion that art brings forth."
+},
+{
+"images":'assets/Slider/3.png',
+"title": "A heartfelt thanks to all the enthusiastic children who came forth and brought out the artist within themselves. It was indeed a surreal moment to watch each one of our students passionately paint, draw, and ignite their artistic selves"
+"Creativity indeed takes courage, and we are grateful for our students' courage! Three cheers to everyone who participated in the Art Mela! You are all champions."
+},
+
+  ];
+
+  final sport_image_data=[
+    'assets/sport/37.jpg',
+    'assets/sport/3.jpg',
+    'assets/sport/42.jpg',
+    'assets/sport/21.jpg',
   ];
 
   final Annoucment=[
@@ -32,16 +62,19 @@ class HomeScreenController extends GetxController {
 
   final data=[
     {
-      "title":"Sport Event",
+      "title":"Function",
       "date":"2019"
-    },{
-      "title":"Masalat Event",
+    },
+    {
+      "title":"Event",
       "date":"2019"
-    },{
-      "title":"Annual Fuctuion",
+    },
+    {
+      "title":"Sport Fuctuion",
       "date":"2019"
-    },{
-      "title":"Sport Event",
+    },
+    {
+      "title":"Martial Arts Event",
       "date":"2019"
     }
   ];

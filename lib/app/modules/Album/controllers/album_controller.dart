@@ -1,8 +1,13 @@
 import 'package:get/get.dart';
 
-class OurCampusController extends GetxController {
-  //TODO: Implement OurCampusController
-
+class AlbumController extends GetxController {
+  //TODO: Implement AlbumController
+  final sport_image_data=[
+    'assets/sport/37.jpg',
+    'assets/sport/3.jpg',
+    'assets/sport/42.jpg',
+    'assets/sport/21.jpg',
+  ];
   final count = 0.obs;
   @override
   void onInit() {

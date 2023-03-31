@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text_widget.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
@@ -12,376 +13,110 @@ class HoppinessView extends GetView<HoppinessController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
-      resizeToAvoidBottomInset: true,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            padding: EdgeInsets.only(
-                top: 55.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Control',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40.0,
-                        fontWeight: FontWeight.w700,
+        appBar: appbar('Happenings'),
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.sport_image_data.length,
+                  itemBuilder: (BuildContext, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Image.asset('assets/only_logo.png'),
+                                      ),
+                                      radius: 20,
+                                      backgroundColor: ColorValues.BLACK,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text_widget(
+                                          color: ColorValues.BLACK_TEXT,
+                                          fontSize: 14.0,
+                                          Simpletext: 'The International School Of Bombay',
+                                          height: 1.0,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Roboto',
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 5.0),
+                                          child: Text_widget(
+                                            color: ColorValues.BLACK_TEXT,
+                                            fontSize: 14.0,
+                                            Simpletext: '12-jan-2023',
+                                            height: 1.0,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: 'Roboto',
+                                          ),
+                                        ),
+                                      ],
+                                    )
+
+                                  ],
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.more_vert_rounded))
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            color: Colors.red,
+                            height: MediaQuery.of(context).size.height / 3,
+                            child: Image.asset(
+                               "${controller.sport_image_data[index]}",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 3.5),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5.0),
+                                  child: Image.asset('assets/love.png',height: 25,width: 25,),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5.0),
+                                  child: Text_widget(Simpletext: '1', fontSize: 20.0, color: ColorValues.BLACK),
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.mode_comment_outlined))
+                              ],
+                            ),
+                          ),
+
+                          Divider(
+                            color: ColorValues.DIVIDER_COLOR_ONE,
+                          )
+                        ],
                       ),
-                    ),
-                    Text(
-                      'Panel',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40.0,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 150,
-                ),
-                CircleAvatar(
-                  radius: 25.0,
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35.0),
-                  topRight: Radius.circular(35.0),
-                ),
-              ),
-              child: SingleChildScrollView(//Your SingleChildScrollView Widget
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Text(
-                      'All Rooms',
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Card(
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.add),
-                                        SizedBox(
-                                          height: 15.0,
-                                        ),
-                                        Text(
-                                          'Bed Room   ',
-                                        ),
-                                        Text(
-                                          '4 Lights',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Card(
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(25.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.add),
-                                    SizedBox(
-                                      height: 15.0,
-                                    ),
-                                    Text(
-                                      'Living Room',
-                                    ),
-                                    Text(
-                                      '2 Lights',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Card(
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.add),
-                                        SizedBox(
-                                          height: 15.0,
-                                        ),
-                                        Text(
-                                          'Kitchen      ',
-                                        ),
-                                        Text(
-                                          '5 Lights',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Card(
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(25.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.add),
-                                    SizedBox(
-                                      height: 15.0,
-                                    ),
-                                    Text(
-                                      'Bath Room  ',
-                                    ),
-                                    Text(
-                                      '1 Light',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Card(
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.add),
-                                        SizedBox(
-                                          height: 15.0,
-                                        ),
-                                        Text(
-                                          'Kitchen      ',
-                                        ),
-                                        Text(
-                                          '5 Lights',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Card(
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(25.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.add),
-                                    SizedBox(
-                                      height: 15.0,
-                                    ),
-                                    Text(
-                                      'Bath Room  ',
-                                    ),
-                                    Text(
-                                      '1 Light',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Card(
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.add),
-                                        SizedBox(
-                                          height: 15.0,
-                                        ),
-                                        Text(
-                                          'Kitchen      ',
-                                        ),
-                                        Text(
-                                          '5 Lights',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Card(
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(25.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.add),
-                                    SizedBox(
-                                      height: 15.0,
-                                    ),
-                                    Text(
-                                      'Bath Room  ',
-                                    ),
-                                    Text(
-                                      '1 Light',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Card(
-                                  elevation: 10.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(25.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Icon(Icons.add),
-                                        SizedBox(
-                                          height: 15.0,
-                                        ),
-                                        Text(
-                                          'Outdoor     ',
-                                        ),
-                                        Text(
-                                          '5 Lights',
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Card(
-                              elevation: 10.0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(25.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.add),
-                                    SizedBox(
-                                      height: 15.0,
-                                    ),
-                                    Text(
-                                      'Balcony      ',
-                                    ),
-                                    Text(
-                                      '2 Lights',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Text('Bottom nav bar')
-        ],
-      ),
-    );
+                    );
+                  }),
+            )
+          ],
+        ));
   }
 }

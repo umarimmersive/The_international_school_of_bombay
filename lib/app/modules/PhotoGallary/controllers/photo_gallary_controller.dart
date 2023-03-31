@@ -5,128 +5,99 @@ import '../views/photo_gallary_view.dart';
 class PhotoGallaryController extends GetxController {
   //TODO: Implement PhotoGallaryController
 
+
   List<Imagepath> photos = [
     Imagepath(
       path:
-      "https://cdn.statusqueen.com/mobilewallpaper/thumbnail/mobile_wallpaper_60-484.jpg",
+      "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337516844_915661389772162_1849733195305169388_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=rDpVk7XdLN0AX9QuBYG&_nc_ht=scontent-del1-1.xx&oh=00_AfBwk4OD-F1yw2wpZEQ0UzbnydjmypEhVC-qUz0KVs899A&oe=642B0F3A",
       isSelected: false.obs,
     ),
     Imagepath(
         path:
-        "https://cdn.statusqueen.com/mobilewallpaper/thumbnail/space_mobile_wallpaper-1114.jpg",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337092417_1929143404105280_6027865848207854078_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=rMBXCV1d4ugAX_nxjxS&_nc_ht=scontent-del1-1.xx&oh=00_AfAPM_kTY7pMjxtLOKgLAw7XoIeFW9ueoYM6S5MPWqG-2A&oe=642ABCE7",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.statusqueen.com/mobilewallpaper/thumbnail/mobile_wallpaper225-728.jpg",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337527786_741733204165658_6360235393656441195_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=nupcIVEkwNkAX-CwKP-&_nc_ht=scontent-del1-1.xx&oh=00_AfDpkGdJcSe58mYqx5JwNI55rxudkTU9L6fH3fnLIwowKA&oe=642BEF3F",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.statusqueen.com/mobilewallpaper/thumbnail/nature_mobile_wallpaper-1130.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337243314_230958139464726_890987890282319516_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=nPLxFwSPzDYAX89NAb7&_nc_ht=scontent-del1-2.xx&oh=00_AfAwj09DIrzkmRB6z69mT9cEmnYIZH87lycJURoIBk4EbQ&oe=642BC492",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.statusqueen.com/mobilewallpaper/thumbnail/space_mobile_wallpaper-1114.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337243075_937600147374974_4744085163335338003_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=C34_e2OiY9wAX9UCyQa&_nc_ht=scontent-del1-2.xx&oh=00_AfBkmZFwYnz3-gdtmhm8OX_vNK76Gf8_b7AvUYwiLoIm-w&oe=642B5B15",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547__340.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337500386_236154452137769_8599207834959090561_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=QyQOKy4LYiwAX-G0Lsd&_nc_ht=scontent-del1-2.xx&oh=00_AfDoohF46n-8uWYp3cA_7-gz3NcgPt8JxD5Klp-4vpqH8Q&oe=642B56EC",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2018/09/23/18/30/drop-3698073__340.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337099623_929596781499957_849485190209335193_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=lxcotrOMx1YAX8ivFRB&_nc_ht=scontent-del1-2.xx&oh=00_AfAgvsmC9G6NH592usCeIXA0YqKGfJJdlcYSrI09frGLlQ&oe=642B7FB6",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2017/08/25/18/48/watercolor-2681039__340.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337111445_123712343914385_5032918662119787798_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=g6mhicvUQwkAX8u2b2D&_nc_ht=scontent-del1-2.xx&oh=00_AfCmMgqqyLi1-Y2uR2qNc5JwpML6ISM2Ut6E11hLgccz3g&oe=642BD74A ",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2019/03/03/20/23/background-4032775__340.png",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337258939_193164530096060_3462001436008030187_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=ln2atIW9Dq4AX-Eha1X&_nc_ht=scontent-del1-1.xx&oh=00_AfCHaUGDpigNynEvfrr-LEDnW4GLg2QR4gABttOr1da_eg&oe=642B1437",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2017/12/10/15/16/white-horse-3010129__340.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337409560_107189025668013_6847492898564161001_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=ghg4Edn2WUUAX8a5vyU&_nc_ht=scontent-del1-2.xx&oh=00_AfD3is5MmB7pMV25mL8dnuhcuUkqEQha80bdMveMIClZxw&oe=642AAE75",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://cdn.pixabay.com/photo/2016/08/03/14/24/roses-1566792__340.jpg",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337253863_735890574579776_8628202927740517998_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=1GVM2XihMx8AX-kWH8z&_nc_ht=scontent-del1-1.xx&oh=00_AfAr8voFpd56xLAW7ah0ngQdH0h_XOUwPU1FfCgzd6Oa1g&oe=642B1689",
         isSelected: false.obs),
     Imagepath(
-        path: "https://wallpapercave.com/wp/wp2927746.jpg",
-        isSelected: false.obs),
+      path:
+      "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337516844_915661389772162_1849733195305169388_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=rDpVk7XdLN0AX9QuBYG&_nc_ht=scontent-del1-1.xx&oh=00_AfBwk4OD-F1yw2wpZEQ0UzbnydjmypEhVC-qUz0KVs899A&oe=642B0F3A",
+      isSelected: false.obs,
+    ),
     Imagepath(
-        path: "https://wallpapercave.com/wp/wp5007561.gif",
+        path:
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337092417_1929143404105280_6027865848207854078_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=rMBXCV1d4ugAX_nxjxS&_nc_ht=scontent-del1-1.xx&oh=00_AfAPM_kTY7pMjxtLOKgLAw7XoIeFW9ueoYM6S5MPWqG-2A&oe=642ABCE7",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB-16htggnJWUQXVA11kz39n7D0GYWear0iA&usqp=CAU",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337527786_741733204165658_6360235393656441195_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=nupcIVEkwNkAX-CwKP-&_nc_ht=scontent-del1-1.xx&oh=00_AfDpkGdJcSe58mYqx5JwNI55rxudkTU9L6fH3fnLIwowKA&oe=642BEF3F",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://www.instantstories.com/uploads/stories/aathmika/aathmika-beautiful-hd-photos-mobile-wallpapers-hd-androidiphone-1080p-jxy2-lg.jpg?v=1569514987",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337243314_230958139464726_890987890282319516_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=nPLxFwSPzDYAX89NAb7&_nc_ht=scontent-del1-2.xx&oh=00_AfAwj09DIrzkmRB6z69mT9cEmnYIZH87lycJURoIBk4EbQ&oe=642BC492",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://e1.pxfuel.com/desktop-wallpaper/464/856/desktop-wallpaper-colorful-feathers-most-beautiful-wide-mobile-thumbnail.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337243075_937600147374974_4744085163335338003_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=C34_e2OiY9wAX9UCyQa&_nc_ht=scontent-del1-2.xx&oh=00_AfBkmZFwYnz3-gdtmhm8OX_vNK76Gf8_b7AvUYwiLoIm-w&oe=642B5B15",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://c4.wallpaperflare.com/wallpaper/915/375/631/beautiful-colorful-flowers-from-garden-flowering-wallpapers-hd-for-mobile-and-tablet-3840%C3%972400-wallpaper-preview.jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path: "https://www.mordeo.org/download/18296/", isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://www.teahub.io/photos/full/255-2555509_beautiful-android-wallpaper-for-mobile.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337500386_236154452137769_8599207834959090561_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=QyQOKy4LYiwAX-G0Lsd&_nc_ht=scontent-del1-2.xx&oh=00_AfDoohF46n-8uWYp3cA_7-gz3NcgPt8JxD5Klp-4vpqH8Q&oe=642B56EC",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwaMusEkCq9UM8OLpRONsiqEkiF-Iccd6UxoeiArtacUTQ1i2ZsvhkEzBTBXa7e16UCtc&usqp=CAU",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337099623_929596781499957_849485190209335193_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=lxcotrOMx1YAX8ivFRB&_nc_ht=scontent-del1-2.xx&oh=00_AfAgvsmC9G6NH592usCeIXA0YqKGfJJdlcYSrI09frGLlQ&oe=642B7FB6",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://i.pinimg.com/originals/0f/89/9b/0f899b6c5b0216d1940ced5fd5da79a1.jpg",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337111445_123712343914385_5032918662119787798_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=g6mhicvUQwkAX8u2b2D&_nc_ht=scontent-del1-2.xx&oh=00_AfCmMgqqyLi1-Y2uR2qNc5JwpML6ISM2Ut6E11hLgccz3g&oe=642BD74A ",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREYAcZxI2SUkD8gOwDb4pdDocZDh8qFJbV3w&usqp=CAU",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337258939_193164530096060_3462001436008030187_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=ln2atIW9Dq4AX-Eha1X&_nc_ht=scontent-del1-1.xx&oh=00_AfCHaUGDpigNynEvfrr-LEDnW4GLg2QR4gABttOr1da_eg&oe=642B1437",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsH_fQ6hagSU8prWavgk8D-ptEEkxCe9p-gQ&usqp=CAU",
+        "https://scontent-del1-2.xx.fbcdn.net/v/t39.30808-6/337409560_107189025668013_6847492898564161001_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=ghg4Edn2WUUAX8a5vyU&_nc_ht=scontent-del1-2.xx&oh=00_AfD3is5MmB7pMV25mL8dnuhcuUkqEQha80bdMveMIClZxw&oe=642AAE75",
         isSelected: false.obs),
     Imagepath(
         path:
-        "https://i.pinimg.com/originals/7d/d6/a7/7dd6a75541ddd8ce3679c2b644aeb2d2.jpg",
+        "https://scontent-del1-1.xx.fbcdn.net/v/t39.30808-6/337253863_735890574579776_8628202927740517998_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=1GVM2XihMx8AX-kWH8z&_nc_ht=scontent-del1-1.xx&oh=00_AfAr8voFpd56xLAW7ah0ngQdH0h_XOUwPU1FfCgzd6Oa1g&oe=642B1689",
         isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://www.imagesjunction.com/images/img/hd_wallpapers_for_mobile.jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://wallpapers.com/images/hd/wet-feather-mobile-w142li7pn856j7uy.jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://e0.pxfuel.com/wallpapers/901/254/desktop-wallpaper-nature-cell-phone-mobile-nature-android-thumbnail.jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhuBLgmLjuW9Sky4WALr-tEy8Cym9fBeBxNQ&usqp=CAU",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://w0.peakpx.com/wallpaper/192/679/HD-wallpaper-beautiful-leaves-flowers-nath-red.jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg",
-        isSelected: false.obs),
-    Imagepath(
-        path:
-        "https://i0.wp.com/anamikamishra.com/wp-content/uploads/2016/12/New-Year-HD-Wallpaper-for-Desktop-1.jpg?fit=640%2C426&ssl=1",
-        isSelected: false.obs),
+
   ];
   final count = 0.obs;
   @override

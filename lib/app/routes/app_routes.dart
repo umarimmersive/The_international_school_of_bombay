@@ -31,6 +31,13 @@ abstract class Routes {
   static const TERMAND_CONDITION = _Paths.TERMAND_CONDITION;
   static const PHOTO_VIEW = _Paths.PHOTO_VIEW;
   static const CONTECT_US = _Paths.CONTECT_US;
+  static const CAMPUS = _Paths.CAMPUS;
+  static const ALBUM = _Paths.ALBUM;
+  static const HOME_SLIDER_DETAILS = _Paths.HOME_SLIDER_DETAILS;
+  static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static const FEED = _Paths.FEED;
+  static const INTERNAL_REFER_PROGRAM = _Paths.INTERNAL_REFER_PROGRAM;
+  static const VIDEO_PLAYER = _Paths.VIDEO_PLAYER;
 }
 
 abstract class _Paths {
@@ -63,4 +70,11 @@ abstract class _Paths {
   static const TERMAND_CONDITION = '/termand-condition';
   static const PHOTO_VIEW = '/photo-view';
   static const CONTECT_US = '/contect-us';
+  static const CAMPUS = '/campus';
+  static const ALBUM = '/album';
+  static const HOME_SLIDER_DETAILS = '/home-slider-details';
+  static const EDIT_PROFILE = '/edit-profile';
+  static const FEED = '/feed';
+  static const INTERNAL_REFER_PROGRAM = '/internal-refer-program';
+  static const VIDEO_PLAYER = '/video-player';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
@@ -12,35 +13,88 @@ class AboutView extends GetView<AboutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appbar('About'),
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Appbaar(
-                  screen_name: 'About'.toUpperCase(),
-                  Back_ontap: (){
-                    Get.back();
-                  },
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+               /* Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Appbaar(
+                    screen_name: 'About'.toUpperCase(),
+                    Back_ontap: (){
+                      Get.back();
+                    },
+                  ),
+                ),*/
+                
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Text_widget(
-                  maxLines: 1000,
-                  color: ColorValues.BLACK_TEXT,
-                  fontSize: 16.0,
-                  Simpletext: 'A data-enabled and technology-driven Educational Products and Services Company, Careers360 seamlessly integrates millions of student and institutional data points with the user-generated preferences of its more than 15 million+ monthly visitors, to build sophisticated Prediction and Recommendation products for the students to explore and achieve career plans, based on their interests and abilities.',
-                  height: 1.2,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Roboto',
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text_widget(
+                    maxLines: 1000,
+                    color: ColorValues.BLACK_TEXT,
+                    fontSize: 16.0,
+                    Simpletext: '${controller.About_text}',
+                    height: 1.2,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto',
+                  ),
                 ),
-              ),
-            ],),
+                
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0,right: 5),
+                  child: Container(
+                    height: 200,
+                    width: double.infinity,
+                    child: Image.asset('assets/gp.png',fit: BoxFit.contain),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text_widget(
+                    maxLines: 1000,
+                    color: ColorValues.BLACK_TEXT,
+                    fontSize: 16.0,
+                    Simpletext: '${controller.About_text2}',
+                    height: 1.2,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text_widget(
+                    maxLines: 1000,
+                    color: ColorValues.BLACK_TEXT,
+                    fontSize: 16.0,
+                    Simpletext: '${controller.About_text2}',
+                    height: 1.2,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5.0,right: 5),
+                  child: Container(
+                    height: 200,
+                    width: double.infinity,
+                    child: Image.asset('assets/qr_code.png',fit: BoxFit.contain),
+                  ),
+                ),
+
+              ],),
+          ),
         )
     );
   }

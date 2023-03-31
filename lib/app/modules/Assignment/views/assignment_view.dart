@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/routes/app_pages.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
@@ -14,11 +15,12 @@ class AssignmentView extends GetView<AssignmentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appbar('Assigment'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Appbaar(
+             /* Appbaar(
                 screen_name: 'Assignment'.toUpperCase(),
                 Back_ontap: (){
                   Get.back();
@@ -26,8 +28,10 @@ class AssignmentView extends GetView<AssignmentController> {
               ),
               SizedBox(
                 height: 20,
+              ),*/
+              SizedBox(
+                height: 20,
               ),
-
               Expanded(
                 child: ListView.builder(
                   //physics: NeverScrollableScrollPhysics(),

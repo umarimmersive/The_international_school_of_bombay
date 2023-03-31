@@ -17,7 +17,7 @@ class PdfViewView extends GetView<PdfViewController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Appbaar(
-                screen_name: '${controller.title.value.toString()}'.toUpperCase(),
+                screen_name: '${controller.title.value.toString()}',
                 Back_ontap: (){
                   Get.back();
                 },

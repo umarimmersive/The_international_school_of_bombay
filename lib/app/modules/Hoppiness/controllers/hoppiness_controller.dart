@@ -8,6 +8,13 @@ class HoppinessController extends GetxController {
   void onInit() {
     super.onInit();
   }
+  final sport_image_data=[
+    'assets/sport/37.jpg',
+    'assets/sport/3.jpg',
+    'assets/sport/42.jpg',
+    'assets/sport/21.jpg',
+  ];
+
 
   @override
   void onReady() {

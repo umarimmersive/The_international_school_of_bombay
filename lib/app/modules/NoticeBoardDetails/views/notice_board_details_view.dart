@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
+import '../../../utils/global_widgets/appBar.dart';
 import '../../../utils/global_widgets/textEnter.dart';
 import '../controllers/notice_board_details_controller.dart';
 
@@ -13,16 +14,17 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: appbar('Notice Board Details'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Appbaar(
+             /* Appbaar(
                 screen_name: 'AN EXHIBIYION'.toUpperCase(),
                 Back_ontap: (){
                   Get.back();
                 },
-              ),
+              ),*/
               SizedBox(
                 height: 20,
               ),

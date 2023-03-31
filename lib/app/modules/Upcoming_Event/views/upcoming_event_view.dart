@@ -6,6 +6,7 @@ import '../../../routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/upcoming_event_controller.dart';
 
 class UpcomingEventView extends GetView<UpcomingEventController> {
@@ -13,16 +14,19 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: appbar('Upcoming Event'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Appbaar(
+
+
+             /* Appbaar(
                 screen_name: 'Upcoming Event'.toUpperCase(),
                 Back_ontap: (){
                   Get.back();
                 },
-              ),
+              ),*/
               SizedBox(
                 height: 20,
               ),

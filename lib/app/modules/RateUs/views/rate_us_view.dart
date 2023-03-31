@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/rate_us_controller.dart';
 
 class RateUsView extends GetView<RateUsController> {
@@ -9,10 +10,7 @@ class RateUsView extends GetView<RateUsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('RateUsView'),
-        centerTitle: true,
-      ),
+      appBar: appbar('RateUs'),
       body: const Center(
         child: Text(
           'RateUsView is working',

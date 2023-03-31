@@ -849,51 +849,61 @@ class HomeScreenView extends GetView<HomeScreenController> {
                         width: double.infinity,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: controller.image_data.length,
+                            itemCount: controller.slider_data.length,
                             shrinkWrap: true,
                             itemBuilder: (BuildContext, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(03.0),
-                                child: Card(
-                                  elevation: 05,
-                                  clipBehavior: Clip.antiAlias,
-                                  child: Container(
-                                    height: 80,
-                                    width: 200,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage('${controller.image_data[index]}'),
-                                            fit: BoxFit.fill)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 20, left: 10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "Bombay",
-                                            style: TextStyle(
-                                                fontWeight:
-                                                FontWeight.bold,
-                                                fontSize: 16,
-                                                color: Colors.white),
-                                          ),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                            "The International School of Bombay on Facebook",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight:
-                                                FontWeight.bold,
-                                                color:
-                                                Color(ColorValues.RED)),
-                                          )
-                                        ],
+                              return GestureDetector(
+                                onTap: (){
+                                  var data={
+                                    "title":"${controller.slider_data[index]['title']}",
+                                    "images":"${controller.slider_data[index]['images']}"
+                                  };
+                                  Get.toNamed(Routes.HOME_SLIDER_DETAILS,parameters: data);
+                                //  HomeSliderDetailsView
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(03.0),
+                                  child: Card(
+                                    elevation: 10,
+                                    clipBehavior: Clip.antiAlias,
+                                    child: Container(
+                                      height: 80,
+                                      width: 200,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage('${controller.slider_data[index]['images']}'),
+                                              fit: BoxFit.fill)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 20, left: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "Bombay",
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.bold,
+                                                  fontSize: 16,
+                                                  color: Colors.white),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Text(
+                                              "The International School of Bombay on Facebook",
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                  FontWeight.bold,
+                                                  color:
+                                                  Color(ColorValues.RED)),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -906,7 +916,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                         child: GlobalLocalText(
                           text: "Explore More",
                           textColor: Colors.black,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.bold,
                           size: 16,
                         ),
                       ),
@@ -922,7 +932,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                 return GestureDetector(
                                   onTap: (){
                                     if(index==0){
-
+                                      Get.toNamed(Routes.HOPPINESS);
                                     }else if(index==1){
                                       Get.toNamed(Routes.NOTICE_BOARD);
                                     }else if(index==2) {
@@ -986,7 +996,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                         child: GlobalLocalText(
                           text: "Latest Event",
                           textColor: Colors.black,
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.bold,
                           size: 16,
                         ),
                       ),
@@ -1279,6 +1289,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                       ),
                       GestureDetector(
                         onTap: (){
+                          var data={
+                            "title":"Time Table"
+                          };
                           Get.toNamed(Routes.PDF_VIEW);
                         },
                         child: Padding(
@@ -1373,7 +1386,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                             borderRadius: BorderRadius.circular(5)),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                              image: DecorationImage(image: AssetImage("assets/img.jpeg"),fit: BoxFit.cover),
+                                              image: DecorationImage(image: AssetImage('${controller.sport_image_data[index]}'),fit: BoxFit.cover),
                                               color: Colors.white,
                                               borderRadius: BorderRadius.circular(10)),
                                           child: Padding(
@@ -1598,20 +1611,6 @@ class HomeScreenView extends GetView<HomeScreenController> {
             )
           ],
         ),
-      //  floatingActionButton: MyFloatingActionButton()
-       /* FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/only_logo.png'),
-          ),
-          onPressed: () {
-
-          },
-        ),*/
-
-
-        //floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       ),
     )
     );

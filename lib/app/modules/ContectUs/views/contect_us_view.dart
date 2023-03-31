@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text.dart';
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/contect_us_controller.dart';
 
 class ContectUsView extends GetView<ContectUsController> {
@@ -11,10 +12,14 @@ class ContectUsView extends GetView<ContectUsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appbar('Contect Us'),
         body: SafeArea(
           child: Column(
             children: [
-              Appbaar(
+
+              SizedBox(
+                height: 20,
+              ),/* Appbaar(
                 screen_name: 'Contect Us'.toUpperCase(),
                 Search_ontap: (){
 
@@ -26,10 +31,7 @@ class ContectUsView extends GetView<ContectUsController> {
 
                 },
 
-              ),
-              SizedBox(
-                height: 20,
-              ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(

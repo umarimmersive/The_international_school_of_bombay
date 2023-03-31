@@ -98,134 +98,142 @@ class DashboardView extends GetView<DashboardController> {
             child: controller.currentScreen,
             bucket: controller.bucket,
           ),
-          floatingActionButton: FloatingActionButton(
+         /* floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.asset('assets/only_logo.png'),
             ),
             onPressed: () {},
-          ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          ),*/
+          //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: BottomAppBar(
             shape: CircularNotchedRectangle(),
             notchMargin: 10,
             child: Container(
               height: 60,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //  mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      MaterialButton(
-                        minWidth: 40,
-                        onPressed: () {
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
 
-                          controller.currentScreen =
-                              HomeScreenView(); // if user taps on this dashboard tab will be active
-                          controller.currentTab.value = 0;
+                            controller.currentScreen =
+                                HomeScreenView(); // if user taps on this dashboard tab will be active
+                            controller.currentTab.value = 0;
 
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.home_outlined,
-                              color:  controller.currentTab.value == 0 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              'Home',
-                              style: TextStyle(
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                size: 25,
+                                Icons.home_outlined,
                                 color:  controller.currentTab.value == 0 ? Colors.red : Colors.grey,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Home',
+                                style: TextStyle(
+                                  color:  controller.currentTab.value == 0 ? Colors.red : Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      MaterialButton(
-                        minWidth: 40,
-                        onPressed: () {
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
 
-                          controller.currentScreen =
-                              HoppinessView(); // if user taps on this dashboard tab will be active
-                          controller.currentTab.value = 1;
+                            controller.currentScreen =
+                                HoppinessView(); // if user taps on this dashboard tab will be active
+                            controller.currentTab.value = 1;
 
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.dashboard_outlined,
-                              color:  controller.currentTab.value == 1 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              'Hoppiness',
-                              style: TextStyle(
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                size: 25,
+                                Icons.dashboard_outlined,
                                 color:  controller.currentTab.value == 1 ? Colors.red : Colors.grey,
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                              Text(
+                                'Happenings',
+                                style: TextStyle(
+                                  color:  controller.currentTab.value == 1 ? Colors.red : Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
 
                   // Right Tab bar icons
 
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      MaterialButton(
-                        minWidth: 40,
-                        onPressed: () {
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
 
-                          controller.currentScreen =
-                              AboutView(); // if user taps on this dashboard tab will be active
-                          controller.currentTab.value = 2;
+                            controller.currentScreen =
+                                AboutView(); // if user taps on this dashboard tab will be active
+                            controller.currentTab.value = 2;
 
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.error_outline,
-                              color:  controller.currentTab.value == 2 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              'About',
-                              style: TextStyle(
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                size: 25,
+                                Icons.error_outline,
                                 color:  controller.currentTab.value == 2 ? Colors.red : Colors.grey,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'About',
+                                style: TextStyle(
+                                  color:  controller.currentTab.value == 2 ? Colors.red : Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      MaterialButton(
-                        minWidth: 40,
-                        onPressed: () {
-                          controller.currentScreen =
-                              MenuView(); // if user taps on this dashboard tab will be active
-                          controller.currentTab.value = 3;
+                        MaterialButton(
+                          minWidth: 40,
+                          onPressed: () {
+                            controller.currentScreen =
+                                MenuView(); // if user taps on this dashboard tab will be active
+                            controller.currentTab.value = 3;
 
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.menu,
-                              color:  controller.currentTab.value == 3 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              'Menu',
-                              style: TextStyle(
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                size: 25,
+                                Icons.menu,
                                 color:  controller.currentTab.value == 3 ? Colors.red : Colors.grey,
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                              Text(
+                                'Menu',
+                                style: TextStyle(
+                                  color:  controller.currentTab.value == 3 ? Colors.red : Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   )
 
                 ],

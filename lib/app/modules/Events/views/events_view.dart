@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
@@ -13,24 +14,13 @@ class EventsView extends GetView<EventsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: appbar('Events'),
         body: Obx(()=>
            SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Appbaar(
-                  screen_name: controller.screen_name.toUpperCase(),
-                  Search_ontap: (){
-
-                  },
-                  Back_ontap: (){
-                    Get.back(
-
-                    );
-
-                  },
-
-                ),
+               
                 SizedBox(
                   height: 20,
                 ),

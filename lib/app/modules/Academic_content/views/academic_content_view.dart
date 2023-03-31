@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 import '../../../utils/global_widgets/Appbaar.dart';
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/academic_content_controller.dart';
 
 class AcademicContentView extends GetView<AcademicContentController> {
@@ -11,16 +12,17 @@ class AcademicContentView extends GetView<AcademicContentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: appbar('Academic content'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Appbaar(
+             /* Appbaar(
                 screen_name: 'Academic content'.toUpperCase(),
                  Back_ontap: (){
                   Get.back();
                 },
-              ),
+              ),*/
               SizedBox(
                 height: 20,
               ),

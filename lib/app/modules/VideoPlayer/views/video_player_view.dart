@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/our_campus_controller.dart';
+import '../controllers/video_player_controller.dart';
 
-class OurCampusView extends GetView<OurCampusController> {
-  const OurCampusView({Key? key}) : super(key: key);
+class VideoPlayerView extends GetView<VideoPlayer_Controller> {
+  const VideoPlayerView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('OurCampusView'),
+        title: const Text('VideoPlayerView'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'OurCampusView is working',
+          'VideoPlayerView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

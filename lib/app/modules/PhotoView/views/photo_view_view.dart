@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
+import '../../../utils/global_widgets/appBar.dart';
 import '../../PhotoGallary/views/photo_gallary_view.dart';
 
 
@@ -20,11 +21,12 @@ class PhotoViewView extends GetView<PhotoViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
+      appBar: appbar('PhotoView'),
+     /* appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-      ),
+      ),*/
       body:  PhotoViewGallery.builder(
         builder: (BuildContext context, int index) =>
             PhotoViewGalleryPageOptions.customChild(

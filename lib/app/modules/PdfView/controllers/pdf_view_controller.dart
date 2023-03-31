@@ -5,6 +5,7 @@ class PdfViewController extends GetxController {
 
   final count = 0.obs;
   final title = ''.obs;
+
   @override
   void onInit() {
     title.value=Get.parameters['title'].toString();

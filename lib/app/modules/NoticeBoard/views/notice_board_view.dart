@@ -6,6 +6,7 @@ import 'package:the_international_school_of_bombay/app/routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/notice_board_controller.dart';
 
 class NoticeBoardView extends GetView<NoticeBoardController> {
@@ -13,16 +14,20 @@ class NoticeBoardView extends GetView<NoticeBoardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: appbar('NoticeBoard'),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Appbaar(
+           /* Appbaar(
                 screen_name: 'notice board'.toUpperCase(),
                 Back_ontap: (){
                   Get.back();
                },
             ),
+            SizedBox(
+              height: 20,
+            ),*/
             SizedBox(
               height: 20,
             ),

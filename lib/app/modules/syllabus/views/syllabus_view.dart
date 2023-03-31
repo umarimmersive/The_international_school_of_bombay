@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
-import '../../../routes/app_pages.dart';
-import '../../../utils/constants/ColorValues.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../controllers/syllabus_controller.dart';
@@ -14,16 +12,17 @@ class SyllabusView extends GetView<SyllabusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: appbar('Syllabus'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Appbaar(
+             /* Appbaar(
                 screen_name: 'syllabus'.toUpperCase(),
                 Back_ontap: (){
                   Get.back();
                 },
-              ),
+              ),*/
               SizedBox(
                 height: 20,
               ),

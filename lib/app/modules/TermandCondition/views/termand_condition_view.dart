@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/termand_condition_controller.dart';
 
 class TermandConditionView extends GetView<TermandConditionController> {
@@ -9,10 +10,7 @@ class TermandConditionView extends GetView<TermandConditionController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('TermandConditionView'),
-        centerTitle: true,
-      ),
+      appBar: appbar('Term and Condition'),
       body: const Center(
         child: Text(
           'TermandConditionView is working',

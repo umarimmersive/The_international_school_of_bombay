@@ -4,18 +4,28 @@ import '../modules/About/bindings/about_binding.dart';
 import '../modules/About/views/about_view.dart';
 import '../modules/Academic_content/bindings/academic_content_binding.dart';
 import '../modules/Academic_content/views/academic_content_view.dart';
+import '../modules/Album/bindings/album_binding.dart';
+import '../modules/Album/views/album_view.dart';
 import '../modules/Assignment/bindings/assignment_binding.dart';
 import '../modules/Assignment/views/assignment_view.dart';
+import '../modules/Campus/bindings/campus_binding.dart';
+import '../modules/Campus/views/campus_view.dart';
 import '../modules/ContectUs/bindings/contect_us_binding.dart';
 import '../modules/ContectUs/views/contect_us_view.dart';
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
 import '../modules/Dashboard/views/dashboard_view.dart';
+import '../modules/Edit_profile/bindings/edit_profile_binding.dart';
+import '../modules/Edit_profile/views/edit_profile_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
 import '../modules/Events/views/events_view.dart';
 import '../modules/Home/bindings/home_binding.dart';
 import '../modules/Home/views/home_view.dart';
+import '../modules/Home_slider_details/bindings/home_slider_details_binding.dart';
+import '../modules/Home_slider_details/views/home_slider_details_view.dart';
 import '../modules/Hoppiness/bindings/hoppiness_binding.dart';
 import '../modules/Hoppiness/views/hoppiness_view.dart';
+import '../modules/InternalReferProgram/bindings/internal_refer_program_binding.dart';
+import '../modules/InternalReferProgram/views/internal_refer_program_view.dart';
 import '../modules/Login/bindings/login_binding.dart';
 import '../modules/Login/views/login_view.dart';
 import '../modules/Menu/bindings/menu_binding.dart';
@@ -31,8 +41,6 @@ import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/Notification/bindings/notification_binding.dart';
 import '../modules/Notification/views/notification_view.dart';
-import '../modules/OurCampus/bindings/our_campus_binding.dart';
-import '../modules/OurCampus/views/our_campus_view.dart';
 import '../modules/OurPhilosypher/bindings/our_philosypher_binding.dart';
 import '../modules/OurPhilosypher/views/our_philosypher_view.dart';
 import '../modules/PdfView/bindings/pdf_view_binding.dart';
@@ -53,6 +61,8 @@ import '../modules/Upcoming_Event/bindings/upcoming_event_binding.dart';
 import '../modules/Upcoming_Event/views/upcoming_event_view.dart';
 import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
 import '../modules/VideoGallary/views/video_gallary_view.dart';
+import '../modules/VideoPlayer/bindings/video_player_binding.dart';
+import '../modules/VideoPlayer/views/video_player_view.dart';
 import '../modules/aboutus/bindings/aboutus_binding.dart';
 import '../modules/aboutus/views/aboutus_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
@@ -68,27 +78,27 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.SPLASH,
-      page: () => const SplashView(),
+      page: () => SplashView(),
       binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LoginView(),
+      page: () => LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.HOPPINESS,
-      page: () => const HoppinessView(),
+      page: () => HoppinessView(),
       binding: HoppinessBinding(),
     ),
     GetPage(
       name: _Paths.ABOUT,
-      page: () => const AboutView(),
+      page: () => AboutView(),
       binding: AboutBinding(),
     ),
     GetPage(
@@ -98,31 +108,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NOTICE_BOARD,
-      page: () => const NoticeBoardView(),
+      page: () => NoticeBoardView(),
       binding: NoticeBoardBinding(),
-      children: [
-        GetPage(
-          name: _Paths.NOTICE_BOARD,
-          page: () => const NoticeBoardView(),
-          binding: NoticeBoardBinding(),
-        ),
-      ],
     ),
     GetPage(
       name: _Paths.NOTICE_BOARD_DETAILS,
-      page: () => const NoticeBoardDetailsView(),
+      page: () => NoticeBoardDetailsView(),
       binding: NoticeBoardDetailsBinding(),
-      children: [
-        GetPage(
-          name: _Paths.NOTICE_BOARD_DETAILS,
-          page: () => const NoticeBoardDetailsView(),
-          binding: NoticeBoardDetailsBinding(),
-        ),
-      ],
     ),
     GetPage(
       name: _Paths.EVENTS,
-      page: () => const EventsView(),
+      page: () => EventsView(),
       binding: EventsBinding(),
     ),
     GetPage(
@@ -132,88 +128,113 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ASSIGNMENT,
-      page: () => const AssignmentView(),
+      page: () => AssignmentView(),
       binding: AssignmentBinding(),
     ),
     GetPage(
       name: _Paths.SYLLABUS,
-      page: () => const SyllabusView(),
+      page: () => SyllabusView(),
       binding: SyllabusBinding(),
     ),
     GetPage(
       name: _Paths.PDF_VIEW,
-      page: () => const PdfViewView(),
+      page: () => PdfViewView(),
       binding: PdfViewBinding(),
     ),
     GetPage(
       name: _Paths.ACADEMIC_CONTENT,
-      page: () => const AcademicContentView(),
+      page: () => AcademicContentView(),
       binding: AcademicContentBinding(),
     ),
     GetPage(
       name: _Paths.UPCOMING_EVENT,
-      page: () => const UpcomingEventView(),
+      page: () => UpcomingEventView(),
       binding: UpcomingEventBinding(),
     ),
     GetPage(
       name: _Paths.MOUNTHWISE_SYLLABUS,
-      page: () => const MounthwiseSyllabusView(),
+      page: () => MounthwiseSyllabusView(),
       binding: MounthwiseSyllabusBinding(),
     ),
     GetPage(
       name: _Paths.NOTIFICATION,
-      page: () => const NotificationView(),
+      page: () => NotificationView(),
       binding: NotificationBinding(),
     ),
     GetPage(
       name: _Paths.VIDEO_GALLARY,
-      page: () => const VideoGallaryView(),
+      page: () => VideoGallaryView(),
       binding: VideoGallaryBinding(),
     ),
     GetPage(
       name: _Paths.PHOTO_GALLARY,
-      page: () => const PhotoGallaryView(),
+      page: () => PhotoGallaryView(),
       binding: PhotoGallaryBinding(),
     ),
     GetPage(
-      name: _Paths.OUR_CAMPUS,
-      page: () => const OurCampusView(),
-      binding: OurCampusBinding(),
-    ),
-    GetPage(
       name: _Paths.OUR_PHILOSYPHER,
-      page: () => const OurPhilosypherView(),
+      page: () => OurPhilosypherView(),
       binding: OurPhilosypherBinding(),
     ),
     GetPage(
       name: _Paths.ABOUTUS,
-      page: () => const AboutusView(),
+      page: () => AboutusView(),
       binding: AboutusBinding(),
     ),
     GetPage(
       name: _Paths.RATE_US,
-      page: () => const RateUsView(),
+      page: () => RateUsView(),
       binding: RateUsBinding(),
     ),
     GetPage(
       name: _Paths.PRIVACY_POLICY,
-      page: () => const PrivacyPolicyView(),
+      page: () => PrivacyPolicyView(),
       binding: PrivacyPolicyBinding(),
     ),
     GetPage(
       name: _Paths.TERMAND_CONDITION,
-      page: () => const TermandConditionView(),
+      page: () => TermandConditionView(),
       binding: TermandConditionBinding(),
     ),
     GetPage(
       name: _Paths.PHOTO_VIEW,
-      page: () => const PhotoViewView(),
+      page: () => PhotoViewView(),
       binding: PhotoViewBinding(),
     ),
     GetPage(
       name: _Paths.CONTECT_US,
-      page: () => const ContectUsView(),
+      page: () => ContectUsView(),
       binding: ContectUsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CAMPUS,
+      page: () => CampusView(),
+      binding: CampusBinding(),
+    ),
+    GetPage(
+      name: _Paths.ALBUM,
+      page: () => AlbumView(),
+      binding: AlbumBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_SLIDER_DETAILS,
+      page: () => HomeSliderDetailsView(),
+      binding: HomeSliderDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFILE,
+      page: () => EditProfileView(),
+      binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.INTERNAL_REFER_PROGRAM,
+      page: () => InternalReferProgramView(),
+      binding: InternalReferProgramBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO_PLAYER,
+      page: () => const VideoPlayerView(),
+      binding: VideoPlayerBinding(),
     ),
   ];
 }
