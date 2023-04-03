@@ -275,7 +275,7 @@ class EditProfileView extends GetView<EditProfileController> {
                   ),
                   SizedBox(height: 10,),
                   RoundedFilledButton(
-                    label: 'Log In',
+                    label: 'Submit',
                     color: Color(ColorValues.RED),
                     height: 45,
                     width: double.infinity,

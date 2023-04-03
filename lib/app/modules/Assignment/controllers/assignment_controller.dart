@@ -5,17 +5,10 @@ class AssignmentController extends GetxController {
 
   final count = 0.obs;
   List data=[
+
     {
-      'title':'English',
-      'date': '5 August at 08:25',
-    },
-    {
-      'title':'Hindi',
-      'date': '1 August at 06:25',
-    },
-    {
-      'title':'Match',
-      'date': '1 August at 08:25',
+      'title':'Mathematics',
+      'date': '1 April at 08:25',
     },
 
 

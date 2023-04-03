@@ -8,6 +8,15 @@ class AlbumController extends GetxController {
     'assets/sport/42.jpg',
     'assets/sport/21.jpg',
   ];
+
+
+  List albamname =[
+
+    "Function",
+    "Event",
+    "Sport Funtion",
+    "Art Event"
+  ];
   final count = 0.obs;
   @override
   void onInit() {

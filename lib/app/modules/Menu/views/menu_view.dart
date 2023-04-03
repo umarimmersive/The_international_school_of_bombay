@@ -24,45 +24,11 @@ class MenuView extends GetView<MenuController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                     /* Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Appbaar(
-                          screen_name: 'Menu'.toUpperCase(),
-                          Back_ontap: (){
-                            Get.back();
-                          },
-                        ),
-                      ),*/
+
                       SizedBox(
-                        height: 10,
+                        height: 2,
                       ),
-                    /*  userData!.profileImage!="null"?
-                      //FileImage(File(path))
-                      imageFile==null?*/
-                     /* Padding(
-                        padding: const EdgeInsets.only(bottom: 50, left: 14, top: 10),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.grey[100],
-                          child:  CircleAvatar(
-                            radius: 55,
-                            backgroundImage: NetworkImage(
-                                'https://ndn.manageprojects.in/'+userData!.profileImage),
-                          ),
-                        ),
-                      ):
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 50, left: 14),
-                        child: CircleAvatar(
-                          radius: 60,
-                          backgroundColor: Colors.grey[100],
-                          child:  CircleAvatar(
-                            radius: 55,
-                            backgroundImage: FileImage(imageFile!),
-                          ),
-                        ),
-                      )
-                          :*/
+
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 0, horizontal: 14),
@@ -76,24 +42,7 @@ class MenuView extends GetView<MenuController> {
                         ),
                       ),
 
-                     /* Edit_profile_Switch==true?
-                      Positioned(
-                        bottom: 60,
-                        left: 100,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
-                          child: IconButton(
-                              onPressed: () {
-                                //getFromGallery();
-                              },
-                              icon: const Icon(
-                                Icons.edit,
-                                color: Colors.black,
-                              )),
-                        ),
-                      ):
-                      SizedBox(),*/
+
 
 
                       Padding(
@@ -102,9 +51,9 @@ class MenuView extends GetView<MenuController> {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Text_widget(Simpletext: 'Umar Mansuri', fontSize: 16.0, color: ColorValues.WHITE_COLORE,fontWeight: FontWeight.bold),
+                            Text_widget(Simpletext: 'Anand Jha', fontSize: 16.0, color: ColorValues.WHITE_COLORE,fontWeight: FontWeight.bold),
                             Container(height: 3),
-                            Text_widget(Simpletext: 'Mansuriumar89@gmail.com', fontSize: 14.0, color: ColorValues.WHITE_COLORE),
+                           // Text_widget(Simpletext: 'anandjha@gmail.com', fontSize: 14.0, color: ColorValues.WHITE_COLORE),
 
 
                             SizedBox(
@@ -121,12 +70,13 @@ class MenuView extends GetView<MenuController> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover, image: NetworkImage('Path to your image')),
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    borderRadius: BorderRadius.all(Radius.circular(16.0)),
                     color: Colors.white,
                   ),
-                  margin: EdgeInsets.only(top: 190),
+                  margin: EdgeInsets.only(top: 110),
                  child: Column(
                    children: [
+                     SizedBox(height: 20,),
                      Row(
                        children: <Widget>[
                         Expanded(
@@ -264,26 +214,31 @@ class MenuView extends GetView<MenuController> {
                          Expanded(
                            child: Padding(
                              padding: const EdgeInsets.all(05.0),
-                             child: Card(
-                               elevation: 05,
-                               shape: RoundedRectangleBorder(
-                                 borderRadius: BorderRadius.circular(12.0),
-                               ),
-                               child: Container(
-                                   height: 90,
-                                   width: 90,
-                                   child: Column(
-                                     children: [
-                                       Expanded(
-                                           flex: 2,
-                                           child: Image.asset('assets/images/light-bulb.png',height: 20,width: 20,color: Colors.red,)
-                                       ),
-                                       Expanded(
-                                           flex: 2,
-                                           child: Text_widget(Simpletext: 'Our Philosypher', fontSize: 14.0,color: Colors.black,)
-                                       ),
-                                     ],
-                                   )
+                             child: GestureDetector(
+                               onTap: (){
+                                 Get.toNamed(Routes.OUR_PHILOSYPHER);
+                               },
+                               child: Card(
+                                 elevation: 05,
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(12.0),
+                                 ),
+                                 child: Container(
+                                     height: 90,
+                                     width: 90,
+                                     child: Column(
+                                       children: [
+                                         Expanded(
+                                             flex: 2,
+                                             child: Image.asset('assets/images/light-bulb.png',height: 20,width: 20,color: Colors.red,)
+                                         ),
+                                         Expanded(
+                                             flex: 2,
+                                             child: Text_widget(Simpletext: 'Our Philosypher', fontSize: 14.0,color: Colors.black,)
+                                         ),
+                                       ],
+                                     )
+                                 ),
                                ),
                              ),
                            ),
@@ -374,7 +329,7 @@ class MenuView extends GetView<MenuController> {
                                          ),
                                          Expanded(
                                              flex: 2,
-                                             child: Text_widget(Simpletext: 'Contect Us', fontSize: 14.0,color: Colors.black,)
+                                             child: Text_widget(Simpletext: 'Contact us', fontSize: 14.0,color: Colors.black,)
                                          ),
                                        ],
                                      )
@@ -386,26 +341,31 @@ class MenuView extends GetView<MenuController> {
                          Expanded(
                            child: Padding(
                              padding: const EdgeInsets.all(05.0),
-                             child: Card(
-                               elevation: 05,
-                               shape: RoundedRectangleBorder(
-                                 borderRadius: BorderRadius.circular(12.0),
-                               ),
-                               child: Container(
-                                   height: 90,
-                                   width: 90,
-                                   child: Column(
-                                     children: [
-                                       Expanded(
-                                           flex: 2,
-                                           child: Image.asset('assets/images/power-off.png',height: 20,width: 20,color: Colors.red,)
-                                       ),
-                                       Expanded(
-                                           flex: 2,
-                                           child: Text_widget(Simpletext: 'Logout', fontSize: 14.0,color: Colors.black,)
-                                       ),
-                                     ],
-                                   )
+                             child: GestureDetector(
+                               onTap: (){
+                                 Get.toNamed(Routes.LOGIN);
+                               },
+                               child: Card(
+                                 elevation: 05,
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(12.0),
+                                 ),
+                                 child: Container(
+                                     height: 90,
+                                     width: 90,
+                                     child: Column(
+                                       children: [
+                                         Expanded(
+                                             flex: 2,
+                                             child: Image.asset('assets/images/power-off.png',height: 20,width: 20,color: Colors.red,)
+                                         ),
+                                         Expanded(
+                                             flex: 2,
+                                             child: Text_widget(Simpletext: 'Logout', fontSize: 14.0,color: Colors.black,)
+                                         ),
+                                       ],
+                                     )
+                                 ),
                                ),
                              ),
                            ),

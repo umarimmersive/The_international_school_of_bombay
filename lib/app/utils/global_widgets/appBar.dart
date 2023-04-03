@@ -5,7 +5,7 @@ import 'package:the_international_school_of_bombay/app/utils/constants/ColorValu
 
 // Note : photo video app bar worked diffrently
 AppBar appbar(String title) => AppBar(
-      iconTheme: IconThemeData(
+       iconTheme: IconThemeData(
         size: 0,
         color: Colors.black, //change your color here
       ),
@@ -16,32 +16,26 @@ AppBar appbar(String title) => AppBar(
       title: Row(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: Icon(
-                Icons.arrow_back_ios_sharp,
-                color: Colors.white,
-                size: 16,
-              ),
+          GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios_sharp,
+              color: Colors.white,
+              size: 16,
             ),
           ),
-          Expanded(
-            flex: 9,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 30.0),
-              child: Center(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Lato',
-                  ),
+          Padding(
+            padding: const EdgeInsets.only(left: 35),
+            child: Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Lato',
                 ),
               ),
             ),

@@ -12,10 +12,6 @@ class AlbumView extends GetView<AlbumController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       /* appBar: AppBar(
-          backgroundColor: Color(ColorValues.RED),
-          title: const Text('Gallery'),
-        ),*/
         appBar: appbar('Gallery'),
         body: Column(children: [
           Expanded(
@@ -36,7 +32,7 @@ class AlbumView extends GetView<AlbumController> {
                       Get.toNamed(Routes.PHOTO_GALLARY);
                     },
                     child: Container(
-                      height: 140,
+                      //height: 140,
                       child: Column(
                          mainAxisSize: MainAxisSize.min,
                         children: [
@@ -44,7 +40,7 @@ class AlbumView extends GetView<AlbumController> {
                               borderRadius: BorderRadius.circular(1),
                               child: Image.asset("${controller.sport_image_data[index]}",fit: BoxFit.fill,)),
                           SizedBox(height: 5,),
-                          Text("Events",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
+                          Text(controller.albamname[index],style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
                         ],
                       ),
                     ),

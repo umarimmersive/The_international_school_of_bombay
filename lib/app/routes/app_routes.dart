@@ -38,6 +38,13 @@ abstract class Routes {
   static const FEED = _Paths.FEED;
   static const INTERNAL_REFER_PROGRAM = _Paths.INTERNAL_REFER_PROGRAM;
   static const VIDEO_PLAYER = _Paths.VIDEO_PLAYER;
+  static const ARTICAL1 = _Paths.ARTICAL1;
+  static const ARTICAL2 = _Paths.ARTICAL2;
+  static const ARTICAL3 = _Paths.ARTICAL3;
+  static const ARTICAL4 = _Paths.ARTICAL4;
+  static const ARTICAL5 = _Paths.ARTICAL5;
+  static const ACCEDMIC_CONTENT = _Paths.ACCEDMIC_CONTENT;
+  static const TIME_TABLE_SCREEN = _Paths.TIME_TABLE_SCREEN;
 }
 
 abstract class _Paths {
@@ -77,4 +84,11 @@ abstract class _Paths {
   static const FEED = '/feed';
   static const INTERNAL_REFER_PROGRAM = '/internal-refer-program';
   static const VIDEO_PLAYER = '/video-player';
+  static const ARTICAL1 = '/artical1';
+  static const ARTICAL2 = '/artical2';
+  static const ARTICAL3 = '/artical3';
+  static const ARTICAL4 = '/artical4';
+  static const ARTICAL5 = '/artical5';
+  static const ACCEDMIC_CONTENT = '/accedmic-content';
+  static const TIME_TABLE_SCREEN = '/time-table-screen';
 }
