@@ -71,6 +71,25 @@ class bottomNavigationBar extends GetView<DashboardController> {
               )),
           BottomBarItem(
               icon: Image.asset(
+                "assets/home.png",
+                height: 30,
+                color: Theme.of(Get.context!).iconTheme.color,
+              ),
+              selectedIcon: Image.asset(
+                "assets/home (1).png",
+                height: 30,
+                color: Colors.red,
+              ),
+              selectedColor: color1.value,
+              //unSelectedColor: color.value,
+              backgroundColor: Colors.tealAccent,
+              title: Text(
+                "Home",
+                style: TextStyle(fontSize: 12),
+              )),
+
+          BottomBarItem(
+              icon: Image.asset(
                 "assets/info.png",
                 height: 30,
                 color: Theme.of(Get.context!).iconTheme.color,

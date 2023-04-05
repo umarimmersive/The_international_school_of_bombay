@@ -4,6 +4,8 @@ import '../modules/About/bindings/about_binding.dart';
 import '../modules/About/views/about_view.dart';
 import '../modules/Academic_content/bindings/academic_content_binding.dart';
 import '../modules/Academic_content/views/academic_content_view.dart';
+import '../modules/AccedmicContent/bindings/accedmic_content_binding.dart';
+import '../modules/AccedmicContent/views/accedmic_content_view.dart';
 import '../modules/Album/bindings/album_binding.dart';
 import '../modules/Album/views/album_view.dart';
 import '../modules/Assignment/bindings/assignment_binding.dart';
@@ -41,6 +43,8 @@ import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/Notification/bindings/notification_binding.dart';
 import '../modules/Notification/views/notification_view.dart';
+import '../modules/OtherActivities/bindings/other_activities_binding.dart';
+import '../modules/OtherActivities/views/other_activities_view.dart';
 import '../modules/OurPhilosypher/bindings/our_philosypher_binding.dart';
 import '../modules/OurPhilosypher/views/our_philosypher_view.dart';
 import '../modules/PdfView/bindings/pdf_view_binding.dart';
@@ -53,18 +57,34 @@ import '../modules/PrivacyPolicy/bindings/privacy_policy_binding.dart';
 import '../modules/PrivacyPolicy/views/privacy_policy_view.dart';
 import '../modules/RateUs/bindings/rate_us_binding.dart';
 import '../modules/RateUs/views/rate_us_view.dart';
+import '../modules/ScheduleScreen/bindings/schedule_screen_binding.dart';
+import '../modules/ScheduleScreen/views/schedule_screen_view.dart';
 import '../modules/Splash/bindings/splash_binding.dart';
 import '../modules/Splash/views/splash_view.dart';
 import '../modules/TermandCondition/bindings/termand_condition_binding.dart';
 import '../modules/TermandCondition/views/termand_condition_view.dart';
+import '../modules/TimeTableScreen/bindings/time_table_screen_binding.dart';
+import '../modules/TimeTableScreen/views/time_table_screen_view.dart';
 import '../modules/Upcoming_Event/bindings/upcoming_event_binding.dart';
 import '../modules/Upcoming_Event/views/upcoming_event_view.dart';
 import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
 import '../modules/VideoGallary/views/video_gallary_view.dart';
 import '../modules/VideoPlayer/bindings/video_player_binding.dart';
 import '../modules/VideoPlayer/views/video_player_view.dart';
+import '../modules/VidioAlbum/bindings/vidio_album_binding.dart';
+import '../modules/VidioAlbum/views/vidio_album_view.dart';
 import '../modules/aboutus/bindings/aboutus_binding.dart';
 import '../modules/aboutus/views/aboutus_view.dart';
+import '../modules/artical1/bindings/artical1_binding.dart';
+import '../modules/artical1/views/artical1_view.dart';
+import '../modules/artical2/bindings/artical2_binding.dart';
+import '../modules/artical2/views/artical2_view.dart';
+import '../modules/artical3/bindings/artical3_binding.dart';
+import '../modules/artical3/views/artical3_view.dart';
+import '../modules/artical4/bindings/artical4_binding.dart';
+import '../modules/artical4/views/artical4_view.dart';
+import '../modules/artical5/bindings/artical5_binding.dart';
+import '../modules/artical5/views/artical5_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
 import '../modules/syllabus/views/syllabus_view.dart';
 
@@ -235,6 +255,56 @@ class AppPages {
       name: _Paths.VIDEO_PLAYER,
       page: () => const VideoPlayerView(),
       binding: VideoPlayerBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICAL1,
+      page: () => const Artical1View(),
+      binding: Artical1Binding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICAL2,
+      page: () => const Artical2View(),
+      binding: Artical2Binding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICAL3,
+      page: () => const Artical3View(),
+      binding: Artical3Binding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICAL4,
+      page: () => const Artical4View(),
+      binding: Artical4Binding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICAL5,
+      page: () => const Artical5View(),
+      binding: Artical5Binding(),
+    ),
+    GetPage(
+      name: _Paths.ACCEDMIC_CONTENT,
+      page: () => const AccedmicContentView(),
+      binding: AccedmicContentBinding(),
+    ),
+    GetPage(
+      name: _Paths.TIME_TABLE_SCREEN,
+      page: () => const TimeTableScreenView(),
+      binding: TimeTableScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCHEDULE_SCREEN,
+      page: () => const ScheduleScreenView(),
+      binding: ScheduleScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTHER_ACTIVITIES,
+      page: () => const OtherActivitiesView(),
+      binding: OtherActivitiesBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDIO_ALBUM,
+      page: () => const VidioAlbumView(),
+      binding: VidioAlbumBinding(),
     ),
   ];
 }

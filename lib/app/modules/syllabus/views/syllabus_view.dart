@@ -27,7 +27,7 @@ class SyllabusView extends GetView<SyllabusController> {
                 height: 20,
               ),
               Expanded(
-                child: SfPdfViewer.network('https://www.africau.edu/images/default/sample.pdf',canShowHyperlinkDialog: true,canShowScrollStatus: true,canShowScrollHead: true,canShowPasswordDialog: true,canShowPaginationDialog: true,enableDocumentLinkAnnotation: true,enableDoubleTapZooming: true,enableHyperlinkNavigation: true,enableTextSelection: true),
+                child: SfPdfViewer.asset('assets/images/Social_Science_Sec_2020-21.pdf',canShowHyperlinkDialog: true,canShowScrollStatus: true,canShowScrollHead: true,canShowPasswordDialog: true,canShowPaginationDialog: true,enableDocumentLinkAnnotation: true,enableDoubleTapZooming: true,enableHyperlinkNavigation: true,enableTextSelection: true),
               )
 
             ],),

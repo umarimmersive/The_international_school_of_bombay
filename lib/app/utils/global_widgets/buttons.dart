@@ -30,7 +30,7 @@ class RoundedFilledButton extends StatelessWidget {
           height: height,
           width: width ?? double.maxFinite,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(5),
             color: color ?? Theme.of(context).primaryColor,
           ),
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
@@ -74,19 +74,21 @@ class IconBtnRounded extends StatelessWidget {
         padding: EdgeInsets.zero,
         width: 34,
         height: 34,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(left ?? 0),
-            topRight: Radius.circular(right ?? 0),
-            bottomLeft: Radius.circular(right ?? 0),
-            bottomRight: Radius.circular(left ?? 0),
-          ),
-          border: Border.all(
-            color: const Color(0xfff0f5f9),
-            width: 1,
-          ),
-          color: Colors.white,
-        ),
+        // decoration: BoxDecoration(
+        //
+        //   borderRadius: BorderRadius.only(
+        //
+        //     topLeft: Radius.circular(left ?? 0),
+        //     topRight: Radius.circular(right ?? 0),
+        //     bottomLeft: Radius.circular(right ?? 0),
+        //     bottomRight: Radius.circular(left ?? 0),
+        //   ),
+        //   border: Border.all(
+        //     color: const Color(0xfff0f5f9),
+        //     width: 1,
+        //   ),
+        //   color: Colors.white,
+        // ),
         child: Center(child: icon),
       ),
     );

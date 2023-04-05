@@ -13,6 +13,43 @@ class HoppinessController extends GetxController {
     'assets/sport/3.jpg',
     'assets/sport/42.jpg',
     'assets/sport/21.jpg',
+    'assets/sport/3.jpg',
+    'assets/sport/37.jpg',
+    'assets/sport/21.jpg',
+    "assets/images/18.jpg",
+    "assets/images/40.jpg",
+    "assets/images/25.jpg",
+    'assets/sport/21.jpg',
+    'assets/sport/3.jpg',
+    'assets/sport/37.jpg',
+    'assets/sport/21.jpg',
+      "assets/images/25.jpg",
+    'assets/sport/21.jpg',
+    'assets/sport/37.jpg',
+     'assets/sport/37.jpg',
+    "assets/images/18.jpg",
+    "assets/images/25.jpg",
+    'assets/sport/37.jpg',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ];
 
 

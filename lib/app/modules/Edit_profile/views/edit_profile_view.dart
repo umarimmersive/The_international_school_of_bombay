@@ -273,9 +273,9 @@ class EditProfileView extends GetView<EditProfileController> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: MediaQuery.of(context).size.height/25),
                   RoundedFilledButton(
-                    label: 'Log In',
+                    label: 'Submit',
                     color: Color(ColorValues.RED),
                     height: 45,
                     width: double.infinity,

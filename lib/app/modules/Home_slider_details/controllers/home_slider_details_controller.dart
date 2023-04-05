@@ -15,9 +15,12 @@ class HomeSliderDetailsController extends GetxController {
 
   final images=''.obs;
   final title =''.obs;
+  final maintittle=''.obs;
 
   @override
   void onInit() {
+    maintittle.value=Get.parameters['maintitle'].toString();
+
     images.value=Get.parameters['images'].toString();
     title.value=Get.parameters['title'].toString();
     super.onInit();

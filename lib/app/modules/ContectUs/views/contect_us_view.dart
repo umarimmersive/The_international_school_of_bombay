@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../utils/global_widgets/Appbaar.dart';
-import '../../../utils/global_widgets/Text.dart';
+ import '../../../utils/global_widgets/Text.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/contect_us_controller.dart';
 
@@ -12,7 +11,7 @@ class ContectUsView extends GetView<ContectUsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Contect Us'),
+      appBar: appbar('Contact Us'),
         body: SafeArea(
           child: Column(
             children: [
@@ -43,18 +42,18 @@ class ContectUsView extends GetView<ContectUsController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GlobalLocalText(text: 'Call Us On Toll Free Number',fontWeight: FontWeight.bold,size: 17,),
+                          GlobalLocalText(text: 'Call us for inquiries',fontWeight: FontWeight.bold,size: 17,),
                           SizedBox(
                             height: 20,
                           ),
                           Row(
                             children: [
-                              Flexible(child: GlobalLocalText(text: "Please Contect",fontWeight: FontWeight.w300,)),
+                              Flexible(child: GlobalLocalText(text: "Please Contact",fontWeight: FontWeight.w300,)),
                               SizedBox(
                                 width: 4,
                               ),
                               Text(
-                                "857845",
+                                "07314959955",
                                 style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
                                     fontWeight: FontWeight.bold,
@@ -89,50 +88,19 @@ class ContectUsView extends GetView<ContectUsController> {
                           SizedBox(
                             height: 20,
                           ),
-                          GlobalLocalText(text: "Foren Quiry And Feedback",fontWeight: FontWeight.w300,),
+                          GlobalLocalText(text: "For any Query And Feedback",fontWeight: FontWeight.w300,),
                           SizedBox(
                             height: 5,
                           ),
                           Text(
-                            "helpdesk.ttd@tirumala.org",
+                            "theisb.in@gmail.com",
                             style: TextStyle(
                                 overflow: TextOverflow.ellipsis,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 13,
                                 color: Colors.red),
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          GlobalLocalText(text: "Foren Quiry And Feedback",fontWeight: FontWeight.w300,),
 
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "refundservices.ttd@tirumala.org",
-                            style: TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                color: Colors.red),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          GlobalLocalText(text: "Foren Quiry And Feedback",fontWeight: FontWeight.w300,),
-
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "refundservices.ttd@tirumala.org",
-                            style: TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.red,
-                                fontSize: 13),
-                          ),
                         ],
                       ),
                     ),

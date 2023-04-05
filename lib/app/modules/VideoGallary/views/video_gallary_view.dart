@@ -13,7 +13,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
         appBar: appbar('Video Gallary'),
         body: SingleChildScrollView(
           child: InkWell(
-            onTap: (){
+            onTap: () {
               Get.toNamed("/video-play-screen");
             },
             child: Column(
@@ -36,7 +36,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                         return Padding(
                           padding: const EdgeInsets.only(left: 15, right: 2),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
@@ -62,7 +62,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                                   maxLines: 2,
                                   style: TextStyle(
                                       overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.w500),
+                                      fontWeight: FontWeight.w300),
                                 ),
                               )
                             ],
@@ -87,7 +87,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                         return Padding(
                           padding: const EdgeInsets.only(left: 15, right: 2),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
@@ -95,7 +95,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                                     alignment: Alignment.center,
                                     children: [
                                       Image.asset(
-                                        controller.first[index],
+                                        controller.second[index],
                                         width: 140,
                                         height: 120,
                                         fit: BoxFit.fill,
@@ -107,13 +107,13 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                                     ],
                                   )),
                               Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
+                                padding: const EdgeInsets.only(top: 5.0),
                                 child: Text(
                                   "Sundarakanda",
                                   maxLines: 2,
                                   style: TextStyle(
                                       overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.w500),
+                                      fontWeight: FontWeight.w300),
                                 ),
                               )
                             ],
@@ -138,15 +138,15 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                         return Padding(
                           padding: const EdgeInsets.only(left: 15, right: 2),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(5.0),
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: [
                                       Image.asset(
-                                        controller.first[index],
+                                        controller.third[index],
                                         width: 140,
                                         height: 120,
                                         fit: BoxFit.fill,
@@ -158,13 +158,13 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                                     ],
                                   )),
                               Padding(
-                                padding: const EdgeInsets.only(top :5.0),
+                                padding: const EdgeInsets.only(top: 5.0),
                                 child: Text(
                                   "Sundarakanda",
                                   maxLines: 2,
                                   style: TextStyle(
                                       overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.w500),
+                                      fontWeight: FontWeight.w300),
                                 ),
                               )
                             ],
@@ -189,15 +189,15 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                         return Padding(
                           padding: const EdgeInsets.only(left: 15, right: 2),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderRadius: BorderRadius.circular(5.0),
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: [
                                       Image.asset(
-                                        controller.first[index],
+                                        controller.forth[index],
                                         width: 140,
                                         height: 120,
                                         fit: BoxFit.fill,
@@ -213,7 +213,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
                                 maxLines: 2,
                                 style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w300),
                               )
                             ],
                           ),

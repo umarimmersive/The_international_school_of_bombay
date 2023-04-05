@@ -17,7 +17,7 @@ class Text_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       Simpletext,
-      //textAlign: TextAlign.center,
+      textAlign: TextAlign.justify,
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
       style: TextStyle(

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/appBar.dart';
+import '../../../utils/global_widgets/buttons.dart';
 import '../../../utils/global_widgets/textfield_ui.dart';
 import '../controllers/internal_refer_program_controller.dart';
 
@@ -15,10 +16,54 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
+
       child:  Scaffold(
-        appBar: appbar('Refer'),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+
+          bottom: TabBar(
+            indicatorColor: Colors.white,
+            tabs: [
+              Text("Internal Refer"),
+              Text("My Refer")
+              // Add Tabs here
+            ],
+          ),
+         title: Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Icon(
+                  Icons.arrow_back_ios_sharp,
+                  color: Colors.white,
+                  size: 16,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 35),
+                child: Center(
+                  child: Text(
+                    "Internal Refer Program",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Lato',
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+         // title: const Text('Internal Refer Program'),
+          backgroundColor: ColorValues.kRedColor,
+        ),
         body: TabBarView(
           physics: BouncingScrollPhysics(),
+
           //dragStartBehavior: DragStartBehavior.down,
 
           children: [
@@ -152,6 +197,7 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 20,
                     ),
+
 
                     //for reffer details------------------------------------
 
@@ -352,6 +398,22 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                       readOnly: false,
                       keyboardType: TextInputType.text,
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 30,
+                    ),
+
+                    RoundedFilledButton(
+                      label: 'Submit',
+                      color: Color(ColorValues.RED),
+                      height: 45,
+                      width: double.infinity,
+                      fontSize: 14,
+                      ontap: (){
+                        // Get.to(DeshboardScreenView());
+                        //Get.toNamed(Routes.DESHBOARD_SCREEN);
+                      },
+                    ),
+
                   ],
                 ),
               ),
@@ -425,6 +487,8 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Roboto',
                                           ),
+
+
 
                                         ],),
 

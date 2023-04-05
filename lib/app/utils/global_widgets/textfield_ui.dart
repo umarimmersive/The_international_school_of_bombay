@@ -130,19 +130,19 @@ class TextFieldDesigned extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: ColorValues.APP_THEME_COLORE),
             //36325A
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
           ),
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: ColorValues.APP_THEME_COLORE),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: ColorValues.APP_THEME_COLORE),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color:ColorValues.APP_THEME_COLORE),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(5),
           ),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           fillColor: Colors.transparent,

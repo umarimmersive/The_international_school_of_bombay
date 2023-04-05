@@ -19,28 +19,20 @@ class AboutView extends GetView<AboutController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-               /* Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Appbaar(
-                    screen_name: 'About'.toUpperCase(),
-                    Back_ontap: (){
-                      Get.back();
-                    },
-                  ),
-                ),*/
+
                 
                 SizedBox(
                   height: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0,right: 10),
                   child: Text_widget(
                     maxLines: 1000,
                     color: ColorValues.BLACK_TEXT,
                     fontSize: 16.0,
                     Simpletext: '${controller.About_text}',
                     height: 1.2,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontFamily: 'Roboto',
                   ),
                 ),
@@ -57,14 +49,14 @@ class AboutView extends GetView<AboutController> {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0,right: 10),
                   child: Text_widget(
                     maxLines: 1000,
                     color: ColorValues.BLACK_TEXT,
                     fontSize: 16.0,
                     Simpletext: '${controller.About_text2}',
                     height: 1.2,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontFamily: 'Roboto',
                   ),
                 ),
@@ -73,14 +65,14 @@ class AboutView extends GetView<AboutController> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 10.0,right: 10),
                   child: Text_widget(
                     maxLines: 1000,
                     color: ColorValues.BLACK_TEXT,
                     fontSize: 16.0,
                     Simpletext: '${controller.About_text2}',
                     height: 1.2,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontFamily: 'Roboto',
                   ),
                 ),

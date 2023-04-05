@@ -11,12 +11,15 @@ import '../../HomeScreen/views/home_screen_view.dart';
 import '../../Hoppiness/views/hoppiness_view.dart';
 import '../../Menu/controllers/menu_controller.dart';
 import '../../Menu/views/menu_view.dart';
+import '../../ScheduleScreen/controllers/schedule_screen_controller.dart';
+import '../../ScheduleScreen/views/schedule_screen_view.dart';
 
 
 class DashboardController extends GetxController {
   //TODO: Implement DashboardController
   final HOME = Get.put(HomeScreenController());
   final HOPPI = Get.put(HoppinessController());
+  final Shedul = Get.put(ScheduleScreenController());
   final ABOUT = Get.put(AboutController());
   final Menu = Get.put(Menu_Controller());
   var tabIndex=0.obs;
@@ -32,6 +35,7 @@ class DashboardController extends GetxController {
   final List<Widget> screens = [
     HomeScreenView(),
     HoppinessView(),
+    ScheduleScreenView(),
     AboutView(),
     MenuView(),
   ];
@@ -40,6 +44,7 @@ class DashboardController extends GetxController {
   void onInit() {
     HOME.onInit();
     HOPPI.onInit();
+    Shedul.onInit();
     ABOUT.onInit();
     Menu.onInit();
     super.onInit();

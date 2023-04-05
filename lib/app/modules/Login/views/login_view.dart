@@ -118,7 +118,7 @@ class LoginView extends GetView<LoginController> {
                   ),
 
                  SizedBox(
-                   height: 20,
+                   height: MediaQuery.of(context).size.height/17,
                  ),
                /*   Align(
                       alignment: Alignment.topRight,
