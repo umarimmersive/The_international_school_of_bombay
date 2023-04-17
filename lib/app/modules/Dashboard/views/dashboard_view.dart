@@ -118,153 +118,164 @@ class DashboardView extends GetView<DashboardController> {
               child: Container(
                 height: 60,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
-                        controller.currentScreen =
-                            HomeScreenView(); // if user taps on this dashboard tab will be active
-                        controller.currentTab.value = 0;
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            size: 25,
-                            Icons.home_outlined,
-                            color: controller.currentTab.value == 0
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          Text(
-                            'Home',
-                            style: TextStyle(
-                              fontSize: 12,
+                   children: <Widget>[
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          controller.currentScreen =
+                              HomeScreenView(); // if user taps on this dashboard tab will be active
+                          controller.currentTab.value = 0;
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              size: 25,
+                              Icons.home_outlined,
                               color: controller.currentTab.value == 0
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'Home',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 11,
+                                color: controller.currentTab.value == 0
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    MaterialButton(
-                     // minWidth: 20,
-                      onPressed: () {
-                        controller.currentScreen =
-                            HoppinessView(); // if user taps on this dashboard tab will be active
-                        controller.currentTab.value = 1;
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            size: 25,
-                            Icons.dashboard_outlined,
-                            color: controller.currentTab.value == 1
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          Text(
-                            'Happenings',
-                            style: TextStyle(
-                              fontSize: 12,
+                    Expanded(
+                      child: InkWell(
+                        onTap: (){
+                          controller.currentScreen =
+                              HoppinessView(); // if user taps on this dashboard tab will be active
+                          controller.currentTab.value = 1;
+                        },
+
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              size: 25,
+                              Icons.dashboard_outlined,
                               color: controller.currentTab.value == 1
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'Happenings',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+
+                                fontSize: 11,
+                                color: controller.currentTab.value == 1
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    MaterialButton(
-                     // minWidth: 40,
-                      onPressed: () {
-                        controller.currentScreen =
-                            ScheduleScreenView(); // if user taps on this dashboard tab will be active
-                        controller.currentTab.value = 2;
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            size: 25,
-                            Icons.calendar_month,
-                            color: controller.currentTab.value == 2
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          Text(
-                            'Schedule',
-                            style: TextStyle(
-                              fontSize: 12,
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          controller.currentScreen =
+                              ScheduleScreenView(); // if user taps on this dashboard tab will be active
+                          controller.currentTab.value = 2;
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              size: 25,
+                              Icons.calendar_month,
                               color: controller.currentTab.value == 2
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'Schedule',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+
+                                fontSize: 11,
+                                color: controller.currentTab.value == 2
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    MaterialButton(
-                     // minWidth: 40,
-                      onPressed: () {
-                        controller.currentScreen =
-                            TimeTableScreenView(); // if user taps on this dashboard tab will be active
-                        controller.currentTab.value = 3;
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            size: 25,
-                            Icons.timer,
-                            color: controller.currentTab.value == 3
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          Text(
-                            'Time Table',
-                            style: TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 12,
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          controller.currentScreen =
+                              TimeTableScreenView(); // if user taps on this dashboard tab will be active
+                          controller.currentTab.value = 3;
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              size: 25,
+                              Icons.timer,
                               color: controller.currentTab.value == 3
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'Time Table',
+                              style: TextStyle(
+
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 11,
+                                color: controller.currentTab.value == 3
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
-                        controller.currentScreen =
-                            MenuView(); // if user taps on this dashboard tab will be active
-                        controller.currentTab.value = 4;
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            size: 25,
-                            Icons.menu,
-                            color: controller.currentTab.value == 4
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
-                          Text(
-                            'Menu',
-                            style: TextStyle(
-                              overflow: TextOverflow.ellipsis,
-                              fontSize: 11,
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          controller.currentScreen =
+                              MenuView(); // if user taps on this dashboard tab will be active
+                          controller.currentTab.value = 4;
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              size: 25,
+                              Icons.menu,
                               color: controller.currentTab.value == 4
                                   ? Colors.red
                                   : Colors.grey,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'Menu',
+                              style: TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 11,
+                                color: controller.currentTab.value == 4
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],

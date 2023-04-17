@@ -10,7 +10,7 @@ class VideoGallaryView extends GetView<VideoGallaryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Video Gallary'),
+        appBar: appbar(title: 'Video Gallary'),
         body: SingleChildScrollView(
           child: InkWell(
             onTap: () {

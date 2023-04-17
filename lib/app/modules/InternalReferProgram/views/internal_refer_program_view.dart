@@ -10,55 +10,52 @@ import '../../../utils/global_widgets/textfield_ui.dart';
 import '../controllers/internal_refer_program_controller.dart';
 
 class InternalReferProgramView extends GetView<InternalReferProgramController> {
-   InternalReferProgramView({Key? key}) : super(key: key);
+  InternalReferProgramView({Key? key}) : super(key: key);
   TabController? _tabController;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-
-      child:  Scaffold(
+      child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
 
           bottom: TabBar(
             indicatorColor: Colors.white,
             tabs: [
-              Text("Internal Refer"),
-              Text("My Refer")
+              Text(
+                "Internal Referral",
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
+              ),
+              Text(
+                "My Refer",
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
+              )
               // Add Tabs here
             ],
           ),
-         title: Row(
+          title: Row(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Icon(
-                  Icons.arrow_back_ios_sharp,
+              IconButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: Icon(Icons.arrow_back)),
+              Text(
+                "Internal Referral Program",
+                style: TextStyle(
                   color: Colors.white,
-                  size: 16,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 35),
-                child: Center(
-                  child: Text(
-                    "Internal Refer Program",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Lato',
-                    ),
-                  ),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Lato',
                 ),
               ),
             ],
           ),
-         // title: const Text('Internal Refer Program'),
+          // title: const Text('Internal Refer Program'),
           backgroundColor: ColorValues.kRedColor,
         ),
         body: TabBarView(
@@ -78,9 +75,8 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                         top: 15,
                       ),
                       child: Text_widget(
-                        color: ColorValues.BLACK_TEXT,
                         fontSize: 17.0,
-                        Simpletext: 'My Details'.toUpperCase(),
+                        Simpletext: 'My Details',
                         height: 1.0,
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Roboto',
@@ -91,7 +87,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Full Name',
                       height: 1.0,
@@ -118,9 +113,8 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
-                      Simpletext: 'Father Name',
+                      Simpletext: "Father's Name",
                       height: 1.0,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',
@@ -145,7 +139,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Class Name',
                       height: 1.0,
@@ -172,7 +165,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Mobile Number',
                       height: 1.0,
@@ -192,19 +184,17 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                       hintStyle: ColorValues.DIVIDER_COLOR_ONE,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       readOnly: false,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.phone,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 20,
                     ),
 
-
                     //for reffer details------------------------------------
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 17.0,
-                      Simpletext: 'Referrer Details'.toUpperCase(),
+                      Simpletext: 'Referrer Details',
                       height: 1.0,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',
@@ -214,7 +204,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Name of referral student',
                       height: 1.0,
@@ -241,7 +230,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: "Father's Name",
                       height: 1.0,
@@ -268,7 +256,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: "Mother's Name",
                       height: 1.0,
@@ -295,7 +282,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Class to which admission to sought',
                       height: 1.0,
@@ -322,7 +308,6 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Mobile Number 1',
                       height: 1.0,
@@ -342,14 +327,13 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                       hintStyle: ColorValues.DIVIDER_COLOR_ONE,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       readOnly: false,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.phone,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 60,
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Mobile Number 2',
                       height: 1.0,
@@ -369,14 +353,13 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                       hintStyle: ColorValues.DIVIDER_COLOR_ONE,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       readOnly: false,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.phone,
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 60,
                     ),
 
                     Text_widget(
-                      color: ColorValues.BLACK_TEXT,
                       fontSize: 14.0,
                       Simpletext: 'Address',
                       height: 1.0,
@@ -408,12 +391,11 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
                       height: 45,
                       width: double.infinity,
                       fontSize: 14,
-                      ontap: (){
+                      ontap: () {
                         // Get.to(DeshboardScreenView());
                         //Get.toNamed(Routes.DESHBOARD_SCREEN);
                       },
                     ),
-
                   ],
                 ),
               ),
@@ -421,350 +403,351 @@ class InternalReferProgramView extends GetView<InternalReferProgramController> {
 
             // my refer=============================================================//
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical:5),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               child: Column(
                 children: [
                   SizedBox(
                     height: MediaQuery.of(context).size.height / 50,
                   ),
                   Expanded(
-                    child:  ListView.builder(
+                    child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: 1,
                         itemBuilder: (BuildContext, index) {
-                          return  Obx(() =>  controller.fordetails.value != false? Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: InkWell(
-                              onTap: (){
-                                controller.fordetails.value=false;
-                              },
-                              child: Card(
-                                margin: EdgeInsets.zero,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, right: 8, top: 18, bottom: 18),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 16.0,
-                                            Simpletext: "Name",
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 16.0,
-                                            Simpletext: 'Rakesh Singh',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                        ],
+                          return Obx(() => controller.fordetails.value != false
+                              ? Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.fordetails.value = false;
+                                    },
+                                    child: Card(
+                                      margin: EdgeInsets.zero,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8,
+                                            right: 8,
+                                            top: 18,
+                                            bottom: 18),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 16.0,
+                                                  Simpletext: "Name",
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 16.0,
+                                                  Simpletext: 'Rakesh Singh',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            Divider(
+                                              color: Colors.red,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Referral ID.',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: '6658985478',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Class',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Class I',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Father Name',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Mohan Singh',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Student Mobile',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: '9691854585',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            Divider(
+                                              color: Colors.red,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Referrer Name',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w800,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Rohit Sharma',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w800,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Referrer Class',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Class IV',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext:
+                                                      'Referrer Father Name',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Ajay Sharma',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext:
+                                                      'Referrer Mother Name',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: 'Rinki Sharma',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext:
+                                                      'Referrer Mobile Number 1',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: '8296458795',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext:
+                                                      'Referrer Mobile Number 2',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 14.0,
+                                                  Simpletext: '7284789645',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      Divider(color: Colors.red,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referral ID.',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: '6658985478',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Class',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Class I',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Father Name',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Mohan Singh',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Student Mobile',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: '9691854585',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      Divider(color: Colors.red,),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Name',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w800,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Rohit Sharma',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w800,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Class',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Class IV',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Father Name',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Ajay Sharma',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Mother Name',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Rinki Sharma',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Mobile Number 1',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: '8296458795',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-                                      SizedBox(height: 10,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: 'Referrer Mobile Number 2',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: '7284789645',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Roboto',
-                                          ),
-
-
-
-                                        ],),
-
-
-
-
-
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          ):    Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: InkWell(
-                              onTap: (){
-                                controller.fordetails.value=true;
-                              },
-                              child: Card(
-                                margin: EdgeInsets.zero,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, right: 8, top: 18, bottom: 18),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 16.0,
-                                            Simpletext: "Name",
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                          Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 16.0,
-                                            Simpletext: 'Rakesh Singh',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                        ],
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: InkWell(
+                                    onTap: () {
+                                      controller.fordetails.value = true;
+                                    },
+                                    child: Card(
+                                      margin: EdgeInsets.zero,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 8,
+                                            right: 8,
+                                            top: 18,
+                                            bottom: 18),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text_widget(
+                                                  fontSize: 16.0,
+                                                  Simpletext: "Name",
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                                Text_widget(
+                                                  fontSize: 16.0,
+                                                  Simpletext: 'Rakesh Singh',
+                                                  height: 1.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Roboto',
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          ));
+                                ));
                         }),
-
-                  )],
+                  )
+                ],
               ),
             )
           ],

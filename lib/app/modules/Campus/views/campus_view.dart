@@ -11,7 +11,7 @@ class CampusView extends GetView<CampusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Campus'),
+        appBar: appbar(title: 'Campuses'),
         body: Column(
           children: [
             Expanded(
@@ -34,7 +34,7 @@ class CampusView extends GetView<CampusController> {
                               Divider(height: 0,thickness: 2,color: ColorValues.DIVIDER_COLOR_ONE,),
                               Padding(
                                 padding: const EdgeInsets.only(left: 10,right: 10,top: 20),
-                                child: Text(controller.heading[index].toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold,fontSize:19,color:  ColorValues.BLACK),),
+                                child: Text(controller.heading[index].toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold,fontSize:19,),),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 10,right: 10,top: 5),

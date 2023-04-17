@@ -13,7 +13,7 @@ class EventsView extends GetView<EventsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Events'),
+      appBar: appbar(title: 'Events'),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

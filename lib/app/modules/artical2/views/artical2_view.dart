@@ -10,7 +10,7 @@ class Artical2View extends GetView<Artical2Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Artical'),
+        appBar: appbar(title: 'Artical'),
         body: Padding(
           padding: const EdgeInsets.only(left: 15,right: 15),
           child: SingleChildScrollView(
@@ -20,11 +20,11 @@ class Artical2View extends GetView<Artical2Controller> {
                 SizedBox(
                   height: 10,
                 ),
-                Center(
-                    child: Text(
-                      "Teacher tips for projects with tattered texts",
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    )),
+                Text(                  textAlign:TextAlign.justify,
+
+                  "Teacher tips for projects with tattered texts",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400,fontFamily: "Roboto"),
+                ),
                 SizedBox(
                   height: 10,
                 ),

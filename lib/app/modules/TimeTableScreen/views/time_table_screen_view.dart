@@ -11,7 +11,7 @@ class TimeTableScreenView extends GetView<TimeTableScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Time Table'),
+      appBar: appbar(title: 'Time Table',icon_button: false),
       body: Column(children: [
         Expanded(
           child: SfPdfViewer.asset("assets/images/Time Table_compressed.pdf",canShowHyperlinkDialog: true,canShowScrollStatus: true,canShowScrollHead: true,canShowPasswordDialog: true,canShowPaginationDialog: true,enableDocumentLinkAnnotation: true,enableDoubleTapZooming: true,enableHyperlinkNavigation: true,enableTextSelection: true),

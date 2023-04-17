@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:the_international_school_of_bombay/app/utils/constants/ColorValues.dart';
-import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text_widget.dart';
-
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/album_controller.dart';
@@ -13,7 +10,7 @@ class AlbumView extends GetView<AlbumController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Image Gallery'),
+        appBar: appbar(title: 'Image Gallery'),
         body: Column(
           children: [
             SizedBox(
@@ -36,30 +33,24 @@ class AlbumView extends GetView<AlbumController> {
                           onTap: () {
                             Get.toNamed(Routes.PHOTO_GALLARY);
                           },
-                          child: Container(
-                            height: 140,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              // mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: 120,
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(2),
-                                      child: Image.asset(
-                                        "${controller.sport_image_data[index]}",
-                                        fit: BoxFit.fill,
-                                      )),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Text(controller.albamname[index],
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w300))
-                              ],
-                            ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            // mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                height: 120,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(2),
+                                    child: Image.asset(
+                                      "${controller.sport_image_data[index]}",
+                                      fit: BoxFit.fill,
+                                    )),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Flexible(child: GlobalLocalText(text: "${controller.albamname[index]}",size: 15,fontWeight: FontWeight.w300,)),
+                             ],
                           ),
                         ),
                       );

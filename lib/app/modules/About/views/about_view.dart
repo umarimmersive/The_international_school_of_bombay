@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
-
-import '../../../utils/constants/ColorValues.dart';
-import '../../../utils/global_widgets/Appbaar.dart';
-import '../../../utils/global_widgets/Text_widget.dart';
 import '../controllers/about_controller.dart';
 
 class AboutView extends GetView<AboutController> {
@@ -13,81 +10,59 @@ class AboutView extends GetView<AboutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('About'),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+      appBar: appbar(title: 'About'),
+        body:
+        Obx((){
+          if(controller.isLoading.isTrue){
+            return Center(
+                child: SpinKitThreeBounce(
+                  color: Colors.red,
+                  size: 40,
+                ));
+          }else{
+            return SingleChildScrollView(
+              child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+    children: [
 
-                
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0,right: 10),
-                  child: Text_widget(
-                    maxLines: 1000,
-                    color: ColorValues.BLACK_TEXT,
-                    fontSize: 16.0,
-                    Simpletext: '${controller.About_text}',
-                    height: 1.2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Roboto',
-                  ),
-                ),
-                
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0,right: 5),
-                  child: Container(
-                    height: 200,
-                    width: double.infinity,
-                    child: Image.asset('assets/gp.png',fit: BoxFit.contain),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0,right: 10),
-                  child: Text_widget(
-                    maxLines: 1000,
-                    color: ColorValues.BLACK_TEXT,
-                    fontSize: 16.0,
-                    Simpletext: '${controller.About_text2}',
-                    height: 1.2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Roboto',
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
+                 Padding(
+    padding: EdgeInsets.only(left: 10,right: 10),
+    child: Html(
+    data: "${controller.about_us_content.toString()}",
+    style: {
+      "img": Style(
+          width: Width.auto(),
+          height: Height.auto()
+      ),
+    // tables will have the below background color
+    "table": Style(
+    backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+    ),
+    // some other granular customizations are also possible
+    "tr": Style(
+    border: Border(bottom: BorderSide(color: Colors.grey)),
+    ),
+    "th": Style(
+    padding: EdgeInsets.all(6),
+    backgroundColor: Colors.grey,
+    ),
+    "td": Style(
+    padding: EdgeInsets.all(6),
+    alignment: Alignment.topLeft,
+    ),
+    // text that renders h1 elements will be red
+    "p": Style(color: Colors.black,fontSize: FontSize.medium),
+    }
+    ),
+    )
+    ],
+    ),
+                 ),
+            );
+          }
+        }
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0,right: 10),
-                  child: Text_widget(
-                    maxLines: 1000,
-                    color: ColorValues.BLACK_TEXT,
-                    fontSize: 16.0,
-                    Simpletext: '${controller.About_text2}',
-                    height: 1.2,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'Roboto',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5.0,right: 5),
-                  child: Container(
-                    height: 200,
-                    width: double.infinity,
-                    child: Image.asset('assets/qr_code.png',fit: BoxFit.contain),
-                  ),
-                ),
-
-              ],),
-          ),
-        )
-    );
+    ));
   }
 }

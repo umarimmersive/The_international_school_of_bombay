@@ -10,6 +10,10 @@ import '../modules/Album/bindings/album_binding.dart';
 import '../modules/Album/views/album_view.dart';
 import '../modules/Assignment/bindings/assignment_binding.dart';
 import '../modules/Assignment/views/assignment_view.dart';
+import '../modules/BusrootDetails/bindings/busroot_details_binding.dart';
+import '../modules/BusrootDetails/views/busroot_details_view.dart';
+import '../modules/BusrootScreen/bindings/busroot_screen_binding.dart';
+import '../modules/BusrootScreen/views/busroot_screen_view.dart';
 import '../modules/Campus/bindings/campus_binding.dart';
 import '../modules/Campus/views/campus_view.dart';
 import '../modules/ContectUs/bindings/contect_us_binding.dart';
@@ -20,14 +24,14 @@ import '../modules/Edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/Edit_profile/views/edit_profile_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
 import '../modules/Events/views/events_view.dart';
-import '../modules/Home/bindings/home_binding.dart';
-import '../modules/Home/views/home_view.dart';
 import '../modules/Home_slider_details/bindings/home_slider_details_binding.dart';
 import '../modules/Home_slider_details/views/home_slider_details_view.dart';
 import '../modules/Hoppiness/bindings/hoppiness_binding.dart';
 import '../modules/Hoppiness/views/hoppiness_view.dart';
 import '../modules/InternalReferProgram/bindings/internal_refer_program_binding.dart';
 import '../modules/InternalReferProgram/views/internal_refer_program_view.dart';
+import '../modules/LeavesScreen/bindings/leaves_screen_binding.dart';
+import '../modules/LeavesScreen/views/leaves_screen_view.dart';
 import '../modules/Login/bindings/login_binding.dart';
 import '../modules/Login/views/login_view.dart';
 import '../modules/Menu/bindings/menu_binding.dart';
@@ -36,10 +40,7 @@ import '../modules/MounthwiseSyllabus/bindings/mounthwise_syllabus_binding.dart'
 import '../modules/MounthwiseSyllabus/views/mounthwise_syllabus_view.dart';
 import '../modules/NoticeBoard/bindings/notice_board_binding.dart';
 import '../modules/NoticeBoard/views/notice_board_view.dart';
-import '../modules/NoticeBoard/views/notice_board_view.dart';
 import '../modules/NoticeBoardDetails/bindings/notice_board_details_binding.dart';
-import '../modules/NoticeBoardDetails/bindings/notice_board_details_binding.dart';
-import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import '../modules/Notification/bindings/notification_binding.dart';
 import '../modules/Notification/views/notification_view.dart';
@@ -55,10 +56,14 @@ import '../modules/PhotoView/bindings/photo_view_binding.dart';
 import '../modules/PhotoView/views/photo_view_view.dart';
 import '../modules/PrivacyPolicy/bindings/privacy_policy_binding.dart';
 import '../modules/PrivacyPolicy/views/privacy_policy_view.dart';
+import '../modules/QuiryScreen/bindings/quiry_screen_binding.dart';
+import '../modules/QuiryScreen/views/quiry_screen_view.dart';
 import '../modules/RateUs/bindings/rate_us_binding.dart';
 import '../modules/RateUs/views/rate_us_view.dart';
 import '../modules/ScheduleScreen/bindings/schedule_screen_binding.dart';
 import '../modules/ScheduleScreen/views/schedule_screen_view.dart';
+import '../modules/SchoolRoolsScreen/bindings/school_rools_screen_binding.dart';
+import '../modules/SchoolRoolsScreen/views/school_rools_screen_view.dart';
 import '../modules/Splash/bindings/splash_binding.dart';
 import '../modules/Splash/views/splash_view.dart';
 import '../modules/TermandCondition/bindings/termand_condition_binding.dart';
@@ -71,8 +76,8 @@ import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
 import '../modules/VideoGallary/views/video_gallary_view.dart';
 import '../modules/VideoPlayer/bindings/video_player_binding.dart';
 import '../modules/VideoPlayer/views/video_player_view.dart';
-import '../modules/VidioAlbum/bindings/vidio_album_binding.dart';
-import '../modules/VidioAlbum/views/vidio_album_view.dart';
+import '../modules/VidioAlbums/bindings/vidio_albums_binding.dart';
+import '../modules/VidioAlbums/views/vidio_albums_view.dart';
 import '../modules/aboutus/bindings/aboutus_binding.dart';
 import '../modules/aboutus/views/aboutus_view.dart';
 import '../modules/artical1/bindings/artical1_binding.dart';
@@ -105,11 +110,6 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
-    ),
-    GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
     ),
     GetPage(
       name: _Paths.HOPPINESS,
@@ -302,9 +302,34 @@ class AppPages {
       binding: OtherActivitiesBinding(),
     ),
     GetPage(
-      name: _Paths.VIDIO_ALBUM,
-      page: () => const VidioAlbumView(),
-      binding: VidioAlbumBinding(),
+      name: _Paths.LEAVES_SCREEN,
+      page: () => LeavesScreenView(),
+      binding: LeavesScreenBinding(),
     ),
-  ];
+    GetPage(
+      name: _Paths.BUSROOT_SCREEN,
+      page: () => const BusrootScreenView(),
+      binding: BusrootScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCHOOL_ROOLS_SCREEN,
+      page: () => const SchoolRoolsScreenView(),
+      binding: SchoolRoolsScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.QUIRY_SCREEN,
+      page: () => const QuiryScreenView(),
+      binding: QuiryScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUSROOT_DETAILS,
+      page: () => const BusrootDetailsView(),
+      binding: BusrootDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDIO_ALBUMS,
+      page: () => const VidioAlbumsView(),
+      binding: VidioAlbumsBinding(),
+    ),
+   ];
 }

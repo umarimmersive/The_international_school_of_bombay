@@ -11,7 +11,7 @@ class ContectUsView extends GetView<ContectUsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Contact Us'),
+      appBar: appbar(title: 'Contact Us'),
         body: SafeArea(
           child: Column(
             children: [
@@ -67,13 +67,7 @@ class ContectUsView extends GetView<ContectUsController> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  height: 15,
-                ),
-              ),
-              Padding(
+               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Card(
                   margin: EdgeInsets.zero,

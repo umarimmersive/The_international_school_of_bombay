@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/routes/app_pages.dart';
-
 import '../../../utils/constants/ColorValues.dart';
-import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/notice_board_controller.dart';
@@ -14,28 +11,18 @@ class NoticeBoardView extends GetView<NoticeBoardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('NoticeBoard'),
+        appBar: appbar(title: 'Noticeboard'),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-           /* Appbaar(
-                screen_name: 'notice board'.toUpperCase(),
-                Back_ontap: (){
-                  Get.back();
-               },
-            ),
-            SizedBox(
-              height: 20,
-            ),*/
-            SizedBox(
+             SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
               child: Text_widget(
-                color: ColorValues.BLACK_TEXT,
-                fontSize: 12.0,
+                 fontSize: 12.0,
                 Simpletext: '${controller.text}',
                 height: 1.0,
                 fontWeight: FontWeight.w500,
@@ -76,8 +63,7 @@ class NoticeBoardView extends GetView<NoticeBoardController> {
                                           Padding(
                                             padding: const EdgeInsets.only(left: 10.0),
                                             child: Text_widget(
-                                              color: ColorValues.BLACK_TEXT,
-                                              fontSize: 16.0,
+                                               fontSize: 16.0,
                                               Simpletext: '${controller.data[i]['title']}',                                              height: 1.0,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'Roboto',
@@ -86,8 +72,7 @@ class NoticeBoardView extends GetView<NoticeBoardController> {
                                           Padding(
                                             padding: const EdgeInsets.only(left: 10.0,top: 8),
                                             child: Text_widget(
-                                              color: ColorValues.BLACK_TEXT,
-                                              fontSize: 12.0,
+                                               fontSize: 12.0,
                                               Simpletext: '${controller.data[i]['date']}',
                                               height: 1.0,
                                               fontWeight: FontWeight.w300,

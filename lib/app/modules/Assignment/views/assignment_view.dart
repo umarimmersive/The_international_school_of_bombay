@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/routes/app_pages.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
-
 import '../../../utils/constants/ColorValues.dart';
-import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
-import '../../../utils/global_widgets/textEnter.dart';
 import '../controllers/assignment_controller.dart';
 
 class AssignmentView extends GetView<AssignmentController> {
@@ -15,7 +11,7 @@ class AssignmentView extends GetView<AssignmentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Assigment'),
+      appBar: appbar(title: 'Assigment'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +33,7 @@ class AssignmentView extends GetView<AssignmentController> {
                   //physics: NeverScrollableScrollPhysics(),
                   itemCount: controller.data.length,
                   itemBuilder: (context, i) {
-                    return GestureDetector(
+                    return InkWell(
                       onTap: (){
                         var data={
                           "title":controller.data[i]['title'].toString()
@@ -64,8 +60,7 @@ class AssignmentView extends GetView<AssignmentController> {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: Text_widget(
-                                          color: ColorValues.BLACK_TEXT,
-                                          fontSize: 16.0,
+                                           fontSize: 16.0,
                                           Simpletext: '${controller.data[i]['title']}',                                              height: 1.0,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Roboto',
@@ -74,8 +69,7 @@ class AssignmentView extends GetView<AssignmentController> {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 10.0,top: 8),
                                         child: Text_widget(
-                                          color: ColorValues.BLACK_TEXT,
-                                          fontSize: 12.0,
+                                           fontSize: 12.0,
                                           Simpletext: '${controller.data[i]['date']}',
                                           height: 1.0,
                                           fontWeight: FontWeight.w300,
@@ -89,25 +83,20 @@ class AssignmentView extends GetView<AssignmentController> {
 
                                 Expanded(
                                   flex: 1,
-                                  child: GestureDetector(
-                                    onTap: (){
-                                     // Get.toNamed(Routes.NOTICE_BOARD_DETAILS);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Container(
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: const Color(ColorValues.RED),
-                                          borderRadius: BorderRadius.circular(5),
-                                        ),
-                                        child: Center(
-                                          child: Icon(
-                                            Icons.arrow_forward,
-                                            color: Colors.white,
-                                            size: 18.0,
-                                            semanticLabel: 'Text to announce in accessibility modes',
-                                          ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        color: const Color(ColorValues.RED),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.arrow_forward,
+                                          color: Colors.white,
+                                          size: 18.0,
+                                          semanticLabel: 'Text to announce in accessibility modes',
                                         ),
                                       ),
                                     ),

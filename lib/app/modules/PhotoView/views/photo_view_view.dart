@@ -21,7 +21,7 @@ class PhotoViewView extends GetView<PhotoViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: appbar('PhotoView'),
+      appBar: appbar(title: 'PhotoView'),
      /* appBar: AppBar(
         automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,

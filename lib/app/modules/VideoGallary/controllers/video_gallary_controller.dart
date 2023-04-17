@@ -9,26 +9,31 @@ class VideoGallaryController extends GetxController {
     'assets/Slider/4.png',
   ];
 
-  List second = [
-    "assets/images/60.JPG",
+
+  List second=["assets/images/60.JPG",
     "assets/images/62.JPG",
     "assets/images/61.JPG",
     "assets/Slider/4.png",
   ];
 
-  List third = [
-    "assets/images/54.jpg",
+  List third=["assets/images/54.jpg",
     "assets/images/55.jpg",
     "assets/images/56.jpg",
     "assets/images/50.jpg",
+
   ];
 
-  List forth = [
-    "assets/images/15.jpg",
+
+  List forth=["assets/images/15.jpg",
     "assets/images/19.jpg",
     "assets/images/13.jpg",
     "assets/images/14.jpg",
+
   ];
+
+
+
+
 
   final count = 0.obs;
   @override

@@ -14,7 +14,7 @@ class PrivacyPolicyView extends GetView<PrivacyPolicyController> {
         title: const Text('PrivacyPolicyView'),
         centerTitle: true,
       ),*/
-      appBar: appbar('PrivacyPolicy'),
+      appBar: appbar(title: 'PrivacyPolicy'),
       body: const Center(
         child: Text(
           'PrivacyPolicyView is working',

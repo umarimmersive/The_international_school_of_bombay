@@ -11,7 +11,7 @@ class AccedmicContentView extends GetView<AccedmicContentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Accedmic Content'),
+        appBar: appbar(title: 'Accedmic Content'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

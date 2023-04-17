@@ -12,7 +12,7 @@ class SyllabusView extends GetView<SyllabusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: appbar('Syllabus'),
+       appBar: appbar(title: 'Syllabus'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

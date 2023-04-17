@@ -11,7 +11,7 @@ class MounthwiseSyllabusView extends GetView<MounthwiseSyllabusController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Mounthwise Syllabus'),
+        appBar: appbar(title: 'Mounthwise Syllabus'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

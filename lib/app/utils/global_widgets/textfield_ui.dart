@@ -128,7 +128,7 @@ class TextFieldDesigned extends StatelessWidget {
           hintText: hintText,
           suffixIcon: suffixIcon,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorValues.APP_THEME_COLORE),
+            borderSide: BorderSide(color: ColorValues.kRedColor),
             //36325A
             borderRadius: BorderRadius.circular(5),
           ),
@@ -137,11 +137,11 @@ class TextFieldDesigned extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: ColorValues.APP_THEME_COLORE),
+            borderSide: BorderSide(color: ColorValues.kRedColor),
             borderRadius: BorderRadius.circular(5),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color:ColorValues.APP_THEME_COLORE),
+            borderSide: BorderSide(color:ColorValues.kRedColor),
             borderRadius: BorderRadius.circular(5),
           ),
           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

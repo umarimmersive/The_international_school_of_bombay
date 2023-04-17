@@ -15,7 +15,7 @@ class PhotoGallaryView extends GetView<PhotoGallaryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Wallpapers'),
+      appBar: appbar(title: 'Wallpapers'),
       /*  appBar: AppBar(
           title: const GlobalLocalText(
             text: 'wallpapers',

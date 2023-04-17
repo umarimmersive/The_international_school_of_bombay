@@ -1,7 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/my_local_service.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../../utils/global_widgets/globle_var.dart';
 
 class SplashController extends GetxController {
   //TODO: Implement SplashController
@@ -11,14 +14,24 @@ class SplashController extends GetxController {
 
   @override
   void onInit() {
-    Future.delayed(const Duration(seconds: 4)).then((value) {
-      Get.toNamed(Routes.LOGIN);
-    });
+
+    init();
 
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
         overlays: [ SystemUiOverlay.bottom]);
 
     super.onInit();
+  }
+  init(){
+    Future.delayed(const Duration(seconds: 3)).then((value) async {
+      sharedPreference = await SharedPreferences.getInstance();
+      if(my_local_service.isLoggedIn()){
+          Get.toNamed(Routes.DESHBOARD_SCREEN);
+      }else{
+        Get.toNamed(Routes.LOGIN);
+
+      }
+    });
   }
 
   @override

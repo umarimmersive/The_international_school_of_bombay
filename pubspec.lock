@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  another_flushbar:
+    dependency: "direct main"
+    description:
+      name: another_flushbar
+      sha256: fa09f8a4ca582c417669b7b1d0e85ce65bd074d80bb0dcbb1302ad1b22bdc3ef
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.12.29"
   ansicolor:
     dependency: transitive
     description:
@@ -249,14 +257,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
-  flushbar:
-    dependency: "direct main"
-    description:
-      name: flushbar
-      sha256: "60ba8410a3b3ad50b117d2a5ae0052f9f828b52cb4b3b23cf2a91abdf17eb181"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.10.4"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -278,6 +278,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  flutter_html:
+    dependency: "direct main"
+    description:
+      name: flutter_html
+      sha256: "342c7908f0a67bcec62b6e0f7cf23e23bafe7f64693665dd35be98d5e783bdfd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-alpha.6"
   flutter_launcher_icons:
     dependency: "direct main"
     description:
@@ -302,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.9"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      sha256: "77a2117c0517ff909221f3160b8eb20052ab5216107581168af574ac1f05dff8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.0"
   flutter_staggered_grid_view:
     dependency: "direct main"
     description:
@@ -536,6 +552,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  numerus:
+    dependency: transitive
+    description:
+      name: numerus
+      sha256: "436759d84f233b40107d0cc31cfa92d24e0960afeb2e506be70926d4cddffd9e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   octo_image:
     dependency: transitive
     description:

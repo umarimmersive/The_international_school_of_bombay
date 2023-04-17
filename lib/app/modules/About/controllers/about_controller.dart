@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../utils/constants/api_service.dart';
+
 class AboutController extends GetxController {
   //TODO: Implement AboutController
 
@@ -24,7 +26,38 @@ class AboutController extends GetxController {
   ;
   @override
   void onInit() {
+    Get_contect_us();
     super.onInit();
+  }
+
+  final isLoading=false.obs;
+  final about_us_content=''.obs;
+  final about_us=''.obs;
+
+  Future Get_contect_us() async {
+    print('---call api');
+    about_us.value='';
+    about_us_content.value='';
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .About_us();
+      print({'response==================================$response'});
+      if (response['status'] == true) {
+
+        about_us.value = response['data']['title'];
+        about_us_content.value = response['data']['content'];
+
+        print('Policy----------------$about_us_content');
+
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
   }
 
   @override

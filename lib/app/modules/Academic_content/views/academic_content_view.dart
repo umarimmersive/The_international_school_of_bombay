@@ -12,7 +12,7 @@ class AcademicContentView extends GetView<AcademicContentController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Academic content'),
+        appBar: appbar(title: 'Academic content'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

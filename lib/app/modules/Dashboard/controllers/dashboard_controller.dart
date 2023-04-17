@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/modules/About/controllers/about_controller.dart';
-import 'package:the_international_school_of_bombay/app/modules/Home/controllers/home_controller.dart';
 import 'package:the_international_school_of_bombay/app/modules/Hoppiness/controllers/hoppiness_controller.dart';
 
 import '../../About/views/about_view.dart';
@@ -21,7 +21,7 @@ class DashboardController extends GetxController {
   final HOPPI = Get.put(HoppinessController());
   final Shedul = Get.put(ScheduleScreenController());
   final ABOUT = Get.put(AboutController());
-  final Menu = Get.put(Menu_Controller());
+  final Menu = Get.put(MenuuController());
   var tabIndex=0.obs;
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -42,6 +42,9 @@ class DashboardController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
+
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
+        overlays: [ SystemUiOverlay.bottom]);
     HOME.onInit();
     HOPPI.onInit();
     Shedul.onInit();

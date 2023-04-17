@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
-class VidioAlbumController extends GetxController {
-  //TODO: Implement VidioAlbumController
+class VidioAlbumsController extends GetxController {
+  //TODO: Implement VidioAlbumsController
 
   final count = 0.obs;
+
+
 
 
   final sport_image_data = [

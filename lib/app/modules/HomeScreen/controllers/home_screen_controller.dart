@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/models/Sibling_model.dart';
+
+import '../../../models/Slider_model.dart';
+import '../../../utils/constants/api_service.dart';
 
 class HomeScreenController extends GetxController {
   //TODO: Implement HomeScreenController
 
   final count = 0.obs;
   final groupValue = 1.obs;
-  final isChecked = [false,false,false].obs;
+  final isChecked = [].obs;
 
   final Image = 'assets/background.jpg'.obs;
   final profile_image = 'assets/profileimages.jpeg'.obs;
-  List<String> title=["TISB Happenings", "Importent Notice","School Notice",];
-  List<IconData> icons = [Icons.person, Icons.event_note_outlined, Icons.note_alt,Icons.person, Icons.event_note_outlined, Icons.note_alt];
+  List<String> title=["Leave", "Noticeboard","Bus Routes","School Rules","Query"];
+  List<IconData> icons = [Icons.api, Icons.event_note_outlined, Icons.time_to_leave_outlined,Icons.note_alt_outlined, Icons.note_alt, Icons.note_alt];
 
 
 
@@ -66,6 +70,18 @@ class HomeScreenController extends GetxController {
 
   ];
 
+  final articalDetails =[
+    {
+      "title":"Collaboration at the heart of school reform",
+
+      "image":"assets/images/Collaboration-at-the-heart-of-school-reforms (1).jpg",
+
+      "artical":"Collaboration at the heart of school reform"
+    },
+
+  ];
+
+
   final slider_data=[
     {
       "maintitle":"It’s time to HOWL with the Bhediya stars",
@@ -92,9 +108,7 @@ class HomeScreenController extends GetxController {
 "title": "A heartfelt thanks to all the enthusiastic children who came forth and brought out the artist within themselves. It was indeed a surreal moment to watch each one of our students passionately paint, draw, and ignite their artistic selves"
 "Creativity indeed takes courage, and we are grateful for our students' courage! Three cheers to everyone who participated in the Art Mela! You are all champions."
 },
-    {
-      "maintitle":"A magical way to express and speak volumes.",
-
+    {"maintitle":"A magical way to express and speak volumes.",
       "images":'assets/images/2.png',
       "title":     "Art is a beautiful way for children to express themselves and bring out their creativity.",
 
@@ -102,7 +116,6 @@ class HomeScreenController extends GetxController {
 
     {
       "maintitle":"Positive mentoring",
-
       "images":'assets/images/5 (1).png',
       "title": "At ISB, we believe in positive mentoring through these fun activities."
 
@@ -111,6 +124,19 @@ class HomeScreenController extends GetxController {
 
 
   ];
+
+  final KnowladgeBasedata =[
+
+    {
+      "title":"Collaboration at the heart of school reform",
+      "dicription":""
+
+    }
+
+
+  ];
+
+
 
   final sport_image_data=[
     'assets/sport/37.jpg',
@@ -167,8 +193,121 @@ class HomeScreenController extends GetxController {
   ];
   @override
   void onInit() {
+    Get_deshbord_section();
+    Get_Slider();
+    Get_sibling();
     super.onInit();
   }
+
+
+  final isLoading=false.obs;
+  final about_us_content=''.obs;
+  final heading=''.obs;
+  final icon=''.obs;
+  final file_valude=''.obs;
+  final line_color=''.obs;
+  final token=''.obs;
+
+
+  Future Get_deshbord_section() async {
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .Dashboard_Section();
+      if (response['status'] == true) {
+
+        heading.value=response['data']['heading'];
+        icon.value=response['data']['icon'];
+        file_valude.value=response['data']['file_value'];
+        line_color.value=response['data']['line_color'];
+
+        print('0-------------------${heading.value}');
+        print('1-------------------${icon.value}');
+        print('2-------------------${file_valude.value}');
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
+
+  final Slider = <Slider_model>[].obs;
+
+
+
+  Future Get_Slider() async {
+    Slider.value.clear();
+    try {
+      isLoading(true);
+
+      var response = await ApiService().Slider();
+
+      print({'response==================================$response'});
+      if (response['status'] == true) {
+
+        List dataList = response['data'].toList();
+        Slider.value = dataList.map((json) => Slider_model.fromJson(json)).toList();
+
+        print('sliderrrr-------------${Slider.value}');
+
+        update();
+        isLoading(false);
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+        update();
+      }
+    } finally {
+      isLoading(false);
+      update();
+
+    }
+  }
+
+
+
+
+ // final isLoading=false.obs;
+  final Sibling = <Sibling_model>[].obs;
+
+  Future Get_sibling() async {
+    try {
+      isLoading(true);
+      isChecked.clear();
+      var response = await ApiService()
+          .Siblings_list();
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        Sibling.value = dataList.map((json) => Sibling_model.fromJson(json)).toList();
+
+        for(int i =0;i<Sibling.length;i++)
+          isChecked.add(false);
+
+
+
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
 
   @override
   void onReady() {

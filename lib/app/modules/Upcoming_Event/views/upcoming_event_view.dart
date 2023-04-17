@@ -14,7 +14,7 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Upcoming Event'),
+        appBar: appbar(title: 'Upcoming Event'),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,8 +57,7 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: Text_widget(
-                                          color: ColorValues.BLACK_TEXT,
-                                          fontSize: 16.0,
+                                           fontSize: 16.0,
                                           Simpletext: '${controller.data[i]['title']}',                                              height: 1.0,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Roboto',
@@ -123,11 +122,6 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
                   },
                 ),
               )
-
-
-
-
-
             ],),
         )
     );

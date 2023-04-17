@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../utils/constants/api_service.dart';
+
 class OurPhilosypherController extends GetxController {
   //TODO: Implement OurPhilosypherController
 
@@ -42,8 +44,41 @@ class OurPhilosypherController extends GetxController {
 
   @override
   void onInit() {
+    Get_api();
     super.onInit();
   }
+
+  final isLoading=false.obs;
+
+  final OurPhilosypher_title=''.obs;
+  final OurPhilosypher_content=''.obs;
+
+  Future Get_api() async {
+    print('---call api');
+    OurPhilosypher_title.value='';
+    OurPhilosypher_content.value='';
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .OurPhilosypher();
+      print({'response==================================$response'});
+      if (response['status'] == true) {
+
+        OurPhilosypher_title.value = response['data']['title'];
+        OurPhilosypher_content.value = response['data']['content'];
+
+        //print('Policy----------------$about_us_content');
+
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
 
   @override
   void onReady() {

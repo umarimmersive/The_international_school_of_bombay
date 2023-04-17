@@ -13,7 +13,7 @@ class ScheduleScreenView extends GetView<ScheduleScreenController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Schedule'),
+        appBar: appbar(title: 'Schedule',icon_button: false),
         body: ScrollableCleanCalendar(
 
 

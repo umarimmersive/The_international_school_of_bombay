@@ -47,8 +47,14 @@ abstract class Routes {
   static const TIME_TABLE_SCREEN = _Paths.TIME_TABLE_SCREEN;
   static const SCHEDULE_SCREEN = _Paths.SCHEDULE_SCREEN;
   static const OTHER_ACTIVITIES = _Paths.OTHER_ACTIVITIES;
-  static const VIDIO_ALBUM = _Paths.VIDIO_ALBUM;
-}
+  static const KNOWLADGE_BASE_DETAILS = _Paths.KNOWLADGE_BASE_DETAILS;
+  static const LEAVES_SCREEN = _Paths.LEAVES_SCREEN;
+  static const BUSROOT_SCREEN = _Paths.BUSROOT_SCREEN;
+  static const SCHOOL_ROOLS_SCREEN = _Paths.SCHOOL_ROOLS_SCREEN;
+  static const QUIRY_SCREEN = _Paths.QUIRY_SCREEN;
+  static const BUSROOT_DETAILS = _Paths.BUSROOT_DETAILS;
+  static const VIDIO_ALBUMS = _Paths.VIDIO_ALBUMS;
+ }
 
 abstract class _Paths {
   _Paths._();
@@ -96,5 +102,11 @@ abstract class _Paths {
   static const TIME_TABLE_SCREEN = '/time-table-screen';
   static const SCHEDULE_SCREEN = '/schedule-screen';
   static const OTHER_ACTIVITIES = '/other-activities';
-  static const VIDIO_ALBUM = '/vidio-album';
-}
+  static const KNOWLADGE_BASE_DETAILS = '/knowladge-base-details';
+  static const LEAVES_SCREEN = '/leaves-screen';
+  static const BUSROOT_SCREEN = '/busroot-screen';
+  static const SCHOOL_ROOLS_SCREEN = '/school-rools-screen';
+  static const QUIRY_SCREEN = '/quiry-screen';
+  static const BUSROOT_DETAILS = '/busroot-details';
+  static const VIDIO_ALBUMS = '/vidio-albums';
+ }

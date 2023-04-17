@@ -13,7 +13,7 @@ class HoppinessView extends GetView<HoppinessController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Happenings'),
+        appBar: appbar(title: 'Happenings',icon_button: false),
         body: Column(
           children: [
             Expanded(
@@ -28,48 +28,55 @@ class HoppinessView extends GetView<HoppinessController> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Image.asset('assets/only_logo.png'),
+                                Flexible(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Image.asset(
+                                              'assets/only_logo.png'),
+                                        ),
+                                        radius: 20,
+                                        backgroundColor: ColorValues.BLACK,
                                       ),
-                                      radius: 20,
-                                      backgroundColor: ColorValues.BLACK,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text_widget(
-                                          color: ColorValues.BLACK_TEXT,
-                                          fontSize: 14.0,
-                                          Simpletext: 'The International School Of Bombay',
-                                          height: 1.0,
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Roboto',
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Flexible(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text_widget(
+                                              fontSize: 14.0,
+                                              Simpletext:
+                                                  'The International School Of Bombay',
+                                              height: 1.0,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Roboto',
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 5.0),
+                                              child: Text_widget(
+                                                fontSize: 14.0,
+                                                Simpletext: '12-jan-2023',
+                                                height: 1.0,
+                                                fontWeight: FontWeight.w300,
+                                                fontFamily: 'Roboto',
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 5.0),
-                                          child: Text_widget(
-                                            color: ColorValues.BLACK_TEXT,
-                                            fontSize: 14.0,
-                                            Simpletext: '12-jan-2023',
-                                            height: 1.0,
-                                            fontWeight: FontWeight.w300,
-                                            fontFamily: 'Roboto',
-                                          ),
-                                        ),
-                                      ],
-                                    )
-
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 IconButton(
                                     onPressed: () {},
@@ -85,7 +92,7 @@ class HoppinessView extends GetView<HoppinessController> {
                             color: Colors.red,
                             height: MediaQuery.of(context).size.height / 3,
                             child: Image.asset(
-                               "${controller.sport_image_data[index]}",
+                              "${controller.sport_image_data[index]}",
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -95,11 +102,18 @@ class HoppinessView extends GetView<HoppinessController> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
-                                  child: Image.asset('assets/love.png',height: 25,width: 25,),
+                                  child: Image.asset(
+                                    'assets/love.png',
+                                    height: 25,
+                                    width: 25,
+                                  ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
-                                  child: Text_widget(Simpletext: '1', fontSize: 20.0, color: ColorValues.BLACK),
+                                  child: Text_widget(
+                                      Simpletext: '1',
+                                      fontSize: 20.0,
+                                      color: ColorValues.BLACK),
                                 ),
                                 IconButton(
                                     onPressed: () {},
@@ -107,7 +121,6 @@ class HoppinessView extends GetView<HoppinessController> {
                               ],
                             ),
                           ),
-
                           Divider(
                             color: ColorValues.DIVIDER_COLOR_ONE,
                           )

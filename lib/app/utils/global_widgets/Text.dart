@@ -9,6 +9,7 @@ class GlobalLocalText extends StatelessWidget {
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
   final double? wordSpacing;
+
   const GlobalLocalText(
       {Key? key,
         this.text,
@@ -28,6 +29,7 @@ class GlobalLocalText extends StatelessWidget {
       textAlign: textAlign!=null? TextAlign.center :TextAlign.start,
       text ?? "",
       style: TextStyle(
+        overflow: TextOverflow.ellipsis,
         color: textColor,
         fontWeight: fontWeight,
         fontSize: size,

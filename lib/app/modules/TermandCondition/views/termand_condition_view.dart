@@ -10,7 +10,7 @@ class TermandConditionView extends GetView<TermandConditionController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('Term and Condition'),
+      appBar: appbar(title: 'Term and Condition'),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(

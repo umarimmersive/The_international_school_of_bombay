@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 
+import '../../../models/Slider_details_model.dart';
+import '../../../utils/constants/api_service.dart';
+
 class HomeSliderDetailsController extends GetxController {
   //TODO: Implement HomeSliderDetailsController
 
@@ -16,14 +19,44 @@ class HomeSliderDetailsController extends GetxController {
   final images=''.obs;
   final title =''.obs;
   final maintittle=''.obs;
-
+  final id =''.obs;
   @override
   void onInit() {
+    id.value=Get.parameters['id'].toString();
+
     maintittle.value=Get.parameters['maintitle'].toString();
 
     images.value=Get.parameters['images'].toString();
     title.value=Get.parameters['title'].toString();
+    Get_slider_details();
     super.onInit();
+  }
+
+  final isLoading=false.obs;
+  final Slider_details = <Slider_details_model>[].obs;
+
+  Future Get_slider_details() async {
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .Slider_Details(id);
+      if (response['status'] == true) {
+
+        print('--------------${response}');
+
+        List dataList = response['data'].toList();
+        Slider_details.value = dataList.map((json) => Slider_details_model.fromJson(json)).toList();
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
   }
 
   @override

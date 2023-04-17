@@ -11,7 +11,7 @@ class Text_widget extends StatelessWidget {
    final height;
    final maxLines;
 
-  Text_widget({required this.Simpletext,required this.fontSize,required this.color,this.fontFamily,this.fontWeight,this.height,this.maxLines});
+  Text_widget({required this.Simpletext,required this.fontSize,  this.color,this.fontFamily,this.fontWeight,this.height,this.maxLines,      });
 
   @override
   Widget build(BuildContext context) {

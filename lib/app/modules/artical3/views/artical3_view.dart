@@ -10,7 +10,7 @@ class Artical3View extends GetView<Artical3Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar('Artical'),
+        appBar: appbar(title: 'Artical'),
         body: Padding(
           padding: const EdgeInsets.only(left: 15,right: 15),
           child: SingleChildScrollView(
@@ -20,13 +20,13 @@ class Artical3View extends GetView<Artical3Controller> {
                 SizedBox(
                   height: 10,
                 ),
-                Center(
-                    child: Text(
-                      "Implementing a Global Citizenship Education program in your school",
-                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    )),
+                Text(
+                  textAlign:TextAlign.justify,
+                  "Implementing a Global Citizenship Education program in your school",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400,fontFamily: "Roboto"),
+                ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
 
 

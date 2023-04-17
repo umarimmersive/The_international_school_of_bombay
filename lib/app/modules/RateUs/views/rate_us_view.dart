@@ -10,7 +10,7 @@ class RateUsView extends GetView<RateUsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar('RateUs'),
+      appBar: appbar(title: 'RateUs'),
       body: const Center(
         child: Text(
           'RateUsView is working',
