@@ -6,15 +6,16 @@ import 'app/routes/app_pages.dart';
 import 'app/utils/global_widgets/ThemeClass.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
-      overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
 
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
 
   runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -29,10 +30,12 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.red,
-          tabBarTheme: TabBarTheme(indicatorColor: Colors.red)),
+        primaryColor: Colors.red,
+        tabBarTheme: TabBarTheme(indicatorColor: Colors.red)
+      ),
       darkTheme: Themes.dark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
+
     );
   }
 }

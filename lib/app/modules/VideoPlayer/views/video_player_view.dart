@@ -9,11 +9,7 @@ class VideoPlayerView extends GetView<VideoPlayer_Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('VideoPlayerView'),
-        centerTitle: true,
-      ),
-      body: const Center(
+       body: const Center(
         child: Text(
           'VideoPlayerView is working',
           style: TextStyle(fontSize: 20),

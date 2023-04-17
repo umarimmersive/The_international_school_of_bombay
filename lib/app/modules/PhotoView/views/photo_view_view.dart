@@ -9,25 +9,27 @@ import 'package:photo_view/photo_view_gallery.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../../PhotoGallary/views/photo_gallary_view.dart';
 
-
 class PhotoViewView extends GetView<PhotoViewController> {
-  final List<Imagepath>? photos;
+  final List? photos;
   final int? index;
-  const PhotoViewView({Key? key,this.photos, this.index}) : super(key: key);
-  void saveimage(index) async {
-    await GallerySaver.saveImage(photos![index!].path);
-  }
+  const PhotoViewView({Key? key, this.photos, this.index}) : super(key: key);
+  // void saveimage(index) async {
+  //  // await GallerySaver.saveImage(photos![index!].path);
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: appbar(title: 'PhotoView'),
-     /* appBar: AppBar(
-        automaticallyImplyLeading: true,
-        backgroundColor: Colors.transparent,
+      appBar: AppBar(
         elevation: 0,
-      ),*/
-      body:  PhotoViewGallery.builder(
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
+      body: PhotoViewGallery.builder(
         builder: (BuildContext context, int index) =>
             PhotoViewGalleryPageOptions.customChild(
                 minScale: PhotoViewComputedScale.covered,
@@ -36,80 +38,15 @@ class PhotoViewView extends GetView<PhotoViewController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height,
-                            child: CachedNetworkImage(
-                              imageUrl: photos![index].path,
-                              placeholder: (context, url) => Container(
-                                color: Colors.grey,
-                              ),
-                              errorWidget: (context, url, error) => Container(
-                                color: Colors.red.shade400,
-                              ),
-                            ),
-                          ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/2,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15,right: 15),
+                        child: Image.asset(
+                          photos![index],
                         ),
-                        Obx(() =>     Container(
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        photos![index].isSelected.value = true;
-                                      },
-                                      child:  CircleAvatar(
-                                        backgroundColor: Colors.white,
-                                        child: photos![index].isSelected.value
-                                            ? InkWell(
-                                            onTap: () {
-                                              photos![index]
-                                                  .isSelected.value  = false;
-                                            },
-                                            child: CircleAvatar(
-                                              backgroundColor:
-                                              Colors.white,
-                                              child: Image.asset(
-                                                'assets/heart(1).png',
-                                                height: 35,
-                                              ),
-                                            ))
-                                            : Image.asset(
-                                          "assets/heart.png",
-                                          height: 35,
-                                        ),
-                                      )),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  CircleAvatar(
-                                    backgroundColor: Colors.red[100],
-                                    child: IconButton(
-                                      onPressed: () {
-                                        saveimage(index);
-                                        Get.snackbar(
-                                          'picture downloded',
-                                          "Please Chack your Phone Gallery",
-                                          icon: Icon(Icons.photo,
-                                              color: Colors.black),
-                                          snackPosition: SnackPosition.BOTTOM,
-                                        );
-                                      },
-                                      icon: Icon(Icons.download),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )),
-                        ) ],
+                      ),
+
                     ),
                   ],
                 )),

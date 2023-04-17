@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 import '../../../utils/global_widgets/appBar.dart';

@@ -54,7 +54,9 @@ abstract class Routes {
   static const QUIRY_SCREEN = _Paths.QUIRY_SCREEN;
   static const BUSROOT_DETAILS = _Paths.BUSROOT_DETAILS;
   static const VIDIO_ALBUMS = _Paths.VIDIO_ALBUMS;
- }
+  static const GALLERY = _Paths.GALLERY;
+  static const PHOTOS_VIDIOS_GALLERY = _Paths.PHOTOS_VIDIOS_GALLERY;
+}
 
 abstract class _Paths {
   _Paths._();
@@ -109,4 +111,6 @@ abstract class _Paths {
   static const QUIRY_SCREEN = '/quiry-screen';
   static const BUSROOT_DETAILS = '/busroot-details';
   static const VIDIO_ALBUMS = '/vidio-albums';
- }
+  static const GALLERY = '/gallery';
+  static const PHOTOS_VIDIOS_GALLERY = '/photos-vidios-gallery';
+}

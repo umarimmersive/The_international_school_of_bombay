@@ -10,7 +10,7 @@ AppBar appbar({required String title,bool icon_button=true}) => AppBar(
         color: Colors.black, //change your color here
       ),
       elevation: 0,
-      leadingWidth: 30,
+      leadingWidth: 10,
       backgroundColor: Color(ColorValues.RED),
       automaticallyImplyLeading: false,
       title: Row(

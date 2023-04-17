@@ -24,6 +24,8 @@ import '../modules/Edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/Edit_profile/views/edit_profile_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
 import '../modules/Events/views/events_view.dart';
+import '../modules/Gallery/bindings/gallery_binding.dart';
+import '../modules/Gallery/views/gallery_view.dart';
 import '../modules/Home_slider_details/bindings/home_slider_details_binding.dart';
 import '../modules/Home_slider_details/views/home_slider_details_view.dart';
 import '../modules/Hoppiness/bindings/hoppiness_binding.dart';
@@ -54,6 +56,8 @@ import '../modules/PhotoGallary/bindings/photo_gallary_binding.dart';
 import '../modules/PhotoGallary/views/photo_gallary_view.dart';
 import '../modules/PhotoView/bindings/photo_view_binding.dart';
 import '../modules/PhotoView/views/photo_view_view.dart';
+import '../modules/PhotosVidiosGallery/bindings/photos_vidios_gallery_binding.dart';
+import '../modules/PhotosVidiosGallery/views/photos_vidios_gallery_view.dart';
 import '../modules/PrivacyPolicy/bindings/privacy_policy_binding.dart';
 import '../modules/PrivacyPolicy/views/privacy_policy_view.dart';
 import '../modules/QuiryScreen/bindings/quiry_screen_binding.dart';
@@ -331,5 +335,15 @@ class AppPages {
       page: () => const VidioAlbumsView(),
       binding: VidioAlbumsBinding(),
     ),
-   ];
+    GetPage(
+      name: _Paths.GALLERY,
+      page: () => const GalleryView(),
+      binding: GalleryBinding(),
+    ),
+    GetPage(
+      name: _Paths.PHOTOS_VIDIOS_GALLERY,
+      page: () => const PhotosVidiosGalleryView(),
+      binding: PhotosVidiosGalleryBinding(),
+    ),
+  ];
 }

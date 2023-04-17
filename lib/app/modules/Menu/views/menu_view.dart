@@ -13,15 +13,16 @@ import '../controllers/menu_controller.dart';
 
 class MenuView extends GetView<MenuuController> {
   const MenuView({Key? key}) : super(key: key);
-  static bool isDark(BuildContext context){
+  static bool isDark(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark;
   }
+
   @override
   Widget build(BuildContext context) {
     var color = (isDark(context) ? Color(0xFF414040) : Colors.white).obs;
     var color1 = (isDark(context) ? Colors.white : Colors.black).obs;
     return Scaffold(
-        appBar: appbar(title: 'Menu',icon_button: false),
+        appBar: appbar(title: 'Menu', icon_button: false),
         body: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
@@ -35,33 +36,40 @@ class MenuView extends GetView<MenuuController> {
                     SizedBox(
                       height: 10,
                     ),
-                    userData!.profile_image.isNotEmpty?
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(5)),
-                      height: 80,
-                      width: 80,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Image.network(
-                            "${ApiService.IMAGE_URL+userData!.profile_image}",
-                            fit: BoxFit.cover,
-                          )),
-                    ):
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
-                        height: 80,
-                        width: 80,
-                        child: Center(
-                          child: Text_widget(Simpletext: userData!.full_name.toString().substring(0,1)+userData!.lastname.toString().substring(0,1),
-                            fontSize: 15.0,maxLines: 1,color: Colors.red,
-                          ),
-                        )
-                    ),
-                   /* Padding(
+                    userData!.profile_image.isNotEmpty
+                        ? Container(
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(5)),
+                            height: 80,
+                            width: 80,
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5),
+                                child: Image.network(
+                                  "${ApiService.IMAGE_URL + userData!.profile_image}",
+                                  fit: BoxFit.cover,
+                                )),
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5)),
+                            height: 80,
+                            width: 80,
+                            child: Center(
+                              child: Text_widget(
+                                Simpletext: userData!.full_name
+                                        .toString()
+                                        .substring(0, 1) +
+                                    userData!.lastname
+                                        .toString()
+                                        .substring(0, 1),
+                                fontSize: 15.0,
+                                maxLines: 1,
+                                color: Colors.red,
+                              ),
+                            )),
+                    /* Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 0, horizontal: 14),
                       child: CircleAvatar(
@@ -89,10 +97,10 @@ class MenuView extends GetView<MenuuController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text_widget(
-                                color: ColorValues.WHITE_COLORE,
+                                  color: ColorValues.WHITE_COLORE,
                                   Simpletext: 'Mode',
                                   fontSize: 15.0,
-                                   fontWeight: FontWeight.w700),
+                                  fontWeight: FontWeight.w700),
                               Obx(() => Transform.scale(
                                     scale: 1.1,
                                     child: Switch(
@@ -129,14 +137,12 @@ class MenuView extends GetView<MenuuController> {
                 ),
               ),
               Container(
-
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage('Path to your image')),
-                  borderRadius: BorderRadius.all(Radius.circular(16.0)),
-                  color: color.value
-                ),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage('Path to your image')),
+                    borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                    color: color.value),
                 margin: EdgeInsets.only(top: 160),
                 child: Column(
                   children: [
@@ -175,7 +181,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Edit Profile',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -186,7 +192,7 @@ class MenuView extends GetView<MenuuController> {
                           child: GestureDetector(
                             onTap: () {
                               //Get.toNamed(Routes.PHOTO_GALLARY);
-                              Get.toNamed(Routes.ALBUM);
+                              Get.toNamed(Routes.PHOTOS_VIDIOS_GALLERY);
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
@@ -211,46 +217,9 @@ class MenuView extends GetView<MenuuController> {
                                         Expanded(
                                             flex: 2,
                                             child: Text_widget(
-                                              Simpletext: 'Images',
+                                              Simpletext: 'Gallery',
                                               fontSize: 14.0,
-                                             )),
-                                      ],
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.toNamed(Routes.VIDIO_ALBUMS);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: Card(
-                                elevation: 05,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Container(
-                                    height: 90,
-                                    width: 90,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 2,
-                                            child: Image.asset(
-                                              'assets/images/videocamera.png',
-                                              height: 20,
-                                              width: 20,
-                                              color: Colors.red,
                                             )),
-                                        Expanded(
-                                            flex: 2,
-                                            child: Text_widget(
-                                              Simpletext: 'Videos',
-                                              fontSize: 14.0,
-                                             )),
                                       ],
                                     )),
                               ),
@@ -291,7 +260,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Our Campuses',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -328,7 +297,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Our Philosopher',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -361,7 +330,7 @@ class MenuView extends GetView<MenuuController> {
                                           child: Text_widget(
                                             Simpletext: 'Rate Us',
                                             fontSize: 14.0,
-                                           )),
+                                          )),
                                     ],
                                   )),
                             ),
@@ -402,7 +371,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Refer',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -439,7 +408,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Contact us',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -451,7 +420,7 @@ class MenuView extends GetView<MenuuController> {
                             padding: const EdgeInsets.all(05.0),
                             child: GestureDetector(
                               onTap: () {
-                               my_local_service.logout();
+                                my_local_service.logout();
                               },
                               child: Card(
                                 elevation: 05,
@@ -476,7 +445,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Logout',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -517,7 +486,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'About',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -556,7 +525,7 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Other Activities',
                                               fontSize: 14.0,
-                                             )),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -569,7 +538,7 @@ class MenuView extends GetView<MenuuController> {
                       height: MediaQuery.of(context).size.height / 30,
                     ),
                     Container(
-                       child: Column(
+                      child: Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
