@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../../../models/Knowledge_base_model.dart';
+import '../../../models/Upcoming_event_model.dart';
+import '../../../utils/constants/api_service.dart';
+
 class UpcomingEventController extends GetxController {
   //TODO: Implement UpcomingEventController
   List data=[
@@ -28,8 +32,40 @@ class UpcomingEventController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
+    print('--------------------------');
+    Get_upcoming_Event();
     super.onInit();
   }
+
+  final upcoming_event = <Upcoming_event_model>[].obs;
+
+
+  final isLoading=false.obs;
+  Future Get_upcoming_Event() async {
+    try {
+      isLoading(true);
+      var response = await ApiService().EventsList('2');
+
+      print('------------------------${response}');
+      if (response['status'] == true) {
+
+        List dataList = response['data'].toList();
+        upcoming_event.value = dataList.map((json) => Upcoming_event_model.fromJson(json)).toList();
+
+        print('------------------------${upcoming_event}');
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
 
   @override
   void onReady() {

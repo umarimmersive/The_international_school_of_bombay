@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
 import '../../../utils/constants/ColorValues.dart';
-import '../../../utils/global_widgets/Appbaar.dart';
-import '../../../utils/global_widgets/Text_widget.dart';
+import '../../../utils/constants/api_service.dart';
+import '../../../utils/global_widgets/globle_var.dart';
 import '../../../utils/global_widgets/textEnter.dart';
 import '../controllers/events_controller.dart';
 
@@ -12,128 +13,139 @@ class EventsView extends GetView<EventsController> {
   const EventsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;
+    var color1 = (isDark(context) ? Colors.white : Colors.red).obs;
     return Scaffold(
-      appBar: appbar(title: 'Events'),
+     // appBar: appbar(title: 'Events'),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            InkWell(
-              onTap: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Container(
-                        width: 300,
-                      );
-                    });
-              },
-              child: Obx(
-                () => Container(
-                  height: MediaQuery.of(context).size.height / 16,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    //physics: NeverScrollableScrollPhysics(),
-                    itemCount: controller.data.length,
-                    itemBuilder: (context, i) {
-                      return GestureDetector(
-                        onTap: () {
-                          if (controller.is_bool[i] == false) {
-                            controller.is_bool[i] = true;
-                          }
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 00.0, vertical: 00),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: TextFieldShowCOLOR(
-                                  color: controller.is_bool[i] == false
-                                      ? ColorValues.MIDIUM_LITE_TEXT
-                                      : Color(ColorValues.RED),
-                                  fontsize: 16.0,
-                                  text: '${controller.data[i]['date']}',
-                                  height: 1.0,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Roboto',
-                                ),
+        child:  Obx((){
+          if(controller.isLoading.isTrue){
+            return Center(
+                child: SpinKitThreeBounce(
+                  color: Colors.red,
+                  size: 40,
+                ));
+          }else{
+            return SafeArea(
+              child: Column(
+
+                children: [
+                  Container(
+                    color: ColorValues.kRedColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 5,bottom: 5),
+                      child: Row(
+                        children: [
+                          IconButton(onPressed: (){
+                            Get.back();
+                          }, icon: Icon(Icons.arrow_back),color: Colors.white,),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10),
+                              child: TextFieldShowCOLOR(
+
+
+                                textAlign: TextAlign.start,
+                                color: Colors.white,
+                                //color: color1.value,
+                                // maxLines: 100,
+                                fontsize: 18.0,
+                                text: '${controller.EventDetails[0].title}',
+                                //height: 1.5,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Roboto',
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10.0, top: 04),
-                                child: TextFieldShowCOLOR(
-                                  color: controller.is_bool[i] == false
-                                      ? ColorValues.MIDIUM_LITE_TEXT
-                                      : Color(ColorValues.RED),
-                                  fontsize: 16.0,
-                                  text: '${controller.data[i]['title']}',
-                                  height: 1.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Roboto',
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Divider(color: ColorValues.DIVIDER_COLOR_ONE),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0, bottom: 05, top: 00),
-              child: Text_widget(
-                color: ColorValues.BLACK_TEXT,
-                fontSize: 14.0,
-                Simpletext: '35 Photos',
-                height: 1.0,
-                fontWeight: FontWeight.w400,
-                fontFamily: 'Roboto',
-              ),
-            ),
-            Expanded(
-              child: GridView.count(
-                physics: ScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
-                shrinkWrap: true,
-                children: List.generate(
-                  20,
-                  (index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/gallery.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20.0),
-                          ),
-                        ),
+                        ],
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView(children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+
+
+
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15),
+                              child: Container(
+                                  height: 200,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        ApiService.IMAGE_URL+controller.EventDetails[0].image!,
+                                        fit: BoxFit.cover,
+                                      )))),
+
+
+
+
+
+                          SizedBox(
+                            height: 05,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 10,bottom: 15),
+                            child:
+                            Html(
+                                data: "${controller.EventDetails[0].content}",
+                                style: {
+                                  "img": Style(
+                                      width: Width.auto(),
+                                      height: Height.auto()
+                                  ),
+                                  // tables will have the below background color
+                                  "table": Style(
+                                    backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                                  ),
+                                  // some other granular customizations are also possible
+                                  "tr": Style(
+                                    border: Border(bottom: BorderSide(color: Colors.grey)),
+                                  ),
+                                  "th": Style(
+                                    padding: EdgeInsets.all(6),
+                                    backgroundColor: Colors.grey,
+                                  ),
+                                  "td": Style(
+                                    padding: EdgeInsets.all(6),
+                                    alignment: Alignment.topLeft,
+                                  ),
+                                  // text that renders h1 elements will be red
+                                  "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                                }
+                            ),
+                            /*TextFieldShowCOLOR(
+                          textAlign: TextAlign.justify,
+                          maxLines: 100,
+                          color: color1.value,
+                          fontsize: 16.0,
+                          text: '${controller.Slider_details[0].content}',
+                          height: 1.5,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: 'Roboto',
+                        ),*/
+                          ),
+                        ],
+                      ),
+
+                    ],),
+                  )
+
+                ],
               ),
-            ),
-          ],
-        ),
+            );
+          }
+        }
+        )
       ),
     );
   }

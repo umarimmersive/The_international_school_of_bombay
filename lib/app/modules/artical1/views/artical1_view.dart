@@ -1,74 +1,150 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/ColorValues.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text_widget.dart';
 
 import '../../../utils/global_widgets/appBar.dart';
+import '../../../utils/global_widgets/globle_var.dart';
+import '../../../utils/global_widgets/textEnter.dart';
 import '../controllers/artical1_controller.dart';
 
 class Artical1View extends GetView<Artical1Controller> {
   const Artical1View({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;
+    var color1 = (isDark(context) ? Colors.white : Colors.red).obs;
     return Scaffold(
-        appBar: appbar(title: 'Artical'),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                Text(                  textAlign:TextAlign.justify,
+     //   appBar: appbar(title: 'Knowledge Base'),
+        body:
+        Obx((){
+          if(controller.isLoading.isTrue){
+            return Center(
+                child: SpinKitThreeBounce(
+                  color: Colors.red,
+                  size: 40,
+                ));
+          }else{
+            return SafeArea(
+              child: Column(
+                children: [
+                  Container(
+                    color: ColorValues.kRedColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 5,bottom: 5),
+                      child: Row(
+                        children: [
+                          IconButton(onPressed: (){
+                            Get.back();
+                          }, icon: Icon(Icons.arrow_back),color: Colors.white,),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10),
+                              child: TextFieldShowCOLOR(
+                                maxLines:9,
 
-                  "Collaboration at the heart of school reform",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400,fontFamily: "Roboto"),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                          "assets/images/Collaboration-at-the-heart-of-school-reforms (1).jpg")),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                    textAlign: TextAlign.justify,
-                    "Collaboration has always been a key aspect of school education reform – from collaboration among students in the classroom to peer collaboration among teachers, and parent-school collaboration to collaboration for policy reforms.The challenge is, how to make these collaborations effective. How to set the right expectations for the participants. How to ensure there are benefits for all those involved. Francis Joseph is Executive Director (India) of GEMS Education and has been named one of the top 25 change-makers in India.shares with Teacher leanings from his experience of establishing more than 100 schools of multiple curricula in India and the Middle East, and working with the Government in large-scale educational reforms."),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Trust is essential for true collaboration",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                    textAlign: TextAlign.justify,
-                    "‘Ensuring collaboration in its true sense is one of the most challenging tasks in today’s time and mutual trust is essential for its success,’ Joseph say‘In my perspective, true collaboration happens when stakeholders are at par with each other and trusted by each other. It can’t happen with one having an edge over others. It’s about appreciating each other’s perspectives and opinions.’"),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  "Success stories",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                    textAlign: TextAlign.justify,
-                    "Joseph shares 2 successful collaborative projects he’s participated in, highlighting that it becomes a powerful tool, especially in emergencies Cancellation of Board exams Board examinations were cancelled in 2021 due to the rise in COVID-19 infections. Joseph, one of the experts working on behalf of the Government of Maharashtra, was collaborating with the International Baccalaureate Board, Cambridge Board and the Council for the Indian School Certificate Examinations to work on measures for the cancellation of exams. He says every Board had its own challenges which each stakeholder had to understand and support. Working on the protocols for the cancellation of exams was only the first step for intra-Board\ncollaborations, followed by opportunities in areas of planning examinations, reopening schools, safety protocols, online teaching, curriculum reduction, and so on. Marathi made mandatory The Government of Maharashtra intended to pass the Maharashtra Compulsory Teaching and Learning of Marathi Language in Schools Act, 2020 for making teaching and learning of Marathi language compulsory in all schools in the State of Maharashtra.Joseph was part of a series of consultations that enabled the schools to implement the Act. School leaders, teachers, parents, and students were consulted so that they understand and accept the implications of the policy. These efforts developed trust among stakeholders, which led to the implementation of the Act and opened doors to many other policies being successfully implemented through collaboration and consultation among all stakeholders.")
-              ],
-            ),
-          ),
-        ));
+
+                                textAlign: TextAlign.start,
+                                color: Colors.white,
+                                //color: color1.value,
+                                // maxLines: 100,
+                                fontsize: 18.0,
+                                text: '${controller.KnowledgeBaseDetailsList[0].title}',
+                                //height: 1.5,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Roboto',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: ListView(children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: Container(
+                                  height: 200,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        ApiService.IMAGE_URL+controller.KnowledgeBaseDetailsList[0].image!,
+                                        fit: BoxFit.cover,
+                                      )))),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 10,bottom: 15),
+                            child:
+                            Html(
+                                data: "${controller.KnowledgeBaseDetailsList[0].content}",
+                                style: {
+                                  "img": Style(
+                                      width: Width.auto(),
+                                      height: Height.auto()
+                                  ),
+                                  // tables will have the below background color
+                                  "table": Style(
+                                    backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                                  ),
+                                  // some other granular customizations are also possible
+                                  "tr": Style(
+                                    border: Border(bottom: BorderSide(color: Colors.grey)),
+                                  ),
+                                  "th": Style(
+                                    padding: EdgeInsets.all(6),
+                                    backgroundColor: Colors.grey,
+                                  ),
+                                  "td": Style(
+                                    padding: EdgeInsets.all(6),
+                                    alignment: Alignment.topLeft,
+                                  ),
+                                  // text that renders h1 elements will be red
+                                  "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                                }
+                            ),
+                            /*TextFieldShowCOLOR(
+                          textAlign: TextAlign.justify,
+                          maxLines: 100,
+                          color: color1.value,
+                          fontsize: 16.0,
+                          text: '${controller.Slider_details[0].content}',
+                          height: 1.5,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: 'Roboto',
+                        ),*/
+                          ),
+                        ],
+                      ),
+
+                    ],),
+                  )
+                ],
+              ),
+            );
+          }
+        }
+
+        )
+
+
+
+    );
   }
 }

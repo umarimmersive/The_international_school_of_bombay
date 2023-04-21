@@ -6,14 +6,14 @@ import 'app/routes/app_pages.dart';
 import 'app/utils/global_widgets/ThemeClass.dart';
 
 void main() {
-
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ]);
 
   runApp(const MyApp());
-  WidgetsFlutterBinding.ensureInitialized();
+
 }
 
 

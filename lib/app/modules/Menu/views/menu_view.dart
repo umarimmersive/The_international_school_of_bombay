@@ -141,7 +141,7 @@ class MenuView extends GetView<MenuuController> {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage('Path to your image')),
-                    borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
                     color: color.value),
                 margin: EdgeInsets.only(top: 160),
                 child: Column(
@@ -543,23 +543,32 @@ class MenuView extends GetView<MenuuController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset(
-                                "assets/images/fbimage.jpeg",
-                                height: 22,
+                              InkWell(
+                                onTap: (){},
+                                child: Image.asset(
+                                  "assets/images/icons8-facebook-250.png",
+                                  height: 30,
+                                ),
                               ),
                               SizedBox(
                                 width: 18,
                               ),
-                              Image.asset(
-                                "assets/images/newinstagram.jpg",
-                                height: 24,
+                              InkWell(
+                                onTap: (){},
+                                child: Image.asset(
+                                  "assets/images/icons8-instagram-logo-96.png",
+                                  height: 23,
+                                ),
                               ),
                               SizedBox(
                                 width: 18,
                               ),
-                              Image.asset(
-                                "assets/images/youtubelogo.png",
-                                height: 26,
+                              InkWell(
+                                onTap: (){},
+                                child: Image.asset(
+                                  "assets/images/icons8-youtube-250.png",
+                                  height: 32,
+                                ),
                               ),
                             ],
                           ),

@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,13 +23,21 @@ class SplashController extends GetxController {
 
     super.onInit();
   }
-  init(){
-    Future.delayed(const Duration(seconds: 3)).then((value) async {
+  init() async {
+/*
+    final deviceInfoPlugin = DeviceInfoPlugin();
+    final deviceInfo = await deviceInfoPlugin.deviceInfo;
+    final allInfo = deviceInfo.data;
+
+    print('---------------------${allInfo}');*/
+
+
+    Future.delayed(const Duration(seconds: 2)).then((value) async {
       sharedPreference = await SharedPreferences.getInstance();
       if(my_local_service.isLoggedIn()){
           Get.toNamed(Routes.DESHBOARD_SCREEN);
       }else{
-        Get.toNamed(Routes.LOGIN);
+          Get.toNamed(Routes.LOGIN);
 
       }
     });

@@ -5,6 +5,7 @@ import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 
 import '../../../utils/global_widgets/appBar.dart';
 import '../../PhotoGallary/views/photo_gallary_view.dart';
@@ -33,7 +34,7 @@ class PhotoViewView extends GetView<PhotoViewController> {
         builder: (BuildContext context, int index) =>
             PhotoViewGalleryPageOptions.customChild(
                 minScale: PhotoViewComputedScale.covered,
-                heroAttributes: PhotoViewHeroAttributes(tag: photos![index]),
+                heroAttributes: PhotoViewHeroAttributes(tag: photos![index].item_value),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,8 +43,8 @@ class PhotoViewView extends GetView<PhotoViewController> {
                       height: MediaQuery.of(context).size.height/2,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15,right: 15),
-                        child: Image.asset(
-                          photos![index],
+                        child: Image.network(
+                          ApiService.IMAGE_URL+photos![index].item_value,
                         ),
                       ),
 

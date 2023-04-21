@@ -117,7 +117,7 @@ class OtherActivitiesView extends GetView<OtherActivitiesController> {
                                             controller.imagesdemo[index],
                                             fit: BoxFit.cover,
                                           ),
-                                          ConfettiWidget(
+                                       /*   ConfettiWidget(
                                             confettiController:
                                                 controller.controllerTopCenter,
                                             blastDirectionality: BlastDirectionality
@@ -135,7 +135,7 @@ class OtherActivitiesView extends GetView<OtherActivitiesController> {
                                             ], // manually specify the colors to be used
                                             createParticlePath:
                                                 drawStar, // define a custom shape/path.
-                                          ),
+                                          ),*/
                                         ],
                                       ),
                                     );

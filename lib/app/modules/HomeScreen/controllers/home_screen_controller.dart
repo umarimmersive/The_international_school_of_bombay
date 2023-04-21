@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:the_international_school_of_bombay/app/models/Announcement_model.dart';
 import 'package:the_international_school_of_bombay/app/models/Sibling_model.dart';
 
+import '../../../models/Event_list_model.dart';
+import '../../../models/Knowledge_base_model.dart';
 import '../../../models/Slider_model.dart';
 import '../../../utils/constants/api_service.dart';
 
@@ -11,6 +15,17 @@ class HomeScreenController extends GetxController {
   final count = 0.obs;
   final groupValue = 1.obs;
   final isChecked = [].obs;
+
+
+  RefreshController refreshController =
+  RefreshController(initialRefresh: false);
+  GlobalKey contentKey = GlobalKey();
+  GlobalKey refresherKey = GlobalKey();
+
+
+
+
+
 
   final Image = 'assets/background.jpg'.obs;
   final profile_image = 'assets/profileimages.jpeg'.obs;
@@ -160,7 +175,6 @@ class HomeScreenController extends GetxController {
   ];
 
 
-
   final data=[
     {
       "title":"Function",
@@ -191,12 +205,30 @@ class HomeScreenController extends GetxController {
       "subTitleText": 'Class 12 Shift Morning',
     },
   ];
+
+
   @override
   void onInit() {
     Get_deshbord_section();
     Get_Slider();
     Get_sibling();
+    Get_Annoucement();
+    Get_Knowledge();
+  //  Get_Adv_list();
+    Get_Event_list();
+    Get_banner_list();
     super.onInit();
+  }
+
+  refrshApi() async{
+   await Get_deshbord_section();
+   await Get_Slider();
+   await Get_sibling();
+   await  Get_Annoucement();
+   await  Get_Knowledge();
+ //  await  Get_Adv_list();
+   await  Get_Event_list();
+   await  Get_banner_list();
   }
 
 
@@ -239,13 +271,14 @@ class HomeScreenController extends GetxController {
 
 
   final Slider = <Slider_model>[].obs;
+  final isLoading_slider = false.obs;
 
 
 
   Future Get_Slider() async {
     Slider.value.clear();
     try {
-      isLoading(true);
+      isLoading_slider(true);
 
       var response = await ApiService().Slider();
 
@@ -258,14 +291,14 @@ class HomeScreenController extends GetxController {
         print('sliderrrr-------------${Slider.value}');
 
         update();
-        isLoading(false);
+        isLoading_slider(false);
       } else if (response['status'] == false) {
 
-        isLoading(false);
+        isLoading_slider(false);
         update();
       }
     } finally {
-      isLoading(false);
+      isLoading_slider(false);
       update();
 
     }
@@ -307,6 +340,120 @@ class HomeScreenController extends GetxController {
 
     }
   }
+
+
+  final Announcement_list = <Announcement_model>[].obs;
+
+  Future Get_Annoucement() async {
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .Annoucement_list();
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        Announcement_list.value = dataList.map((json) => Announcement_model.fromJson(json)).toList();
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
+
+
+  final KnowledgeBaseList = <Knowledge_base_model>[].obs;
+
+  Future Get_Knowledge() async {
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .KnowledgeBaseList();
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        KnowledgeBaseList.value = dataList.map((json) => Knowledge_base_model.fromJson(json)).toList();
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
+
+
+  final Event_list = <Event_list_model>[].obs;
+
+  Future Get_Event_list() async {
+    try {
+      isLoading(true);
+      // Adv_list.clear();
+      var response = await ApiService()
+          .EventsList('1');
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        Event_list.value = dataList.map((json) => Event_list_model.fromJson(json)).toList();
+
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
+
+  final Adv_list = <Avd_model>[].obs;
+  final adv_image=''.obs;
+
+  Future Get_banner_list() async {
+    try {
+      isLoading(true);
+      Adv_list.clear();
+      var response = await ApiService()
+          .Advertisement();
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        Adv_list.value = dataList.map((json) => Avd_model.fromJson(json)).toList();
+        adv_image.value=Adv_list[0].image!;
+        print('BottomSheetImage---------------------------------${adv_image.value}');
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
 
 
   @override

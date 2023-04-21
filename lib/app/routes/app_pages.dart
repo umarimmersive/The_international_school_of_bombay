@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../modules/About/bindings/about_binding.dart';
 import '../modules/About/views/about_view.dart';
 import '../modules/Academic_content/bindings/academic_content_binding.dart';
@@ -56,8 +55,8 @@ import '../modules/PhotoGallary/bindings/photo_gallary_binding.dart';
 import '../modules/PhotoGallary/views/photo_gallary_view.dart';
 import '../modules/PhotoView/bindings/photo_view_binding.dart';
 import '../modules/PhotoView/views/photo_view_view.dart';
-import '../modules/PhotosVidiosGallery/bindings/photos_vidios_gallery_binding.dart';
-import '../modules/PhotosVidiosGallery/views/photos_vidios_gallery_view.dart';
+import '../modules/PhotosVideosGallery/bindings/photos_videos_gallery_binding.dart';
+import '../modules/PhotosVideosGallery/views/photos_videos_gallery_view.dart';
 import '../modules/PrivacyPolicy/bindings/privacy_policy_binding.dart';
 import '../modules/PrivacyPolicy/views/privacy_policy_view.dart';
 import '../modules/QuiryScreen/bindings/quiry_screen_binding.dart';
@@ -86,14 +85,6 @@ import '../modules/aboutus/bindings/aboutus_binding.dart';
 import '../modules/aboutus/views/aboutus_view.dart';
 import '../modules/artical1/bindings/artical1_binding.dart';
 import '../modules/artical1/views/artical1_view.dart';
-import '../modules/artical2/bindings/artical2_binding.dart';
-import '../modules/artical2/views/artical2_view.dart';
-import '../modules/artical3/bindings/artical3_binding.dart';
-import '../modules/artical3/views/artical3_view.dart';
-import '../modules/artical4/bindings/artical4_binding.dart';
-import '../modules/artical4/views/artical4_view.dart';
-import '../modules/artical5/bindings/artical5_binding.dart';
-import '../modules/artical5/views/artical5_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
 import '../modules/syllabus/views/syllabus_view.dart';
 
@@ -262,28 +253,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ARTICAL1,
-      page: () => const Artical1View(),
+      page: () => Artical1View(),
       binding: Artical1Binding(),
-    ),
-    GetPage(
-      name: _Paths.ARTICAL2,
-      page: () => const Artical2View(),
-      binding: Artical2Binding(),
-    ),
-    GetPage(
-      name: _Paths.ARTICAL3,
-      page: () => const Artical3View(),
-      binding: Artical3Binding(),
-    ),
-    GetPage(
-      name: _Paths.ARTICAL4,
-      page: () => const Artical4View(),
-      binding: Artical4Binding(),
-    ),
-    GetPage(
-      name: _Paths.ARTICAL5,
-      page: () => const Artical5View(),
-      binding: Artical5Binding(),
     ),
     GetPage(
       name: _Paths.ACCEDMIC_CONTENT,
@@ -342,8 +313,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PHOTOS_VIDIOS_GALLERY,
-      page: () => const PhotosVidiosGalleryView(),
-      binding: PhotosVidiosGalleryBinding(),
+      page: () => PhotosVideosGalleryView(),
+      binding: PhotosVideosGalleryBinding(),
     ),
   ];
 }

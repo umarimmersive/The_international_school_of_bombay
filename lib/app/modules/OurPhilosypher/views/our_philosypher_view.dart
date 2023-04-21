@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:get/get.dart';
-import 'package:hexcolor/hexcolor.dart';
-import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/appBar.dart';
+import '../../../utils/global_widgets/globle_var.dart';
 import '../controllers/our_philosypher_controller.dart';
 
 class OurPhilosypherView extends GetView<OurPhilosypherController> {
   const OurPhilosypherView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;
     return Scaffold(
         appBar: appbar(title: 'Our Philosopher'),
-
         body: Obx((){
           if(controller.isLoading.isTrue){
             return Center(
@@ -56,7 +54,8 @@ class OurPhilosypherView extends GetView<OurPhilosypherController> {
                               alignment: Alignment.topLeft,
                             ),
                             // text that renders h1 elements will be red
-                            "p": Style(color: Colors.black,fontSize: FontSize.medium),
+                            "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                            "li": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
                           },
                       ),
                     )

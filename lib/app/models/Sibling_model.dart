@@ -11,6 +11,7 @@ class Sibling_model {
   String profile_image;
   String lastname;
   String Class;
+  String shift;
   String father_name;
   String mother_name;
   String section;
@@ -25,6 +26,7 @@ class Sibling_model {
     required this.full_name,
     required this.lastname,
     required this.father_name,
+    required this.shift,
     required this.mother_name,
     required this.section,
     required this.fullData
@@ -37,6 +39,7 @@ class Sibling_model {
       full_name: userMap['full_name'].toString()??'NA',
       lastname: userMap['lastname'].toString()??'NA',
       Class: userMap['class'].toString()??"",
+      shift: userMap['shift'].toString()??"",
       father_mobile: userMap['father_mobile'].toString()??'',
       profile_image: userMap['profile_image'].toString()??'null',
       father_name: userMap['father_name'].toString()??'',

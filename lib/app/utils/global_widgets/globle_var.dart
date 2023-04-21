@@ -19,3 +19,10 @@ late SharedPreferences sharedPreference;
 UserModal? userData;
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
+bool isDark(BuildContext context){
+return Theme.of(context).brightness == Brightness.dark;
+}
+

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
-import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/academic_content_controller.dart';
 

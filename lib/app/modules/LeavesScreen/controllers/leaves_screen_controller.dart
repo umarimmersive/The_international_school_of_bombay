@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/global_widgets/globle_var.dart';
+
 class LeavesScreenController extends GetxController {
+  TextEditingController name =TextEditingController();
+  TextEditingController fathername =TextEditingController();
+  TextEditingController Class =TextEditingController();
   //TODO: Implement LeavesScreenController
   RxBool fordetails = false.obs;
   DateTime? date;
@@ -86,6 +91,9 @@ class LeavesScreenController extends GetxController {
 
   @override
   void onInit() {
+    name.text=userData!.full_name;
+    fathername.text=userData!.father_name;
+    Class.text=userData!.Class;
     super.onInit();
   }
 

@@ -3,12 +3,14 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import '../../../utils/global_widgets/appBar.dart';
+import '../../../utils/global_widgets/globle_var.dart';
 import '../controllers/school_rools_screen_controller.dart';
 
 class SchoolRoolsScreenView extends GetView<SchoolRoolsScreenController> {
   const SchoolRoolsScreenView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;
     return Scaffold(
         appBar: appbar(title: 'School Rules'),
         body:
@@ -36,6 +38,7 @@ class SchoolRoolsScreenView extends GetView<SchoolRoolsScreenController> {
                     ),
                     // some other granular customizations are also possible
                     "tr": Style(
+
                       border: Border(bottom: BorderSide(color: Colors.grey)),
                     ),
                     "th": Style(
@@ -47,7 +50,8 @@ class SchoolRoolsScreenView extends GetView<SchoolRoolsScreenController> {
                       alignment: Alignment.topLeft,
                     ),
                     // text that renders h1 elements will be red
-                    "p": Style(color: Colors.black,fontSize: FontSize.large),
+                    "p": Style(color: htmlcolore.value,fontSize: FontSize.xxLarge),
+                    "li": Style(color: htmlcolore.value,fontSize: FontSize.xxLarge),
                   }
               ),
               /*TextFieldShowCOLOR(

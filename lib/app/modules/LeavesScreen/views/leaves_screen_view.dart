@@ -23,15 +23,21 @@ class LeavesScreenView extends GetView<LeavesScreenController> {
             bottom: TabBar(
               indicatorColor: Colors.white,
               tabs: [
-                Text(
-                  "Apply Leave",
-                  style:
-                      TextStyle(fontSize: 15, overflow: TextOverflow.ellipsis),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Apply Leave",
+                    style:
+                        TextStyle(fontSize: 15, overflow: TextOverflow.ellipsis),
+                  ),
                 ),
-                Text(
-                  "Leave Status",
-                  style:
-                      TextStyle(fontSize: 15, overflow: TextOverflow.ellipsis),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Leave Status",
+                    style:
+                        TextStyle(fontSize: 15, overflow: TextOverflow.ellipsis),
+                  ),
                 )
                 // Add Tabs here
               ],
@@ -91,6 +97,7 @@ class LeavesScreenView extends GetView<LeavesScreenController> {
                       ),
 
                       TextFieldDesigned(
+                        controller: controller.name,
                         maxLines: 2,
                         fontSize: 14,
                         maxLength: 50,
@@ -118,6 +125,7 @@ class LeavesScreenView extends GetView<LeavesScreenController> {
                       ),
 
                       TextFieldDesigned(
+                        controller: controller.fathername,
                         maxLines: 2,
                         fontSize: 14,
                         maxLength: 50,
@@ -144,6 +152,7 @@ class LeavesScreenView extends GetView<LeavesScreenController> {
                       ),
 
                       TextFieldDesigned(
+                        controller: controller.Class,
                         maxLines: 2,
                         fontSize: 14,
                         maxLength: 50,

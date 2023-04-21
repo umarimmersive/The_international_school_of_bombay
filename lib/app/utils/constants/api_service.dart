@@ -22,7 +22,17 @@ class ApiService {
   static final String schoolRules = "schoolRules";
   static final String siblingsList = "siblingsList";
   static final String submitQuery = "submitQuery";
-
+  static final String announcementList = "announcementList";
+  static final String galleries = "galleries";
+  static final String noticeBoardList = "noticeBoardList";
+  static final String noticeBoardDetails = "noticeBoardDetails";
+  static final String galleryDetails = "galleryDetails";
+  static final String knowledgeBaseList = "knowledgeBaseList";
+  static final String knowledgeBaseDetails = "knowledgeBaseDetails";
+  static final String alertNotice = "alertNotice";
+  static final String eventsList = "eventsList";
+  static final String eventDetails = "eventDetails";
+  static final String advertisement = "advertisement";
 
 
 
@@ -36,6 +46,7 @@ class ApiService {
   static final String MARINA_BOOKING = "marinaBookingList";
   static final String SEND_ANNOOUCEMENTS = "sendAnnouncements";
   static final String ANNOUCEMENT_LIST = "announcementList";
+
 
 
 
@@ -95,6 +106,80 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+  Future Annoucement_list() async {
+    final response = await http.get(
+        Uri.parse(BASE_URL + announcementList),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future AlertNotice() async {
+    final response = await http.get(
+        Uri.parse(BASE_URL + alertNotice),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future EventsList(id) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + eventsList),
+      body: {
+        "event_type":id.toString()
+      }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+  Future Photo_Gallery() async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + galleries),
+        body: ({
+          'item_type':"1".toString(),
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future Photo_Gallery_details({gallery_id,page}) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + galleryDetails),
+        body: ({
+          'gallery_id': gallery_id.toString(),
+          'page': page.toString(),
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+  Future Video_Gallery() async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + galleries),
+        body: ({
+          'item_type':"2".toString(),
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future Notice_bord_list() async {
+    final response = await http.get(
+        Uri.parse(BASE_URL + noticeBoardList),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future Notice_bord_details(id) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + noticeBoardDetails),
+      body: {
+        "id":id.toString()
+      }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
 
   Future About_us() async {
     final response = await http.get(
@@ -129,6 +214,42 @@ class ApiService {
     final response = await http.get(
         Uri.parse(BASE_URL + SLIDER),
     );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future KnowledgeBaseList() async {
+    final response = await http.get(
+        Uri.parse(BASE_URL + knowledgeBaseList),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future Advertisement() async {
+    final response = await http.get(
+        Uri.parse(BASE_URL + advertisement),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future KnowledgeBaseDetailsList(id) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + knowledgeBaseDetails),
+        body: {
+          "id":id.toString()
+        }
+    );
+
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+  Future Event_Details(id) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + eventDetails),
+        body: {
+          "id":id.toString()
+        }
+    );
+
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }

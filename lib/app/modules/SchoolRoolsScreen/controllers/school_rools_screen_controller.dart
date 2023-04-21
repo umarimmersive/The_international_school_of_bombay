@@ -19,6 +19,7 @@ class SchoolRoolsScreenController extends GetxController {
 
         title.value=response['data']['title'];
         content.value=response['data']['content'];
+        print('---${content.value}');
 
 
         update();

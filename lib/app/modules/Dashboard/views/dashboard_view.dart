@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:the_international_school_of_bombay/app/modules/About/views/about_view.dart';
 import 'package:the_international_school_of_bombay/app/modules/HomeScreen/views/home_screen_view.dart';
 import 'package:the_international_school_of_bombay/app/modules/Menu/views/menu_view.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/ColorValues.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 import '../../Hoppiness/views/hoppiness_view.dart';
 import '../../ScheduleScreen/views/schedule_screen_view.dart';
 import '../../TimeTableScreen/views/time_table_screen_view.dart';
@@ -12,6 +14,7 @@ import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
   DashboardView({Key? key}) : super(key: key);
+  final keyIsFirstLoaded = 'is_first_loaded';
 
   Future<bool?> _onBackPressed(context) async {
     return showDialog(
@@ -97,6 +100,16 @@ class DashboardView extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
+    if(controller.count==0){
+      Future.delayed(const Duration(seconds: 2), () {
+        showDialogIfFirstLoaded(context);
+// Here you can write your code
+      });
+      controller.count.value++;
+
+      print('count--------------${controller.count.value}');
+    }
+
     return WillPopScope(
       child: Obx(() => Scaffold(
             body: PageStorage(
@@ -292,4 +305,51 @@ class DashboardView extends GetView<DashboardController> {
       },
     );
   }
+  showDialogIfFirstLoaded(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? isFirstLoaded = prefs.getBool(keyIsFirstLoaded);
+    if (isFirstLoaded == null) {
+      showModalBottomSheet(
+          isScrollControlled: true,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20))),
+          backgroundColor: Colors.white,
+          context: context,
+          builder: (context) {
+            return Container(
+              child: Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Image.network(
+                    '${ApiService.IMAGE_URL+controller.BottomSheetImage.value}',
+                    fit: BoxFit.fill,
+                  ),
+                  /*   ConfettiWidget(
+                                            confettiController:
+                                                controller.controllerTopCenter,
+                                            blastDirectionality: BlastDirectionality
+                                                .explosive, // don't specify a direction, blast randomly
+                                            shouldLoop: false, //
+                                            // start again as soon as the animation is finished
+                                            colors: const [
+                                              Colors.green,
+                                              Colors.blue,
+                                              Colors.pink,
+                                              Colors.orange,
+                                              Colors.purple,
+                                              Colors.amber,
+                                              Colors.red
+                                            ], // manually specify the colors to be used
+                                            createParticlePath:
+                                                drawStar, // define a custom shape/path.
+                                          ),*/
+                ],
+              ),
+            );
+          });
+    }
+  }
+
 }

@@ -70,7 +70,7 @@ class LoginView extends GetView<LoginController> {
                             child: TextFieldDesigned(
                               controller: controller.emailController,
                               maxLines: 2,
-                              fontSize: 14,
+                              fontSize: 16,
                               maxLength: 25,
                               minLines: 1,
                               hintText: "${hint_text().EMAIL_HINT}",
@@ -105,7 +105,7 @@ class LoginView extends GetView<LoginController> {
                                     controller: controller.passwordcontroller,
                                     obscureText:
                                     controller.obscureNewPass.value,
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     maxLength: 20,
                                     hintText: "${hint_text().PASSWORD_HINT}",
                                     hintStyle: ColorValues.DIVIDER_COLOR_ONE,
