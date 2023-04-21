@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/components/checkbox_list_tile/gf_checkbox_list_tile.dart';
 import 'package:getwidget/types/gf_checkbox_type.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/my_local_service.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text_widget.dart';
@@ -13,9 +13,8 @@ import '../../../routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/constants/ShowToast.dart';
 import '../../../utils/global_widgets/Text.dart';
-import '../controllers/home_screen_controller.dart';
 import '../../../utils/global_widgets/buttons.dart';
-
+import '../controllers/home_screen_controller.dart';
 
 class HomeScreenView extends GetView<HomeScreenController> {
   TabController? _tabController;
@@ -43,15 +42,17 @@ class HomeScreenView extends GetView<HomeScreenController> {
           return Scaffold(
             body:
             SmartRefresher(
+              //key: controller.refresherKey,
               controller: controller.refreshController,
               enablePullUp: true,
-              child: CustomScrollView(
+              child:  CustomScrollView(
                 shrinkWrap: true,
                 slivers: <Widget>[
                   SliverAppBar(
                       titleSpacing: 0,
                       toolbarHeight: 90,
                       excludeHeaderSemantics: true,
+                      // backgroundColor: Color(0xFF+int.parse(controller.file_valude.value)),
                       backgroundColor: Color(0xFFD50000),
                       floating: false,
                       stretch: false,
@@ -158,7 +159,6 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   ),
                                   Row(
                                     children: [
-                                      controller.Slider.value==true?
                                       IconButton(
                                           onPressed: () {
                                             _showSimpleDialog(context);
@@ -167,8 +167,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                             size: 24,
                                             Icons.person,
                                             color: Colors.white,
-                                          )):
-                                          SizedBox(),
+                                          )),
                                       IconButton(
                                           onPressed: () {
                                             Get.toNamed(Routes.NOTIFICATION);
@@ -392,17 +391,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                       );
                                     }),
                               ):
-                              Center(child:
-                              SizedBox(
-                                width: 200.0,
-                                height: 100.0,
-                                child: Shimmer.fromColors(
-                                  baseColor: Colors.red,
-                                  highlightColor: Colors.yellow,
-                                  child: Container(),
-                                ),
-                              )
-                              ),
+                              Center(child: CircularProgressIndicator(color: Colors.red,)),
 
                               Padding(
                                 padding: const EdgeInsets.only(left: 10, top: 10),
@@ -547,7 +536,6 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                       padding:
                                                       const EdgeInsets.only(left: 18),
                                                       child: GlobalLocalText(
-                                                        maxLines: 2,
                                                         text: controller.KnowledgeBaseList[index].title,
                                                         textColor: Colors.white,
                                                       ),
@@ -564,8 +552,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                             Color(ColorValues.RED),
                                                           ),
                                                           onPressed: () {
-
-                                                            var data = {
+                                                            var data={
                                                               'id': controller.KnowledgeBaseList[index].id.toString(),
                                                             };
                                                             print('-------------${data}');
@@ -972,121 +959,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                           };
                                           Get.toNamed(Routes.EVENTS,parameters: data);
                                           },
-                                          child:
-                                          Padding(
-                                              padding: EdgeInsets.only(left: 10,right: 10),
-                                              child: Stack(
-                                                clipBehavior: Clip.hardEdge,
-                                                children: [
-                                                  Container(
-                                                    clipBehavior: Clip.hardEdge,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.circular(10),
-                                                    ),
-                                                    height: 240,
-                                                    width: 220,
-                                                    child: Image.network(ApiService.IMAGE_URL+controller.Event_list[index].image!,fit: BoxFit.cover),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 160.0),
-                                                    child: Container(
-                                                      height: 80,
-                                                      width: 220,
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.black54,
-                                                        borderRadius: BorderRadius.only(
-                                                          topLeft: Radius.zero,
-                                                          topRight: Radius.zero,
-                                                          bottomLeft:  Radius.circular(10.0),
-                                                          bottomRight:  Radius.circular(10.0),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                    top: 122,
-                                                    left: 10,
-                                                    child: Container(
-                                                      //margin: EdgeInsets.only(top: 140,left: 10),
-                                                      height: 80,
-                                                      width: 200,
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
-                                                        mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                        children: [
-                                                          Text(
-                                                            controller.Event_list[index].date!,
-                                                            style: TextStyle(
-                                                                fontFamily: "Roboto",
-                                                                overflow:
-                                                                TextOverflow.ellipsis,
-                                                                fontWeight: FontWeight.w600,
-                                                                fontSize: 13.5,
-                                                                color: Colors.white),
-                                                          ),
-                                                          SizedBox(
-                                                            height: 5,
-                                                          ),
-
-
-                                                         /* Text(
-                                                            textAlign: TextAlign.justify,
-                                                            maxLines: 2,
-                                                            controller.Event_list[index].title!,
-                                                            style: TextStyle(
-                                                                overflow:
-                                                                TextOverflow.ellipsis,
-                                                                fontSize: 12.5,
-                                                                fontWeight: FontWeight.w500,
-                                                                color: Colors.yellow),
-                                                          ),*/
-
-
-                                                          Padding(
-                                                            padding: const EdgeInsets.symmetric(vertical: 2),
-                                                            child: Row(
-                                                              children: [
-                                                                Expanded(
-                                                                  flex: 9,
-                                                                  child: GlobalLocalText(
-                                                                    maxLines: 1,
-                                                                    text:
-                                                                    "${controller.Event_list[index].title}",
-                                                                    size: 16,
-                                                                    textColor: Colors.white,
-                                                                    fontWeight:
-                                                                    FontWeight.bold,
-                                                                  ),
-                                                                ),
-                                                                Expanded(
-                                                                  flex: 1,
-                                                                  child: Icon(
-                                                                    Icons.arrow_forward_ios,
-                                                                    color:
-                                                                    ColorValues.kRedColor,
-                                                                    size: 20,
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
-
-
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  )
-
-
-
-                                                ],
-                                              )
-                                          )
-
-                                         /* Padding(
+                                          child: Padding(
                                             padding: const EdgeInsets.only(left: 10, right: 10),
                                             child: Card(
                                                 clipBehavior: Clip.hardEdge,
@@ -1151,7 +1024,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                   //height: 70,
                                                   width: 200,
                                                 )),
-                                          ),*/
+                                          ),
                                         );
                                       }),
                                 ),
@@ -1351,14 +1224,26 @@ class HomeScreenView extends GetView<HomeScreenController> {
                 completeDuration: Duration(milliseconds: 500),
               ),
               onRefresh: () async {
+               await controller.refrshApi();
 
-                await controller.refrshApi();
+
+
+                print('-------------------------refresh');
+                //monitor fetch data from network
                 await Future.delayed(Duration(milliseconds: 1000));
 
+                // for (int i = 0; i < 10; i++) {
+                //   data.add("Item $i");
+                // }
 
                 if (true)
                 controller.refreshController.refreshCompleted();
 
+                /*
+        if(failed){
+         _refreshController.refreshFailed();
+        }
+      */
               },
             )
 
@@ -1380,8 +1265,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
               children: [
                 Expanded(
                 flex: 1,
-                 child: Container()
-                ),
+                child: Container()),
               Expanded(
                   flex: 9,
                   child:  Center(child: const Text('Switch Profile'))),
@@ -1438,8 +1322,8 @@ class HomeScreenView extends GetView<HomeScreenController> {
 
               ),*/
 
-
-                      Obx(() =>
+                      Obx(
+                            () =>
                             GFCheckboxListTile(
                               color: Colors.black12,
                               titleText: '${controller.Sibling[i].full_name}',
@@ -1494,7 +1378,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               },
                               value: controller.isChecked[i],
                               inactiveIcon: null,
-                            ),)
+                            ),
+                      ),
+
                   ],),
                 ),
               ),
