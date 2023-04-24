@@ -23,8 +23,6 @@ import '../modules/Edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/Edit_profile/views/edit_profile_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
 import '../modules/Events/views/events_view.dart';
-import '../modules/Gallery/bindings/gallery_binding.dart';
-import '../modules/Gallery/views/gallery_view.dart';
 import '../modules/Home_slider_details/bindings/home_slider_details_binding.dart';
 import '../modules/Home_slider_details/views/home_slider_details_view.dart';
 import '../modules/Hoppiness/bindings/hoppiness_binding.dart';
@@ -87,8 +85,9 @@ import '../modules/artical1/bindings/artical1_binding.dart';
 import '../modules/artical1/views/artical1_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
 import '../modules/syllabus/views/syllabus_view.dart';
-
 part 'app_routes.dart';
+
+
 
 class AppPages {
   AppPages._();
@@ -305,11 +304,6 @@ class AppPages {
       name: _Paths.VIDIO_ALBUMS,
       page: () => const VidioAlbumsView(),
       binding: VidioAlbumsBinding(),
-    ),
-    GetPage(
-      name: _Paths.GALLERY,
-      page: () => const GalleryView(),
-      binding: GalleryBinding(),
     ),
     GetPage(
       name: _Paths.PHOTOS_VIDIOS_GALLERY,

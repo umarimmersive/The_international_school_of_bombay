@@ -165,7 +165,8 @@ class _PhotoGallaryViewState extends State<PhotoGallaryView> {
                                 ),
                                 transition: Transition.zoom);
                           },
-                          child: Image.network(
+                          child: CachedNetworkImage(
+                            imageUrl:
                             ApiService.IMAGE_URL+posts[index].item_value!,
                             fit: BoxFit.cover,
                           ));

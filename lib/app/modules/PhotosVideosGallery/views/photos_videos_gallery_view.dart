@@ -69,11 +69,8 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
               } else {
                 return TabBarView(
                   physics: BouncingScrollPhysics(),
-
-                  //dragStartBehavior: DragStartBehavior.down,
-
                   children: [
-                    // for images============================================================
+
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 15),
@@ -151,58 +148,56 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                       ),
                     ),
 
-                    //  for Vidios=============================================================//
+
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         player,
-                        Expanded(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.only(top: 10),
-                              itemCount: 7,
-                              itemBuilder: (BuildContext, index) {
-                                return Padding(
-                                    padding: const EdgeInsets.only(top: 8),
-                                    child: Card(
-                                      child: Container(
-                                        child: Flexible(
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                height: 100,
-                                                width: 90,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            "assets/images/s1.jpg"),
-                                                        fit: BoxFit.cover)),
-                                                child: Icon(
-                                                  Icons.play_arrow,
-                                                  color: Colors.white,
-                                                ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(top: 10),
+                            itemCount: 7,
+                            itemBuilder: (BuildContext, index) {
+                              return Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: Card(
+                                    child: Container(
+                                      child: Flexible(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              height: 100,
+                                              width: 90,
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/images/s1.jpg"),
+                                                      fit: BoxFit.cover)),
+                                              child: Icon(
+                                                Icons.play_arrow,
+                                                color: Colors.white,
                                               ),
-                                              SizedBox(
-                                                width: 10,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Flexible(
+                                              child: Column(
+                                                children: [
+                                                  GlobalLocalText(
+                                                    maxLines: 3,
+                                                    text:
+                                                    "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
+                                                  )
+                                                ],
                                               ),
-                                              Flexible(
-                                                child: Column(
-                                                  children: [
-                                                    GlobalLocalText(
-                                                      maxLines: 3,
-                                                      text:
-                                                      "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            )
+                                          ],
                                         ),
                                       ),
-                                    ));
-                              }),
-                        )
+                                    ),
+                                  ));
+                            })
                       ],
                     )
                   ],

@@ -101,9 +101,8 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     if(controller.count==0){
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 15), () {
         showDialogIfFirstLoaded(context);
-// Here you can write your code
       });
       controller.count.value++;
 
@@ -116,15 +115,6 @@ class DashboardView extends GetView<DashboardController> {
               child: controller.currentScreen,
               bucket: controller.bucket,
             ),
-            /* floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/only_logo.png'),
-            ),
-            onPressed: () {},
-          ),*/
-            //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: BottomAppBar(
               shape: CircularNotchedRectangle(),
               notchMargin: 10,

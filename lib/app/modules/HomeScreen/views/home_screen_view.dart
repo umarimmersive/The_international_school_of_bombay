@@ -33,13 +33,13 @@ class HomeScreenView extends GetView<HomeScreenController> {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child:  Obx((){
-        if(controller.isLoading.isTrue){
+        /*if(controller.isLoading.isTrue){
           return Center(
               child: SpinKitThreeBounce(
                 color: Colors.red,
                 size: 40,
               ));
-        }else{
+        }else{*/
           return Scaffold(
             body:
             SmartRefresher(
@@ -392,16 +392,156 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                       );
                                     }),
                               ):
-                              Center(child:
-                              SizedBox(
-                                width: 200.0,
-                                height: 100.0,
-                                child: Shimmer.fromColors(
-                                  baseColor: Colors.red,
-                                  highlightColor: Colors.yellow,
-                                  child: Container(),
-                                ),
-                              )
+                              Shimmer.fromColors(
+                                baseColor: Colors.black,
+                                highlightColor: Colors.red,
+                                child:  SizedBox(
+                                  height: 250,
+                                  child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: controller.Slider.length,
+                                      shrinkWrap: true,
+                                      itemBuilder: (BuildContext, index) {
+                                        return InkWell(
+                                            onTap: () {
+                                              var data = {
+                                                /* "maintitle": "${controller.slider_data[index]['maintitle']}",
+                                          "title": "${controller.slider_data[index]['title']}",
+                                          "images": "${controller.slider_data[index]['images']}",*/
+                                                "id": "${controller.Slider[index].id}"
+                                              };
+                                              Get.toNamed(Routes.HOME_SLIDER_DETAILS,
+                                                  parameters: data);
+                                              //  HomeSliderDetailsView
+                                            },
+                                            child:
+                                            Padding(
+                                                padding: EdgeInsets.only(left: 10,right: 10),
+                                                child: Stack(
+                                                  clipBehavior: Clip.hardEdge,
+                                                  children: [
+                                                    Container(
+                                                      clipBehavior: Clip.hardEdge,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                        BorderRadius.circular(10),
+                                                      ),
+                                                      height: 240,
+                                                      width: 220,
+                                                      child: Image.network(ApiService.IMAGE_URL+controller.Slider[index].image!,fit: BoxFit.cover),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 160.0),
+                                                      child: Container(
+                                                        height: 80,
+                                                        width: 220,
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.black54,
+                                                          borderRadius: BorderRadius.only(
+                                                            topLeft: Radius.zero,
+                                                            topRight: Radius.zero,
+                                                            bottomLeft:  Radius.circular(10.0),
+                                                            bottomRight:  Radius.circular(10.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 140,left: 10),
+                                                      height: 80,
+                                                      width: 200,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                        mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                        children: [
+                                                          Text(
+                                                            controller.Slider[index].title!,
+                                                            style: TextStyle(
+                                                                fontFamily: "Roboto",
+                                                                overflow:
+                                                                TextOverflow.ellipsis,
+                                                                fontWeight: FontWeight.w600,
+                                                                fontSize: 13.5,
+                                                                color: Colors.white),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 5,
+                                                          ),
+                                                          Text(
+                                                            textAlign: TextAlign.justify,
+                                                            maxLines: 2,
+                                                            controller.Slider[index].short_description!,
+                                                            style: TextStyle(
+                                                                overflow:
+                                                                TextOverflow.ellipsis,
+                                                                fontSize: 12.5,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.yellow),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+
+
+
+                                                  ],
+                                                )
+                                            )
+                                          /* Padding(
+                                          padding: const EdgeInsets.only(left: 10),
+                                          child: Container(
+                                            height: 80,
+                                            width: 220,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(ApiService.IMAGE_URL+controller.Slider[index].image!),
+                                                    fit: BoxFit.cover)
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 5, bottom: 10, left: 10),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                                children: [
+                                                  Text(
+                                                    controller.Slider[index].title!,
+                                                    style: TextStyle(
+                                                        fontFamily: "Roboto",
+                                                        overflow:
+                                                        TextOverflow.ellipsis,
+                                                        fontWeight: FontWeight.w600,
+                                                        fontSize: 13.5,
+                                                        color: Colors.white),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    textAlign: TextAlign.justify,
+                                                    maxLines: 3,
+                                                    controller.Slider[index].short_description!,
+                                                    style: TextStyle(
+                                                        overflow:
+                                                        TextOverflow.ellipsis,
+                                                        fontSize: 12.5,
+                                                        fontWeight: FontWeight.w500,
+                                                        color: Colors.yellow),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                          ),*/
+                                        );
+                                      }),
+                                )
                               ),
 
                               Padding(
@@ -412,6 +552,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   size: 16,
                                 ),
                               ),
+                              controller.isLoading_slider==false?
                               Padding(
                                 padding: const EdgeInsets.only(top: 20),
                                 child: SizedBox(
@@ -490,7 +631,91 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                         );
                                       }),
                                 ),
+                              ):
+                              Shimmer.fromColors(
+                                  baseColor: Colors.black,
+                                  highlightColor: Colors.red,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child: SizedBox(
+                                      height: 125,
+                                      child: ListView.builder(
+                                          itemCount: controller.title.length,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (BuildContext, index) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                if (index == 0) {
+                                                  Get.toNamed(Routes.LEAVES_SCREEN);
+                                                } else if (index == 1) {
+                                                  Get.toNamed(Routes.NOTICE_BOARD);
+                                                } else if (index == 2) {
+                                                  Get.toNamed(Routes.BUSROOT_SCREEN);
+                                                } else if (index == 3) {
+                                                  Get.toNamed(Routes.SCHOOL_ROOLS_SCREEN);
+                                                } else if (index == 4) {
+                                                  Get.toNamed(Routes.QUIRY_SCREEN);
+                                                }
+                                              },
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10, bottom: 05,right: 10),
+                                                child: Card(
+                                                    elevation: 03,
+                                                    margin: EdgeInsets.zero,
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                        BorderRadius.circular(5)),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                          color: color.value,
+                                                          borderRadius:
+                                                          BorderRadius.circular(5)),
+                                                      // height: 70,
+                                                      //width: 120,
+                                                      child: Container(
+                                                        width: 130,
+                                                        child: Column(
+                                                          mainAxisSize: MainAxisSize.min,
+                                                          crossAxisAlignment:
+                                                          CrossAxisAlignment.center,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment.center,
+                                                          children: [
+                                                            Expanded(
+                                                              flex: 2,
+                                                              child: CircleAvatar(
+                                                                backgroundColor:
+                                                                Color(ColorValues.RED),
+                                                                child: Icon(
+                                                                  controller.icons[index],
+                                                                  color: Colors.white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              flex: 1,
+                                                              child: GlobalLocalText(
+                                                                text:
+                                                                controller.title[index],
+                                                                fontWeight: FontWeight.w400,
+                                                                size: 15,
+                                                                textAlign: TextAlign.center,
+                                                                // wordSpacing: 1,
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    )),
+                                              ),
+                                            );
+                                          }),
+                                    ),
+                                  )
                               ),
+
 
                               Padding(
                                 padding: const EdgeInsets.only(left: 15, top: 10),
@@ -500,79 +725,80 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   size: 16,
                                 ),
                               ),
+                              controller.isLoading_Knowledge==false?
                               SizedBox(
-                                height: MediaQuery.of(context).size.height / 3,
-                                child: ListView.builder(
-                                    itemCount: controller.KnowledgeBaseList.length,
-                                    scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
-                                    itemBuilder: (BuildContext, index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 15, right: 15, top: 20, bottom: 20),
-                                        child: InkWell(
-                                          onTap: (){
-                                            var data={
-                                              'id': controller.KnowledgeBaseList[index].id.toString(),
-                                            };
-                                            print('-------------${data}');
+                              height: MediaQuery.of(context).size.height / 3,
+                              child: ListView.builder(
+                                  itemCount: controller.KnowledgeBaseList.length,
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (BuildContext, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15, right: 15, top: 20, bottom: 20),
+                                      child: InkWell(
+                                        onTap: (){
+                                          var data={
+                                            'id': controller.KnowledgeBaseList[index].id.toString(),
+                                          };
+                                          print('-------------${data}');
 
-                                            Get.toNamed(Routes.ARTICAL1,parameters: data);
+                                          Get.toNamed(Routes.ARTICAL1,parameters: data);
 
-                                          },
-                                          child: Container(
-                                            height:
-                                            MediaQuery.of(context).size.height / 3,
-                                            width:
-                                            MediaQuery.of(context).size.width / 1.3,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: NetworkImage(ApiService.IMAGE_URL+controller
-                                                        .KnowledgeBaseList[index].image!),
-                                                    fit: BoxFit.cover),
-                                                borderRadius: BorderRadius.circular(5),
-                                                color: Colors.blue),
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 0, bottom: 0),
-                                              child: Container(
-                                                color: Colors.black38,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(left: 18),
-                                                      child: GlobalLocalText(
-                                                        maxLines: 2,
-                                                        text: controller.KnowledgeBaseList[index].title,
-                                                        textColor: Colors.white,
-                                                      ),
+                                        },
+                                        child: Container(
+                                          height:
+                                          MediaQuery.of(context).size.height / 3,
+                                          width:
+                                          MediaQuery.of(context).size.width / 1.3,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: NetworkImage(ApiService.IMAGE_URL+controller
+                                                      .KnowledgeBaseList[index].image!),
+                                                  fit: BoxFit.cover),
+                                              borderRadius: BorderRadius.circular(5),
+                                              color: Colors.blue),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 0, bottom: 0),
+                                            child: Container(
+                                              color: Colors.black38,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                    const EdgeInsets.only(left: 18),
+                                                    child: GlobalLocalText(
+                                                      maxLines: 2,
+                                                      text: controller.KnowledgeBaseList[index].title,
+                                                      textColor: Colors.white,
                                                     ),
-                                                    SizedBox(
-                                                      height: 8,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets.only(
-                                                          left: 18, bottom: 10),
-                                                      child: ElevatedButton(
-                                                          style: ElevatedButton.styleFrom(
-                                                            backgroundColor:
-                                                            Color(ColorValues.RED),
-                                                          ),
-                                                          onPressed: () {
+                                                  ),
+                                                  SizedBox(
+                                                    height: 8,
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 18, bottom: 10),
+                                                    child: ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                          Color(ColorValues.RED),
+                                                        ),
+                                                        onPressed: () {
 
-                                                            var data = {
-                                                              'id': controller.KnowledgeBaseList[index].id.toString(),
-                                                            };
-                                                            print('-------------${data}');
+                                                          var data = {
+                                                            'id': controller.KnowledgeBaseList[index].id.toString(),
+                                                          };
+                                                          print('-------------${data}');
 
-                                                            Get.toNamed(Routes.ARTICAL1,parameters: data);
+                                                          Get.toNamed(Routes.ARTICAL1,parameters: data);
 
-                                                           /* if (index == 0) {
+                                                          /* if (index == 0) {
                                                               Get.toNamed(
                                                                   Routes.ARTICAL1);
                                                             } else if (index == 1) {
@@ -588,21 +814,130 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                               Get.toNamed(
                                                                   Routes.ARTICAL5);
                                                             }*/
-                                                          },
-                                                          child: GlobalLocalText(
-                                                            textColor: Colors.white,
-                                                            text: "Read More",
-                                                          )),
-                                                    )
-                                                  ],
-                                                ),
+                                                        },
+                                                        child: GlobalLocalText(
+                                                          textColor: Colors.white,
+                                                          text: "Read More",
+                                                        )),
+                                                  )
+                                                ],
                                               ),
                                             ),
                                           ),
                                         ),
-                                      );
-                                    }),
+                                      ),
+                                    );
+                                  }),
+                            )
+                              :
+                              Shimmer.fromColors(
+                                  baseColor: Colors.black,
+                                  highlightColor: Colors.red,
+                                  child: SizedBox(
+                                    height: MediaQuery.of(context).size.height / 3,
+                                    child: ListView.builder(
+                                        itemCount: controller.KnowledgeBaseList.length,
+                                        scrollDirection: Axis.horizontal,
+                                        shrinkWrap: true,
+                                        itemBuilder: (BuildContext, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, right: 15, top: 20, bottom: 20),
+                                            child: InkWell(
+                                              onTap: (){
+                                                var data={
+                                                  'id': controller.KnowledgeBaseList[index].id.toString(),
+                                                };
+                                                print('-------------${data}');
+
+                                                Get.toNamed(Routes.ARTICAL1,parameters: data);
+
+                                              },
+                                              child: Container(
+                                                height:
+                                                MediaQuery.of(context).size.height / 3,
+                                                width:
+                                                MediaQuery.of(context).size.width / 1.3,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: NetworkImage(ApiService.IMAGE_URL+controller
+                                                            .KnowledgeBaseList[index].image!),
+                                                        fit: BoxFit.cover),
+                                                    borderRadius: BorderRadius.circular(5),
+                                                    color: Colors.blue),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 0, bottom: 0),
+                                                  child: Container(
+                                                    color: Colors.black38,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(left: 18),
+                                                          child: GlobalLocalText(
+                                                            maxLines: 2,
+                                                            text: controller.KnowledgeBaseList[index].title,
+                                                            textColor: Colors.white,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 8,
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                              left: 18, bottom: 10),
+                                                          child: ElevatedButton(
+                                                              style: ElevatedButton.styleFrom(
+                                                                backgroundColor:
+                                                                Color(ColorValues.RED),
+                                                              ),
+                                                              onPressed: () {
+
+                                                                var data = {
+                                                                  'id': controller.KnowledgeBaseList[index].id.toString(),
+                                                                };
+                                                                print('-------------${data}');
+
+                                                                Get.toNamed(Routes.ARTICAL1,parameters: data);
+
+                                                                /* if (index == 0) {
+                                                              Get.toNamed(
+                                                                  Routes.ARTICAL1);
+                                                            } else if (index == 1) {
+                                                              Get.toNamed(
+                                                                  Routes.ARTICAL2);
+                                                            } else if (index == 2) {
+                                                              Get.toNamed(
+                                                                  Routes.ARTICAL3);
+                                                            } else if (index == 3) {
+                                                              Get.toNamed(
+                                                                  Routes.ARTICAL4);
+                                                            } else if (index == 4) {
+                                                              Get.toNamed(
+                                                                  Routes.ARTICAL5);
+                                                            }*/
+                                                              },
+                                                              child: GlobalLocalText(
+                                                                textColor: Colors.white,
+                                                                text: "Read More",
+                                                              )),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                  ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 15),
                                 child: InkWell(
@@ -955,6 +1290,8 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                 ),
                               ),
 
+
+                              controller.isLoading_Event==false?
                               Padding(
                                 padding: const EdgeInsets.only(top: 05),
                                 child: Container(
@@ -966,73 +1303,69 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (BuildContext, index) {
                                         return InkWell(
-                                          onTap: (){
-                                            var data={
-                                            'id': controller.Event_list[index].id.toString(),
-                                          };
-                                          Get.toNamed(Routes.EVENTS,parameters: data);
-                                          },
-                                          child:
-                                          Padding(
-                                              padding: EdgeInsets.only(left: 10,right: 10),
-                                              child: Stack(
-                                                clipBehavior: Clip.hardEdge,
-                                                children: [
-                                                  Container(
-                                                    clipBehavior: Clip.hardEdge,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.circular(10),
-                                                    ),
-                                                    height: 240,
-                                                    width: 220,
-                                                    child: Image.network(ApiService.IMAGE_URL+controller.Event_list[index].image!,fit: BoxFit.cover),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 160.0),
-                                                    child: Container(
-                                                      height: 80,
-                                                      width: 220,
+                                            onTap: (){
+                                              var data={
+                                                'id': controller.Event_list[index].id.toString(),
+                                              };
+                                              Get.toNamed(Routes.EVENTS,parameters: data);
+                                            },
+                                            child:
+                                            Padding(
+                                                padding: EdgeInsets.only(left: 10,right: 10),
+                                                child: Stack(
+                                                  clipBehavior: Clip.hardEdge,
+                                                  children: [
+                                                    Container(
+                                                      clipBehavior: Clip.hardEdge,
                                                       decoration: BoxDecoration(
-                                                        color: Colors.black54,
-                                                        borderRadius: BorderRadius.only(
-                                                          topLeft: Radius.zero,
-                                                          topRight: Radius.zero,
-                                                          bottomLeft:  Radius.circular(10.0),
-                                                          bottomRight:  Radius.circular(10.0),
+                                                        borderRadius:
+                                                        BorderRadius.circular(10),
+                                                      ),
+                                                      height: 240,
+                                                      width: 220,
+                                                      child: Image.network(ApiService.IMAGE_URL+controller.Event_list[index].image!,fit: BoxFit.cover),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 160.0),
+                                                      child: Container(
+                                                        height: 80,
+                                                        width: 220,
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.black54,
+                                                          borderRadius: BorderRadius.only(
+                                                            topLeft: Radius.zero,
+                                                            topRight: Radius.zero,
+                                                            bottomLeft:  Radius.circular(10.0),
+                                                            bottomRight:  Radius.circular(10.0),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Positioned(
-                                                    top: 122,
-                                                    left: 10,
-                                                    child: Container(
-                                                      //margin: EdgeInsets.only(top: 140,left: 10),
-                                                      height: 80,
-                                                      width: 200,
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
-                                                        mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                        children: [
-                                                          Text(
-                                                            controller.Event_list[index].date!,
-                                                            style: TextStyle(
-                                                                fontFamily: "Roboto",
-                                                                overflow:
-                                                                TextOverflow.ellipsis,
-                                                                fontWeight: FontWeight.w600,
-                                                                fontSize: 13.5,
-                                                                color: Colors.white),
-                                                          ),
-                                                          SizedBox(
-                                                            height: 5,
-                                                          ),
+                                                    Positioned(
+                                                      top: 140,
+                                                      left: 10,
+                                                      child: Container(
+                                                        //margin: EdgeInsets.only(top: 140,left: 10),
+                                                        height: 60,
+                                                        width: 200,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                          CrossAxisAlignment.start,
+                                                          mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                          children: [
+                                                            Text(
+                                                              controller.Event_list[index].date!,
+                                                              style: TextStyle(
+                                                                  fontFamily: "Roboto",
+                                                                  overflow:
+                                                                  TextOverflow.ellipsis,
+                                                                  fontWeight: FontWeight.w600,
+                                                                  fontSize: 13.5,
+                                                                  color: Colors.white),
+                                                            ),
 
-
-                                                         /* Text(
+                                                            /* Text(
                                                             textAlign: TextAlign.justify,
                                                             maxLines: 2,
                                                             controller.Event_list[index].title!,
@@ -1045,48 +1378,48 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                           ),*/
 
 
-                                                          Padding(
-                                                            padding: const EdgeInsets.symmetric(vertical: 2),
-                                                            child: Row(
-                                                              children: [
-                                                                Expanded(
-                                                                  flex: 9,
-                                                                  child: GlobalLocalText(
-                                                                    maxLines: 1,
-                                                                    text:
-                                                                    "${controller.Event_list[index].title}",
-                                                                    size: 16,
-                                                                    textColor: Colors.white,
-                                                                    fontWeight:
-                                                                    FontWeight.bold,
+                                                            Padding(
+                                                              padding: const EdgeInsets.symmetric(vertical: 2),
+                                                              child: Row(
+                                                                children: [
+                                                                  Expanded(
+                                                                    flex: 9,
+                                                                    child: GlobalLocalText(
+                                                                      maxLines: 1,
+                                                                      text:
+                                                                      "${controller.Event_list[index].title}",
+                                                                      size: 16,
+                                                                      textColor: Colors.white,
+                                                                      fontWeight:
+                                                                      FontWeight.bold,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                                Expanded(
-                                                                  flex: 1,
-                                                                  child: Icon(
-                                                                    Icons.arrow_forward_ios,
-                                                                    color:
-                                                                    ColorValues.kRedColor,
-                                                                    size: 20,
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          )
+                                                                  Expanded(
+                                                                    flex: 1,
+                                                                    child: Icon(
+                                                                      Icons.arrow_forward_ios,
+                                                                      color:
+                                                                      ColorValues.kRedColor,
+                                                                      size: 20,
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            )
 
 
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  )
+                                                    )
 
 
 
-                                                ],
-                                              )
-                                          )
+                                                  ],
+                                                )
+                                            )
 
-                                         /* Padding(
+                                          /* Padding(
                                             padding: const EdgeInsets.only(left: 10, right: 10),
                                             child: Card(
                                                 clipBehavior: Clip.hardEdge,
@@ -1155,7 +1488,210 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                         );
                                       }),
                                 ),
+                              )
+                                  :
+                              Shimmer.fromColors(
+                                baseColor: Colors.black,
+                                highlightColor: Colors.red,
+                                child:  Padding(
+                                  padding: const EdgeInsets.only(top: 05),
+                                  child: Container(
+                                    height: 200,
+                                    width: double.infinity,
+                                    child: ListView.builder(
+                                        itemCount: controller.Event_list.length,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (BuildContext, index) {
+                                          return InkWell(
+                                              onTap: (){
+                                                var data={
+                                                  'id': controller.Event_list[index].id.toString(),
+                                                };
+                                                Get.toNamed(Routes.EVENTS,parameters: data);
+                                              },
+                                              child:
+                                              Padding(
+                                                  padding: EdgeInsets.only(left: 10,right: 10),
+                                                  child: Stack(
+                                                    clipBehavior: Clip.hardEdge,
+                                                    children: [
+                                                      Container(
+                                                        clipBehavior: Clip.hardEdge,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          BorderRadius.circular(10),
+                                                        ),
+                                                        height: 240,
+                                                        width: 220,
+                                                        child: Image.network(ApiService.IMAGE_URL+controller.Event_list[index].image!,fit: BoxFit.cover),
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(top: 160.0),
+                                                        child: Container(
+                                                          height: 80,
+                                                          width: 220,
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.black54,
+                                                            borderRadius: BorderRadius.only(
+                                                              topLeft: Radius.zero,
+                                                              topRight: Radius.zero,
+                                                              bottomLeft:  Radius.circular(10.0),
+                                                              bottomRight:  Radius.circular(10.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Positioned(
+                                                        top: 140,
+                                                        left: 10,
+                                                        child: Container(
+                                                          //margin: EdgeInsets.only(top: 140,left: 10),
+                                                          height: 60,
+                                                          width: 200,
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                            CrossAxisAlignment.start,
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment.end,
+                                                            children: [
+                                                              Text(
+                                                                controller.Event_list[index].date!,
+                                                                style: TextStyle(
+                                                                    fontFamily: "Roboto",
+                                                                    overflow:
+                                                                    TextOverflow.ellipsis,
+                                                                    fontWeight: FontWeight.w600,
+                                                                    fontSize: 13.5,
+                                                                    color: Colors.white),
+                                                              ),
+
+                                                              /* Text(
+                                                            textAlign: TextAlign.justify,
+                                                            maxLines: 2,
+                                                            controller.Event_list[index].title!,
+                                                            style: TextStyle(
+                                                                overflow:
+                                                                TextOverflow.ellipsis,
+                                                                fontSize: 12.5,
+                                                                fontWeight: FontWeight.w500,
+                                                                color: Colors.yellow),
+                                                          ),*/
+
+
+                                                              Padding(
+                                                                padding: const EdgeInsets.symmetric(vertical: 2),
+                                                                child: Row(
+                                                                  children: [
+                                                                    Expanded(
+                                                                      flex: 9,
+                                                                      child: GlobalLocalText(
+                                                                        maxLines: 1,
+                                                                        text:
+                                                                        "${controller.Event_list[index].title}",
+                                                                        size: 16,
+                                                                        textColor: Colors.white,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      flex: 1,
+                                                                      child: Icon(
+                                                                        Icons.arrow_forward_ios,
+                                                                        color:
+                                                                        ColorValues.kRedColor,
+                                                                        size: 20,
+                                                                      ),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              )
+
+
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      )
+
+
+
+                                                    ],
+                                                  )
+                                              )
+
+                                            /* Padding(
+                                            padding: const EdgeInsets.only(left: 10, right: 10),
+                                            child: Card(
+                                                clipBehavior: Clip.hardEdge,
+                                                margin: EdgeInsets.zero,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                    BorderRadius.circular(5)),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: NetworkImage(
+                                                              '${ApiService.IMAGE_URL+controller.Event_list[index].image!}'),
+                                                          fit: BoxFit.cover),
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                      BorderRadius.circular(10)),
+                                                  child: Padding(
+                                                    padding: EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                      children: [
+                                                        GlobalLocalText(
+                                                            text:
+                                                            "${controller.Event_list[index].date}",
+                                                            textColor: Colors.white,
+                                                            fontWeight:
+                                                            FontWeight.w400),
+                                                        SizedBox(
+                                                          height: 5,
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Expanded(
+                                                              flex: 9,
+                                                              child: GlobalLocalText(
+                                                                maxLines: 1,
+                                                                text:
+                                                                "${controller.Event_list[index].title}",
+                                                                size: 16,
+                                                                textColor: Colors.white,
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              flex: 1,
+                                                              child: Icon(
+                                                                Icons.arrow_forward_ios,
+                                                                color:
+                                                                ColorValues.kRedColor,
+                                                                size: 18,
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  //height: 70,
+                                                  width: 200,
+                                                )),
+                                          ),*/
+                                          );
+                                        }),
+                                  ),
+                                )
                               ),
+
                               SizedBox(
                                 height: 10,
                               ),
@@ -1186,7 +1722,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
 
 
 
-
+                              controller.isLoading_Announcement==false?
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 00),
                                 child: SizedBox(
@@ -1332,7 +1868,158 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                         );
                                       }),
                                 ),
+                              ):
+                              Shimmer.fromColors(
+                                  baseColor: Colors.black,
+                                  highlightColor: Colors.red,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 00),
+                                    child: SizedBox(
+                                      height: 140,
+                                      child: ListView.builder(
+                                          scrollDirection: Axis.horizontal,
+                                          shrinkWrap: true,
+                                          itemCount: controller.Announcement_list.length,
+                                          itemBuilder: (BuildContext, index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.only(left: 10, right: 10),
+                                              child: Card(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(8)),
+                                                margin: EdgeInsets.zero,
+                                                elevation: 3,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                      BorderRadius.circular(8)),
+                                                  width: 300,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 10,
+                                                        right: 10,
+                                                        top: 20,
+                                                        bottom: 10),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text_widget(
+                                                            Simpletext: controller.Announcement_list[index].title,
+                                                            fontSize: 14.5,
+                                                            color: Color(ColorValues.RED),
+                                                            fontWeight: FontWeight.bold),
+                                                        SizedBox(
+                                                          height: 8,
+                                                        ),
+                                                        Flexible(
+                                                          child: Text_widget(
+                                                            maxLines: 4,
+                                                            Simpletext:
+                                                            '${controller.Announcement_list[index].content}',
+                                                            fontSize: 14.0,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 3,
+                                                        ),
+                                                        Align(
+                                                            alignment:
+                                                            Alignment.centerRight,
+                                                            child: InkWell(
+                                                              onTap: () {
+                                                                showModalBottomSheet(
+                                                                    shape: RoundedRectangleBorder(
+                                                                        borderRadius: BorderRadius.only(
+                                                                            topRight: Radius
+                                                                                .circular(
+                                                                                20),
+                                                                            topLeft: Radius
+                                                                                .circular(
+                                                                                20))),
+                                                                    backgroundColor:
+                                                                    Colors.white,
+                                                                    context: context,
+                                                                    builder: (context) {
+                                                                      return Padding(
+                                                                        padding:
+                                                                        const EdgeInsets
+                                                                            .only(
+                                                                            left: 20,
+                                                                            right: 8,
+                                                                            bottom: 20),
+                                                                        child:
+                                                                        SingleChildScrollView(
+                                                                          child: Column(
+                                                                            crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                            mainAxisSize:
+                                                                            MainAxisSize
+                                                                                .min,
+                                                                            children: [
+                                                                              Align(
+                                                                                alignment:
+                                                                                Alignment
+                                                                                    .topRight,
+                                                                                child: IconButton(
+                                                                                    onPressed: () {
+                                                                                      Get.back();
+                                                                                    },
+                                                                                    icon: Icon(Icons.cancel_outlined)),
+                                                                              ),
+                                                                              Text_widget(
+                                                                                  Simpletext:
+                                                                                  controller.Announcement_list[index].title,
+                                                                                  fontSize:
+                                                                                  16.0,
+                                                                                  color: Color(
+                                                                                      ColorValues
+                                                                                          .RED)),
+                                                                              SizedBox(
+                                                                                height: 8,
+                                                                              ),
+                                                                              Text_widget(
+                                                                                  maxLines: 10,
+                                                                                  Simpletext:
+                                                                                  '${controller.Announcement_list[index].content}',
+                                                                                  fontSize:
+                                                                                  16.0,
+                                                                                  color: Color(
+                                                                                      ColorValues
+                                                                                          .DIVIDER_COL)),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    });
+                                                              },
+                                                              child: Row(
+                                                                children: [
+                                                                  Text(
+                                                                    'Read More',
+                                                                    style: TextStyle(
+                                                                        overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                        color: Colors.red,
+                                                                        decoration:
+                                                                        TextDecoration
+                                                                            .underline),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ))
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                    ),
+                                  ),
                               ),
+
 
                               SizedBox(
                                 height: 10,
@@ -1363,7 +2050,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
             )
 
           );
-        }
+      //  }
       })
 
     );
