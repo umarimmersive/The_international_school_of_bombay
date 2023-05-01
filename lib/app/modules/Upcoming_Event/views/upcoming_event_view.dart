@@ -50,18 +50,20 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
 
-                                    Center(child: Image.network(ApiService.IMAGE_URL+controller.upcoming_event[index].image!,height: 220,)),
+                                    Center(child: Image.network(ApiService.IMAGE_URL+controller.upcoming_event[index].image!,height: 300,)),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 10.0,left: 10,right: 10),
+                                      padding: const EdgeInsets.only(top: 5.0,left: 10,right: 10),
                                       child: Divider(height: 0,thickness: 2,color: ColorValues.DIVIDER_COLOR_ONE,),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+                                      padding: const EdgeInsets.only(left: 10,right: 10,top: 5),
                                       child: Text_widget(Simpletext: controller.upcoming_event[index].title!,fontWeight: FontWeight.bold,fontSize:19.0,),),
 
                                     Padding(
                                       padding: const EdgeInsets.only(left: 10,right: 10,top: 0),
-                                      child: Text_widget(Simpletext:controller.upcoming_event[index].date!+' '+controller.upcoming_event[index].year!, fontSize: 16.0,),
+                                      child: Text_widget(
+                                        maxLines: 2,
+                                        Simpletext:controller.upcoming_event[index].date!+' '+controller.upcoming_event[index].year!, fontSize: 16.0,),
                                     ),
 
                                   ],

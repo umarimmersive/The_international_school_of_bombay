@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker_widget/image_picker_widget.dart';
 
 import '../../../utils/constants/ColorValues.dart';
+import '../../../utils/global_widgets/RedBorderDropdown.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../../../utils/global_widgets/buttons.dart';
@@ -81,7 +82,8 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                     Padding(
                       padding:
                       const EdgeInsets.symmetric(horizontal: 00, vertical: 00),
-                      child: Column(
+                      child:
+                     /* Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
@@ -98,6 +100,10 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                             ),
                           ),
                         ],
+                      ),*/
+                      RedBorderDropdown(
+                        items: ['1st', '2nd', '3rd'],
+                        hintText: 'Enter Your Class',
                       ),
                     ),
                     SizedBox(
@@ -124,7 +130,7 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                             child: TextFieldDesigned(
                               controller: controller.phone_number,
                               fontSize: 14,
-                              maxLength: 50,
+                              maxLength: 12,
                               hintText: "Enter Your Phone Number",
                               hintStyle: ColorValues.DIVIDER_COLOR_ONE,
                               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -179,7 +185,7 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                       width: double.infinity,
                       fontSize: 14,
                       ontap: () {
-                        controller.Post_query();
+                        controller.OnSubmit();
                         // Get.to(DeshboardScreenView());
                         //s Get.toNamed(Routes.DESHBOARD_SCREEN);
                       },

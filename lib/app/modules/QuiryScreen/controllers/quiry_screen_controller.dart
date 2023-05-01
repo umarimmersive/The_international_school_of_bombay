@@ -15,6 +15,20 @@ class QuiryScreenController extends GetxController {
 
   final count = 0.obs;
 
+  OnSubmit(){
+    if(fullname.text.isEmpty){
+      ToastClass.showToast('Please enter full name.', 'assets/only_logo.png');
+    }else if(Class_c.text.isEmpty){
+      ToastClass.showToast('Please enter class.', 'assets/only_logo.png');
+    }else if(phone_number.text.isEmpty){
+      ToastClass.showToast('Please enter phoone number.', 'assets/only_logo.png');
+    }else if(query.text.isEmpty){
+      ToastClass.showToast('Please enter query.', 'assets/only_logo.png');
+    }else{
+      Post_query();
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();

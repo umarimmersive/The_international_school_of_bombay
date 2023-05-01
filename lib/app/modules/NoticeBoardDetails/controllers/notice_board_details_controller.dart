@@ -16,15 +16,18 @@ class NoticeBoardDetailsController extends GetxController {
       'to replenish the ones you lose as you work out or play sports. When you are finished, '
       'you might even want to make your own sports drink! "Just do it!" You have probably heard that slogan, and there is no doubt that exercise is a key part of staying healthy. But exercising depletes the bodys stores of fluids and minerals, which must be replaced. Most experts agree that if you are engaged in light to moderate exercise, drinking a glass or two of water should do the trick. But if you are exercising strenuously, you also need to replenish some of the salts that your body loses through sweat. These salts, or electrolytes, are found in most sports drinks, and also in natural juices like orange juice.'.obs;
 final id=''.obs;
+final title=''.obs;
 
 
   @override
   void onInit() {
     id.value=Get.parameters['id'].toString();
+    title.value=Get.parameters['title'].toString();
     if(id.value.isNotEmpty){
       Get_Notice_details();
     }
     print('------------------$id;');
+    print('title------------------$title;');
     super.onInit();
   }
 

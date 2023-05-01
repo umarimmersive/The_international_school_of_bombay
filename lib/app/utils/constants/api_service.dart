@@ -131,11 +131,11 @@ class ApiService {
     return ConvertDataToJson;
   }
 
-  Future Photo_Gallery() async {
+  Future Photo_Gallery(item_type) async {
     final response = await http.post(
         Uri.parse(BASE_URL + galleries),
         body: ({
-          'item_type':"1".toString(),
+          'item_type':item_type.toString(),
         })
     );
     var ConvertDataToJson = jsonDecode(response.body);

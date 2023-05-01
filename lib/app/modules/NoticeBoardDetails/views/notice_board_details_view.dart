@@ -18,7 +18,7 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
     var color1 = (isDark(context) ? Colors.white : Colors.black).obs;
     var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;
     return Scaffold(
-        appBar: appbar(title: 'Notice Board Details'),
+        appBar: appbar(title: controller.title.value),
         body:
         Obx(() {
           if (controller.isLoading.isTrue) {
@@ -36,18 +36,6 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child:
-                        Text('${controller.Noticebord_list[0].title}',style: TextStyle(color: Colors.red,fontSize: 18)),
-
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
 
 
                      /* Padding(
@@ -88,6 +76,7 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
                               backgroundColor: Colors.grey,
                             ),
                             "td": Style(
+                              fontSize: FontSize.xLarge,
                               padding: EdgeInsets.all(6),
                               alignment: Alignment.topLeft,
                             ),

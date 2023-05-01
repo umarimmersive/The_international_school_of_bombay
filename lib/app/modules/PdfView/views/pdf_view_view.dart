@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
-import '../../../utils/global_widgets/Appbaar.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/pdf_view_controller.dart';
 
@@ -14,7 +11,6 @@ class PdfViewView extends GetView<PdfViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appbar(title: 'Mathematics'),
-
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,11 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 import '../../../models/Photo_Gallery_Model.dart';
 import '../../../utils/constants/api_service.dart';
 
-class PhotosVideosGalleryController extends GetxController {
+class PhotosVideosGalleryController extends GetxController with GetSingleTickerProviderStateMixin{
   //TODO: Implement PhotosVidiosGalleryController
 
+
+  TabController? tabController;
 
   final sport_image_data = [
     'assets/sport/37.jpg',
@@ -70,18 +75,48 @@ class PhotosVideosGalleryController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
-    Get_PhotoVideoGallery();
+    tabController = TabController(length: 2, vsync: this);
+    Get_PhotoGallery();
+    Get_Video_Gallery();
+
     super.onInit();
   }
+  _setOrientation(List<DeviceOrientation> orientations) {
+    SystemChrome.setPreferredOrientations(orientations);
+  }
+   YoutubePlayerController? ytbPlayerController;
 
+  Player({url}) async{
+    //
+    // print('url-------------$url');
+    // _setOrientation([
+    //   DeviceOrientation.landscapeRight,
+    //   DeviceOrientation.landscapeLeft,
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
+
+
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      ytbPlayerController = YoutubePlayerController(
+        initialVideoId: url,
+        params: YoutubePlayerParams(
+          showFullscreenButton: false,
+        ),
+      );
+    });
+
+    ytbPlayerController!.play();
+  }
   final PhotoVideoGallery = <PhotoGalleryModel>[].obs;
   final isLoading=false.obs;
 
-  Future Get_PhotoVideoGallery() async {
+  Future Get_PhotoGallery() async {
     try {
       isLoading(true);
       var response = await ApiService()
-          .Photo_Gallery();
+          .Photo_Gallery('1');
       if (response['status'] == true) {
 
         print('responce----------------------${response}');
@@ -91,6 +126,7 @@ class PhotosVideosGalleryController extends GetxController {
         PhotoVideoGallery.value = dataList.map((json) => PhotoGalleryModel.fromJson(json)).toList();
 
 
+        print('P-----------------${PhotoVideoGallery}');
         update();
       } else if (response['status'] == false) {
 
@@ -102,6 +138,41 @@ class PhotosVideosGalleryController extends GetxController {
     }
   }
 
+  final VideoGallery = <PhotoGalleryModel>[].obs;
+ // final isLoading=false.obs;
+  Future Get_Video_Gallery() async {
+    try {
+      isLoading(true);
+      var response = await ApiService()
+          .Photo_Gallery('2');
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+
+        VideoGallery.value = dataList.map((json) => PhotoGalleryModel.fromJson(json)).toList();
+
+        await Player(url: VideoGallery[0].item_value.toString());
+        print('P-----------------${VideoGallery}');
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading(false);
+      }
+    } finally {
+      isLoading(false);
+
+    }
+  }
+
+
+  @override
+  void dispose() {
+   // ytbPlayerController!.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
 
   @override
