@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:the_international_school_of_bombay/app/models/Announcement_model.dart';
+import 'package:the_international_school_of_bombay/app/models/Sections/section_details_model.dart';
 import 'package:the_international_school_of_bombay/app/models/Sibling_model.dart';
+import 'package:the_international_school_of_bombay/app/utils/constants/toast.dart';
 
 import '../../../models/Event_list_model.dart';
 import '../../../models/Knowledge_base_model.dart';
 import '../../../models/Slider_model.dart';
+import '../../../models/Sections/selection_list_model.dart';
 import '../../../utils/constants/api_service.dart';
 
 class HomeScreenController extends GetxController {
@@ -24,14 +27,16 @@ class HomeScreenController extends GetxController {
   GlobalKey refresherKey = GlobalKey();
 
 
-
-
-
-
   final Image = 'assets/background.jpg'.obs;
   final profile_image = 'assets/profileimages.jpeg'.obs;
   List<String> title=["Leave", "Noticeboard","Bus Routes","School Rules","Query"];
-  List<IconData> icons = [Icons.api, Icons.event_note_outlined, Icons.time_to_leave_outlined,Icons.note_alt_outlined, Icons.note_alt, Icons.note_alt];
+  List<IconData> icons = [
+    Icons.api,
+    Icons.event_note_outlined,
+    Icons.time_to_leave_outlined,
+    Icons.note_alt_outlined,
+    Icons.note_alt,
+  ];
 
   int current = 0;
   final CarouselController slidercontroller = CarouselController();
@@ -56,10 +61,11 @@ class HomeScreenController extends GetxController {
     Get_Slider();
     Get_sibling();
     Get_Annoucement();
-    Get_Knowledge();
+    // Get_Knowledge();
   //  Get_Adv_list();
     Get_Event_list();
     Get_banner_list();
+    Get_selectionList();
     super.onInit();
   }
 
@@ -72,6 +78,7 @@ class HomeScreenController extends GetxController {
    await  Get_Knowledge();
    await  Get_Event_list();
    await  Get_banner_list();
+   await   Get_selectionList();
   }
 
 
@@ -82,6 +89,10 @@ class HomeScreenController extends GetxController {
   final file_valude=''.obs;
   final line_color=''.obs;
   final token=''.obs;
+
+  Color hexToColor(String hexString, {String alphaChannel = 'FF'}) {
+    return Color(int.parse(hexString.replaceFirst('#', '0x$alphaChannel')));
+  }
 
 
   Future Get_deshbord_section() async {
@@ -148,11 +159,8 @@ class HomeScreenController extends GetxController {
   }
 
 
-
-
  // final isLoading=false.obs;
   final Sibling = <Sibling_model>[].obs;
-
   Future Get_sibling() async {
     try {
       isLoading(true);
@@ -187,7 +195,6 @@ class HomeScreenController extends GetxController {
 
   final Announcement_list = <Announcement_model>[].obs;
   final isLoading_Announcement=false.obs;
-
   Future Get_Annoucement() async {
     try {
       isLoading_Announcement(true);
@@ -213,12 +220,8 @@ class HomeScreenController extends GetxController {
   }
 
 
-
   final KnowledgeBaseList = <Knowledge_base_model>[].obs;
-
-
   final isLoading_Knowledge=false.obs;
-
   Future Get_Knowledge() async {
     try {
       isLoading_Knowledge(true);
@@ -245,11 +248,8 @@ class HomeScreenController extends GetxController {
   }
 
 
-
   final Event_list = <Event_list_model>[].obs;
-
   final isLoading_Event=false.obs;
-
   Future Get_Event_list() async {
     try {
       isLoading_Event(true);
@@ -262,7 +262,6 @@ class HomeScreenController extends GetxController {
 
         List dataList = response['data'].toList();
         Event_list.value = dataList.map((json) => Event_list_model.fromJson(json)).toList();
-
 
         update();
       } else if (response['status'] == false) {
@@ -278,7 +277,6 @@ class HomeScreenController extends GetxController {
 
   final Adv_list = <Avd_model>[].obs;
   final adv_image=''.obs;
-
   Future Get_banner_list() async {
     try {
       isLoading(true);
@@ -304,6 +302,69 @@ class HomeScreenController extends GetxController {
     }
   }
 
+
+  final selectionList = <Section_List_model>[].obs;
+  final isLoading_selectionList = false.obs;
+  Future Get_selectionList() async {
+    try {
+      isLoading_selectionList(true);
+      var response = await ApiService()
+          .Selection_list();
+      if (response['status'] == true) {
+
+        Toast.show(response['message'].toString());
+
+
+        print(' Get_selectionList === responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        selectionList.value = dataList.map((json) => Section_List_model.fromJson(json)).toList();
+
+        isLoading_selectionList(false);
+
+        update();
+      } else if (response['status'] == false) {
+
+        Toast.show(response['message'].toString());
+
+        isLoading_selectionList(false);
+      }
+    } finally {
+      isLoading_selectionList(false);
+
+    }
+  }
+
+  final sectionDetailsList = <Section_details_model>[].obs;
+  final isLoadin_sectionDetails = false.obs;
+  Future Get_selectionListData(int selectionID) async {
+    try {
+      isLoadin_sectionDetails(true);
+      var response = await ApiService()
+          .Selection_data(selectionID);
+      if (response['status'] == true) {
+
+        Toast.show(response['message'].toString());
+
+        print(' Get_selectionList === responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        sectionDetailsList.value = dataList.map((json) => Section_details_model.fromJson(json)).toList();
+
+        isLoadin_sectionDetails(false);
+
+        update();
+      } else if (response['status'] == false) {
+
+        Toast.show(response['message'].toString());
+
+        isLoadin_sectionDetails(false);
+      }
+    } finally {
+      isLoadin_sectionDetails(false);
+
+    }
+  }
 
 
   @override

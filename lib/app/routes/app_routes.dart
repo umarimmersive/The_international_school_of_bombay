@@ -13,6 +13,7 @@ abstract class Routes {
   static const NOTICE_BOARD = _Paths.NOTICE_BOARD;
   static const NOTICE_BOARD_DETAILS = _Paths.NOTICE_BOARD_DETAILS;
   static const EVENTS = _Paths.EVENTS;
+  static const UPCOMINGEVENTS_DETAILS = _Paths.UPCOMINGEVENTS_DETAILS;
   static const DESHBOARD_SCREEN = _Paths.DESHBOARD_SCREEN;
   static const ASSIGNMENT = _Paths.ASSIGNMENT;
   static const SYLLABUS = _Paths.SYLLABUS;
@@ -66,6 +67,7 @@ abstract class _Paths {
   static const NOTICE_BOARD = '/notice-board';
   static const NOTICE_BOARD_DETAILS = '/notice-board-details';
   static const EVENTS = '/events';
+  static const UPCOMINGEVENTS_DETAILS = '/upcoming-events-details';
   static const DESHBOARD_SCREEN = '/deshboard-screen';
   static const ASSIGNMENT = '/assignment';
   static const SYLLABUS = '/syllabus';

@@ -25,7 +25,6 @@ class LeavesScreenController extends GetxController {
   final endDate = "".obs;
 
 
-
   dateString(context) async {
     final result = await showDatePicker(
       context: context,
@@ -55,8 +54,6 @@ class LeavesScreenController extends GetxController {
       startDate.value = "${date!.day}/${date!.month}/${date!.year}";
     }
   }
-
-
 
   dateStringg(context) async {
     final resultt = await showDatePicker(

@@ -7,10 +7,10 @@ import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/constants/api_service.dart';
 import '../../../utils/global_widgets/globle_var.dart';
 import '../../../utils/global_widgets/textEnter.dart';
-import '../controllers/events_controller.dart';
+import '../controllers/upcoming_events_details_controller.dart';
 
-class EventsView extends GetView<EventsController> {
-  const EventsView({Key? key}) : super(key: key);
+class UpcomingEventDetailsView extends GetView<UpcomingEventsDetailsController> {
+  const UpcomingEventDetailsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var htmlcolore = (isDark(context) ? Colors.white : Colors.black).obs;

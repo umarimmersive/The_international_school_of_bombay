@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/controllers/upcoming_events_details_controller.dart';
+import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/views/upcoming_events_details_view.dart';
 import '../modules/About/bindings/about_binding.dart';
 import '../modules/About/views/about_view.dart';
 import '../modules/Academic_content/bindings/academic_content_binding.dart';
@@ -71,6 +73,7 @@ import '../modules/TermandCondition/bindings/termand_condition_binding.dart';
 import '../modules/TermandCondition/views/termand_condition_view.dart';
 import '../modules/TimeTableScreen/bindings/time_table_screen_binding.dart';
 import '../modules/TimeTableScreen/views/time_table_screen_view.dart';
+import '../modules/UpcomingEventsDetails/bindings/upcoming_events_details_binding.dart';
 import '../modules/Upcoming_Event/bindings/upcoming_event_binding.dart';
 import '../modules/Upcoming_Event/views/upcoming_event_view.dart';
 import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
@@ -134,6 +137,11 @@ class AppPages {
       name: _Paths.EVENTS,
       page: () => EventsView(),
       binding: EventsBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVENTS,
+      page: () => UpcomingEventDetailsView(),
+      binding: UpcomingEventsDetailsBinding(),
     ),
     GetPage(
       name: _Paths.DESHBOARD_SCREEN,

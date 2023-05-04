@@ -35,6 +35,10 @@ class ApiService {
   static final String advertisement = "advertisement";
 
 
+  static final String sectionList = "sectionList";
+  static final String sectionData = "sectionData";
+
+
 
   static final String term_condition = "termsOfUse";
   static final String PRIVECY_POLICY = "privacyPolicy";
@@ -46,6 +50,9 @@ class ApiService {
   static final String MARINA_BOOKING = "marinaBookingList";
   static final String SEND_ANNOOUCEMENTS = "sendAnnouncements";
   static final String ANNOUCEMENT_LIST = "announcementList";
+
+
+
 
 
 
@@ -384,23 +391,26 @@ class ApiService {
   }
 
 
+  Future Selection_list() async {
+    final response = await http.get(
+      Uri.parse(BASE_URL + sectionList),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
 
 
+  Future Selection_data(selectionID) async {
+    print("----------------$selectionID");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    final response = await http.post(
+        Uri.parse(BASE_URL + sectionData),
+        body: ({
+          'section_id': selectionID,
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
 
 }
