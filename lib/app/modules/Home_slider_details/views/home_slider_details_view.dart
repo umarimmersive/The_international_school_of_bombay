@@ -47,7 +47,6 @@ class HomeSliderDetailsView extends GetView<HomeSliderDetailsController> {
                                 padding: const EdgeInsets.only(left: 10.0, right: 10),
                                 child: TextFieldShowCOLOR(
 
-
                                   textAlign: TextAlign.start,
                                   color: Colors.white,
                                   //color: color1.value,

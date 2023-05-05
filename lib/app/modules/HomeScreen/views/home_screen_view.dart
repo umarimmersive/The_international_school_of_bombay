@@ -18,6 +18,7 @@ import '../../../utils/constants/ShowToast.dart';
 import '../../../utils/global_widgets/Text.dart';
 import '../controllers/home_screen_controller.dart';
 import '../../../utils/global_widgets/buttons.dart';
+import 'dart:io' show Platform;
 
 class HomeScreenView extends GetView<HomeScreenController> {
   TabController? _tabController;
@@ -227,7 +228,8 @@ class HomeScreenView extends GetView<HomeScreenController> {
     var color = (isDark(context) ? Color(0xFF414040) : Colors.white).obs;
     var color1 = (isDark(context) ? Colors.white : Colors.black).obs;
     double height = MediaQuery.of(context).size.height;
-    return SafeArea(child: Obx(() {
+    double width = MediaQuery.of(context).size.width;
+    return Obx(() {
       //   if(controller.isLoading.isTrue){
       //   return Center(
       //       child: SpinKitThreeBounce(
@@ -238,9 +240,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
       // }else{
       return Scaffold(
           body: SmartRefresher(
-        controller: controller.refreshController,
-        enablePullUp: true,
-        child: CustomScrollView(
+            controller: controller.refreshController,
+            enablePullUp: true,
+            child: CustomScrollView(
           semanticChildCount: 2,
           shrinkWrap: true,
           slivers: <Widget>[
@@ -273,8 +275,142 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               ),
                               fit: BoxFit.fill)),
                     ),
+                    if(Platform.isIOS)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, top:45),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Flexible(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    userData!.profile_image.isNotEmpty
+                                        ? Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                          BorderRadius.circular(5)),
+                                      height: 60,
+                                      width: 55,
+                                      child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(5),
+                                          child: Image.network(
+                                            "${ApiService.IMAGE_URL + userData!.profile_image}",
+                                            fit: BoxFit.cover,
+                                          )),
+                                    )
+                                        : Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                            BorderRadius.circular(5)),
+                                        height: 60,
+                                        width: 55,
+                                        child: Center(
+                                          child: Text_widget(
+                                            Simpletext: userData!.full_name
+                                                .toString()
+                                                .substring(0, 1) +
+                                                userData!.lastname
+                                                    .toString()
+                                                    .substring(0, 1),
+                                            fontSize: 15.0,
+                                            maxLines: 1,
+                                            color: Colors.red,
+                                          ),
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              GlobalLocalText(
+                                                text: "Hello,",
+                                                size: 16,
+                                                textColor: Colors.white,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              GlobalLocalText(
+                                                text: "${userData!.full_name}",
+                                                textColor: Colors.white,
+                                                size: 15,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          GlobalLocalText(
+                                            text: "Shift ${userData!.shift}",
+                                            size: 12,
+                                            textColor: Colors.white,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          Flexible(
+                                            child: GlobalLocalText(
+                                              size: 12,
+                                              text:
+                                              "${userData!.Class}, Section-${userData!.section}",
+                                              textColor: Colors.white,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  // controller.Slider.value == true
+                                  //     ? IconButton(
+                                  //         onPressed: () {
+                                  //           _showSimpleDialog(context);
+                                  //         },
+                                  //         icon: Icon(
+                                  //           size: 24,
+                                  //           Icons.person,
+                                  //           color: Colors.white,
+                                  //         ))
+                                  //     : SizedBox(),
+                                  IconButton(
+                                      onPressed: () {
+                                        Get.toNamed(Routes.NOTIFICATION);
+                                      },
+                                      icon: Icon(
+                                        size: 24,
+                                        Icons.notifications,
+                                        color: Colors.white,
+                                      )),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    else
                     Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 30),
+                      padding: const EdgeInsets.only(left: 15, top:30),
                       child: Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -475,7 +611,353 @@ class HomeScreenView extends GetView<HomeScreenController> {
                     else
                       SizedBox(),
                   ],
-                )),
+                ))
+            else
+              SliverAppBar(
+                  titleSpacing: 0,
+                  toolbarHeight: 90,
+                  excludeHeaderSemantics: true,
+                  backgroundColor: ColorValues.BG_BT2,
+                  floating: false,
+                  stretch: false,
+                  automaticallyImplyLeading: false,
+                  pinned: false,
+                  title: Container(height:6000,color: Colors.transparent,),
+                  expandedHeight: 200,
+                  flexibleSpace: Stack(
+                    children: [
+                      Container(
+                        height: 200,
+                      ),
+                      if(Platform.isIOS)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, top: 45),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Flexible(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    userData!.profile_image.isNotEmpty
+                                        ? Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                          BorderRadius.circular(5)),
+                                      height: 60,
+                                      width: 55,
+                                      child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(5),
+                                          child: Image.network(
+                                            "${ApiService.IMAGE_URL + userData!.profile_image}",
+                                            fit: BoxFit.cover,
+                                          )),
+                                    )
+                                        : Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                            BorderRadius.circular(5)),
+                                        height: 60,
+                                        width: 55,
+                                        child: Center(
+                                          child: Text_widget(
+                                            Simpletext: userData!.full_name
+                                                .toString()
+                                                .substring(0, 1) +
+                                                userData!.lastname
+                                                    .toString()
+                                                    .substring(0, 1),
+                                            fontSize: 15.0,
+                                            maxLines: 1,
+                                            color: Colors.red,
+                                          ),
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              GlobalLocalText(
+                                                text: "Hello,",
+                                                size: 16,
+                                                textColor: Colors.white,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              GlobalLocalText(
+                                                text: "${userData!.full_name}",
+                                                textColor: Colors.white,
+                                                size: 15,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          GlobalLocalText(
+                                            text: "Shift ${userData!.shift}",
+                                            size: 12,
+                                            textColor: Colors.white,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          Flexible(
+                                            child: GlobalLocalText(
+                                              size: 12,
+                                              text:
+                                              "${userData!.Class}, Section-${userData!.section}",
+                                              textColor: Colors.white,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  // controller.Slider.value == true
+                                  //     ? IconButton(
+                                  //         onPressed: () {
+                                  //           _showSimpleDialog(context);
+                                  //         },
+                                  //         icon: Icon(
+                                  //           size: 24,
+                                  //           Icons.person,
+                                  //           color: Colors.white,
+                                  //         ))
+                                  //     : SizedBox(),
+                                  IconButton(
+                                      onPressed: () {
+                                        Get.toNamed(Routes.NOTIFICATION);
+                                      },
+                                      icon: Icon(
+                                        size: 24,
+                                        Icons.notifications,
+                                        color: Colors.white,
+                                      )),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                      else
+                        Padding(
+                        padding: const EdgeInsets.only(left: 15, top: 30),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Flexible(
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    userData!.profile_image.isNotEmpty
+                                        ? Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                          BorderRadius.circular(5)),
+                                      height: 60,
+                                      width: 55,
+                                      child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(5),
+                                          child: Image.network(
+                                            "${ApiService.IMAGE_URL + userData!.profile_image}",
+                                            fit: BoxFit.cover,
+                                          )),
+                                    )
+                                        : Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                            BorderRadius.circular(5)),
+                                        height: 60,
+                                        width: 55,
+                                        child: Center(
+                                          child: Text_widget(
+                                            Simpletext: userData!.full_name
+                                                .toString()
+                                                .substring(0, 1) +
+                                                userData!.lastname
+                                                    .toString()
+                                                    .substring(0, 1),
+                                            fontSize: 15.0,
+                                            maxLines: 1,
+                                            color: Colors.red,
+                                          ),
+                                        )),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Flexible(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              GlobalLocalText(
+                                                text: "Hello,",
+                                                size: 16,
+                                                textColor: Colors.white,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                              SizedBox(
+                                                width: 2,
+                                              ),
+                                              GlobalLocalText(
+                                                text: "${userData!.full_name}",
+                                                textColor: Colors.white,
+                                                size: 15,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          GlobalLocalText(
+                                            text: "Shift ${userData!.shift}",
+                                            size: 12,
+                                            textColor: Colors.white,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                          SizedBox(
+                                            height: 3,
+                                          ),
+                                          Flexible(
+                                            child: GlobalLocalText(
+                                              size: 12,
+                                              text:
+                                              "${userData!.Class}, Section-${userData!.section}",
+                                              textColor: Colors.white,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  // controller.Slider.value == true
+                                  //     ? IconButton(
+                                  //         onPressed: () {
+                                  //           _showSimpleDialog(context);
+                                  //         },
+                                  //         icon: Icon(
+                                  //           size: 24,
+                                  //           Icons.person,
+                                  //           color: Colors.white,
+                                  //         ))
+                                  //     : SizedBox(),
+                                  IconButton(
+                                      onPressed: () {
+                                        Get.toNamed(Routes.NOTIFICATION);
+                                      },
+                                      icon: Icon(
+                                        size: 24,
+                                        Icons.notifications,
+                                        color: Colors.white,
+                                      )),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                margin: EdgeInsets.zero,
+                                height: 100,
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Container(
+                                          height: 70,
+                                          decoration: BoxDecoration(
+                                              color: color.value,
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(30),
+                                                  topRight: Radius.circular(30))),
+                                        )),
+                                    Align(
+                                        alignment: Alignment.topCenter,
+                                        child: CircleAvatar(
+                                          backgroundColor: color.value,
+                                          radius: 40,
+                                          child: Padding(
+                                            padding:
+                                            const EdgeInsets.only(bottom: 20.0),
+                                            child: Container(
+                                              height: 60,
+                                              width: 60,
+                                            )
+                                          ),
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Text_widget(
+                                          textAlign: TextAlign.center,
+                                          maxLines: 2,
+                                          Simpletext:
+                                          '',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 20.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Container(
+                                            width:
+                                            MediaQuery.of(context).size.width,
+                                            child: Divider(),
+                                      ),
+                                    )
+                                    )
+                                  ],
+                                ),
+                              ))
+
+                    ],
+                  )),
 
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -502,6 +984,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      if(controller.selectionList[2].id == 3)
+                                      SizedBox()
+                                      else
                                       Padding(
                                         padding: const EdgeInsets.only(
                                             left: 10, top: 10),
@@ -517,15 +1002,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                             const EdgeInsets.only(top: 10.0,bottom:10),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                              color: controller
-                                                          .selectionList[index]
-                                                          .bgType ==
-                                                      0
-                                                  ? controller.hexToColor(
-                                                      controller
-                                                          .selectionList[index]
-                                                          .bgValue
-                                                          .toString())
+                                              color: isDark(context)
+                                                  ? Color(0xFF414040)
+                                                  : controller.selectionList[index].bgType == 0
+                                                  ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                                   : Colors.transparent,
                                               image: DecorationImage(
                                                   image: NetworkImage(
@@ -839,6 +1319,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              if(controller.selectionList[2].id == 4)
+                                SizedBox()
+                              else
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 10, top: 10),
@@ -854,12 +1337,12 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                       child: Container(
                                         width: MediaQuery.of(context).size.width,
                                         decoration: BoxDecoration(
-                                            color:
-                                            controller.selectionList[index].bgType == 0
-                                                ? controller.hexToColor(controller
-                                                .selectionList[index].bgValue
-                                                .toString())
+                                            color: isDark(context)
+                                                ? Color(0xFF414040)
+                                                : controller.selectionList[index].bgType == 0
+                                                ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                                 : Colors.transparent,
+
                                             image: DecorationImage(
                                                 image: NetworkImage(
                                                   ApiService.IMAGE_URL +
@@ -867,7 +1350,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                           .selectionList[index].bgValue
                                                           .toString(),
                                                 ),
-                                                fit: BoxFit.fill)),
+                                                fit: BoxFit.fill
+                                            )
+                                        ),
                                         child: SizedBox(
                                           height: 125,
                                           child: ListView.builder(
@@ -1086,6 +1571,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    if(controller.selectionList[2].id == 5)
+                                      SizedBox()
+                                    else
                                 Padding(
                                   padding:
                                       const EdgeInsets.only(left: 10, top: 10),
@@ -1102,12 +1590,11 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                         child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
-                                          color:
-                                          controller.selectionList[index].bgType == 0
-                                              ? controller.hexToColor(controller
-                                              .selectionList[index].bgValue
-                                              .toString())
-                                              : Colors.transparent,
+                                        color: isDark(context)
+                                            ? Color(0xFF414040)
+                                            : controller.selectionList[index].bgType == 0
+                                            ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
+                                            : Colors.transparent,
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                 ApiService.IMAGE_URL +
@@ -1420,11 +1907,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              color:
-                              controller.selectionList[index].bgType == 0
-                                  ? controller.hexToColor(controller
-                                  .selectionList[index].bgValue
-                                  .toString())
+                              color: isDark(context)
+                                  ? Color(0xFF414040)
+                                  : controller.selectionList[index].bgType == 0
+                                  ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                   : Colors.transparent,
                               image: DecorationImage(
                                   image: NetworkImage(
@@ -1541,6 +2027,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                if(controller.selectionList[2].id == 7)
+                                  SizedBox()
+                                else
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 10, top: 10),
@@ -1557,11 +2046,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                           height: 200,
                                           width: double.infinity,
                                           decoration: BoxDecoration(
-                                              color:
-                                              controller.selectionList[index].bgType == 0
-                                                  ? controller.hexToColor(controller
-                                                  .selectionList[index].bgValue
-                                                  .toString())
+                                              color: isDark(context)
+                                                  ? Color(0xFF414040)
+                                                  : controller.selectionList[index].bgType == 0
+                                                  ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                                   : Colors.transparent,
                                               image: DecorationImage(
                                                   image: NetworkImage(
@@ -2054,10 +2542,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                               elevation: 5,
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: controller.selectionList[index].bgType == 0
-                                        ? controller.hexToColor(controller
-                                        .selectionList[index].bgValue
-                                        .toString())
+                                    color: isDark(context)
+                                        ? Color(0xFF414040)
+                                        : controller.selectionList[index].bgType == 0
+                                        ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                         : Colors.transparent,
                                     image: DecorationImage(
                                         image: NetworkImage(
@@ -2067,7 +2555,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                                   .toString(),
                                         ),
                                         fit: BoxFit.fill)),
-                                height: 50,
+                                height: 80,
                                 width: double.infinity,
                                 child: Image.network(
                                   ApiService.IMAGE_URL + controller.adv_image.value,
@@ -2083,6 +2571,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  if(controller.selectionList[2].id == 9)
+                                    SizedBox()
+                                  else
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, top: 10),
@@ -2113,11 +2604,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                     padding: EdgeInsets.only(top: 10,bottom:10),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color:
-                                          controller.selectionList[index].bgType == 0
-                                              ? controller.hexToColor(controller
-                                              .selectionList[index].bgValue
-                                              .toString())
+                                          color: isDark(context)
+                                              ? Color(0xFF414040)
+                                              : controller.selectionList[index].bgType == 0
+                                              ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                               : Colors.transparent,
                                           image: DecorationImage(
                                               image: NetworkImage(
@@ -2159,6 +2649,9 @@ class HomeScreenView extends GetView<HomeScreenController> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  if(controller.selectionList[2].id == 10)
+                                    SizedBox()
+                                  else
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, top: 10),
@@ -2174,11 +2667,10 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                           child: Container(
                                               width: double.infinity,
                                             decoration: BoxDecoration(
-                                                color:
-                                                controller.selectionList[index].bgType == 0
-                                                    ? controller.hexToColor(controller
-                                                    .selectionList[index].bgValue
-                                                    .toString())
+                                                color: isDark(context)
+                                                    ? Color(0xFF414040)
+                                                    : controller.selectionList[index].bgType == 0
+                                                    ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
                                                     : Colors.transparent,
                                                 image: DecorationImage(
                                                     image: NetworkImage(
@@ -3048,22 +3540,24 @@ class HomeScreenView extends GetView<HomeScreenController> {
                 },
               ),
             ),
+
           ],
         ),
-        physics: BouncingScrollPhysics(),
-        footer: ClassicFooter(
+            physics: BouncingScrollPhysics(),
+            footer: ClassicFooter(
           loadStyle: LoadStyle.HideAlways,
           completeDuration: Duration(milliseconds: 500),
         ),
-        onRefresh: () async {
+            onRefresh: () async {
           await controller.refrshApi();
           await Future.delayed(Duration(milliseconds: 1000));
 
           if (true) controller.refreshController.refreshCompleted();
         },
-      ));
+          )
+      );
       // }
-    }));
+    });
   }
 }
 
