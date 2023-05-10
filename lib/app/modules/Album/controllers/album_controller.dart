@@ -31,6 +31,7 @@ class AlbumController extends GetxController {
     "cultural events",
     "Group",
   ];
+
   final count = 0.obs;
   @override
   void onInit() {

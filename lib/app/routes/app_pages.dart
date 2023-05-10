@@ -255,7 +255,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.VIDEO_PLAYER,
-      page: () => const VideoPlayerView(),
+      page: () =>   VideoPlayerView(),
       binding: VideoPlayerBinding(),
     ),
     GetPage(
