@@ -50,6 +50,14 @@ class HomeScreenController extends GetxController {
     'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
   ];
 
+  final List<String> imgListSlider = [
+  'https://cdn.pixabay.com/photo/2015/12/15/06/42/kids-1093758_1280.jpg' ,
+  'https://cdn.pixabay.com/photo/2015/07/19/10/00/school-work-851328_1280.jpg' ,
+  'https://cdn.pixabay.com/photo/2014/03/12/18/45/boys-286245_1280.jpg' ,
+  'https://cdn.pixabay.com/photo/2022/07/23/07/21/children-7339441_1280.jpg' ,
+  'https://cdn.pixabay.com/photo/2014/07/17/15/17/students-395568_1280.jpg'
+  ].obs;
+
   final slider_image = [
    'assets/images/2.png',
    'assets/images/3.png',
@@ -89,6 +97,7 @@ class HomeScreenController extends GetxController {
   final file_valude=''.obs;
   final line_color=''.obs;
   final token=''.obs;
+  final imageSliderindex = 0.obs;
 
   Color hexToColor(String hexString, {String alphaChannel = 'FF'}) {
     return Color(int.parse(hexString.replaceFirst('#', '0x$alphaChannel')));
@@ -126,7 +135,6 @@ class HomeScreenController extends GetxController {
 
   final Slider = <Slider_model>[].obs;
   final isLoading_slider = false.obs;
-
 
 
   Future Get_Slider() async {
@@ -176,10 +184,6 @@ class HomeScreenController extends GetxController {
 
         for(int i =0;i<Sibling.length;i++)
           isChecked.add(false);
-
-
-
-
 
         update();
       } else if (response['status'] == false) {
@@ -312,7 +316,7 @@ class HomeScreenController extends GetxController {
           .Selection_list();
       if (response['status'] == true) {
 
-        Toast.show(response['message'].toString());
+        // Toast.show(response['message'].toString());
 
 
         print(' Get_selectionList === responce----------------------${response}');
@@ -325,7 +329,7 @@ class HomeScreenController extends GetxController {
         update();
       } else if (response['status'] == false) {
 
-        Toast.show(response['message'].toString());
+        // Toast.show(response['message'].toString());
 
         isLoading_selectionList(false);
       }

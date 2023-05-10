@@ -835,7 +835,6 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                                 controller: YoutubePlayerController(
                                                     initialVideoId: "nPt8bK2gbaU",
                                                     flags: YoutubePlayerFlags(
-
                                                         disableDragSeek: true,
                                                         forceHD: false,
                                                         autoPlay: false,
