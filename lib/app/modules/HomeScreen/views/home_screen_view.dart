@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -236,16 +237,16 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  YoutubePlayerController _controller = YoutubePlayerController(
-      initialVideoId: "nPt8bK2gbaU",
-      flags: YoutubePlayerFlags(
-          enableCaption:true,
-          disableDragSeek: true,
-          forceHD: false,
-          autoPlay: true,
-          showLiveFullscreenButton: true
-      )
-  );
+  // YoutubePlayerController _controller = YoutubePlayerController(
+  //     initialVideoId:YoutubePlayer.convertUrlToId(controller.selectionList[index].extra![0].redirection_url.toString()).toString(),
+  //     flags: YoutubePlayerFlags(
+  //         enableCaption:true,
+  //         disableDragSeek: true,
+  //         forceHD: false,
+  //         autoPlay: true,
+  //         showLiveFullscreenButton: true
+  //     )
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -1027,8 +1028,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                           size: 16,
                                         ),
                                       ),
-                                    Padding(
-                                      padding:
+                                    Padding(padding:
                                       const EdgeInsets.only(top: 10.0,bottom:10),
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -1343,106 +1343,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                     ),
                                   )
                               ),
-
-                            // image slider
-                            if (controller.selectionList[index].id == 3)
-                              Column(
-                                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  SizedBox(height: 10),
-                                  Stack(
-                                    children: [
-                                      CarouselSlider(
-                                        items: _getImageSlider(),
-                                        carouselController: CarouselController(),
-                                        options: CarouselOptions(
-                                            autoPlay: true,
-                                            enlargeCenterPage: false,
-                                            height: 250,
-                                            viewportFraction: 1.0,
-                                            onPageChanged: (index, reason) {
-                                              setState(() {
-                                                controller.imageSliderindex
-                                                    .value = index;
-                                              }
-                                              );
-                                            }
-                                        ),
-                                      ),
-                                      Positioned(
-                                        bottom:5,
-                                        child: Container(
-                                          width: width,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: controller.imgListSlider.asMap().entries.map((entry) {
-                                              return Container(
-                                                width: 10,
-                                                height: 10,
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 4),
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      color: Colors.grey,
-                                                      width: 1),
-                                                  shape: BoxShape.circle,
-                                                  color: controller.imageSliderindex.value == entry.key
-                                                      ? Colors.white
-                                                      : null,
-                                                ),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                ],
-                              ),
-
-                            // video player
-                            if (controller.selectionList[index].id == 5)
-                            Container(
-                              height: 200,
-                              width: width,
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child:Stack(
-                                  children: [
-                                    Container(
-                                        width: width,
-                                      child: Image.network('https://cdn.pixabay.com/photo/2015/12/15/06/42/kids-1093758_1280.jpg',
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.center,
-                                        child: Container(
-                                        width: width,
-                                            child: IconButton(
-                                              tooltip: "play",
-                                              onPressed: (){
-                                                _videoWidget();
-                                              },
-                                              icon: Icon(
-                                                  Icons.play_arrow,
-                                                  size: 50,
-                                                  color: Colors.white
-                                              )
-                                            )
-                                        )
-                                    )
-                                  ],
-                                )
-                              ),
-                            ),
 
                             // Explore More
                             if (controller.selectionList[index].id == 4)
@@ -2050,8 +1950,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                   .toString(),
                                         ),
                                         fit: BoxFit.fill)),
-                                padding :EdgeInsets.only(top:20,bottom:0),
+                                padding :EdgeInsets.only( top:20,bottom:0),
                                 child: ListView.builder(
+                                    padding:EdgeInsets.zero,
                                     shrinkWrap: true,
                                     itemCount: controller.selectionList[index].extra!.length,
                                     physics: NeverScrollableScrollPhysics(),
@@ -3062,6 +2963,217 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                     ]),
                               ),
 
+                            // image slider
+                            if (controller.selectionList[index].id == 13)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0,bottom:10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: isDark(context)
+                                          ? Color(0xFF414040)
+                                          : controller.selectionList[index].bgType == 0
+                                          ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
+                                          : Colors.transparent,
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                            ApiService.IMAGE_URL +
+                                                controller
+                                                    .selectionList[
+                                                index]
+                                                    .bgValue
+                                                    .toString(),
+                                          ),
+                                          fit: BoxFit.fill)),
+                                  height: 290,
+                                  child: Column(
+                                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      SizedBox(height: 10),
+                                      Stack(
+                                        children: [
+                                          CarouselSlider(
+                                            items: _getImageSlider(),
+                                            carouselController: CarouselController(),
+                                            options: CarouselOptions(
+                                                autoPlay: true,
+                                                enlargeCenterPage: false,
+                                                height: 270,
+                                                viewportFraction: 1.0,
+                                                onPageChanged: (index, reason) {
+                                                  setState(() {
+                                                    controller.imageSliderindex
+                                                        .value = index;
+                                                  }
+                                                  );
+                                                }
+                                            ),
+                                          ),
+                                          Positioned(
+                                            bottom:10,
+                                            child: Container(
+                                              width: width,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: controller.imgListSlider.asMap().entries.map((entry) {
+                                                  return Container(
+                                                    width: 10,
+                                                    height: 10,
+                                                    margin: EdgeInsets.symmetric(
+                                                        horizontal: 4),
+                                                    decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                          color: Colors.grey,
+                                                          width: 1),
+                                                      shape: BoxShape.circle,
+                                                      color: controller.imageSliderindex.value == entry.key
+                                                          ? Colors.white
+                                                          : null,
+                                                    ),
+                                                  );
+                                                }).toList(),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                           // video player
+                            if (controller.selectionList[index].id == 14)
+                              controller.selectionList[index].extra!.isNotEmpty
+                              ?Container(
+                                  width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                    color: isDark(context)
+                                        ? Color(0xFF414040)
+                                        : controller.selectionList[index].bgType == 0
+                                        ? controller.hexToColor(controller.selectionList[index].bgValue.toString())
+                                        : Colors.transparent,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                          ApiService.IMAGE_URL +
+                                              controller
+                                                  .selectionList[index].bgValue
+                                                  .toString(),
+                                        ),
+                                        fit: BoxFit.fill)),
+                                child: Container(
+                                  height: 200,
+                                  width: width,
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child:Stack(
+                                        children: [
+                                          Container(
+                                            width: width,
+                                            child: Image.network( ApiService.IMAGE_URL+controller.selectionList[index].extra![0].thumbnail.toString(),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                          Align(
+                                              alignment: Alignment.center,
+                                              child: Container(
+                                                  width: width,
+                                                  child: IconButton(
+                                                      tooltip: "play",
+                                                      onPressed: (){
+
+
+                                                        showGeneralDialog(
+                                                          context: context,
+                                                          barrierColor: Colors.black12.withOpacity(0.6), // Background color
+                                                          barrierDismissible: true,
+                                                          barrierLabel: 'Dialog',
+                                                          transitionDuration: Duration(milliseconds: 400),
+                                                          pageBuilder: (BuildContext context, __, ___) {
+                                                            return Container(
+                                                              height: MediaQuery.of(context).size.height,
+                                                              width: MediaQuery.of(context).size.width,
+                                                              color: Colors.black,
+                                                              child: Stack(
+                                                                children: [
+                                                                  Align(alignment:Alignment.center,
+                                                                    child: Container(
+                                                                      width: MediaQuery.of(context).size.width,
+                                                                      padding: EdgeInsets.all(10),
+                                                                      decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius.circular(10)
+                                                                      ),
+                                                                      child: ClipRRect(
+                                                                        borderRadius: BorderRadius.circular(10),
+                                                                        child:  YoutubePlayer(
+                                                                            controller: YoutubePlayerController(
+                                                                                initialVideoId:YoutubePlayer.convertUrlToId(controller.selectionList[index].extra![0].redirectionUrl.toString()).toString(),
+                                                                                flags: YoutubePlayerFlags(
+                                                                                    enableCaption:true,
+                                                                                    disableDragSeek: true,
+                                                                                    forceHD: false,
+                                                                                    autoPlay: true,
+                                                                                    showLiveFullscreenButton: true
+                                                                                )
+                                                                            )
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Positioned(
+                                                                    top: 40,
+                                                                    left: 20,
+                                                                    child: Material(
+                                                                      color: Colors.transparent,
+                                                                      child: InkWell(
+                                                                        onTap: (){
+                                                                          Get.back();
+                                                                          SystemChrome.setPreferredOrientations([
+                                                                            DeviceOrientation.portraitUp,
+                                                                            DeviceOrientation.portraitDown,
+                                                                          ]);
+                                                                        },
+                                                                        child: Container(
+                                                                            height: 50,
+                                                                            width: 50,
+                                                                            decoration: BoxDecoration(
+                                                                                shape:BoxShape.circle
+                                                                            ),
+                                                                            child: Icon(Icons.close,size: 40,color: Colors.white,)),
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+
+
+
+                                                        // _videoWidget(context);
+                                                      },
+                                                      icon: Icon(
+                                                          Icons.play_arrow,
+                                                          size: 50,
+                                                          color: Colors.white
+                                                      )
+                                                  )
+                                              )
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                              ):SizedBox(),
+
+
                             /*// main menu
                         if (controller.selectionList[index].id == 6)
                           Container(
@@ -3690,64 +3802,75 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     });
   }
 
-  _videoWidget(){
-    showGeneralDialog(
-      context: context,
-      barrierColor: Colors.black12.withOpacity(0.6), // Background color
-      barrierDismissible: true,
-      barrierLabel: 'Dialog',
-      transitionDuration: Duration(milliseconds: 400),
-      pageBuilder: (_, __, ___) {
-        return Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.black,
-          child: Stack(
-            children: [
-
-              Container(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10)
-                ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child:  YoutubePlayer(
-                        controller: _controller
-                    ),
-                ),
-              ),
-              Positioned(
-                top: 50,
-                left: 20,
-                child: Container(
-                  color: Colors.black,
-                    child: IconButton(
-                      icon: Icon(Icons.close,size: 40,color: Colors.white,),
-                      onPressed: (){Navigator.pop(context);},
-                    )
-
-                ),
-              )
-            ],
-          ),
-        );
-      },
-    );
-
-  }
+  // _videoWidget(context){
+  //   showGeneralDialog(
+  //     context: context,
+  //     barrierColor: Colors.black12.withOpacity(0.6), // Background color
+  //     barrierDismissible: true,
+  //     barrierLabel: 'Dialog',
+  //     transitionDuration: Duration(milliseconds: 400),
+  //     pageBuilder: (BuildContext context, __, ___) {
+  //       return Container(
+  //         height: MediaQuery.of(context).size.height,
+  //         width: MediaQuery.of(context).size.width,
+  //         color: Colors.black,
+  //         child: Stack(
+  //           children: [
+  //             Container(
+  //               width: MediaQuery.of(context).size.width,
+  //               padding: EdgeInsets.all(10),
+  //               decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(10)
+  //               ),
+  //               child: Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.center,
+  //                 mainAxisAlignment: MainAxisAlignment.center,
+  //                 children: [
+  //                   ClipRRect(
+  //                       borderRadius: BorderRadius.circular(10),
+  //                       child:  YoutubePlayer(
+  //                           controller: _controller
+  //                       ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //             Positioned(
+  //               top: 50,
+  //               left: 20,
+  //               child: Container(
+  //                 height: 50,
+  //                 width: 50,
+  //                 decoration: BoxDecoration(
+  //                     shape:BoxShape.circle
+  //                 ),
+  //                   child: Icon(Icons.close,size: 40,color: Colors.white,)),
+  //             )
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  //
+  // }
 
   List<Widget> _getImageSlider() {
-    final List<Widget> imageSliders = controller.imgListSlider.map((imgListSlider) => _buildImageView(imgListSlider)).toList();
-    
+    final List<Widget> imageSliders = controller.imgListSlider
+        .map((imgListSlider) => _buildImageView(imgListSlider))
+        .toList();
+
     return imageSliders;
   }
 
+  // List<Widget> _getImageSlider(int idx) {
+  //   final List<Widget> imageSliders = controller.imgListSlider.map((item) => _buildImageView(imgListSlider.toString())).toList();
+  //
+  //   return imageSliders;
+  // }
+
   Widget _buildImageView(String imageUrl) {
     return Container(
-      height: 250,
+      height: 270,
       // margin: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         // borderRadius: BorderRadius.circular(12),

@@ -1,4 +1,5 @@
 
+
 class Section_List_model {
   int? id;
   String? title;
@@ -64,12 +65,14 @@ class Extra {
   String? boxColor;
   String? redirection;
   String? icon;
-  String? btnTextColor;
-  String? btnColor;
   String? iconColor;
+  String? btnColor;
+  String? btnTextColor;
   String? date;
   String? time;
   String? year;
+  String? redirectionUrl;
+  String? thumbnail;
 
   Extra(
       {this.lineColor,
@@ -84,12 +87,14 @@ class Extra {
         this.boxColor,
         this.redirection,
         this.icon,
-        this.btnTextColor,
-        this.btnColor,
         this.iconColor,
+        this.btnColor,
+        this.btnTextColor,
         this.date,
         this.time,
-        this.year});
+        this.year,
+        this.redirectionUrl,
+        this.thumbnail});
 
   Extra.fromJson(Map<String, dynamic> json) {
     lineColor = json['line_color'];
@@ -104,12 +109,14 @@ class Extra {
     boxColor = json['box_color'];
     redirection = json['redirection'];
     icon = json['icon'];
-    btnTextColor = json['btn_text_color'];
-    btnColor = json['btn_color'];
     iconColor = json['icon_color'];
+    btnColor = json['btn_color'];
+    btnTextColor = json['btn_text_color'];
     date = json['date'];
     time = json['time'];
     year = json['year'];
+    redirectionUrl = json['redirection_url'];
+    thumbnail = json['thumbnail'];
   }
 
   Map<String, dynamic> toJson() {
@@ -126,12 +133,14 @@ class Extra {
     data['box_color'] = this.boxColor;
     data['redirection'] = this.redirection;
     data['icon'] = this.icon;
-    data['btn_text_color'] = this.btnTextColor;
-    data['btn_color'] = this.btnColor;
     data['icon_color'] = this.iconColor;
+    data['btn_color'] = this.btnColor;
+    data['btn_text_color'] = this.btnTextColor;
     data['date'] = this.date;
     data['time'] = this.time;
     data['year'] = this.year;
+    data['redirection_url'] = this.redirectionUrl;
+    data['thumbnail'] = this.thumbnail;
     return data;
   }
 }

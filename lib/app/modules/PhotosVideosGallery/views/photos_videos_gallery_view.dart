@@ -593,11 +593,11 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                 const EdgeInsets.only(top: 0, bottom: 3),
                                 child: InkWell(
                                   onTap: () {
-                                    /* var data={
+                                     var data={
                                       'id':controller.PhotoVideoGallery[index].id.toString(),
                                       'title':controller.PhotoVideoGallery[index].title.toString(),
                                     };
-                                    Get.toNamed(Routes.PHOTO_GALLARY,parameters: data);*/
+                                    Get.toNamed(Routes.PHOTO_GALLARY,parameters: data);
                                     // Get.to(PhotoGallaryView(
                                     //   gallery_id: controller
                                     //       .PhotoVideoGallery[index].id
@@ -619,7 +619,7 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                         elevation: 3,
                                         margin: EdgeInsets.zero,
                                         child: Container(
-                                          height: 120,
+                                          // height: 120,
                                           child: ClipRRect(
                                               borderRadius:
                                               BorderRadius.circular(5),
@@ -642,7 +642,8 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                               size: 15,
                                               fontWeight: FontWeight.bold,
                                             ),
-                                          )),
+                                          )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -821,63 +822,55 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                       :index == 4
                                       ?Card(
                                     child: Container(
-                                      child: Flexible(
-                                        child: Image.asset('assets/images/dummy_add.jpeg')
-                                      ),
+                                      child: Image.asset('assets/images/add_dummy_boy.jpeg'),
                                     ),
                                   )
                                       :Card(
                                     child: Container(
-                                      child: Flexible(
-                                        child: Column(
-                                          children: [
-                                            YoutubePlayer(
-                                                controller: YoutubePlayerController(
-                                                    initialVideoId: "nPt8bK2gbaU",
-                                                    flags: YoutubePlayerFlags(
-                                                        disableDragSeek: true,
-                                                        forceHD: false,
-                                                        autoPlay: false,
-                                                        showLiveFullscreenButton: true
-                                                    )
-                                                )
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.symmetric(vertical: 10,horizontal:5 ),
-                                                  height: 60,
-                                                  width: 60,
-                                                  decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      image: DecorationImage(
-                                                          image: AssetImage(
-                                                              "assets/images/s1.jpg"),
-                                                          fit: BoxFit.cover)
-                                                  ),
-                                                  // child: Icon(
-                                                  //   Icons.play_arrow,
-                                                  //   color: Colors.white,
-                                                  // ),
+                                      child: Column(
+                                        children: [
+                                          YoutubePlayer(
+                                              controller: YoutubePlayerController(
+                                                  initialVideoId: "nPt8bK2gbaU",
+                                                  flags: YoutubePlayerFlags(
+                                                      disableDragSeek: true,
+                                                      forceHD: false,
+                                                      autoPlay: false,
+                                                      showLiveFullscreenButton: true
+                                                  )
+                                              )
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.symmetric(vertical: 10,horizontal:5 ),
+                                                height: 60,
+                                                width: 60,
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            "assets/images/s1.jpg"),
+                                                        fit: BoxFit.cover)
                                                 ),
-                                                SizedBox(
-                                                  width: 10,
+                                                // child: Icon(
+                                                //   Icons.play_arrow,
+                                                //   color: Colors.white,
+                                                // ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Flexible(
+                                                child: GlobalLocalText(
+                                                  maxLines: 3,
+                                                  text:
+                                                  "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
                                                 ),
-                                                Flexible(
-                                                  child: Column(
-                                                    children: [
-                                                      GlobalLocalText(
-                                                        maxLines: 3,
-                                                        text:
-                                                        "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
-                                                      )
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   )
