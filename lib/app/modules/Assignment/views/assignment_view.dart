@@ -39,7 +39,6 @@ class AssignmentView extends GetView<AssignmentController> {
                           "title":controller.data[i]['title'].toString()
                         };
 
-
                         Get.toNamed(Routes.PDF_VIEW,parameters: data);
                       },
                       child: Padding(

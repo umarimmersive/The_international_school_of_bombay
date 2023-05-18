@@ -33,6 +33,8 @@ class ApiService {
   static final String eventsList = "eventsList";
   static final String eventDetails = "eventDetails";
   static final String advertisement = "advertisement";
+  static final String eventsData = "eventsData";
+  static final String classSyllabus = "classSyllabus";
 
 
   static final String sectionList = "sectionList";
@@ -50,10 +52,6 @@ class ApiService {
   static final String MARINA_BOOKING = "marinaBookingList";
   static final String SEND_ANNOOUCEMENTS = "sendAnnouncements";
   static final String ANNOUCEMENT_LIST = "announcementList";
-
-
-
-
 
 
 
@@ -113,6 +111,8 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+
+
   Future Annoucement_list() async {
     final response = await http.get(
         Uri.parse(BASE_URL + announcementList),
@@ -137,6 +137,18 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+
+  Future CalenderEventsList() async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + eventsData),
+        // body: {
+        //   'id':id.toString(),
+        // }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
 
   Future Photo_Gallery(item_type) async {
     final response = await http.post(
@@ -412,5 +424,17 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+
+  Future Syllabus_data(className) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + classSyllabus),
+        body: {
+          "class_id":className,
+        }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
 
 }

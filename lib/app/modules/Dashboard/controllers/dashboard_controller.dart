@@ -37,7 +37,7 @@ class DashboardController extends GetxController {
   final List<Widget> screens = [
     HomeScreenView(),
     HoppinessView(),
-    ScheduleScreenView(),
+    SheduleScreenView(),
     AboutView(),
     MenuView(),
   ];

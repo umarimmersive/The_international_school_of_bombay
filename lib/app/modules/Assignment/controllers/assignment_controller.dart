@@ -11,7 +11,6 @@ class AssignmentController extends GetxController {
       'date': '1 April at 08:25',
     },
 
-
   ];
   @override
   void onInit() {

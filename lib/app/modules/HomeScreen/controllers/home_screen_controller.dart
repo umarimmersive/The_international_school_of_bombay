@@ -22,9 +22,10 @@ class HomeScreenController extends GetxController {
 
 
   RefreshController refreshController =
-  RefreshController(initialRefresh: true);
-  GlobalKey contentKey = GlobalKey();
-  GlobalKey refresherKey = GlobalKey();
+  RefreshController(initialRefresh: false);
+
+  // GlobalKey contentKey = GlobalKey();
+  // GlobalKey refresherKey = GlobalKey();
 
 
   final Image = 'assets/background.jpg'.obs;
@@ -150,7 +151,7 @@ class HomeScreenController extends GetxController {
         List dataList = response['data'].toList();
         Slider.value = dataList.map((json) => Slider_model.fromJson(json)).toList();
 
-        print('sliderrrr-------------${Slider.value}');
+        print('sliderrrrrrrrrrrrr-------------${Slider.value}');
 
         update();
         isLoading_slider(false);

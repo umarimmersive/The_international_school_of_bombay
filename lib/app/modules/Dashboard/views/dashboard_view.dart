@@ -190,7 +190,7 @@ class DashboardView extends GetView<DashboardController> {
                       child: InkWell(
                         onTap: () {
                           controller.currentScreen =
-                              ScheduleScreenView(); // if user taps on this dashboard tab will be active
+                              SheduleScreenView(); // if user taps on this dashboard tab will be active
                           controller.currentTab.value = 2;
                         },
                         child: Column(

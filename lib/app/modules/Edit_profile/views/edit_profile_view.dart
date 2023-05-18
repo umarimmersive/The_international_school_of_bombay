@@ -283,7 +283,7 @@ class EditProfileView extends GetView<EditProfileController> {
 
 
                 RoundedFilledButton(
-                  label: 'Submit',
+                  label: 'Save',
                   color: Color(ColorValues.RED),
                   height: 45,
                   width: double.infinity,

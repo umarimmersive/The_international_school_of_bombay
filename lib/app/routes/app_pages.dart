@@ -275,7 +275,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SCHEDULE_SCREEN,
-      page: () => const ScheduleScreenView(),
+      page: () =>  SheduleScreenView(),
       binding: ScheduleScreenBinding(),
     ),
     GetPage(

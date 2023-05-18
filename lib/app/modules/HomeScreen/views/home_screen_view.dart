@@ -11,6 +11,7 @@ import 'package:getwidget/types/gf_checkbox_type.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:the_international_school_of_bombay/app/modules/NoticeBoardDetails/views/notice_board_details_view.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/my_local_service.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/Text_widget.dart';
@@ -35,7 +36,6 @@ class HomeScreenView extends StatefulWidget {
 class _HomeScreenViewState extends State<HomeScreenView> {
 
   final controller = Get.find<HomeScreenController>();
-  TabController? _tabController;
 
   Future<void> _showSimpleDialog(context) async {
     await showDialog<void>(
@@ -49,7 +49,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                 Expanded(flex: 1, child: Container()),
                 Expanded(
                     flex: 9,
-                    child: Center(child: const Text('Switch Profile'))),
+                    child: Center(child: const Text('Switch Profile'))
+                ),
                 Expanded(
                   flex: 1,
                   child: GestureDetector(
@@ -101,8 +102,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
               ),*/
 
-                        controller.Sibling[i].full_name != userData!.full_name
-                            ? Obx(
+                        // controller.Sibling[i].full_name != userData!.  full_name?
+                             Obx(
                               () => GFCheckboxListTile(
                             color: Colors.black12,
                             titleText:
@@ -151,7 +152,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                             /*  GFAvatar(
                                 backgroundImage: NetworkImage('${ApiService.IMAGE_URL+controller.Sibling[i].profile_image}'),
                               ),*/
-                            size: 14,
+                            size: 18,
                             activeBgColor: Colors.red,
                             type: GFCheckboxType.circle,
                             activeIcon: Icon(
@@ -160,9 +161,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                               color: Colors.white,
                             ),
                             onChanged: (value) {
-                              for (int i = 0;
-                              i < controller.isChecked.length;
-                              i++) {
+                              for (int i = 0; i < controller.isChecked.length; i++) {
                                 controller.isChecked[i] = false;
                                 controller.token.value = '';
                               }
@@ -175,41 +174,67 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                             inactiveIcon: null,
                           ),
                         )
-                            : Text_widget(
-                          Simpletext: 'Another Profile Not Found.',
-                          fontSize: 18.0,
-                          color: ColorValues.BLACK,
-                        )
+                        //     : Text_widget(
+                        //   Simpletext: 'Another Profile Not Found.',
+                        //   fontSize: 18.0,
+                        //   color: ColorValues.BLACK,
+                        // )
                     ],
                   ),
                 ),
               ),
-              for (int i = 0; i < controller.Sibling.length; i++)
-                if (controller.Sibling[i].full_name != userData!.full_name)
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
-                    child: RoundedFilledButton(
-                      label: 'SWITCH PROFILE',
-                      color: Color(ColorValues.RED),
-                      height: 40,
-                      width: double.infinity,
-                      fontSize: 12,
-                      ontap: () async {
-                        if (controller.token.value.isEmpty) {
-                          ToastClass.showToast(
-                              'Please select profile', 'assets/only_logo.png');
-                        } else {
-                          await my_local_service
-                              .updateSharedPreferencesFromServer(
-                              controller.token.value);
-                          Get.back();
-                          ToastClass.showToast('Profile Switch succesfully.',
-                              'assets/only_logo.png');
-                        }
-                        // Get.to(DeshboardScreenView())
-                      },
-                    ),
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 10),
+                child: RoundedFilledButton(
+                  label: 'Switch Profile',
+                  color: Color(ColorValues.RED),
+                  height: 40,
+                  width: double.infinity,
+                  fontSize: 12,
+                  ontap: () async {
+                    if (controller.token.value.isEmpty) {
+                      ToastClass.showToast(
+                          'Please select profile', 'assets/only_logo.png');
+                    } else {
+                      await my_local_service.updateSharedPreferencesFromServer(controller.token.value);
+                      Get.back();
+                      // await controller.refrshApi();
+                      // await Future.delayed(Duration(milliseconds: 1000));
+                      //
+                      // if (true) controller.refreshController.refreshCompleted();
+                      ToastClass.showToast('Profile Switch succesfully.',
+                          'assets/only_logo.png');
+                    }
+                    // Get.to(DeshboardScreenView())
+                  },
+                ),
+              )
+              // for (int i = 0; i < controller.Sibling.length; i++)
+              //   if (controller.Sibling[i].full_name != userData!.full_name)
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 10.0, right: 10),
+              //       child: RoundedFilledButton(
+              //         label: 'SWITCH PROFILE',
+              //         color: Color(ColorValues.RED),
+              //         height: 40,
+              //         width: double.infinity,
+              //         fontSize: 12,
+              //         ontap: () async {
+              //           if (controller.token.value.isEmpty) {
+              //             ToastClass.showToast(
+              //                 'Please select profile', 'assets/only_logo.png');
+              //           } else {
+              //             await my_local_service
+              //                 .updateSharedPreferencesFromServer(
+              //                 controller.token.value);
+              //             Get.back();
+              //             ToastClass.showToast('Profile Switch succesfully.',
+              //                 'assets/only_logo.png');
+              //           }
+              //           // Get.to(DeshboardScreenView())
+              //         },
+              //       ),
+              //     ),
 
               /* GestureDetector(
                 onTap: () {
@@ -232,6 +257,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   }
 
   // HomeScreenView({Key? key}) : super(key: key);
+  RefreshController refreshController =
+  RefreshController(initialRefresh: false);
 
   static bool isDark(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark;
@@ -255,20 +282,14 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Obx(() {
-      //   if(controller.isLoading.isTrue){
-      //   return Center(
-      //       child: SpinKitThreeBounce(
-      //         color: Colors.red,
-      //         size: 40,
-      //       ));
-      //
-      // }else{
+      print('controller.Slider.value.length =========controller.Slider.value.lengthcontroller.Slider.value.length${controller.Slider.value.length}');
       return Scaffold(
           body: SmartRefresher(
-            controller: controller.refreshController,
+            controller: refreshController,
             enablePullUp: true,
+            // key: controller.refresherKey,
             enablePullDown: true,
-            header: MaterialClassicHeader(),
+            // header: MaterialClassicHeader(),
             child: CustomScrollView(
               semanticChildCount: 2,
               shrinkWrap: true,
@@ -284,6 +305,72 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           : Colors.transparent,
                       floating: false,
                       stretch: false,
+                      actions: Platform.isIOS
+                          ?[
+                         controller.Sibling.value.length != 0 ?
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:10.0),
+                              child: IconButton(
+                                  onPressed: () {
+                                    _showSimpleDialog(context);
+                                    print("(userData!.full_name)====>>>>>>> ${userData!.id}");
+                                  },
+                                  icon: Icon(
+                                    size: 24,
+                                    Icons.person,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ],
+                        )
+                         :SizedBox(),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:10.0),
+                              child: IconButton(
+                                  onPressed: () {
+                                    Get.toNamed(Routes.NOTIFICATION);
+                                  },
+                                  icon: Icon(
+                                    size: 24,
+                                    Icons.notifications,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ]
+                          :[
+                        controller.Sibling.value.length != 0  ?
+                        Padding(
+                          padding: const EdgeInsets.only(top:25.0),
+                          child: IconButton(
+                              onPressed: () {
+                                _showSimpleDialog(context);
+                              },
+                              icon: Icon(
+                                size: 24,
+                                Icons.person,
+                                color: Colors.white,
+                              )),
+                        )
+                         :SizedBox(),
+                        Padding(
+                          padding: const EdgeInsets.only(top:25.0),
+                          child: IconButton(
+                              onPressed: () {
+                                Get.toNamed(Routes.NOTIFICATION);
+                              },
+                              icon: Icon(
+                                size: 24,
+                                Icons.notifications,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ],
                       automaticallyImplyLeading: false,
                       pinned: false,
                       title: Container(height:6000,color: Colors.transparent,),
@@ -302,10 +389,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                     ),
                                     fit: BoxFit.fill)),
                           ),
-
-                          if(Platform.isIOS)
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15, top:45),
+                          Padding(
+                              padding:  EdgeInsets.only(left: 15, top:Platform.isIOS?45:30),
                               child: Container(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -408,163 +493,30 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                         ],
                                       ),
                                     ),
-                                    Row(
-                                      children: [
-                                        // controller.Slider.value == true
-                                        //     ? IconButton(
-                                        //         onPressed: () {
-                                        //           _showSimpleDialog(context);
-                                        //         },
-                                        //         icon: Icon(
-                                        //           size: 24,
-                                        //           Icons.person,
-                                        //           color: Colors.white,
-                                        //         ))
-                                        //     : SizedBox(),
-                                        IconButton(
-                                            onPressed: () {
-                                              Get.toNamed(Routes.NOTIFICATION);
-                                            },
-                                            icon: Icon(
-                                              size: 24,
-                                              Icons.notifications,
-                                              color: Colors.white,
-                                            )),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          else
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15, top:30),
-                              child: Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Flexible(
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          userData!.profile_image.isNotEmpty
-                                              ? Container(
-                                            decoration: BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius:
-                                                BorderRadius.circular(5)),
-                                            height: 60,
-                                            width: 55,
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                BorderRadius.circular(5),
-                                                child: Image.network(
-                                                  "${ApiService.IMAGE_URL + userData!.profile_image}",
-                                                  fit: BoxFit.cover,
-                                                )),
-                                          )
-                                              : Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                  BorderRadius.circular(5)),
-                                              height: 60,
-                                              width: 55,
-                                              child: Center(
-                                                child: Text_widget(
-                                                  Simpletext: userData!.full_name
-                                                      .toString()
-                                                      .substring(0, 1) +
-                                                      userData!.lastname
-                                                          .toString()
-                                                          .substring(0, 1),
-                                                  fontSize: 15.0,
-                                                  maxLines: 1,
-                                                  color: Colors.red,
-                                                ),
-                                              )),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    GlobalLocalText(
-                                                      text: "Hello,",
-                                                      size: 16,
-                                                      textColor: Colors.white,
-                                                      fontWeight: FontWeight.w300,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 2,
-                                                    ),
-                                                    GlobalLocalText(
-                                                      text: "${userData!.full_name}",
-                                                      textColor: Colors.white,
-                                                      size: 15,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 3,
-                                                ),
-                                                GlobalLocalText(
-                                                  text: "Shift ${userData!.shift}",
-                                                  size: 12,
-                                                  textColor: Colors.white,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                                SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Flexible(
-                                                  child: GlobalLocalText(
-                                                    size: 12,
-                                                    text:
-                                                    "${userData!.Class}, Section-${userData!.section}",
-                                                    textColor: Colors.white,
-                                                    fontWeight: FontWeight.w300,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 15,
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        // controller.Slider.value == true
-                                        //     ? IconButton(
-                                        //         onPressed: () {
-                                        //           _showSimpleDialog(context);
-                                        //         },
-                                        //         icon: Icon(
-                                        //           size: 24,
-                                        //           Icons.person,
-                                        //           color: Colors.white,
-                                        //         ))
-                                        //     : SizedBox(),
-                                        IconButton(
-                                            onPressed: () {
-                                              Get.toNamed(Routes.NOTIFICATION);
-                                            },
-                                            icon: Icon(
-                                              size: 24,
-                                              Icons.notifications,
-                                              color: Colors.white,
-                                            )),
-                                      ],
-                                    )
+                                    // Row(
+                                    //   children: [
+                                    //     // controller.Slider.value == false ?
+                                    //         IconButton(
+                                    //             onPressed: () {
+                                    //               _showSimpleDialog(context);
+                                    //             },
+                                    //             icon: Icon(
+                                    //               size: 24,
+                                    //               Icons.person,
+                                    //               color: Colors.white,
+                                    //             )),
+                                    //         // : SizedBox(),
+                                    //     IconButton(
+                                    //         onPressed: () {
+                                    //           Get.to(NoticeBoardDetailsView());
+                                    //         },
+                                    //         icon: Icon(
+                                    //           size: 24,
+                                    //           Icons.notifications,
+                                    //           color: Colors.white,
+                                    //         )),
+                                    //   ],
+                                    // )
                                   ],
                                 ),
                               ),
@@ -651,6 +603,70 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                       stretch: false,
                       automaticallyImplyLeading: false,
                       pinned: false,
+                      actions: Platform.isIOS?[
+                        controller.Sibling.value.length != 0 ?
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:10.0),
+                              child: IconButton(
+                                  onPressed: () {
+                                    _showSimpleDialog(context);
+                                    print("(userData!.full_name)====>>>>>>> ${userData!.id}");
+                                  },
+                                  icon: Icon(
+                                    size: 24,
+                                    Icons.person,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ],
+                        )
+                            :SizedBox(),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top:10.0),
+                              child: IconButton(
+                                  onPressed: () {
+                                    Get.toNamed(Routes.NOTIFICATION);
+                                  },
+                                  icon: Icon(
+                                    size: 24,
+                                    Icons.notifications,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ]:[
+                        controller.Sibling.value.length != 0 ?
+                        Padding(
+                          padding: const EdgeInsets.only(top:25.0),
+                          child: IconButton(
+                              onPressed: () {
+                                _showSimpleDialog(context);
+                              },
+                              icon: Icon(
+                                size: 24,
+                                Icons.person,
+                                color: Colors.white,
+                              )),
+                        )
+                            :SizedBox(),
+                        Padding(
+                          padding: const EdgeInsets.only(top:25.0),
+                          child: IconButton(
+                              onPressed: () {
+                                Get.toNamed(Routes.NOTIFICATION);
+                              },
+                              icon: Icon(
+                                size: 24,
+                                Icons.notifications,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ],
                       title: Container(height:6000,color: Colors.transparent,),
                       expandedHeight: Platform.isIOS?165:200 ,
                       flexibleSpace: Stack(
@@ -658,9 +674,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           Container(
                             height: 200,
                           ),
-                          if(Platform.isIOS)
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15, top: 45),
+                          Padding(
+                              padding:  EdgeInsets.only(left: 15, top:Platform.isIOS? 45:30),
                               child: Container(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -763,167 +778,35 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                         ],
                                       ),
                                     ),
-                                    Row(
-                                      children: [
-                                        // controller.Slider.value == true
-                                        //     ? IconButton(
-                                        //         onPressed: () {
-                                        //           _showSimpleDialog(context);
-                                        //         },
-                                        //         icon: Icon(
-                                        //           size: 24,
-                                        //           Icons.person,
-                                        //           color: Colors.white,
-                                        //         ))
-                                        //     : SizedBox(),
-                                        IconButton(
-                                            onPressed: () {
-                                              Get.toNamed(Routes.NOTIFICATION);
-                                            },
-                                            icon: Icon(
-                                              size: 24,
-                                              Icons.notifications,
-                                              color: Colors.white,
-                                            )),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          else
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15, top: 30),
-                              child: Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Flexible(
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          userData!.profile_image.isNotEmpty
-                                              ? Container(
-                                            decoration: BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius:
-                                                BorderRadius.circular(5)),
-                                            height: 60,
-                                            width: 55,
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                BorderRadius.circular(5),
-                                                child: Image.network(
-                                                  "${ApiService.IMAGE_URL + userData!.profile_image}",
-                                                  fit: BoxFit.cover,
-                                                )),
-                                          )
-                                              : Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                  BorderRadius.circular(5)),
-                                              height: 60,
-                                              width: 55,
-                                              child: Center(
-                                                child: Text_widget(
-                                                  Simpletext: userData!.full_name
-                                                      .toString()
-                                                      .substring(0, 1) +
-                                                      userData!.lastname
-                                                          .toString()
-                                                          .substring(0, 1),
-                                                  fontSize: 15.0,
-                                                  maxLines: 1,
-                                                  color: Colors.red,
-                                                ),
-                                              )),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Flexible(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    GlobalLocalText(
-                                                      text: "Hello,",
-                                                      size: 16,
-                                                      textColor: Colors.white,
-                                                      fontWeight: FontWeight.w300,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 2,
-                                                    ),
-                                                    GlobalLocalText(
-                                                      text: "${userData!.full_name}",
-                                                      textColor: Colors.white,
-                                                      size: 15,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 3,
-                                                ),
-                                                GlobalLocalText(
-                                                  text: "Shift ${userData!.shift}",
-                                                  size: 12,
-                                                  textColor: Colors.white,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                                SizedBox(
-                                                  height: 3,
-                                                ),
-                                                Flexible(
-                                                  child: GlobalLocalText(
-                                                    size: 12,
-                                                    text:
-                                                    "${userData!.Class}, Section-${userData!.section}",
-                                                    textColor: Colors.white,
-                                                    fontWeight: FontWeight.w300,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 15,
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        // controller.Slider.value == true
-                                        //     ? IconButton(
-                                        //         onPressed: () {
-                                        //           _showSimpleDialog(context);
-                                        //         },
-                                        //         icon: Icon(
-                                        //           size: 24,
-                                        //           Icons.person,
-                                        //           color: Colors.white,
-                                        //         ))
-                                        //     : SizedBox(),
-                                        IconButton(
-                                            onPressed: () {
-                                              Get.toNamed(Routes.NOTIFICATION);
-                                            },
-                                            icon: Icon(
-                                              size: 24,
-                                              Icons.notifications,
-                                              color: Colors.white,
-                                            )),
-                                      ],
-                                    )
+                                    // Row(
+                                    //   children: [
+                                    //     // controller.Slider.value == true
+                                    //     //     ? IconButton(
+                                    //     //         onPressed: () {
+                                    //     //           _showSimpleDialog(context);
+                                    //     //         },
+                                    //     //         icon: Icon(
+                                    //     //           size: 24,
+                                    //     //           Icons.person,
+                                    //     //           color: Colors.white,
+                                    //     //         ))
+                                    //     //     : SizedBox(),
+                                    //     IconButton(
+                                    //         onPressed: () {
+                                    //           Get.toNamed(Routes.NOTIFICATION);
+                                    //         },
+                                    //         icon: Icon(
+                                    //           size: 24,
+                                    //           Icons.notifications,
+                                    //           color: Colors.white,
+                                    //         )),
+                                    //   ],
+                                    // )
                                   ],
                                 ),
                               ),
                             ),
+
                           Align(
                               alignment: Alignment.bottomCenter,
                               child: Container(
@@ -988,6 +871,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                         ],
                       )
                   ),
+
+
+                // body
 
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
@@ -1965,6 +1851,25 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                 horizontal: 15),
                                             child: InkWell(
                                               onTap: () {
+
+                                                // Redirection Screen
+
+                                                // if (menu.redirection == "") {
+                                                //   Get.toNamed(Routes.UPCOMING_EVENT);
+                                                // } else if (menu.redirection == 1) {
+                                                //   Get.toNamed(Routes.ASSIGNMENT);
+                                                // } else if (idx4 == 2) {
+                                                //   Get.toNamed(Routes.SYLLABUS);
+                                                // } else if (idx4 == 3) {
+                                                //   Get.toNamed("/accedmic-content");
+                                                // }
+                                                //
+                                                //
+                                                //
+
+
+
+
                                                 if (idx4 == 0) {
                                                   Get.toNamed(Routes.UPCOMING_EVENT);
                                                 } else if (idx4 == 1) {
@@ -3794,7 +3699,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               await controller.refrshApi();
               await Future.delayed(Duration(milliseconds: 1000));
 
-              if (true) controller.refreshController.refreshCompleted();
+              if (true)  refreshController.refreshCompleted();
             },
           )
       );
