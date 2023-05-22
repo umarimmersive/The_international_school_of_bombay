@@ -53,6 +53,8 @@ abstract class Routes {
   static const VIDIO_ALBUMS = _Paths.VIDIO_ALBUMS;
   static const GALLERY = _Paths.GALLERY;
   static const PHOTOS_VIDIOS_GALLERY = _Paths.PHOTOS_VIDIOS_GALLERY;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const SHORTS_VIDEOS = _Paths.SHORTS_VIDEOS;
 }
 
 abstract class _Paths {
@@ -107,4 +109,6 @@ abstract class _Paths {
   static const VIDIO_ALBUMS = '/vidio-albums';
   static const GALLERY = '/gallery';
   static const PHOTOS_VIDIOS_GALLERY = '/photos-vidios-gallery';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const SHORTS_VIDEOS = '/short-videos';
 }

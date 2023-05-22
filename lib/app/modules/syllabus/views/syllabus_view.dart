@@ -32,8 +32,10 @@ class SyllabusView extends GetView<SyllabusController> {
                     // SizedBox(
                     //   height: 20,
                     // ),
-                    Expanded(
-                      child: SfPdfViewer.network(ApiService.IMAGE_URL +
+                    controller.syllabus_Data.isNotEmpty
+                    ?Expanded(
+                      child: controller.syllabus_Data.value.length!=0
+                      ?SfPdfViewer.network(ApiService.IMAGE_URL +
                           controller.syllabus_Data.value[0].syllabus.toString(),
                           canShowHyperlinkDialog: true,
                           canShowScrollStatus: true,
@@ -43,7 +45,21 @@ class SyllabusView extends GetView<SyllabusController> {
                           enableDocumentLinkAnnotation: true,
                           enableDoubleTapZooming: true,
                           enableHyperlinkNavigation: true,
-                          enableTextSelection: true),
+                          enableTextSelection: true)
+                      :SizedBox(),
+                    )
+                        :Container(
+                      height: MediaQuery.of(context).size.height/1.3,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: Text("No Syllabus Found",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Lato',
+                          ),),
+                      ),
                     )
                   ],
                 )

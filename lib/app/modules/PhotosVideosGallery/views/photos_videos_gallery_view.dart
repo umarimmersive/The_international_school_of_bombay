@@ -689,6 +689,7 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                               itemBuilder: (BuildContext, index) {
                                                 return InkWell(
                                                     onTap: () {
+                                                      Get.toNamed(Routes.SHORTS_VIDEOS);
                                                       // var data = {
                                                       //   /* "maintitle": "${controller.slider_data[index]['maintitle']}",
                                                       // "title": "${controller.slider_data[index]['title']}",

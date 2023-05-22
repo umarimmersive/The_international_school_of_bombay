@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker_widget/image_picker_widget.dart';
 import 'package:the_international_school_of_bombay/app/utils/global_widgets/appBar.dart';
+import '../../../routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/buttons.dart';
@@ -279,9 +280,6 @@ class EditProfileView extends GetView<EditProfileController> {
 
                 Row(children: [],),
 
-                
-
-
                 RoundedFilledButton(
                   label: 'Save',
                   color: Color(ColorValues.RED),
@@ -294,6 +292,17 @@ class EditProfileView extends GetView<EditProfileController> {
                   },
                 ),
                 SizedBox(height: 10),
+                RoundedFilledButton(
+                  label: 'Change Password',
+                  color: Colors.transparent,
+                  height: 45,
+                  width: double.infinity,
+                  labelColor: Color(ColorValues.RED),
+                  fontSize: 14,
+                  ontap: () {
+                     Get.toNamed(Routes.CHANGE_PASSWORD);
+                  },
+                ),
               ],
             ),
           ),

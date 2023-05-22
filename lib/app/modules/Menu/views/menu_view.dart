@@ -381,6 +381,42 @@ class MenuView extends GetView<MenuuController> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
+                              print('---------------');
+                              Get.toNamed("/about");
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(05.0),
+                              child: Card(
+                                elevation: 05,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                child: Container(
+                                    height: 90,
+                                    width: 90,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                            flex: 4,
+                                            child: Icon(
+                                              Icons.error_outline,
+                                              color: ColorValues.kRedColor,
+                                            )),
+                                        Expanded(
+                                            flex: 4,
+                                            child: Text_widget(
+                                              Simpletext: 'About',
+                                              fontSize: 14.0,
+                                            )),
+                                      ],
+                                    )),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
                               Get.toNamed(Routes.CONTECT_US);
                             },
                             child: Padding(
@@ -415,7 +451,13 @@ class MenuView extends GetView<MenuuController> {
                             ),
                           ),
                         ),
+
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
                         Expanded(
+                          flex: 4,
                           child: Padding(
                             padding: const EdgeInsets.all(05.0),
                             child: GestureDetector(
@@ -452,19 +494,14 @@ class MenuView extends GetView<MenuuController> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
                         Expanded(
                           flex: 4,
-                          child: GestureDetector(
-                            onTap: () {
-                              print('---------------');
-                              Get.toNamed("/about");
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(05.0),
+                          child: Padding(
+                            padding: const EdgeInsets.all(05.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                // my_local_service.logout();
+                              },
                               child: Card(
                                 elevation: 05,
                                 shape: RoundedRectangleBorder(
@@ -476,15 +513,17 @@ class MenuView extends GetView<MenuuController> {
                                     child: Column(
                                       children: [
                                         Expanded(
-                                            flex: 4,
-                                            child: Icon(
-                                              Icons.error_outline,
-                                              color: ColorValues.kRedColor,
+                                            flex: 2,
+                                            child: Image.asset(
+                                              'assets/images/delete_user.png',
+                                              height: 20,
+                                              width: 20,
+                                              color: Colors.red,
                                             )),
                                         Expanded(
-                                            flex: 4,
+                                            flex: 2,
                                             child: Text_widget(
-                                              Simpletext: 'About',
+                                              Simpletext: 'Account Delete',
                                               fontSize: 14.0,
                                             )),
                                       ],
@@ -494,7 +533,7 @@ class MenuView extends GetView<MenuuController> {
                           ),
                         ),
                         Expanded(
-                          flex: 8,
+                          flex: 4,
                           child: GestureDetector(
                             onTap: () {
                               print('---------------');
@@ -504,7 +543,7 @@ class MenuView extends GetView<MenuuController> {
                             child: Padding(
                               padding: const EdgeInsets.all(05.0),
                               child: Card(
-                                elevation: 05,
+                                elevation: 10,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
@@ -523,8 +562,10 @@ class MenuView extends GetView<MenuuController> {
                                         Expanded(
                                             flex: 6,
                                             child: Text_widget(
-                                              Simpletext: 'Other Activities',
+                                              textAlign: TextAlign.center,
+                                              Simpletext: 'Other\nActivities',
                                               fontSize: 14.0,
+                                              fontWeight: FontWeight.bold,
                                             )),
                                       ],
                                     )),

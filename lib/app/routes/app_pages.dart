@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/modules/ChangePassword/views/change_pass_view.dart';
 import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/controllers/upcoming_events_details_controller.dart';
 import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/views/upcoming_events_details_view.dart';
 import '../modules/About/bindings/about_binding.dart';
@@ -17,6 +18,7 @@ import '../modules/BusrootScreen/bindings/busroot_screen_binding.dart';
 import '../modules/BusrootScreen/views/busroot_screen_view.dart';
 import '../modules/Campus/bindings/campus_binding.dart';
 import '../modules/Campus/views/campus_view.dart';
+import '../modules/ChangePassword/bindings/change_pass_binding.dart';
 import '../modules/ContectUs/bindings/contect_us_binding.dart';
 import '../modules/ContectUs/views/contect_us_view.dart';
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
@@ -67,6 +69,8 @@ import '../modules/ScheduleScreen/bindings/schedule_screen_binding.dart';
 import '../modules/ScheduleScreen/views/schedule_screen_view.dart';
 import '../modules/SchoolRoolsScreen/bindings/school_rools_screen_binding.dart';
 import '../modules/SchoolRoolsScreen/views/school_rools_screen_view.dart';
+import '../modules/ShortsVideo/bindings/shorts_video_binding.dart';
+import '../modules/ShortsVideo/views/shorts_video_view.dart';
 import '../modules/Splash/bindings/splash_binding.dart';
 import '../modules/Splash/views/splash_view.dart';
 import '../modules/TermandCondition/bindings/termand_condition_binding.dart';
@@ -317,6 +321,16 @@ class AppPages {
       name: _Paths.PHOTOS_VIDIOS_GALLERY,
       page: () => PhotosVideosGalleryView(),
       binding: PhotosVideosGalleryBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => ChangePassView(),
+      binding: ChangePassBinding(),
+    ),
+    GetPage(
+      name: _Paths.SHORTS_VIDEOS,
+      page: () => ShortVideoView(),
+      binding: ShortVideoBinding(),
     ),
   ];
 }

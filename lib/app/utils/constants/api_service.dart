@@ -39,6 +39,8 @@ class ApiService {
 
   static final String sectionList = "sectionList";
   static final String sectionData = "sectionData";
+  static final String academicContent = "academicContent";
+  static final String classTimeTable = "classTimeTable";
 
 
 
@@ -435,6 +437,29 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+
+  Future Academic_Content_data(className) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + academicContent),
+        body: {
+          "class_id":className,
+        }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+  Future Time_table_data(className) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + classTimeTable),
+        body: {
+          "class_id":className,
+        }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
 
 
 }

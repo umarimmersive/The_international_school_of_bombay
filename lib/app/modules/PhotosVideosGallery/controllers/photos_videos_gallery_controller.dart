@@ -98,7 +98,7 @@ class PhotosVideosGalleryController extends GetxController with GetSingleTickerP
 
 
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       ytbPlayerController = YoutubePlayerController(
         initialVideoId: url,
         params: YoutubePlayerParams(

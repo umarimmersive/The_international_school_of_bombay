@@ -1,6 +1,5 @@
 import 'package:cell_calendar/cell_calendar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
