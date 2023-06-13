@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:the_international_school_of_bombay/app/utils/global_widgets/globle_var.dart';
+
+import '../../../models/busrout_model.dart';
+import '../../../utils/constants/api_service.dart';
 
 class BusrootScreenController extends GetxController {
   //TODO: Implement BusrootScreenController
@@ -30,6 +34,7 @@ class BusrootScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    busRoute_Data_Api();
   }
 
   @override
@@ -43,4 +48,36 @@ class BusrootScreenController extends GetxController {
   }
 
   void increment() => count.value++;
+
+
+
+  final busRoute_Data = <BusRouteModel>[].obs;
+  final isLoading_busRoute=false.obs;
+  Future busRoute_Data_Api() async {
+    try {
+      isLoading_busRoute(true);
+      // Adv_list.clear();
+      var response = await ApiService()
+          .Busroute_data(userData!.Class);
+      if (response['status'] == true) {
+
+        print('responce----------------------${response}');
+
+        List dataList = response['data'].toList();
+        busRoute_Data.value = dataList.map((json) => BusRouteModel.fromJson(json)).toList();
+
+        update();
+      } else if (response['status'] == false) {
+
+        isLoading_busRoute(false);
+      }
+    } finally {
+      isLoading_busRoute(false);
+
+    }
+  }
+
+
+
+
 }

@@ -12,9 +12,12 @@ import '../../../models/Knowledge_base_model.dart';
 import '../../../models/Slider_model.dart';
 import '../../../models/Sections/selection_list_model.dart';
 import '../../../utils/constants/api_service.dart';
+import '../../TimeTableScreen/controllers/time_table_screen_controller.dart';
 
 class HomeScreenController extends GetxController {
   //TODO: Implement HomeScreenController
+
+  TimeTableScreenController timeTableController = Get.put(TimeTableScreenController());
 
   final count = 0.obs;
   final groupValue = 1.obs;
@@ -75,6 +78,7 @@ class HomeScreenController extends GetxController {
     Get_Event_list();
     Get_banner_list();
     Get_selectionList();
+    timeTableController.time_table_Api();
     super.onInit();
   }
 
@@ -88,6 +92,7 @@ class HomeScreenController extends GetxController {
    await  Get_Event_list();
    await  Get_banner_list();
    await   Get_selectionList();
+   await timeTableController.time_table_Api();
   }
 
 

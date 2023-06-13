@@ -55,7 +55,7 @@ class Artical1View extends GetView<Artical1Controller> {
                                 fontsize: 18.0,
                                 text: '${controller.KnowledgeBaseDetailsList[0].title}',
                                 //height: 1.5,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w500,
                                 fontFamily: 'Roboto',
                               ),
                             ),
@@ -116,7 +116,7 @@ class Artical1View extends GetView<Artical1Controller> {
                                     alignment: Alignment.topLeft,
                                   ),
                                   // text that renders h1 elements will be red
-                                  "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                                  "p": Style(color: htmlcolore.value,fontSize: FontSize(16)),
                                 }
                             ),
                             /*TextFieldShowCOLOR(

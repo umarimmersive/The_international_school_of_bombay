@@ -6,6 +6,7 @@ import '../../../routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
 import '../../../utils/global_widgets/Text_widget.dart';
 import '../../../utils/global_widgets/buttons.dart';
+import '../../../utils/global_widgets/globle_var.dart';
 import '../../../utils/global_widgets/textfield_ui.dart';
 import '../controllers/edit_profile_controller.dart';
 
@@ -15,22 +16,53 @@ class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appbar(title: 'Edit Profile'),
+        appBar: appbar(title: 'My Profile'),
         body: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 00),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Center(
-                      child: ImagePickerWidget(
-                      diameter: 100,
-                      iconAlignment: Alignment.bottomRight,
-                      isEditable: true,
-                      initialImage: "https://freepngimg.com/thumb/man/22654-6-man-thumb.png",
-                  )),
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 5.0,
+                                spreadRadius: 2,
+                                offset: Offset(0.5, 0.5))
+                          ],
+                        ),
+                        child: ClipOval(
+                          child:  Center(
+                            child: Text_widget(
+                              Simpletext: userData!.full_name
+                                  .toString()
+                                  .substring(0, 1) +
+                                  userData!.lastname
+                                      .toString()
+                                      .substring(0, 1),
+                              fontSize: 18.0,
+                              maxLines: 1,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      )
+                    //     ImagePickerWidget(
+                    //     diameter: 100,
+                    //     iconAlignment: Alignment.bottomRight,
+                    //     isEditable: true,
+                    //     initialImage: "https://freepngimg.com/thumb/man/22654-6-man-thumb.png",
+                    // )
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -292,17 +324,17 @@ class EditProfileView extends GetView<EditProfileController> {
                   },
                 ),
                 SizedBox(height: 10),
-                RoundedFilledButton(
-                  label: 'Change Password',
-                  color: Colors.transparent,
-                  height: 45,
-                  width: double.infinity,
-                  labelColor: Color(ColorValues.RED),
-                  fontSize: 14,
-                  ontap: () {
-                     Get.toNamed(Routes.CHANGE_PASSWORD);
-                  },
-                ),
+                // RoundedFilledButton(
+                //   label: 'Change Password',
+                //   color: Colors.transparent,
+                //   height: 45,
+                //   width: double.infinity,
+                //   labelColor: Color(ColorValues.RED),
+                //   fontSize: 14,
+                //   ontap: () {
+                //      Get.toNamed(Routes.CHANGE_PASSWORD);
+                //   },
+                // ),
               ],
             ),
           ),

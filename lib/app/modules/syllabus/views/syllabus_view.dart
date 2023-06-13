@@ -35,7 +35,8 @@ class SyllabusView extends GetView<SyllabusController> {
                     controller.syllabus_Data.isNotEmpty
                     ?Expanded(
                       child: controller.syllabus_Data.value.length!=0
-                      ?SfPdfViewer.network(ApiService.IMAGE_URL +
+                      ?SfPdfViewer.network(
+                          ApiService.IMAGE_URL +
                           controller.syllabus_Data.value[0].syllabus.toString(),
                           canShowHyperlinkDialog: true,
                           canShowScrollStatus: true,

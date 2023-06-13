@@ -62,11 +62,11 @@ class Extra {
   String? title;
   String? image;
   String? shortDescription;
-  String? boxColor;
-  String? redirection;
   String? icon;
   String? iconColor;
   String? btnColor;
+  String? boxColor;
+  String? redirection;
   String? btnTextColor;
   String? date;
   String? time;
@@ -84,11 +84,11 @@ class Extra {
         this.title,
         this.image,
         this.shortDescription,
-        this.boxColor,
-        this.redirection,
         this.icon,
         this.iconColor,
         this.btnColor,
+        this.boxColor,
+        this.redirection,
         this.btnTextColor,
         this.date,
         this.time,
@@ -106,11 +106,11 @@ class Extra {
     title = json['title'];
     image = json['image'];
     shortDescription = json['short_description'];
-    boxColor = json['box_color'];
-    redirection = json['redirection'];
     icon = json['icon'];
     iconColor = json['icon_color'];
     btnColor = json['btn_color'];
+    boxColor = json['box_color'];
+    redirection = json['redirection'];
     btnTextColor = json['btn_text_color'];
     date = json['date'];
     time = json['time'];
@@ -130,11 +130,11 @@ class Extra {
     data['title'] = this.title;
     data['image'] = this.image;
     data['short_description'] = this.shortDescription;
-    data['box_color'] = this.boxColor;
-    data['redirection'] = this.redirection;
     data['icon'] = this.icon;
     data['icon_color'] = this.iconColor;
     data['btn_color'] = this.btnColor;
+    data['box_color'] = this.boxColor;
+    data['redirection'] = this.redirection;
     data['btn_text_color'] = this.btnTextColor;
     data['date'] = this.date;
     data['time'] = this.time;

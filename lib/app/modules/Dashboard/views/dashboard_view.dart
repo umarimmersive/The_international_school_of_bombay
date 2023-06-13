@@ -8,6 +8,7 @@ import 'package:the_international_school_of_bombay/app/modules/Menu/views/menu_v
 import 'package:the_international_school_of_bombay/app/utils/constants/ColorValues.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/api_service.dart';
 import '../../Hoppiness/views/hoppiness_view.dart';
+import '../../PhotosVideosGallery/views/photos_videos_gallery_view.dart';
 import '../../ScheduleScreen/views/schedule_screen_view.dart';
 import '../../TimeTableScreen/views/time_table_screen_view.dart';
 import '../controllers/dashboard_controller.dart';
@@ -125,8 +126,7 @@ class DashboardView extends GetView<DashboardController> {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          controller.currentScreen =
-                              HomeScreenView(); // if user taps on this dashboard tab will be active
+                          controller.currentScreen = HomeScreenView(); // if user taps on this dashboard tab will be active
                           controller.currentTab.value = 0;
                         },
                         child: Column(
@@ -153,26 +153,65 @@ class DashboardView extends GetView<DashboardController> {
                         ),
                       ),
                     ),
+                    // Expanded(
+                    //   child: InkWell(
+                    //     onTap: (){
+                    //       controller.currentScreen = HoppinessView(); // if user taps on this dashboard tab will be active
+                    //       controller.currentTab.value = 1;
+                    //     },
+                    //
+                    //     child: Column(
+                    //       mainAxisAlignment: MainAxisAlignment.center,
+                    //       children: <Widget>[
+                    //         Icon(
+                    //           size: 25,
+                    //           Icons.dashboard_outlined,
+                    //           color: controller.currentTab.value == 1
+                    //               ? Colors.red
+                    //               : Colors.grey,
+                    //         ),
+                    //         Text(
+                    //           'Happenings',
+                    //           style: TextStyle(
+                    //             overflow: TextOverflow.ellipsis,
+                    //
+                    //             fontSize: 11,
+                    //             color: controller.currentTab.value == 1
+                    //                 ? Colors.red
+                    //                 : Colors.grey,
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                     Expanded(
                       child: InkWell(
                         onTap: (){
-                          controller.currentScreen =
-                              HoppinessView(); // if user taps on this dashboard tab will be active
+                          controller.currentScreen = PhotosVideosGalleryView(); // if user taps on this dashboard tab will be active
                           controller.currentTab.value = 1;
                         },
 
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(
-                              size: 25,
-                              Icons.dashboard_outlined,
+                            Image.asset(
+                              'assets/images/image.png',
+                              height: 20,
+                              width: 20,
                               color: controller.currentTab.value == 1
                                   ? Colors.red
                                   : Colors.grey,
                             ),
+                            // Icon(
+                            //   size: 25,
+                            //   Icons.dashboard_outlined,
+                            //   color: controller.currentTab.value == 1
+                            //       ? Colors.red
+                            //       : Colors.grey,
+                            // ),
                             Text(
-                              'Happenings',
+                              'Gallery',
                               style: TextStyle(
                                 overflow: TextOverflow.ellipsis,
 
@@ -221,9 +260,10 @@ class DashboardView extends GetView<DashboardController> {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          controller.currentScreen =
-                              TimeTableScreenView(); // if user taps on this dashboard tab will be active
+                          controller.currentScreen = TimeTableScreenView();
+                          // if user taps on this dashboard tab will be active
                           controller.currentTab.value = 3;
+                          controller.ABOUT;
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -500,8 +500,11 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
 
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
@@ -543,11 +546,11 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
               title: Row(
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: Icon(Icons.arrow_back)),
+                  // IconButton(
+                  //     onPressed: () {
+                  //       Get.back();
+                  //     },
+                  //     icon: Icon(Icons.arrow_back)),
                   Text(
                     "Gallery",
                     style: TextStyle(
@@ -579,7 +582,7 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 0, right: 0),
                         child: GridView.builder(
-                            itemCount: controller.PhotoVideoGallery.length,
+                            itemCount: controller.PhotoGallery.length,
                             gridDelegate:
                             SliverGridDelegateWithFixedCrossAxisCount(
                                 childAspectRatio: 3.9 / 3.5,
@@ -594,8 +597,8 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                 child: InkWell(
                                   onTap: () {
                                      var data={
-                                      'id':controller.PhotoVideoGallery[index].id.toString(),
-                                      'title':controller.PhotoVideoGallery[index].title.toString(),
+                                      'id':controller.PhotoGallery[index].id.toString(),
+                                      'title':controller.PhotoGallery[index].title.toString(),
                                     };
                                     Get.toNamed(Routes.PHOTO_GALLARY,parameters: data);
                                     // Get.to(PhotoGallaryView(
@@ -619,13 +622,13 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                         elevation: 3,
                                         margin: EdgeInsets.zero,
                                         child: Container(
-                                          // height: 120,
+                                           height: 120,
                                           child: ClipRRect(
                                               borderRadius:
                                               BorderRadius.circular(5),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                "${ApiService.IMAGE_URL + controller.PhotoVideoGallery[index].item_value!}",
+                                                "${ApiService.IMAGE_URL + controller.PhotoGallery[index].itemValue!}",
                                                 fit: BoxFit.fill,
                                               )),
                                         ),
@@ -638,7 +641,7 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                             padding: const EdgeInsets.all(0.0),
                                             child: GlobalLocalText(
                                               text:
-                                              "${controller.PhotoVideoGallery[index].title}",
+                                              "${controller.PhotoGallery[index].title}",
                                               size: 15,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -660,221 +663,379 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                           ListView.builder(
                             shrinkWrap: true,
                             padding: EdgeInsets.only(top: 10),
-                            itemCount: 8,
+                            itemCount: controller.VideoGallery.length,
                             physics: NeverScrollableScrollPhysics(),
                             // addSemanticIndexes: false,
                             itemBuilder: (BuildContext, index) {
                               return Padding(
                                   padding: const EdgeInsets.only(top: 8),
-                                  child: index == 2
-                                      ?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(10),
-                                            child: GlobalLocalText(
-                                              text: "Shorts",
-                                              fontWeight: FontWeight.bold,
-                                              size: 16,
-                                            ),
-                                          ),
-                                          Padding(
-                                    padding: const EdgeInsets.only(bottom: 15.0),
-                                    child: SizedBox(
-                                          height: 280,
-                                          child: ListView.builder(
-                                              scrollDirection: Axis.horizontal,
-                                              itemCount: 6,
-                                              shrinkWrap: true,
-                                              itemBuilder: (BuildContext, index) {
-                                                return InkWell(
-                                                    onTap: () {
-                                                      Get.toNamed(Routes.SHORTS_VIDEOS);
-                                                      // var data = {
-                                                      //   /* "maintitle": "${controller.slider_data[index]['maintitle']}",
-                                                      // "title": "${controller.slider_data[index]['title']}",
-                                                      // "images": "${controller.slider_data[index]['images']}",*/
-                                                      //   "id": "${controller.Slider[index].id}"
-                                                      // };
-                                                      // Get.toNamed(Routes.HOME_SLIDER_DETAILS,
-                                                      //     parameters: data);
-                                                      //  HomeSliderDetailsView
-                                                    },
-                                                    child:
-                                                    Padding(
-                                                        padding: EdgeInsets.only(left: 10,right: 10),
-                                                        child: Stack(
-                                                          clipBehavior: Clip.hardEdge,
-                                                          children: [
-                                                            Container(
-                                                              clipBehavior: Clip.hardEdge,
-                                                              decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                BorderRadius.circular(10),
-                                                              ),
-                                                              height: 400,
-                                                              width: 180,
-                                                              child: Image.asset('assets/images/S2.jpg',fit: BoxFit.cover),
-                                                            ),
-                                                            Padding(
-                                                              padding: const EdgeInsets.only(top: 200.0),
-                                                              child: Container(
-                                                                height: 80,
-                                                                width: 180,
-                                                                decoration: BoxDecoration(
-                                                                  color: Colors.black54,
-                                                                  borderRadius: BorderRadius.only(
-                                                                    topLeft: Radius.zero,
-                                                                    topRight: Radius.zero,
-                                                                    bottomLeft:  Radius.circular(10.0),
-                                                                    bottomRight:  Radius.circular(10.0),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              margin: EdgeInsets.only(top: 160),
-                                                              padding: EdgeInsets.symmetric(horizontal: 10),
-                                                              height: 80,
-                                                              width: 180,
-                                                              child: Column(
-                                                                crossAxisAlignment:
-                                                                CrossAxisAlignment.start,
-                                                                mainAxisAlignment:
-                                                                MainAxisAlignment.end,
-                                                                children: [
-
-                                                                  Text(
-                                                                    textAlign: TextAlign.justify,
-                                                                    maxLines: 2,
-                                                                    "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
-                                                                    style: TextStyle(
-                                                                        overflow:
-                                                                        TextOverflow.ellipsis,
-                                                                        fontSize: 12.5,
-                                                                        fontWeight: FontWeight.w500,
-                                                                        color: Colors.white),
-                                                                  )
-                                                                ],
-                                                              ),
-                                                            )
-
-
-
-                                                          ],
-                                                        )
-                                                    )
-                                                  /* Padding(
-                                              padding: const EdgeInsets.only(left: 10),
-                                              child: Container(
-                                                height: 80,
-                                                width: 220,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                    BorderRadius.circular(10),
-                                                    image: DecorationImage(
-                                                        image: NetworkImage(ApiService.IMAGE_URL+controller.Slider[index].image!),
-                                                        fit: BoxFit.cover)
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      right: 5, bottom: 10, left: 10),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        controller.Slider[index].title!,
-                                                        style: TextStyle(
-                                                            fontFamily: "Roboto",
-                                                            overflow:
-                                                            TextOverflow.ellipsis,
-                                                            fontWeight: FontWeight.w600,
-                                                            fontSize: 13.5,
-                                                            color: Colors.white),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      Text(
-                                                        textAlign: TextAlign.justify,
-                                                        maxLines: 3,
-                                                        controller.Slider[index].short_description!,
-                                                        style: TextStyle(
-                                                            overflow:
-                                                            TextOverflow.ellipsis,
-                                                            fontSize: 12.5,
-                                                            fontWeight: FontWeight.w500,
-                                                            color: Colors.yellow),
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                              ),*/
-                                                );
-                                              }),
-                                    ),
-                                  ),
-                                        ],
-                                      )
-                                      :index == 4
-                                      ?Card(
-                                    child: Container(
-                                      child: Image.asset('assets/images/add_dummy_boy.jpeg'),
-                                    ),
-                                  )
-                                      :Card(
+                                  child: Card(
                                     child: Container(
                                       child: Column(
                                         children: [
-                                          YoutubePlayer(
-                                              controller: YoutubePlayerController(
-                                                  initialVideoId: "nPt8bK2gbaU",
-                                                  flags: YoutubePlayerFlags(
-                                                      disableDragSeek: true,
-                                                      forceHD: false,
-                                                      autoPlay: false,
-                                                      showLiveFullscreenButton: true
+
+                                          ClipRRect(
+                                              borderRadius: BorderRadius.circular(20),
+                                              child:Stack(
+                                                children: [
+                                                  Container(
+                                                    height: 200,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    child: Image.network(controller.VideoGallery[index].videoThumb.toString(),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                      alignment: Alignment.center,
+                                                      child: InkWell(
+                                                        onTap: (){
+
+                                                                showGeneralDialog(
+                                                                  context: context,
+                                                                  barrierColor: Colors.black12.withOpacity(0.6), // Background color
+                                                                  barrierDismissible: true,
+                                                                  barrierLabel: 'Dialog',
+                                                                  transitionDuration: Duration(milliseconds: 400),
+                                                                  pageBuilder: (context, __, ___) {
+                                                                    return Container(
+                                                                      height: MediaQuery.of(context).size.height,
+                                                                      width: MediaQuery.of(context).size.width,
+                                                                      color: Colors.black,
+                                                                      child: Stack(
+                                                                        children: [
+                                                                          Align(alignment:Alignment.center,
+                                                                            child: Container(
+                                                                              width: MediaQuery.of(context).size.width,
+                                                                              padding: EdgeInsets.all(10),
+                                                                              decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(10)
+                                                                              ),
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(10),
+                                                                                child:  YoutubePlayer(
+                                                                                    controller: YoutubePlayerController(
+                                                                                        initialVideoId:controller.VideoGallery[index].itemValue.toString(),
+                                                                                        flags: YoutubePlayerFlags(
+                                                                                            enableCaption:true,
+                                                                                            disableDragSeek: true,
+                                                                                            forceHD: false,
+                                                                                            autoPlay: true,
+                                                                                            showLiveFullscreenButton: true
+                                                                                        )
+                                                                                    )
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Positioned(
+                                                                            top: 30,
+                                                                            left: 20,
+                                                                            child: Material(
+                                                                              color: Colors.transparent,
+                                                                              child: InkWell(
+                                                                                onTap: (){
+                                                                                  Get.back();
+                                                                                  SystemChrome.setPreferredOrientations([
+                                                                                    DeviceOrientation.portraitUp,
+                                                                                    DeviceOrientation.portraitDown,
+                                                                                  ]);
+                                                                                },
+                                                                                child: Container(
+                                                                                    height: 50,
+                                                                                    width: 50,
+                                                                                    decoration: BoxDecoration(
+                                                                                        shape:BoxShape.circle
+                                                                                    ),
+                                                                                    child: Icon(Icons.close,size: 30,color: Colors.white,)),
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+
+
+
+                                                                // _videoWidget(context);
+
+                                                        },
+                                                        child: Container(
+                                                            height: 200,
+                                                            width: MediaQuery.of(context).size.width,
+                                                            child:Transform.scale(
+                                                              scale: 0.3,
+                                                                child: Image.asset("assets/images/youtubeplay.png",))
+
+                                                        ),
+                                                      )
                                                   )
+                                                ],
                                               )
                                           ),
-                                          Row(
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.symmetric(vertical: 10,horizontal:5 ),
-                                                height: 60,
-                                                width: 60,
-                                                decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            "assets/images/s1.jpg"),
-                                                        fit: BoxFit.cover)
+
+                                          // ClipRRect(
+                                          //   borderRadius: BorderRadius.circular(20),
+                                          //   child: YoutubePlayer(
+                                          //       controller: YoutubePlayerController(
+                                          //           initialVideoId: controller.VideoGallery[index].itemValue.toString(),
+                                          //           flags: YoutubePlayerFlags(
+                                          //               disableDragSeek: true,
+                                          //               forceHD: false,
+                                          //               autoPlay: false,
+                                          //               showLiveFullscreenButton: true
+                                          //           )
+                                          //       )
+                                          //   ),
+                                          // ),
+                                          Padding(
+                                            padding:  EdgeInsets.all(10.0),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.symmetric(vertical: 10,horizontal:5 ),
+                                                  height: 45,
+                                                  width: 45,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: ColorValues.BG_BT2,
+                                                      image: DecorationImage(
+                                                          image: NetworkImage(
+                                                              controller.VideoGallery[index].channelThumb.toString()),
+                                                          fit: BoxFit.cover)
+                                                  ),
+                                                  // child: Icon(
+                                                  //   Icons.play_arrow,
+                                                  //   color: Colors.white,
+                                                  // ),
                                                 ),
-                                                // child: Icon(
-                                                //   Icons.play_arrow,
-                                                //   color: Colors.white,
-                                                // ),
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Flexible(
-                                                child: GlobalLocalText(
-                                                  maxLines: 3,
-                                                  text:
-                                                  "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
+                                                SizedBox(
+                                                  width: 10,
                                                 ),
-                                              )
-                                            ],
+                                                Flexible(
+                                                  child: GlobalLocalText(
+                                                    maxLines: 3,
+                                                    text:
+                                                    controller.VideoGallery[index].title.toString(),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
                                   )
+                                  // index == 2
+                                  //     ?Column(
+                                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                                  //       children: [
+                                  //         Padding(
+                                  //           padding: const EdgeInsets.all(10),
+                                  //           child: GlobalLocalText(
+                                  //             text: "Shorts",
+                                  //             fontWeight: FontWeight.bold,
+                                  //             size: 16,
+                                  //           ),
+                                  //         ),
+                                  //         Padding(
+                                  //   padding: const EdgeInsets.only(bottom: 15.0),
+                                  //   child: SizedBox(
+                                  //         height: 280,
+                                  //         child: ListView.builder(
+                                  //             scrollDirection: Axis.horizontal,
+                                  //             itemCount: 6,
+                                  //             shrinkWrap: true,
+                                  //             itemBuilder: (BuildContext, index) {
+                                  //               return InkWell(
+                                  //                   onTap: () {
+                                  //                     Get.toNamed(Routes.SHORTS_VIDEOS);
+                                  //                     // var data = {
+                                  //                     //   /* "maintitle": "${controller.slider_data[index]['maintitle']}",
+                                  //                     // "title": "${controller.slider_data[index]['title']}",
+                                  //                     // "images": "${controller.slider_data[index]['images']}",*/
+                                  //                     //   "id": "${controller.Slider[index].id}"
+                                  //                     // };
+                                  //                     // Get.toNamed(Routes.HOME_SLIDER_DETAILS,
+                                  //                     //     parameters: data);
+                                  //                     //  HomeSliderDetailsView
+                                  //                   },
+                                  //                   child:
+                                  //                   Padding(
+                                  //                       padding: EdgeInsets.only(left: 10,right: 10),
+                                  //                       child: Stack(
+                                  //                         clipBehavior: Clip.hardEdge,
+                                  //                         children: [
+                                  //                           Container(
+                                  //                             clipBehavior: Clip.hardEdge,
+                                  //                             decoration: BoxDecoration(
+                                  //                               borderRadius:
+                                  //                               BorderRadius.circular(10),
+                                  //                             ),
+                                  //                             height: 400,
+                                  //                             width: 180,
+                                  //                             child: Image.asset('assets/images/S2.jpg',fit: BoxFit.cover),
+                                  //                           ),
+                                  //                           Padding(
+                                  //                             padding: const EdgeInsets.only(top: 200.0),
+                                  //                             child: Container(
+                                  //                               height: 80,
+                                  //                               width: 180,
+                                  //                               decoration: BoxDecoration(
+                                  //                                 color: Colors.black54,
+                                  //                                 borderRadius: BorderRadius.only(
+                                  //                                   topLeft: Radius.zero,
+                                  //                                   topRight: Radius.zero,
+                                  //                                   bottomLeft:  Radius.circular(10.0),
+                                  //                                   bottomRight:  Radius.circular(10.0),
+                                  //                                 ),
+                                  //                               ),
+                                  //                             ),
+                                  //                           ),
+                                  //                           Container(
+                                  //                             margin: EdgeInsets.only(top: 160),
+                                  //                             padding: EdgeInsets.symmetric(horizontal: 10),
+                                  //                             height: 80,
+                                  //                             width: 180,
+                                  //                             child: Column(
+                                  //                               crossAxisAlignment:
+                                  //                               CrossAxisAlignment.start,
+                                  //                               mainAxisAlignment:
+                                  //                               MainAxisAlignment.end,
+                                  //                               children: [
+                                  //
+                                  //                                 Text(
+                                  //                                   textAlign: TextAlign.justify,
+                                  //                                   maxLines: 2,
+                                  //                                   "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
+                                  //                                   style: TextStyle(
+                                  //                                       overflow:
+                                  //                                       TextOverflow.ellipsis,
+                                  //                                       fontSize: 12.5,
+                                  //                                       fontWeight: FontWeight.w500,
+                                  //                                       color: Colors.white),
+                                  //                                 )
+                                  //                               ],
+                                  //                             ),
+                                  //                           )
+                                  //
+                                  //
+                                  //
+                                  //                         ],
+                                  //                       )
+                                  //                   )
+                                  //                 /* Padding(
+                                  //             padding: const EdgeInsets.only(left: 10),
+                                  //             child: Container(
+                                  //               height: 80,
+                                  //               width: 220,
+                                  //               decoration: BoxDecoration(
+                                  //                   borderRadius:
+                                  //                   BorderRadius.circular(10),
+                                  //                   image: DecorationImage(
+                                  //                       image: NetworkImage(ApiService.IMAGE_URL+controller.Slider[index].image!),
+                                  //                       fit: BoxFit.cover)
+                                  //               ),
+                                  //               child: Padding(
+                                  //                 padding: const EdgeInsets.only(
+                                  //                     right: 5, bottom: 10, left: 10),
+                                  //                 child: Column(
+                                  //                   crossAxisAlignment:
+                                  //                   CrossAxisAlignment.start,
+                                  //                   mainAxisAlignment:
+                                  //                   MainAxisAlignment.end,
+                                  //                   children: [
+                                  //                     Text(
+                                  //                       controller.Slider[index].title!,
+                                  //                       style: TextStyle(
+                                  //                           fontFamily: "Roboto",
+                                  //                           overflow:
+                                  //                           TextOverflow.ellipsis,
+                                  //                           fontWeight: FontWeight.w600,
+                                  //                           fontSize: 13.5,
+                                  //                           color: Colors.white),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 5,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       textAlign: TextAlign.justify,
+                                  //                       maxLines: 3,
+                                  //                       controller.Slider[index].short_description!,
+                                  //                       style: TextStyle(
+                                  //                           overflow:
+                                  //                           TextOverflow.ellipsis,
+                                  //                           fontSize: 12.5,
+                                  //                           fontWeight: FontWeight.w500,
+                                  //                           color: Colors.yellow),
+                                  //                     )
+                                  //                   ],
+                                  //                 ),
+                                  //               ),
+                                  //             )
+                                  //             ),*/
+                                  //               );
+                                  //             }),
+                                  //   ),
+                                  // ),
+                                  //       ],
+                                  //     )
+                                  //     :index == 4
+                                  //     ?Card(
+                                  //   child: Container(
+                                  //     child: Image.asset('assets/images/add_dummy_boy.jpeg'),
+                                  //   ),
+                                  // )
+                                  //     :Card(
+                                  //   child: Container(
+                                  //     child: Column(
+                                  //       children: [
+                                  //         YoutubePlayer(
+                                  //             controller: YoutubePlayerController(
+                                  //                 initialVideoId: "nPt8bK2gbaU",
+                                  //                 flags: YoutubePlayerFlags(
+                                  //                     disableDragSeek: true,
+                                  //                     forceHD: false,
+                                  //                     autoPlay: false,
+                                  //                     showLiveFullscreenButton: true
+                                  //                 )
+                                  //             )
+                                  //         ),
+                                  //         Row(
+                                  //           children: [
+                                  //             Container(
+                                  //               margin: EdgeInsets.symmetric(vertical: 10,horizontal:5 ),
+                                  //               height: 60,
+                                  //               width: 60,
+                                  //               decoration: BoxDecoration(
+                                  //                   shape: BoxShape.circle,
+                                  //                   image: DecorationImage(
+                                  //                       image: AssetImage(
+                                  //                           "assets/images/s1.jpg"),
+                                  //                       fit: BoxFit.cover)
+                                  //               ),
+                                  //               // child: Icon(
+                                  //               //   Icons.play_arrow,
+                                  //               //   color: Colors.white,
+                                  //               // ),
+                                  //             ),
+                                  //             SizedBox(
+                                  //               width: 10,
+                                  //             ),
+                                  //             Flexible(
+                                  //               child: GlobalLocalText(
+                                  //                 maxLines: 3,
+                                  //                 text:
+                                  //                 "9 साल के Aaryav का सपना है KBC Host करना | Kaun Banega Crorepati Season",
+                                  //               ),
+                                  //             )
+                                  //           ],
+                                  //         ),
+                                  //       ],
+                                  //     ),
+                                  //   ),
+                                  // )
                               );
                             },
                           ),

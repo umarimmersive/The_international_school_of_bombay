@@ -37,7 +37,6 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
 
-
                      /* Padding(
 
                         padding: const EdgeInsets.only(left: 10.0,right: 10),
@@ -81,7 +80,7 @@ class NoticeBoardDetailsView extends GetView<NoticeBoardDetailsController> {
                               alignment: Alignment.topLeft,
                             ),
                             // text that renders h1 elements will be red
-                            "p": Style(color:htmlcolore.value,fontSize: FontSize.xLarge,alignment: Alignment.center),
+                            "p": Style(color:htmlcolore.value,fontSize: FontSize(16),alignment: Alignment.center),
                           },
                         ),
                       )

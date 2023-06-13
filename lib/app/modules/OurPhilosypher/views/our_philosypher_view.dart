@@ -54,8 +54,8 @@ class OurPhilosypherView extends GetView<OurPhilosypherController> {
                               alignment: Alignment.topLeft,
                             ),
                             // text that renders h1 elements will be red
-                            "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
-                            "li": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                            "p": Style(color: htmlcolore.value,fontSize: FontSize(16)),
+                            "li": Style(color: htmlcolore.value,fontSize: FontSize(16)),
                           },
                       ),
                     )

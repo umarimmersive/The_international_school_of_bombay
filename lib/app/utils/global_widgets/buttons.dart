@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class RoundedFilledButton extends StatelessWidget {
   final VoidCallback? ontap;
+  final VoidCallback? ondoubleTap;
   final String? label;
   final Color? color;
   final Color? labelColor;
@@ -13,6 +14,7 @@ class RoundedFilledButton extends StatelessWidget {
   const RoundedFilledButton({
     Key? key,
     this.ontap,
+    this.ondoubleTap,
     this.label,
     this.labelColor,
     this.height = 50,
@@ -26,6 +28,7 @@ class RoundedFilledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: ontap,
+        onDoubleTap: ondoubleTap,
         child: Container(
           height: height,
           width: width ?? double.maxFinite,
@@ -59,17 +62,19 @@ class RoundedFilledButton extends StatelessWidget {
 
 class IconBtnRounded extends StatelessWidget {
   final VoidCallback? ontap;
+  final VoidCallback? ondoubleTap;
   final Widget? icon;
   final double? left;
   final double? right;
 
-  const IconBtnRounded({Key? key, this.ontap, this.icon, this.left, this.right})
+  const IconBtnRounded({Key? key, this.ontap,this.ondoubleTap,this.icon, this.left, this.right})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
+      onDoubleTap: ondoubleTap,
       child: Container(
         padding: EdgeInsets.zero,
         width: 34,

@@ -58,7 +58,6 @@ class QuiryScreenController extends GetxController {
 
       isLoading(false);
 
-
     }
   }
 

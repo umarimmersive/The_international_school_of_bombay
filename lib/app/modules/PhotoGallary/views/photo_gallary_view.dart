@@ -88,7 +88,7 @@ class PhotoGallaryView extends GetView<PhotoGallaryController>  {
                             },
                             child: CachedNetworkImage(
                               imageUrl:
-                              ApiService.IMAGE_URL+controller.posts[index].item_value!,
+                              ApiService.IMAGE_URL+controller.posts[index].itemValue,
                               fit: BoxFit.cover,
                             ));
                         //.... the reminder of your code

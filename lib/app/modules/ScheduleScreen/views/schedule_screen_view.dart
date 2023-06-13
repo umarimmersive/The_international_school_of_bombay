@@ -33,116 +33,6 @@ class _SheduleScreenViewState extends State<SheduleScreenView> {
 
   final controller = Get.find<ScheduleScreenController>();
 
-/*
-  CalendarFormat _calendarFormat = CalendarFormat.month;
-  DateTime _selectedDay = DateTime.now();
-  // Map<DateTime, List<dynamic>> _events = {};
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   fetchEvents().then((events) {
-  //     setState(() {
-  //       _events = events;
-  //     });
-  //   });
-  // }
-
-  Map<DateTime, List<dynamic>> _events = {
-    DateTime(2023,05,23): ['Event 1', 'Event 2'],
-    DateTime.now().add(Duration(days: 2)): ['Event 3'],
-    DateTime.now().add(Duration(days: 3)): ['Event 4', 'Event 5'],
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    // print('controller.event_list.length${controller.event_list.value.length.toString()}');
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Table Calendar with Events'),
-      ),
-      body: Column(
-        children: [
-          TableCalendar(
-            calendarFormat: _calendarFormat,
-            locale: 'en_US',
-            calendarBuilders: CalendarBuilders(
-              dowBuilder: (context, day) {
-                if (day.weekday == DateTime.sunday) {
-                  final text = DateFormat.E().format(day);
-                  return Center(
-                    child: Text(
-                      text,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  );
-                }
-              },
-            ),
-            focusedDay: _selectedDay,
-            firstDay: DateTime(DateTime.now().year - 1),
-            lastDay: DateTime(DateTime.now().year + 1),
-            eventLoader: (day) => _getEventsForDay(day),
-            onFormatChanged: (format) {
-              setState(() {
-                _calendarFormat = format;
-              });
-            },
-            onPageChanged: (selectedDay) {
-              setState(() {
-                _selectedDay = selectedDay;
-              });
-            },
-          ),
-          const SizedBox(height: 8.0),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: _events.length,
-            itemBuilder: (context, index) {
-              print('controller.event_list.length${_events.length.toString()}');
-              return Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 12.0,
-                  vertical: 4.0,
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: ListTile(
-                  onTap: () => print('controller.event_list.length ==========${_events}'),
-                  title: Text('${_events['date']}'),
-                ),
-              );
-            },
-          ),
-          // Display the events for the selected day
-
-           ..._getEventsForDay(_selectedDay).map((event) => Text(event.toString())),
-        ],
-      ),
-    );
-  }
-
-  List<dynamic> _getEventsForDay(DateTime day) {
-    print('controller.event_list.value[day]${controller.event_list.value[day]}');
-    return _events[day] ?? [];
-  }*/
-
-   // var date =DateFormat("yyyy-MM-dd").parse(controller.eventDate.value);
-   // final events = [
-   //  CalendarEvent(eventName: controller.eventName.value,eventDate: date, eventTextStyle: TextStyle(color: Colors.red)),
-   //  CalendarEvent(eventName: controller.eventName.value,eventDate: date, eventTextStyle: TextStyle(color: Colors.black)),
-   //  CalendarEvent(eventName: controller.eventName.value,eventDate: date, eventTextStyle: TextStyle(color: Colors.black)),
-   //  CalendarEvent(eventName: controller.eventName.value,eventDate: date, eventTextStyle: TextStyle(color: Colors.black)),
-   // ];
-  final events = [
-   CalendarEvent(eventName: "Event 1",eventDate: DateTime.now(), eventTextStyle: TextStyle(color: Colors.red)),
-   CalendarEvent(eventName: "Event 2",eventDate: DateTime(2023,05,29), eventTextStyle: TextStyle(color: Colors.black)),
-   CalendarEvent(eventName: "Event 3",eventDate: DateTime(2023,05,29), eventTextStyle: TextStyle(color: Colors.black)),
-   CalendarEvent(eventName: "Event 4",eventDate: DateTime(2023,05,29), eventTextStyle: TextStyle(color: Colors.black)),
-  ];
 
    @override
    Widget build(BuildContext context) {
@@ -151,7 +41,9 @@ class _SheduleScreenViewState extends State<SheduleScreenView> {
      return Scaffold(
        appBar: AppBar(
          backgroundColor: ColorValues.BG_BT2,
-         title: Text('calender'),
+          automaticallyImplyLeading: false,
+         centerTitle: false,
+         title: Text('Calender',style: TextStyle(fontSize: 18),),
        ),
        body: CellCalendar(
          todayMarkColor: ColorValues.BG_BT2,
@@ -160,11 +52,13 @@ class _SheduleScreenViewState extends State<SheduleScreenView> {
          events: [
            for(int i = 0; i<controller.Event_list.value.length; i++)
            CalendarEvent(
+
              eventBackgroundColor: Colors.redAccent,
                eventName: controller.Event_list.value[i].title.toString(),
                eventDate: DateTime.parse(controller.Event_list.value[i].date.toString()),
                eventTextStyle: TextStyle(
-                 color: Colors.white
+                 color: Colors.white,
+                 fontSize:12
                )
            ),
          ],
@@ -215,9 +109,7 @@ class _SheduleScreenViewState extends State<SheduleScreenView> {
          onCellTapped: (date) {
            final eventsOnTheDate = controller.Event_list.value.where((event) {
              final eventDate = DateTime.parse(event.date.toString());
-             return eventDate.year == date.year &&
-                 eventDate.month == date.month &&
-                 eventDate.day == date.day;
+             return eventDate.year == date.year && eventDate.month == date.month && eventDate.day == date.day;
            }).toList();
            showDialog(
                context: context,

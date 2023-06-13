@@ -22,6 +22,7 @@ class TextFieldDesigned extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   late final String? counterText;
+  final List<LengthLimitingTextInputFormatter>? inputFormatters;
   TextFieldDesigned({
     this.onTap,
     this.obscureText=false,
@@ -42,6 +43,7 @@ class TextFieldDesigned extends StatelessWidget {
     this.keyboardType = TextInputType.number,
     this.textAlign = TextAlign.start,
     this.counterText = "",
+    this.inputFormatters,
   });
 
 
@@ -104,8 +106,10 @@ class TextFieldDesigned extends StatelessWidget {
         obscureText: obscureText,
         textCapitalization: TextCapitalization.sentences,
         readOnly: readOnly,
+        inputFormatters: inputFormatters,
         autovalidateMode: autovalidateMode,
         validator: validator,
+        cursorColor: ColorValues.BG_BT2,
         onTap: onTap,
         controller: controller,
         maxLength: maxLength,

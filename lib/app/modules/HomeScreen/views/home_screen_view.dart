@@ -105,32 +105,58 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                         // controller.Sibling[i].full_name != userData!.  full_name?
                              Obx(
                               () => GFCheckboxListTile(
-                            color: Colors.black12,
+
+                                color: Colors.white,
+                            // color: ColorValues.BG_BT2.withOpacity(0.3),
                             titleText:
                             '${controller.Sibling[i].full_name}',
                             subTitleText:
                             '${controller.Sibling[i].Class + ","}' +
                                 ' Section-' +
                                 '${controller.Sibling[i].section}',
-                            avatar: userData!.profile_image.isNotEmpty
-                                ? Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius:
-                                  BorderRadius.circular(5)),
-                              height: 60,
-                              width: 55,
-                              child: ClipRRect(
-                                  borderRadius:
-                                  BorderRadius.circular(5),
-                                  child: Image.network(
-                                    "${ApiService.IMAGE_URL + controller.Sibling[i].profile_image}",
-                                    fit: BoxFit.cover,
-                                  )),
-                            )
-                                : Container(
+                            avatar:
+                            // userData!.profile_image.isNotEmpty
+                            //     ? Container(
+                            //   decoration: BoxDecoration(
+                            //       color: Colors.red,
+                            //       boxShadow: [
+                            //         BoxShadow(
+                            //           color: Colors.grey.shade400,
+                            //           blurRadius: 2.0, // soften the shadow
+                            //           spreadRadius: 1.0, //extend the shadow
+                            //           offset: Offset(
+                            //             2.0, // Move to right 5  horizontally
+                            //             2.0, // Move to bottom 5 Vertically
+                            //           ),
+                            //         )
+                            //       ],
+                            //       borderRadius:
+                            //       BorderRadius.circular(5)),
+                            //   height: 60,
+                            //   width: 55,
+                            //   child: ClipRRect(
+                            //       borderRadius:
+                            //       BorderRadius.circular(5),
+                            //       child: Image.network(
+                            //         "${ApiService.IMAGE_URL + controller.Sibling[i].profile_image}",
+                            //         fit: BoxFit.cover,
+                            //       )),
+                            // )
+                            //     :
+                            Container(
                                 decoration: BoxDecoration(
                                     color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.shade400,
+                                        blurRadius: 2.0, // soften the shadow
+                                        spreadRadius: 1.0, //extend the shadow
+                                        offset: Offset(
+                                          2.0, // Move to right 5  horizontally
+                                          2.0, // Move to bottom 5 Vertically
+                                        ),
+                                      )
+                                    ],
                                     borderRadius:
                                     BorderRadius.circular(5)),
                                 height: 60,
@@ -197,16 +223,24 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           'Please select profile', 'assets/only_logo.png');
                     } else {
                       await my_local_service.updateSharedPreferencesFromServer(controller.token.value);
-                      Get.back();
-                      // await controller.refrshApi();
-                      // await Future.delayed(Duration(milliseconds: 1000));
-                      //
-                      // if (true) controller.refreshController.refreshCompleted();
-                      ToastClass.showToast('Profile Switch succesfully.',
-                          'assets/only_logo.png');
+                      Get.back(canPop: true);
+                      await controller.refrshApi();
+                      await Future.delayed(Duration(milliseconds: 1000));
+
+                      if (true) controller.refreshController.refreshCompleted();
+                      // SpinKitThreeBounce(
+                      //   color: Colors.red,
+                      //      size: 40,
+                      //   duration: Duration(milliseconds: 2000),
+                      // );
+                      ToastClass.showToast('Profile Switch succesfully.', 'assets/only_logo.png');
                     }
                     // Get.to(DeshboardScreenView())
                   },
+                  ondoubleTap: (){
+                    Get.back(canPop: true);
+                  },
+
                 ),
               )
               // for (int i = 0; i < controller.Sibling.length; i++)
@@ -289,7 +323,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
             enablePullUp: true,
             // key: controller.refresherKey,
             enablePullDown: true,
-            // header: MaterialClassicHeader(),
+            header: MaterialClassicHeader(),
             child: CustomScrollView(
               semanticChildCount: 2,
               shrinkWrap: true,
@@ -326,22 +360,22 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           ],
                         )
                          :SizedBox(),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top:10.0),
-                              child: IconButton(
-                                  onPressed: () {
-                                    Get.toNamed(Routes.NOTIFICATION);
-                                  },
-                                  icon: Icon(
-                                    size: 24,
-                                    Icons.notifications,
-                                    color: Colors.white,
-                                  )),
-                            ),
-                          ],
-                        ),
+                        // Column(
+                        //   children: [
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(top:10.0),
+                        //       child: IconButton(
+                        //           onPressed: () {
+                        //             Get.toNamed(Routes.NOTIFICATION);
+                        //           },
+                        //           icon: Icon(
+                        //             size: 24,
+                        //             Icons.notifications,
+                        //             color: Colors.white,
+                        //           )),
+                        //     ),
+                        //   ],
+                        // ),
                       ]
                           :[
                         controller.Sibling.value.length != 0  ?
@@ -358,18 +392,18 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                               )),
                         )
                          :SizedBox(),
-                        Padding(
-                          padding: const EdgeInsets.only(top:25.0),
-                          child: IconButton(
-                              onPressed: () {
-                                Get.toNamed(Routes.NOTIFICATION);
-                              },
-                              icon: Icon(
-                                size: 24,
-                                Icons.notifications,
-                                color: Colors.white,
-                              )),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top:25.0),
+                        //   child: IconButton(
+                        //       onPressed: () {
+                        //         Get.toNamed(Routes.NOTIFICATION);
+                        //       },
+                        //       icon: Icon(
+                        //         size: 24,
+                        //         Icons.notifications,
+                        //         color: Colors.white,
+                        //       )),
+                        // ),
                       ],
                       automaticallyImplyLeading: false,
                       pinned: false,
@@ -400,23 +434,24 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                       child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          userData!.profile_image.isNotEmpty
-                                              ? Container(
-                                            decoration: BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius:
-                                                BorderRadius.circular(5)),
-                                            height: 60,
-                                            width: 55,
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                BorderRadius.circular(5),
-                                                child: Image.network(
-                                                  "${ApiService.IMAGE_URL + userData!.profile_image}",
-                                                  fit: BoxFit.cover,
-                                                )),
-                                          )
-                                              : Container(
+                                          // userData!.profile_image.isNotEmpty
+                                          //     ? Container(
+                                          //   decoration: BoxDecoration(
+                                          //       color: Colors.red,
+                                          //       borderRadius:
+                                          //       BorderRadius.circular(5)),
+                                          //   height: 60,
+                                          //   width: 55,
+                                          //   child: ClipRRect(
+                                          //       borderRadius:
+                                          //       BorderRadius.circular(5),
+                                          //       child: Image.network(
+                                          //         "${ApiService.IMAGE_URL + userData!.profile_image}",
+                                          //         fit: BoxFit.cover,
+                                          //       )),
+                                          // )
+                                          //     :
+                                          Container(
                                               decoration: BoxDecoration(
                                                   color: Colors.white,
                                                   borderRadius:
@@ -623,22 +658,22 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                           ],
                         )
                             :SizedBox(),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top:10.0),
-                              child: IconButton(
-                                  onPressed: () {
-                                    Get.toNamed(Routes.NOTIFICATION);
-                                  },
-                                  icon: Icon(
-                                    size: 24,
-                                    Icons.notifications,
-                                    color: Colors.white,
-                                  )),
-                            ),
-                          ],
-                        ),
+                        // Column(
+                        //   children: [
+                        //     Padding(
+                        //       padding: const EdgeInsets.only(top:10.0),
+                        //       child: IconButton(
+                        //           onPressed: () {
+                        //             Get.toNamed(Routes.NOTIFICATION);
+                        //           },
+                        //           icon: Icon(
+                        //             size: 24,
+                        //             Icons.notifications,
+                        //             color: Colors.white,
+                        //           )),
+                        //     ),
+                        //   ],
+                        // ),
                       ]:[
                         controller.Sibling.value.length != 0 ?
                         Padding(
@@ -654,18 +689,18 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                               )),
                         )
                             :SizedBox(),
-                        Padding(
-                          padding: const EdgeInsets.only(top:25.0),
-                          child: IconButton(
-                              onPressed: () {
-                                Get.toNamed(Routes.NOTIFICATION);
-                              },
-                              icon: Icon(
-                                size: 24,
-                                Icons.notifications,
-                                color: Colors.white,
-                              )),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top:25.0),
+                        //   child: IconButton(
+                        //       onPressed: () {
+                        //         Get.toNamed(Routes.NOTIFICATION);
+                        //       },
+                        //       icon: Icon(
+                        //         size: 24,
+                        //         Icons.notifications,
+                        //         color: Colors.white,
+                        //       )),
+                        // ),
                       ],
                       title: Container(height:6000,color: Colors.transparent,),
                       expandedHeight: Platform.isIOS?165:200 ,
@@ -1047,9 +1082,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                                   height: 5,
                                                                 ),
                                                                 Text(
-                                                                  textAlign:
-                                                                  TextAlign
-                                                                      .justify,
+                                                                  textAlign: TextAlign.start,
                                                                   maxLines: 2,
                                                                   highliter.shortDescription.toString(),
                                                                   style: TextStyle(
@@ -2896,9 +2929,12 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                       SizedBox(height: 10),
                                       Stack(
                                         children: [
-                                          CarouselSlider(
-                                            items: _getImageSlider(),
-                                            carouselController: CarouselController(),
+                                          CarouselSlider.builder(
+                                            itemCount: controller.selectionList[index].extra!.length,
+                                            itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+                                                Container(
+                                                    width: MediaQuery.of(context).size.width,
+                                                  child: Image.network(ApiService.IMAGE_URL+controller.selectionList[index].extra![itemIndex].image.toString(),fit: BoxFit.fill,)),
                                             options: CarouselOptions(
                                                 autoPlay: true,
                                                 enlargeCenterPage: false,
@@ -2906,8 +2942,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                 viewportFraction: 1.0,
                                                 onPageChanged: (index, reason) {
                                                   setState(() {
-                                                    controller.imageSliderindex
-                                                        .value = index;
+                                                    controller.imageSliderindex.value = index;
                                                   }
                                                   );
                                                 }
@@ -2921,7 +2956,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                 mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                 MainAxisAlignment.center,
-                                                children: controller.imgListSlider.asMap().entries.map((entry) {
+                                                children: controller.selectionList[index].extra!.asMap().entries.map((entry) {
                                                   return Container(
                                                     width: 10,
                                                     height: 10,
@@ -2992,7 +3027,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                   child: IconButton(
                                                       tooltip: "play",
                                                       onPressed: (){
-
 
                                                         showGeneralDialog(
                                                           context: context,
@@ -3076,7 +3110,8 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                       )
                                   ),
                                 ),
-                              ):SizedBox(),
+                              )
+                                  :SizedBox(),
 
 
                             /*// main menu
@@ -3707,71 +3742,12 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     });
   }
 
-  // _videoWidget(context){
-  //   showGeneralDialog(
-  //     context: context,
-  //     barrierColor: Colors.black12.withOpacity(0.6), // Background color
-  //     barrierDismissible: true,
-  //     barrierLabel: 'Dialog',
-  //     transitionDuration: Duration(milliseconds: 400),
-  //     pageBuilder: (BuildContext context, __, ___) {
-  //       return Container(
-  //         height: MediaQuery.of(context).size.height,
-  //         width: MediaQuery.of(context).size.width,
-  //         color: Colors.black,
-  //         child: Stack(
-  //           children: [
-  //             Container(
-  //               width: MediaQuery.of(context).size.width,
-  //               padding: EdgeInsets.all(10),
-  //               decoration: BoxDecoration(
-  //                   borderRadius: BorderRadius.circular(10)
-  //               ),
-  //               child: Column(
-  //                   crossAxisAlignment: CrossAxisAlignment.center,
-  //                 mainAxisAlignment: MainAxisAlignment.center,
-  //                 children: [
-  //                   ClipRRect(
-  //                       borderRadius: BorderRadius.circular(10),
-  //                       child:  YoutubePlayer(
-  //                           controller: _controller
-  //                       ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //             Positioned(
-  //               top: 50,
-  //               left: 20,
-  //               child: Container(
-  //                 height: 50,
-  //                 width: 50,
-  //                 decoration: BoxDecoration(
-  //                     shape:BoxShape.circle
-  //                 ),
-  //                   child: Icon(Icons.close,size: 40,color: Colors.white,)),
-  //             )
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
-  //
-  // }
-
   List<Widget> _getImageSlider() {
-    final List<Widget> imageSliders = controller.imgListSlider
-        .map((imgListSlider) => _buildImageView(imgListSlider))
-        .toList();
-
+    final List<Widget> imageSliders = controller.selectionList
+        .map((selectionList) => _buildImageView(
+        selectionList.extra![0].image.toString())).toList();
     return imageSliders;
   }
-
-  // List<Widget> _getImageSlider(int idx) {
-  //   final List<Widget> imageSliders = controller.imgListSlider.map((item) => _buildImageView(imgListSlider.toString())).toList();
-  //
-  //   return imageSliders;
-  // }
 
   Widget _buildImageView(String imageUrl) {
     return Container(
@@ -3780,7 +3756,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
       decoration: BoxDecoration(
         // borderRadius: BorderRadius.circular(12),
         image: DecorationImage(
-            image: NetworkImage(imageUrl),
+            image: NetworkImage(
+                imageUrl
+            ),
             fit: BoxFit.fill),
       ),
     );

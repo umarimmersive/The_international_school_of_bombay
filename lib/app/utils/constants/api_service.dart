@@ -35,12 +35,17 @@ class ApiService {
   static final String advertisement = "advertisement";
   static final String eventsData = "eventsData";
   static final String classSyllabus = "classSyllabus";
+  static final String assignments = "assignments";
+  static final String busRoute = "busRoute";
 
 
   static final String sectionList = "sectionList";
   static final String sectionData = "sectionData";
   static final String academicContent = "academicContent";
   static final String classTimeTable = "classTimeTable";
+  static final String applyForLeave = "applyForLeave";
+  static final String leaveRequestList = "leaveRequestList";
+  static final String updateProfileImage = "updateProfileImage";
 
 
 
@@ -56,14 +61,11 @@ class ApiService {
   static final String ANNOUCEMENT_LIST = "announcementList";
 
 
-
-
   Future Login(email,password) async {
     print("----------------$email");
     print("----------------$password");
 
-    final response = await http.post(
-        Uri.parse(BASE_URL + LOGIN),
+    final response = await http.post(Uri.parse(BASE_URL + LOGIN),
         body: ({
           'email':email.toString(),
           'password': password.toString(),
@@ -89,6 +91,25 @@ class ApiService {
     return ConvertDataToJson;
   }
 
+  Future Leave_apply({student_id, student_name,father_name, Class, start_date, end_date,reason_for_leave,other_reason,attachement}) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + applyForLeave),
+        body: ({
+          'student_id':student_id.toString(),
+          'student_name': student_name.toString(),
+          'father_name': father_name.toString(),
+          'class_id': Class.toString(),
+          'start_date': start_date.toString(),
+          'end_date': end_date.toString(),
+          'reason_for_leave': end_date.toString(),
+          'other_reason': other_reason.toString(),
+          'application': attachement,
+        })
+    );
+    print("response.body =================${response.body}");
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
 
   Future Slider_Details(id) async {
     print("----------------$id");
@@ -438,6 +459,28 @@ class ApiService {
     return ConvertDataToJson;
   }
 
+  Future Busroute_data(className) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + busRoute),
+        body: {
+          "class_id":className,
+        }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+  Future Assignment_data(className) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + assignments),
+        body: {
+          "class_id":className,
+        }
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
   Future Academic_Content_data(className) async {
     final response = await http.post(
         Uri.parse(BASE_URL + academicContent),
@@ -459,6 +502,32 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+
+  Future Leave_Status(token) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + leaveRequestList),
+        body: ({
+          'token':token
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+  Future Upload_profile_image(token,pImage) async {
+    final response = await http.post(
+        Uri.parse(BASE_URL + updateProfileImage),
+        body: ({
+          'token':token,
+          'avtar':pImage,
+        })
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
+
+
 
 
 

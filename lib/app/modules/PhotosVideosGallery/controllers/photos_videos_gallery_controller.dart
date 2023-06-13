@@ -109,7 +109,8 @@ class PhotosVideosGalleryController extends GetxController with GetSingleTickerP
 
     ytbPlayerController!.play();
   }
-  final PhotoVideoGallery = <PhotoGalleryModel>[].obs;
+  final PhotoGallery = <PhotoGalleryModel>[].obs;
+  final VideoGallery = <PhotoGalleryModel>[].obs;
   final isLoading=false.obs;
 
   Future Get_PhotoGallery() async {
@@ -123,10 +124,10 @@ class PhotosVideosGalleryController extends GetxController with GetSingleTickerP
 
         List dataList = response['data'].toList();
 
-        PhotoVideoGallery.value = dataList.map((json) => PhotoGalleryModel.fromJson(json)).toList();
+        PhotoGallery.value = dataList.map((json) => PhotoGalleryModel.fromJson(json)).toList();
 
 
-        print('P-----------------${PhotoVideoGallery}');
+        print('P-----------------${PhotoGallery}');
         update();
       } else if (response['status'] == false) {
 
@@ -138,7 +139,6 @@ class PhotosVideosGalleryController extends GetxController with GetSingleTickerP
     }
   }
 
-  final VideoGallery = <PhotoGalleryModel>[].obs;
  // final isLoading=false.obs;
   Future Get_Video_Gallery() async {
     try {
@@ -153,7 +153,7 @@ class PhotosVideosGalleryController extends GetxController with GetSingleTickerP
 
         VideoGallery.value = dataList.map((json) => PhotoGalleryModel.fromJson(json)).toList();
 
-        await Player(url: VideoGallery[0].item_value.toString());
+        await Player(url: VideoGallery[0].itemValue.toString());
         print('P-----------------${VideoGallery}');
         update();
       } else if (response['status'] == false) {

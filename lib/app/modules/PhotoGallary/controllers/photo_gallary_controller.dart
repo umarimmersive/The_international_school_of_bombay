@@ -57,7 +57,7 @@ class PhotoGallaryController extends GetxController {
 
         List dataList = response['data'].toList();
         PhotoGalleryDetails.value = dataList.map((json) => PhotoGalleryDetailsModel.fromJson(json)).toList();
-        posts.addAll(PhotoGalleryDetails);
+        posts.addAll(PhotoGalleryDetails.value);
 
         isLastPage.value = PhotoGalleryDetails.length < numberOfPostsPerRequest.value;
         isLoading(false);

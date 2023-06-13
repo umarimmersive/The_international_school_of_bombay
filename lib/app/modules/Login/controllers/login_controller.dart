@@ -43,8 +43,7 @@ class LoginController extends GetxController {
     try {
       isLoading(true);
 
-      var response = await ApiService()
-          .Login(emailController.text, passwordcontroller.text,);
+      var response = await ApiService().Login(emailController.text, passwordcontroller.text,);
 
       if (response['status'] == true) {
         print('token-----------------${response['token']}');
@@ -81,14 +80,9 @@ class LoginController extends GetxController {
   }
 
 
-
   @override
   void onInit() {
     super.onInit();
-
-
-
-
   }
 
   @override

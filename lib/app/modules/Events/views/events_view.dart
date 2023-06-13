@@ -116,7 +116,7 @@ class EventsView extends GetView<EventsController> {
                                     alignment: Alignment.topLeft,
                                   ),
                                   // text that renders h1 elements will be red
-                                  "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                                  "p": Style(color: htmlcolore.value,fontSize: FontSize(16)),
                                 }
                             ),
                             /*TextFieldShowCOLOR(

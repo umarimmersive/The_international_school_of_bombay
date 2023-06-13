@@ -100,7 +100,7 @@ class ScheduleScreenController extends GetxController {
       // Adv_list.clear();
       var response = await ApiService().CalenderEventsList();
       if (response['status'] == true) {
-        Toast.show(response['message'].toString());
+        // Toast.show(response['message'].toString());
         print('responce---------responce-----------responce  ${response}');
 
         List dataList = response['event'].toList();

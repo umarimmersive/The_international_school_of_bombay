@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/my_local_service.dart';
 import 'package:the_international_school_of_bombay/app/utils/shared_prefrence/shared_prefrences_constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../utils/constants/ColorValues.dart';
@@ -12,22 +14,29 @@ import '../../../utils/global_widgets/globle_var.dart';
 import '../controllers/menu_controller.dart';
 
 class MenuView extends GetView<MenuuController> {
-  const MenuView({Key? key}) : super(key: key);
+   MenuView({Key? key}) : super(key: key);
   static bool isDark(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark;
   }
+
+  String facebookUrl = "https://www.facebook.com/TISBIndore/";
+  String instagramUrl = "https://www.instagram.com/theisbindore/";
+  String youtubeUrl = "https://youtube.com/@theinternationalschoolofbo6026";
+  String googlePlayUrl = "https://play.google.com";
 
   @override
   Widget build(BuildContext context) {
     var color = (isDark(context) ? Color(0xFF414040) : Colors.white).obs;
     var color1 = (isDark(context) ? Colors.white : Colors.black).obs;
     return Scaffold(
-        appBar: appbar(title: 'Menu', icon_button: false),
+        appBar: appbar(title: '', icon_button: false),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height / 3.2,
+                height: MediaQuery.of(context).size.height / 2.2,
+                width: MediaQuery.of(context).size.width,
                 color: Color(ColorValues.RED),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -36,21 +45,22 @@ class MenuView extends GetView<MenuuController> {
                     SizedBox(
                       height: 10,
                     ),
-                    userData!.profile_image.isNotEmpty
-                        ? Container(
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(5)),
-                            height: 80,
-                            width: 80,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.network(
-                                  "${ApiService.IMAGE_URL + userData!.profile_image}",
-                                  fit: BoxFit.cover,
-                                )),
-                          )
-                        : Container(
+                    // userData!.profile_image.isNotEmpty
+                    //     ? Container(
+                    //         decoration: BoxDecoration(
+                    //             color: Colors.red,
+                    //             borderRadius: BorderRadius.circular(5)),
+                    //         height: 80,
+                    //         width: 80,
+                    //         child: ClipRRect(
+                    //             borderRadius: BorderRadius.circular(5),
+                    //             child: Image.network(
+                    //               "${ApiService.IMAGE_URL + userData!.profile_image}",
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       )
+                    //     :
+                    Container(
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5)),
@@ -64,11 +74,15 @@ class MenuView extends GetView<MenuuController> {
                                     userData!.lastname
                                         .toString()
                                         .substring(0, 1),
-                                fontSize: 15.0,
+                                fontSize: 18.0,
                                 maxLines: 1,
+                                fontWeight: FontWeight.w500,
                                 color: Colors.red,
                               ),
                             )),
+                    SizedBox(
+                      height: 5,
+                    ),
                     /* Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 0, horizontal: 14),
@@ -93,40 +107,40 @@ class MenuView extends GetView<MenuuController> {
                               fontSize: 16.0,
                               color: ColorValues.WHITE_COLORE,
                               fontWeight: FontWeight.bold),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text_widget(
-                                  color: ColorValues.WHITE_COLORE,
-                                  Simpletext: 'Mode',
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w700),
-                              Obx(() => Transform.scale(
-                                    scale: 1.1,
-                                    child: Switch(
-                                      value: controller.isSwitched.value,
-                                      onChanged: (value) {
-                                        controller.isSwitched.value = value;
-                                        print(controller.isSwitched);
-                                        Get.changeThemeMode(
-                                          controller.isSwitched.value
-                                              ? ThemeMode.dark
-                                              : ThemeMode.light,
-                                        );
-
-                                        controller.preferences.setString(
-                                            SDConstant.isDark,
-                                            controller.isSwitched.value
-                                                .toString());
-                                        print(
-                                            "SharedPreferencesValueProfile ${controller.preferences.getString(SDConstant.isDark)}");
-                                      },
-                                      activeTrackColor: Color(0xffD9D9D9),
-                                      activeColor: Colors.blue,
-                                    ),
-                                  )),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.center,
+                          //   children: [
+                          //     Text_widget(
+                          //         color: ColorValues.WHITE_COLORE,
+                          //         Simpletext: 'Mode',
+                          //         fontSize: 15.0,
+                          //         fontWeight: FontWeight.w700),
+                          //     Obx(() => Transform.scale(
+                          //           scale: 1.1,
+                          //           child: Switch(
+                          //             value: controller.isSwitched.value,
+                          //             onChanged: (value) {
+                          //               controller.isSwitched.value = value;
+                          //               print(controller.isSwitched);
+                          //               Get.changeThemeMode(
+                          //                 controller.isSwitched.value
+                          //                     ? ThemeMode.dark
+                          //                     : ThemeMode.light,
+                          //               );
+                          //
+                          //               controller.preferences.setString(
+                          //                   SDConstant.isDark,
+                          //                   controller.isSwitched.value
+                          //                       .toString());
+                          //               print(
+                          //                   "SharedPreferencesValueProfile ${controller.preferences.getString(SDConstant.isDark)}");
+                          //             },
+                          //             activeTrackColor: Color(0xffD9D9D9),
+                          //             activeColor: Colors.blue,
+                          //           ),
+                          //         )),
+                          //   ],
+                          // ),
                           SizedBox(
                             height: 05,
                           )
@@ -142,7 +156,8 @@ class MenuView extends GetView<MenuuController> {
                         fit: BoxFit.cover,
                         image: NetworkImage('Path to your image')),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
-                    color: color.value),
+                    color: color.value
+                ),
                 margin: EdgeInsets.only(top: 160),
                 child: Column(
                   children: [
@@ -179,7 +194,7 @@ class MenuView extends GetView<MenuuController> {
                                         Expanded(
                                             flex: 2,
                                             child: Text_widget(
-                                              Simpletext: 'Edit Profile',
+                                              Simpletext: 'My Profile',
                                               fontSize: 14.0,
                                             )),
                                       ],
@@ -219,7 +234,8 @@ class MenuView extends GetView<MenuuController> {
                                             child: Text_widget(
                                               Simpletext: 'Gallery',
                                               fontSize: 14.0,
-                                            )),
+                                            )
+                                        ),
                                       ],
                                     )),
                               ),
@@ -305,80 +321,6 @@ class MenuView extends GetView<MenuuController> {
                           ),
                         ),
                         Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(05.0),
-                            child: Card(
-                              elevation: 05,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Container(
-                                  height: 90,
-                                  width: 90,
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                          flex: 2,
-                                          child: Image.asset(
-                                            'assets/images/rating.png',
-                                            height: 20,
-                                            width: 20,
-                                            color: Colors.red,
-                                          )),
-                                      Expanded(
-                                          flex: 2,
-                                          child: Text_widget(
-                                            Simpletext: 'Rate Us',
-                                            fontSize: 14.0,
-                                          )),
-                                    ],
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              print('---------------');
-                              Get.toNamed(Routes.INTERNAL_REFER_PROGRAM);
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(05.0),
-                              child: Card(
-                                elevation: 05,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Container(
-                                    height: 90,
-                                    width: 90,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 2,
-                                            child: Image.asset(
-                                              'assets/refer.png',
-                                              height: 20,
-                                              width: 20,
-                                              color: Colors.red,
-                                            )),
-                                        Expanded(
-                                            flex: 2,
-                                            child: Text_widget(
-                                              Simpletext: 'Refer',
-                                              fontSize: 14.0,
-                                            )),
-                                      ],
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
                           child: GestureDetector(
                             onTap: () {
                               print('---------------');
@@ -414,6 +356,123 @@ class MenuView extends GetView<MenuuController> {
                             ),
                           ),
                         ),
+
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        // Expanded(
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.all(05.0),
+                        //     child: GestureDetector(
+                        //       onTap: () {
+                        //         // my_local_service.logout();
+                        //       },
+                        //       child: Card(
+                        //         elevation: 05,
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(12.0),
+                        //         ),
+                        //         child: Container(
+                        //             height: 90,
+                        //             width: 90,
+                        //             child: Column(
+                        //               children: [
+                        //                 Expanded(
+                        //                     flex: 2,
+                        //                     child: Image.asset(
+                        //                       'assets/images/delete_user.png',
+                        //                       height: 20,
+                        //                       width: 20,
+                        //                       color: Colors.red,
+                        //                     )),
+                        //                 Expanded(
+                        //                     flex: 2,
+                        //                     child: Text_widget(
+                        //                       Simpletext: 'Account Delete',
+                        //                       fontSize: 14.0,
+                        //                     )),
+                        //               ],
+                        //             )),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(05.0),
+                            child: InkWell(
+                              onTap: (){
+                                _launchGooglePlay();
+                              },
+                              child: Card(
+                                elevation: 05,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                child: Container(
+                                    height: 90,
+                                    width: 90,
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                            flex: 2,
+                                            child: Image.asset(
+                                              'assets/images/rating.png',
+                                              height: 20,
+                                              width: 20,
+                                              color: Colors.red,
+                                            )),
+                                        Expanded(
+                                            flex: 2,
+                                            child: Text_widget(
+                                              Simpletext: 'Rate Us',
+                                              fontSize: 14.0,
+                                            )),
+                                      ],
+                                    )),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Expanded(
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       print('---------------');
+                        //       Get.toNamed(Routes.INTERNAL_REFER_PROGRAM);
+                        //     },
+                        //     child: Padding(
+                        //       padding: const EdgeInsets.all(05.0),
+                        //       child: Card(
+                        //         elevation: 05,
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(12.0),
+                        //         ),
+                        //         child: Container(
+                        //             height: 90,
+                        //             width: 90,
+                        //             child: Column(
+                        //               children: [
+                        //                 Expanded(
+                        //                     flex: 2,
+                        //                     child: Image.asset(
+                        //                       'assets/refer.png',
+                        //                       height: 20,
+                        //                       width: 20,
+                        //                       color: Colors.red,
+                        //                     )),
+                        //                 Expanded(
+                        //                     flex: 2,
+                        //                     child: Text_widget(
+                        //                       Simpletext: 'Refer',
+                        //                       fontSize: 14.0,
+                        //                     )),
+                        //               ],
+                        //             )),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
@@ -451,19 +510,13 @@ class MenuView extends GetView<MenuuController> {
                             ),
                           ),
                         ),
-
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
                         Expanded(
-                          flex: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(05.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                my_local_service.logout();
-                              },
+                          child: GestureDetector(
+                            onTap: () {
+                              my_local_service.logout();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(05.0),
                               child: Card(
                                 elevation: 05,
                                 shape: RoundedRectangleBorder(
@@ -471,7 +524,7 @@ class MenuView extends GetView<MenuuController> {
                                 ),
                                 child: Container(
                                     height: 90,
-                                    width: 90,
+                                    // width: 180,
                                     child: Column(
                                       children: [
                                         Expanded(
@@ -494,85 +547,88 @@ class MenuView extends GetView<MenuuController> {
                             ),
                           ),
                         ),
-                        Expanded(
-                          flex: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(05.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                // my_local_service.logout();
-                              },
-                              child: Card(
-                                elevation: 05,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Container(
-                                    height: 90,
-                                    width: 90,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 2,
-                                            child: Image.asset(
-                                              'assets/images/delete_user.png',
-                                              height: 20,
-                                              width: 20,
-                                              color: Colors.red,
-                                            )),
-                                        Expanded(
-                                            flex: 2,
-                                            child: Text_widget(
-                                              Simpletext: 'Account Delete',
-                                              fontSize: 14.0,
-                                            )),
-                                      ],
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 4,
-                          child: GestureDetector(
-                            onTap: () {
-                              print('---------------');
-                              // Get.toNamed(Routes.INTERNAL_REFER_PROGRAM);
-                              Get.toNamed("/other-activities");
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(05.0),
-                              child: Card(
-                                elevation: 10,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                child: Container(
-                                    height: 90,
-                                    width: 90,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 6,
-                                            child: Icon(
-                                              Icons.arrow_right_alt,
-                                              color: ColorValues.kRedColor,
-                                              size: 40,
-                                            )),
-                                        Expanded(
-                                            flex: 6,
-                                            child: Text_widget(
-                                              textAlign: TextAlign.center,
-                                              Simpletext: 'Other\nActivities',
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.bold,
-                                            )),
-                                      ],
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+
+                        // Padding(
+                        //   padding: const EdgeInsets.all(05.0),
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       my_local_service.logout();
+                        //     },
+                        //     child: Card(
+                        //       elevation: 05,
+                        //       shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(12.0),
+                        //       ),
+                        //       child: Container(
+                        //           height: 90,
+                        //           width: 180,
+                        //           child: Column(
+                        //             children: [
+                        //               Expanded(
+                        //                   flex: 2,
+                        //                   child: Image.asset(
+                        //                     'assets/images/power-off.png',
+                        //                     height: 20,
+                        //                     width: 20,
+                        //                     color: Colors.red,
+                        //                   )),
+                        //               Expanded(
+                        //                   flex: 2,
+                        //                   child: Text_widget(
+                        //                     Simpletext: 'Logout',
+                        //                     fontSize: 14.0,
+                        //                   )),
+                        //             ],
+                        //           )),
+                        //     ),
+                        //   ),
+                        // ),
+
+                        // Expanded(
+                        //   flex: 4,
+                        //   child: GestureDetector(
+                        //     onTap: () {
+                        //       print('---------------');
+                        //       // Get.toNamed(Routes.INTERNAL_REFER_PROGRAM);
+                        //       Get.toNamed("/other-activities");
+                        //     },
+                        //     child: Padding(
+                        //       padding: const EdgeInsets.all(05.0),
+                        //       child: Card(
+                        //         elevation: 10,
+                        //         shape: RoundedRectangleBorder(
+                        //           borderRadius: BorderRadius.circular(12.0),
+                        //         ),
+                        //         child: Container(
+                        //             height: 90,
+                        //             width: 90,
+                        //             child: Column(
+                        //               children: [
+                        //                 Expanded(
+                        //                     flex: 6,
+                        //                     child: Icon(
+                        //                       Icons.arrow_right_alt,
+                        //                       color: ColorValues.kRedColor,
+                        //                       size: 40,
+                        //                     )),
+                        //                 Expanded(
+                        //                     flex: 6,
+                        //                     child: Text_widget(
+                        //                       textAlign: TextAlign.center,
+                        //                       Simpletext: 'Other\nActivities',
+                        //                       fontSize: 14.0,
+                        //                       fontWeight: FontWeight.bold,
+                        //                     )),
+                        //               ],
+                        //             )),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -585,7 +641,9 @@ class MenuView extends GetView<MenuuController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
-                                onTap: (){},
+                                onTap: (){
+                                  _launchFacebook();
+                                },
                                 child: Image.asset(
                                   "assets/images/icons8-facebook-250.png",
                                   height: 30,
@@ -595,7 +653,7 @@ class MenuView extends GetView<MenuuController> {
                                 width: 18,
                               ),
                               InkWell(
-                                onTap: (){},
+                                onTap: (){_launchInstagram();},
                                 child: Image.asset(
                                   "assets/images/icons8-instagram-logo-96.png",
                                   height: 23,
@@ -605,7 +663,7 @@ class MenuView extends GetView<MenuuController> {
                                 width: 18,
                               ),
                               InkWell(
-                                onTap: (){},
+                                onTap: (){_launchYoutube();},
                                 child: Image.asset(
                                   "assets/images/icons8-youtube-250.png",
                                   height: 32,
@@ -653,4 +711,27 @@ class MenuView extends GetView<MenuuController> {
           ),
         ));
   }
+  Future<void> _launchFacebook() async {
+    if (!await launchUrl(Uri.parse(facebookUrl))) {
+      throw Exception('Could not launch $facebookUrl');
+    }
+  }
+
+  Future<void> _launchInstagram() async {
+    if (!await launchUrl(Uri.parse(instagramUrl)) ){
+      throw Exception('Could not launch $instagramUrl');
+    }
+  }
+
+  Future<void> _launchYoutube() async {
+    if (!await launchUrl(Uri.parse(youtubeUrl)) ){
+      throw Exception('Could not launch $youtubeUrl');
+    }
+  }
+   Future<void> _launchGooglePlay() async {
+     if (!await launchUrl(Uri.parse(googlePlayUrl)) ){
+       throw Exception('Could not launch $googlePlayUrl');
+     }
+   }
+
 }

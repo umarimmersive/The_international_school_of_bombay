@@ -54,7 +54,7 @@ class HomeSliderDetailsView extends GetView<HomeSliderDetailsController> {
                                   fontsize: 18.0,
                                   text: '${controller.Slider_details[0].title}',
                                   //height: 1.5,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   fontFamily: 'Roboto',
                                 ),
                               ),
@@ -99,22 +99,27 @@ class HomeSliderDetailsView extends GetView<HomeSliderDetailsController> {
                                     ),
                                     // tables will have the below background color
                                     "table": Style(
+                              fontSize: FontSize.small,
                                       backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
                                     ),
                                     // some other granular customizations are also possible
                                     "tr": Style(
+                                      fontSize: FontSize.small,
                                       border: Border(bottom: BorderSide(color: Colors.grey)),
                                     ),
                                     "th": Style(
+
+                                      fontSize: FontSize.small,
                                       padding: EdgeInsets.all(6),
                                       backgroundColor: Colors.grey,
                                     ),
                                     "td": Style(
                                       padding: EdgeInsets.all(6),
                                       alignment: Alignment.topLeft,
+                                      fontSize: FontSize.small,
                                     ),
                                     // text that renders h1 elements will be red
-                                    "p": Style(color: htmlcolore.value,fontSize: FontSize.xLarge),
+                                    "p": Style(color: htmlcolore.value,fontSize: FontSize(16)),
                                   }
                               ),
                               /*TextFieldShowCOLOR(

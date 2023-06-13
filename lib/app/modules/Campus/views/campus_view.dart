@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/utils/constants/ColorValues.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/campus_controller.dart';
@@ -41,14 +42,21 @@ class CampusView extends GetView<CampusController> {
                                 child: Text(controller.address[index].toUpperCase()),
                               ),
                               Divider(thickness: 1,),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10,right: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Explore More",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                                    Icon(Icons.arrow_right_alt_outlined)
-                                  ],),
+                              InkWell(
+                                highlightColor: ColorValues.BG_BT2,
+
+                                onTap: (){
+                                   launchUrl(Uri.parse(controller.url[index]));
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10,right: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Explore More",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                                      Icon(Icons.arrow_right_alt_outlined)
+                                    ],),
+                                ),
                               )
 
                             ],

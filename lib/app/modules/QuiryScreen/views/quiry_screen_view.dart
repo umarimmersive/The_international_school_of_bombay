@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
@@ -56,6 +57,9 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                       child: TextFieldDesigned(
                         controller: controller.fullname,
                         maxLines: 2,
+                        inputFormatters: [
+                          new LengthLimitingTextInputFormatter(40),
+                        ],
                         fontSize: 14,
                         maxLength: 50,
                         minLines: 1,
@@ -102,7 +106,23 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                         ],
                       ),*/
                       RedBorderDropdown(
-                        items: ['1st', '2nd', '3rd'],
+                        items: [
+                          'Playgroup',
+                          'Nursery',
+                          'LKG',
+                          'UKG',
+                          'Class I',
+                          'Class II',
+                          'Class IV',
+                          'Class V',
+                          'Class VI',
+                          'Class VII',
+                          'Class VIII',
+                          'Class IX',
+                          'Class X',
+                          'Class XI',
+                          'Class XII',
+                        ],
                         hintText: 'Enter Your Class',
                       ),
                     ),

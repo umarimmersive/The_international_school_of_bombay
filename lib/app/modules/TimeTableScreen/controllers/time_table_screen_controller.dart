@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../models/syllabus_model.dart';
 import '../../../utils/constants/api_service.dart';
@@ -7,7 +8,16 @@ import '../../../utils/global_widgets/globle_var.dart';
 class TimeTableScreenController extends GetxController {
   //TODO: Implement TimeTableScreenController
 
+
+
   final count = 0.obs;
+
+  refrshApi() async{
+
+    await time_table_Api();
+  }
+
+
   @override
   void onInit() {
     super.onInit();
@@ -29,6 +39,8 @@ class TimeTableScreenController extends GetxController {
   final time_table_Data = <Time_Table_Model>[].obs;
   final isLoading_time_table=false.obs;
   Future time_table_Api() async {
+
+    print("jaydeep =====================================");
     try {
       isLoading_time_table(true);
       // Adv_list.clear();

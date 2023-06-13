@@ -2,6 +2,7 @@
 import 'dart:convert' as convert;
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:the_international_school_of_bombay/app/modules/Login/views/login_view.dart';
 
 import '../../models/user_modal.dart';
 import '../../routes/app_pages.dart';
@@ -46,10 +47,10 @@ class my_local_service{
   }
 
   static void logout(){
-    sharedPreference!.clear();
-    Get.toNamed(Routes.LOGIN);
+    sharedPreference.clear();
+    // Get.toNamed(Routes.LOGIN);
 
-    // Get.offAll(PreLoginScreen());
+     Get.offAll(LoginView());
     userData = null;
   }
 

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         tabBarTheme: TabBarTheme(indicatorColor: Colors.red)
       ),
       darkTheme: Themes.dark,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
 
     );
   }

@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
  import '../../../utils/global_widgets/Text.dart';
 import '../../../utils/global_widgets/appBar.dart';
 import '../controllers/contect_us_controller.dart';
 
 class ContectUsView extends GetView<ContectUsController> {
-  const ContectUsView({Key? key}) : super(key: key);
+   ContectUsView({Key? key}) : super(key: key);
+
+  final Uri params = Uri(
+    scheme: 'mailto',
+    path: 'theisb.in@gmail.com',
+    query: 'subject=App Feedback&body=App', //add subject and body here
+  );
+
+   void _sendEmail(){
+     final Uri emailLaunchUri = Uri(
+       scheme: 'mailto',
+       path: 'theisb.in@gmail.com',
+       // queryParameters: {
+       //   'subject': 'CallOut user Profile',
+       //   'body': "jay" ?? ''
+       // },
+     );
+     launchUrl(emailLaunchUri);
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,15 +72,47 @@ class ContectUsView extends GetView<ContectUsController> {
                               SizedBox(
                                 width: 4,
                               ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+
+                              InkWell(
+                                onTap: (){
+                                  launch("tel://07314959955");
+                                },
+                                child: Text(
+                                  "0731-4959955",
+                                  style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
+                                ),
+                              ),
                               Text(
-                                "07314959955",
+                                ", ",
                                 style: TextStyle(
                                     overflow: TextOverflow.ellipsis,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red),
-                              )
+                              ),
+                              InkWell(
+                                onTap: (){
+                                  launch("tel://9329919483");
+                                },
+                                child: Text(
+                                  "9329919483",
+                                  style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
+                                ),
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -86,13 +138,18 @@ class ContectUsView extends GetView<ContectUsController> {
                           SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            "theisb.in@gmail.com",
-                            style: TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                                color: Colors.red),
+                          InkWell(
+                            onTap: ()  {
+                              _sendEmail();
+                            },
+                            child: Text(
+                              "theisb.in@gmail.com",
+                              style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: Colors.red),
+                            ),
                           ),
 
                         ],

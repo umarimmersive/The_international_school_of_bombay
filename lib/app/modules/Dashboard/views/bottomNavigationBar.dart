@@ -87,7 +87,6 @@ class bottomNavigationBar extends GetView<DashboardController> {
                 "Home",
                 style: TextStyle(fontSize: 12),
               )),
-
           BottomBarItem(
               icon: Image.asset(
                 "assets/info.png",

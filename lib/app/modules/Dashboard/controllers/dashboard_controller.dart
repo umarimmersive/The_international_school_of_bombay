@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:the_international_school_of_bombay/app/modules/About/controllers/about_controller.dart';
 import 'package:the_international_school_of_bombay/app/modules/Hoppiness/controllers/hoppiness_controller.dart';
+import 'package:the_international_school_of_bombay/app/modules/PhotoGallary/controllers/photo_gallary_controller.dart';
+import 'package:the_international_school_of_bombay/app/modules/PhotoGallary/views/photo_gallary_view.dart';
+import 'package:the_international_school_of_bombay/app/modules/PhotosVideosGallery/controllers/photos_videos_gallery_controller.dart';
 
 import '../../../models/Knowledge_base_model.dart';
 import '../../../utils/constants/api_service.dart';
@@ -13,16 +16,20 @@ import '../../HomeScreen/views/home_screen_view.dart';
 import '../../Hoppiness/views/hoppiness_view.dart';
 import '../../Menu/controllers/menu_controller.dart';
 import '../../Menu/views/menu_view.dart';
+import '../../PhotosVideosGallery/views/photos_videos_gallery_view.dart';
 import '../../ScheduleScreen/controllers/schedule_screen_controller.dart';
 import '../../ScheduleScreen/views/schedule_screen_view.dart';
+import '../../TimeTableScreen/controllers/time_table_screen_controller.dart';
+import '../../TimeTableScreen/views/time_table_screen_view.dart';
 
 
 class DashboardController extends GetxController {
   //TODO: Implement DashboardController
   final HOME = Get.put(HomeScreenController());
-  final HOPPI = Get.put(HoppinessController());
+  // final HOPPI = Get.put(HoppinessController());
+  final GALLERY = Get.put(PhotosVideosGalleryController());
   final Shedul = Get.put(ScheduleScreenController());
-  final ABOUT = Get.put(AboutController());
+  final ABOUT = Get.put(TimeTableScreenController());
   final Menu = Get.put(MenuuController());
   var tabIndex=0.obs;
 
@@ -36,9 +43,10 @@ class DashboardController extends GetxController {
   }
   final List<Widget> screens = [
     HomeScreenView(),
-    HoppinessView(),
+    // HoppinessView(),
+    PhotosVideosGalleryView(),
     SheduleScreenView(),
-    AboutView(),
+    TimeTableScreenView(),
     MenuView(),
   ];
   final count = 0.obs;
@@ -48,11 +56,11 @@ class DashboardController extends GetxController {
     Get_banner_list();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
         overlays: [ SystemUiOverlay.bottom]);
-    HOME.onInit();
-    HOPPI.onInit();
-    Shedul.onInit();
-    ABOUT.onInit();
-    Menu.onInit();
+    // HOME.onInit();
+    // HOPPI.onInit();
+    // Shedul.onInit();
+    // ABOUT.onInit();
+    // Menu.onInit();
     super.onInit();
   }
 
@@ -92,7 +100,7 @@ class DashboardController extends GetxController {
   @override
   void onClose() {
     HOME.onClose();
-    HOPPI.onClose();
+    GALLERY.onClose();
     ABOUT.onClose();
     super.onClose();
   }
