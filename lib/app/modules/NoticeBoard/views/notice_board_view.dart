@@ -87,7 +87,7 @@ class NoticeBoardView extends GetView<NoticeBoardController> {
                                               padding: const EdgeInsets.only(left: 10.0,top: 8),
                                               child: Text_widget(
                                                 fontSize: 12.0,
-                                                Simpletext: '${controller.Noticebord_list[i].date!+' at '+controller.Noticebord_list[i].time!}',
+                                                Simpletext: '${controller.Noticebord_list[i].noticeDate!+' at '+controller.Noticebord_list[i].time!}',
                                                 height: 1.0,
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: 'Roboto',

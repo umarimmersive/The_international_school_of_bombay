@@ -1,30 +1,46 @@
 
+
 class Notice_bord_list_model {
   int? id;
-  String? image;
   String? title;
-  String? short_description;
+  int? noticeType;
+  String? noticeDate;
+  String? image;
   String? content;
   String? date;
   String? time;
 
-  Notice_bord_list_model({this.id, this.image,this.title,this.short_description,this.content,this.date,this.time});
+  Notice_bord_list_model(
+      {this.id,
+        this.title,
+        this.noticeType,
+        this.noticeDate,
+        this.image,
+        this.content,
+        this.date,
+        this.time});
 
-  factory Notice_bord_list_model.fromJson(Map<String, dynamic> json) => Notice_bord_list_model(
-    id: json["id"] ?? "",
-    image: json["image"] ?? "",
-    title: json["title"] ?? "",
-    short_description: json["short_description"] ?? "",
-    content: json["content"] ?? "",
-    date: json["date"] ?? "",
-    time: json["time"] ?? "",
-  );
+  Notice_bord_list_model.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    noticeType = json['notice_type'];
+    noticeDate = json['notice_date'];
+    image = json['image'];
+    content = json['content'];
+    date = json['date'];
+    time = json['time'];
+  }
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "image": image,
-    "title": title,
-    "short_description": short_description,
-    "content": content,
-  };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['notice_type'] = this.noticeType;
+    data['notice_date'] = this.noticeDate;
+    data['image'] = this.image;
+    data['content'] = this.content;
+    data['date'] = this.date;
+    data['time'] = this.time;
+    return data;
+  }
 }

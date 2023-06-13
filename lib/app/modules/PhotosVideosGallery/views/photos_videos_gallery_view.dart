@@ -729,7 +729,7 @@ class PhotosVideosGalleryView extends GetView<PhotosVideosGalleryController> {
                                                                           ),
                                                                           Positioned(
                                                                             top: 30,
-                                                                            left: 20,
+                                                                            right: 20,
                                                                             child: Material(
                                                                               color: Colors.transparent,
                                                                               child: InkWell(

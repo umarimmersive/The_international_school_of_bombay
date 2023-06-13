@@ -312,17 +312,17 @@ class EditProfileView extends GetView<EditProfileController> {
 
                 Row(children: [],),
 
-                RoundedFilledButton(
-                  label: 'Save',
-                  color: Color(ColorValues.RED),
-                  height: 45,
-                  width: double.infinity,
-                  fontSize: 14,
-                  ontap: () {
-                    // Get.to(DeshboardScreenView());
-                    //s Get.toNamed(Routes.DESHBOARD_SCREEN);
-                  },
-                ),
+                // RoundedFilledButton(
+                //   label: 'Save',
+                //   color: Color(ColorValues.RED),
+                //   height: 45,
+                //   width: double.infinity,
+                //   fontSize: 14,
+                //   ontap: () {
+                //     // Get.to(DeshboardScreenView());
+                //     //s Get.toNamed(Routes.DESHBOARD_SCREEN);
+                //   },
+                // ),
                 SizedBox(height: 10),
                 // RoundedFilledButton(
                 //   label: 'Change Password',

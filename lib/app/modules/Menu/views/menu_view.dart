@@ -632,7 +632,7 @@ class MenuView extends GetView<MenuuController> {
                       ],
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height / 30,
+                      height: MediaQuery.of(context).size.height / 20,
                     ),
                     Container(
                       child: Column(
@@ -690,16 +690,16 @@ class MenuView extends GetView<MenuuController> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              "Version 1.0.0",
-                              style: TextStyle(
-                                  fontSize: 12.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey),
-                            ),
-                          )
+                          // Padding(
+                          //   padding: const EdgeInsets.only(bottom: 10),
+                          //   child: Text(
+                          //     "Version 1.0.0",
+                          //     style: TextStyle(
+                          //         fontSize: 12.5,
+                          //         fontWeight: FontWeight.w400,
+                          //         color: Colors.grey),
+                          //   ),
+                          // )
                         ],
                       ),
                     )

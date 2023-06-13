@@ -34,7 +34,7 @@ class PhotoViewView extends GetView<PhotoViewController> {
         builder: (BuildContext context, int index) =>
             PhotoViewGalleryPageOptions.customChild(
                 minScale: PhotoViewComputedScale.covered,
-                heroAttributes: PhotoViewHeroAttributes(tag: photos![index].item_value),
+                heroAttributes: PhotoViewHeroAttributes(tag: photos![index].itemValue),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +44,7 @@ class PhotoViewView extends GetView<PhotoViewController> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15,right: 15),
                         child: Image.network(
-                          ApiService.IMAGE_URL+photos![index].item_value,
+                          ApiService.IMAGE_URL+photos![index].itemValue,
                         ),
                       ),
 

@@ -55,3 +55,21 @@ class LeaveStatusModel {
     return data;
   }
 }
+
+class ClassListModel {
+  String classId;
+
+  ClassListModel({
+    required this.classId,
+  });
+
+  factory ClassListModel.fromJson(Map<String, dynamic> json) => ClassListModel(
+    classId: json["class_id"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "class_id": classId,
+  };
+}
+
+

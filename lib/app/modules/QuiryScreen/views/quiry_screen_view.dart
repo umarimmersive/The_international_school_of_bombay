@@ -35,7 +35,7 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -83,49 +83,97 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                         fontFamily: 'Roboto',
                       ),
                     ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 00, vertical: 00),
-                      child:
-                     /* Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 10.0),
-                            child: TextFieldDesigned(
-                              controller: controller.Class_c,
-                              fontSize: 14,
-                              maxLength: 50,
-                              hintText: "Enter Your Class",
-                              hintStyle: ColorValues.DIVIDER_COLOR_ONE,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
-                              readOnly: false,
-                              keyboardType: TextInputType.text,
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: ColorValues.BG_BT2),
+                          borderRadius: BorderRadius.circular(5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                        child: DropdownButtonHideUnderline(
+                          child:DropdownButton(
+                            isExpanded: true,
+                            // Initial Value
+                            value: controller.dropdownvalueClass,
+                            hint:  Row(
+                              children:  [
+                                // SizedBox(
+                                //   width: 20,
+                                // ),
+                                Text(
+                                  "Select Class",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black12,
+                                    fontSize: 14,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
                             ),
+                            // Down Arrow Icon
+                            icon:  Icon(Icons.keyboard_arrow_down,color: ColorValues.BG_BT2,),
+
+                            // Array list of items
+                            items: controller.ClassList.map((item) {
+                              return DropdownMenuItem(
+                                value: item.classId.toString(),
+                                child: Text(item.classId),
+                              );
+                            }).toList(),
+                            // After selecting the desired option,it will
+                            // change button value to selected value
+                            onChanged: (newValue) {
+                                controller.dropdownvalueClass = newValue!.toString();
+                            },
                           ),
-                        ],
-                      ),*/
-                      RedBorderDropdown(
-                        items: [
-                          'Playgroup',
-                          'Nursery',
-                          'LKG',
-                          'UKG',
-                          'Class I',
-                          'Class II',
-                          'Class IV',
-                          'Class V',
-                          'Class VI',
-                          'Class VII',
-                          'Class VIII',
-                          'Class IX',
-                          'Class X',
-                          'Class XI',
-                          'Class XII',
-                        ],
-                        hintText: 'Enter Your Class',
+                        ),
                       ),
                     ),
+                    // Padding(
+                    //   padding:
+                    //   const EdgeInsets.symmetric(horizontal: 00, vertical: 00),
+                    //   child:
+                    //  /* Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Padding(
+                    //         padding: EdgeInsets.only(top: 10.0),
+                    //         child: TextFieldDesigned(
+                    //           controller: controller.Class_c,
+                    //           fontSize: 14,
+                    //           maxLength: 50,
+                    //           hintText: "Enter Your Class",
+                    //           hintStyle: ColorValues.DIVIDER_COLOR_ONE,
+                    //           autovalidateMode: AutovalidateMode.onUserInteraction,
+                    //           readOnly: false,
+                    //           keyboardType: TextInputType.text,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),*/
+                    //   RedBorderDropdown(
+                    //     items: [
+                    //       'Playgroup',
+                    //       'Nursery',
+                    //       'LKG',
+                    //       'UKG',
+                    //       'Class I',
+                    //       'Class II',
+                    //       'Class IV',
+                    //       'Class V',
+                    //       'Class VI',
+                    //       'Class VII',
+                    //       'Class VIII',
+                    //       'Class IX',
+                    //       'Class X',
+                    //       'Class XI',
+                    //       'Class XII',
+                    //     ],
+                    //     hintText: 'Enter Your Class',
+                    //   ),
+                    // ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height / 80,
                     ),
@@ -181,6 +229,10 @@ class QuiryScreenView extends GetView<QuiryScreenController> {
                     TextFormField(
                       controller: controller.query,
                       maxLines: 7,
+                      inputFormatters: [
+                        new LengthLimitingTextInputFormatter(150),
+                      ],
+                      cursorColor: ColorValues.BG_BT2,
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: 20,top: 20),
                           focusedBorder: OutlineInputBorder(

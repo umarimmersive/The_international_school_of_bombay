@@ -1901,8 +1901,6 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                 //
 
 
-
-
                                                 if (idx4 == 0) {
                                                   Get.toNamed(Routes.UPCOMING_EVENT);
                                                 } else if (idx4 == 1) {
@@ -2111,7 +2109,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                             left: 10,
                                                             child: Container(
                                                               //margin: EdgeInsets.only(top: 140,left: 10),
-                                                              height: 60,
+                                                              height: 50,
                                                               width: 200,
                                                               child: Column(
                                                                 crossAxisAlignment:
@@ -2121,20 +2119,20 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                                 MainAxisAlignment
                                                                     .end,
                                                                 children: [
-                                                                  Text(
-                                                                    evets.year.toString(),
-                                                                    style: TextStyle(
-                                                                        fontFamily:
-                                                                        "Roboto",
-                                                                        overflow: TextOverflow
-                                                                            .ellipsis,
-                                                                        fontWeight: FontWeight
-                                                                            .w600,
-                                                                        fontSize:
-                                                                        13.5,
-                                                                        color:
-                                                                        Colors.white),
-                                                                  ),
+                                                                  // Text(
+                                                                  //   evets.year.toString(),
+                                                                  //   style: TextStyle(
+                                                                  //       fontFamily:
+                                                                  //       "Roboto",
+                                                                  //       overflow: TextOverflow
+                                                                  //           .ellipsis,
+                                                                  //       fontWeight: FontWeight
+                                                                  //           .w600,
+                                                                  //       fontSize:
+                                                                  //       13.5,
+                                                                  //       color:
+                                                                  //       Colors.white),
+                                                                  // ),
 
                                                                   /* Text(
                                                             textAlign: TextAlign.justify,
@@ -3067,7 +3065,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                                   ),
                                                                   Positioned(
                                                                     top: 40,
-                                                                    left: 20,
+                                                                    right: 20,
                                                                     child: Material(
                                                                       color: Colors.transparent,
                                                                       child: InkWell(
@@ -3084,7 +3082,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                                                                             decoration: BoxDecoration(
                                                                                 shape:BoxShape.circle
                                                                             ),
-                                                                            child: Icon(Icons.close,size: 40,color: Colors.white,)),
+                                                                            child: Icon(Icons.close,size: 30,color: Colors.white,)),
                                                                       ),
                                                                     ),
                                                                   )

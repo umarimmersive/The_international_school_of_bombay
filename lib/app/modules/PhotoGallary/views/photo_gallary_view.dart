@@ -81,7 +81,7 @@ class PhotoGallaryView extends GetView<PhotoGallaryController>  {
                               print('-------------app');
                               Get.to(
                                   PhotoViewView(
-                                    photos: controller.posts,
+                                    photos: controller.posts.value,
                                     index: index,
                                   ),
                                   transition: Transition.zoom);

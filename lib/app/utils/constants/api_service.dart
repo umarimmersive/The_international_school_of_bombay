@@ -46,6 +46,7 @@ class ApiService {
   static final String applyForLeave = "applyForLeave";
   static final String leaveRequestList = "leaveRequestList";
   static final String updateProfileImage = "updateProfileImage";
+  static final String classesList = "classesList";
 
 
 
@@ -91,7 +92,7 @@ class ApiService {
     return ConvertDataToJson;
   }
 
-  Future Leave_apply({student_id, student_name,father_name, Class, start_date, end_date,reason_for_leave,other_reason,attachement}) async {
+  Future Leave_apply({student_id, student_name,father_name, Class, start_date,end_date,   reason_for_leave,other_reason,attachement}) async {
     final response = await http.post(
         Uri.parse(BASE_URL + applyForLeave),
         body: ({
@@ -101,9 +102,10 @@ class ApiService {
           'class_id': Class.toString(),
           'start_date': start_date.toString(),
           'end_date': end_date.toString(),
-          'reason_for_leave': end_date.toString(),
+          'reason_for_leave': reason_for_leave.toString(),
           'other_reason': other_reason.toString(),
           'application': attachement,
+
         })
     );
     print("response.body =================${response.body}");
@@ -525,6 +527,14 @@ class ApiService {
     var ConvertDataToJson = jsonDecode(response.body);
     return ConvertDataToJson;
   }
+  Future ClassList_list() async {
+    final response = await http.get(
+      Uri.parse(BASE_URL + classesList),
+    );
+    var ConvertDataToJson = jsonDecode(response.body);
+    return ConvertDataToJson;
+  }
+
 
 
 

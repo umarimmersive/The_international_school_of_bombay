@@ -21,12 +21,12 @@ class LeavesScreenController extends GetxController {
   DateTime? date;
   DateTime? dateend;
 
-  Rx<TextEditingController> reasonforleave=TextEditingController().obs;
+  TextEditingController reasonforleave=TextEditingController();
 
   var docFile = File('').obs;
 
   final gender = "".obs;
-  final docfilename = "-".obs;
+  final docfilename = "".obs;
   File? documentimageFile;
 
   final count = 0.obs;
@@ -40,7 +40,7 @@ class LeavesScreenController extends GetxController {
     final result = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2050),
       builder: (context, child) {
         return Theme(
@@ -48,7 +48,7 @@ class LeavesScreenController extends GetxController {
             colorScheme: ColorScheme.light(
               primary: Colors.red, // <-- SEE HERE
               onPrimary: Colors.white, // <-- SEE HERE
-              onSurface: Colors.blueAccent, // <-- SEE HERE
+              onSurface: Colors.black, // <-- SEE HERE
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
@@ -62,7 +62,7 @@ class LeavesScreenController extends GetxController {
     );
     if (result != null) {
       date = result;
-      startDate.value = "${date!.day}/${date!.month}/${date!.year}";
+      startDate.value = "${date!.year}-${date!.month}-${date!.day}";
     }
   }
 
@@ -70,7 +70,7 @@ class LeavesScreenController extends GetxController {
     final resultt = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2050),
       builder: (context, child) {
         return Theme(
@@ -78,7 +78,7 @@ class LeavesScreenController extends GetxController {
             colorScheme: ColorScheme.light(
               primary: Colors.red, // <-- SEE HERE
               onPrimary: Colors.white, // <-- SEE HERE
-              onSurface: Colors.blueAccent, // <-- SEE HERE
+              onSurface: Colors.black, // <-- SEE HERE
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
@@ -92,7 +92,7 @@ class LeavesScreenController extends GetxController {
     );
     if (resultt != null) {
       dateend = resultt;
-      endDate.value = "${dateend!.day}/${dateend!.month}/${dateend!.year}";
+      endDate.value = "${dateend!.year}-${dateend!.month}-${dateend!.day}";
     }
   }
 
@@ -113,7 +113,8 @@ class LeavesScreenController extends GetxController {
 
   @override
   void onClose() {
-
+    reasonforleave.clear();
+    docfilename.value.isEmpty;
     super.onClose();
   }
 
@@ -135,7 +136,6 @@ class LeavesScreenController extends GetxController {
   }
 
 
-
   OnSubmit(){
     if(name.text.isEmpty){
       ToastClass.showToast('Please enter full name.', 'assets/only_logo.png');
@@ -147,8 +147,10 @@ class LeavesScreenController extends GetxController {
       ToastClass.showToast('Please enter start date.', 'assets/only_logo.png');
     }else if(endDate == "") {
       ToastClass.showToast('Please enter end data.', 'assets/only_logo.png');
-    }else if(reasonforleave.value.text.isEmpty) {
+    }else if(reasonforleave.text.isEmpty) {
       ToastClass.showToast('Please enter any reason for leave.', 'assets/only_logo.png');
+    }else if(startDate.value == endDate.value) {
+      ToastClass.showToast('Please select another that end date.', 'assets/only_logo.png');
     }else{
       leave_Api();
     }
@@ -165,10 +167,10 @@ class LeavesScreenController extends GetxController {
         student_id: userData!.id,
         student_name: name.text,
         father_name: fathername.text,
-        Class: userData!.Class,
-        start_date: startDate,
-        end_date: endDate,
-        reason_for_leave: '',
+        Class: Class.text,
+        start_date: startDate.value,
+        end_date: endDate.value,
+        reason_for_leave: 'test',
         other_reason: reasonforleave.value.text,
         attachement: docfilename.value
 
@@ -179,8 +181,11 @@ class LeavesScreenController extends GetxController {
 
 
         ToastClass.showToast('${response['message']}', 'assets/only_logo.png');
-
+        Get_LeaveStatus();
         isLoading(false);
+        reasonforleave.clear();
+        isSelect.value = '';
+        docfilename.value = '';
         Get.toNamed(Routes.DESHBOARD_SCREEN);
 
       } else if (response['status'] == false) {

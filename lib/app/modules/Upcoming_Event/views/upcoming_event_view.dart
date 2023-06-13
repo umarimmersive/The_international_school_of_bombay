@@ -71,7 +71,7 @@ class UpcomingEventView extends GetView<UpcomingEventController> {
                                         padding: const EdgeInsets.only(left: 10,right: 10,top: 0),
                                         child: Text_widget(
                                           maxLines: 2,
-                                          Simpletext:controller.upcoming_event[index].date!+' '+controller.upcoming_event[index].year!, fontSize: 16.0,),
+                                          Simpletext:controller.upcoming_event[index].eventDate!, fontSize: 16.0,),
                                       ),
 
                                     ],
