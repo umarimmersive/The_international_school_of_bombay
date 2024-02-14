@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:the_international_school_of_bombay/app/modules/ChangePassword/views/change_pass_view.dart';
-import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/controllers/upcoming_events_details_controller.dart';
-import 'package:the_international_school_of_bombay/app/modules/UpcomingEventsDetails/views/upcoming_events_details_view.dart';
+import 'package:the_international_school_of_bombay/app/modules/Exam_date/bindings/exam_date_binding.dart';
+import 'package:the_international_school_of_bombay/app/modules/Exam_date/views/exam_date_view.dart';
+
 import '../modules/About/bindings/about_binding.dart';
 import '../modules/About/views/about_view.dart';
 import '../modules/Academic_content/bindings/academic_content_binding.dart';
@@ -19,6 +19,7 @@ import '../modules/BusrootScreen/views/busroot_screen_view.dart';
 import '../modules/Campus/bindings/campus_binding.dart';
 import '../modules/Campus/views/campus_view.dart';
 import '../modules/ChangePassword/bindings/change_pass_binding.dart';
+import '../modules/ChangePassword/views/change_pass_view.dart';
 import '../modules/ContectUs/bindings/contect_us_binding.dart';
 import '../modules/ContectUs/views/contect_us_view.dart';
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
@@ -27,6 +28,8 @@ import '../modules/Edit_profile/bindings/edit_profile_binding.dart';
 import '../modules/Edit_profile/views/edit_profile_view.dart';
 import '../modules/Events/bindings/events_binding.dart';
 import '../modules/Events/views/events_view.dart';
+import '../modules/Exam_time_table/bindings/exam_time_table_binding.dart';
+import '../modules/Exam_time_table/views/exam_time_table_view.dart';
 import '../modules/Home_slider_details/bindings/home_slider_details_binding.dart';
 import '../modules/Home_slider_details/views/home_slider_details_view.dart';
 import '../modules/Hoppiness/bindings/hoppiness_binding.dart';
@@ -78,6 +81,7 @@ import '../modules/TermandCondition/views/termand_condition_view.dart';
 import '../modules/TimeTableScreen/bindings/time_table_screen_binding.dart';
 import '../modules/TimeTableScreen/views/time_table_screen_view.dart';
 import '../modules/UpcomingEventsDetails/bindings/upcoming_events_details_binding.dart';
+import '../modules/UpcomingEventsDetails/views/upcoming_events_details_view.dart';
 import '../modules/Upcoming_Event/bindings/upcoming_event_binding.dart';
 import '../modules/Upcoming_Event/views/upcoming_event_view.dart';
 import '../modules/VideoGallary/bindings/video_gallary_binding.dart';
@@ -92,9 +96,8 @@ import '../modules/artical1/bindings/artical1_binding.dart';
 import '../modules/artical1/views/artical1_view.dart';
 import '../modules/syllabus/bindings/syllabus_binding.dart';
 import '../modules/syllabus/views/syllabus_view.dart';
+
 part 'app_routes.dart';
-
-
 
 class AppPages {
   AppPages._();
@@ -259,7 +262,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.VIDEO_PLAYER,
-      page: () =>   VideoPlayerView(),
+      page: () => VideoPlayerView(),
       binding: VideoPlayerBinding(),
     ),
     GetPage(
@@ -279,7 +282,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SCHEDULE_SCREEN,
-      page: () =>  SheduleScreenView(),
+      page: () => SheduleScreenView(),
       binding: ScheduleScreenBinding(),
     ),
     GetPage(
@@ -331,6 +334,16 @@ class AppPages {
       name: _Paths.SHORTS_VIDEOS,
       page: () => ShortVideoView(),
       binding: ShortVideoBinding(),
+    ),
+    GetPage(
+      name: _Paths.EXAM_DATE,
+      page: () => ExamDateView(),
+      binding: ExamDateBinding(),
+    ),
+    GetPage(
+      name: _Paths.EXAM_TIME_TABLE,
+      page: () => const ExamTimeTableView(),
+      binding: ExamTimeTableBinding(),
     ),
   ];
 }

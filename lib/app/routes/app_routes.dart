@@ -55,6 +55,8 @@ abstract class Routes {
   static const PHOTOS_VIDIOS_GALLERY = _Paths.PHOTOS_VIDIOS_GALLERY;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const SHORTS_VIDEOS = _Paths.SHORTS_VIDEOS;
+  static const EXAM_DATE = _Paths.EXAM_DATE;
+  static const EXAM_TIME_TABLE = _Paths.EXAM_TIME_TABLE;
 }
 
 abstract class _Paths {
@@ -111,4 +113,6 @@ abstract class _Paths {
   static const PHOTOS_VIDIOS_GALLERY = '/photos-vidios-gallery';
   static const CHANGE_PASSWORD = '/change-password';
   static const SHORTS_VIDEOS = '/short-videos';
+  static const EXAM_DATE = '/exam-date';
+  static const EXAM_TIME_TABLE = '/exam-time-table';
 }
